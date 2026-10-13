@@ -1,0 +1,187 @@
+---
+import data from "../demo/scenarios.json";
+
+const titulo = data.title.replace(/^#\s*/, "");
+const abre = "[[";
+const cierra = "]]";
+---
+<section class="section" id="demo" style="padding-top:48px;border-top:0">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div>
+        <p class="label">Live demo</p>
+        <h2 class="h2">Break the code. Watch the docs react.</h2>
+      </div>
+      <p class="lead">Two sentences, each anchored to the Python code that proves it, already sealed. Pick a change or edit the code yourself, and see what <code>dockeeper check</code> reports.</p>
+    </div>
+
+    <div class="panel" data-demo data-reveal>
+      <div class="demo-bar">
+        <div class="chips" role="group" aria-label="Try a change">
+          {data.scenarios.map((s, i) => (
+            <button class="chip" type="button" data-scenario={s.id} aria-pressed={i === 0 ? "true" : "false"}>{s.label}</button>
+          ))}
+        </div>
+        <span class="demo-hint" data-hint>{data.scenarios[0].hint}</span>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-doc">
+          <div class="file"><i></i>{data.doc}</div>
+          <div class="doc-title">{titulo}</div>
+          {data.claims.map((c) => (
+            <div class="claim" data-claim={c.anchor}>
+              <p>{c.text}</p>
+              <span class="anchor"><span>{`${abre}${c.anchor}${cierra}`}</span><b class="v" data-claim-v></b></span>
+            </div>
+          ))}
+        </div>
+        <div class="editor-col">
+          <div class="file" style="padding:22px 24px 0;margin-bottom:14px"><i></i>{data.file} · editable</div>
+          <div class="editor">
+            <pre class="gutter" aria-hidden="true" data-gutter></pre>
+            <div class="code-wrap">
+              <pre aria-hidden="true" data-hl></pre>
+              <textarea data-code wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label={`${data.file}, editable`}>{data.original.join("\n")}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="out" aria-live="polite">
+        <div class="out-top"><span>$ dockeeper check</span><span class="exit" data-exit>exit 0</span></div>
+        <div data-rows></div>
+        <div class="actions">
+          <button class="btn btn-ghost btn-sm" type="button" data-fix disabled>Run dockeeper fix</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-accept disabled>Reviewed: fix --aceptar</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-reset>Reset</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot">Computed in your browser by a TypeScript port of the check for Python files. In CI, the same scenarios run through the real Python CLI and through this port, and both must agree on every verdict and fingerprint.</p>
+  </div>
+</section>
+
+<script>
+  import data from "../demo/scenarios.json";
+  import { accept, relocate, seal, toLines, verify, type Entry, type Result, type Verdict } from "../demo/engine";
+
+  const root = document.querySelector<HTMLElement>("[data-demo]");
+  if (root) {
+    const q = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const area = q<HTMLTextAreaElement>("[data-code]");
+    const gutter = q<HTMLPreElement>("[data-gutter]");
+    const hl = q<HTMLPreElement>("[data-hl]");
+    const rows = q<HTMLDivElement>("[data-rows]");
+    const exit = q<HTMLSpanElement>("[data-exit]");
+    const hint = q<HTMLSpanElement>("[data-hint]");
+    const fixBtn = q<HTMLButtonElement>("[data-fix]");
+    const acceptBtn = q<HTMLButtonElement>("[data-accept]");
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-scenario]"));
+    const original = data.original.join("\n");
+    const docLine = (i: number) => `${data.doc}:${3 + i}`;
+    const rank: Record<Verdict, number> = { OK: 0, MOVED: 1, CHANGED: 2 };
+
+    let entries: Entry[] = [];
+    let results: Result[] = [];
+    let turno = 0;
+
+    const escape = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]!);
+
+    async function sealOriginal() {
+      const lines = toLines(original);
+      entries = (await Promise.all(data.claims.map((c) => seal(lines, c.anchor)))).filter((e): e is Entry => e !== null);
+    }
+
+    function paint(lines: string[]) {
+      gutter.textContent = lines.map((_, i) => i + 1).join("\n") || "1";
+      const marca = new Map<number, Verdict>();
+      for (const r of results) {
+        if (!r.block) continue;
+        for (let n = r.block.start; n <= r.block.end; n++) {
+          const actual = marca.get(n);
+          if (!actual || rank[r.verdict] > rank[actual]) marca.set(n, r.verdict);
+        }
+      }
+      hl.innerHTML = lines.map((l, i) => `<span class="${marca.has(i + 1) ? `b-${marca.get(i + 1)}` : ""}">${escape(l) || "​"}</span>`).join("");
+      area.style.height = "auto";
+      area.style.height = `${area.scrollHeight}px`;
+    }
+
+    function report() {
+      rows.innerHTML = results.map((r, i) => {
+        const e = entries[i];
+        const ahora = r.block && r.block.hash !== e.hash ? ` · now ${r.block.hash.slice(0, 8)}` : "";
+        return `<div class="row"><span class="v v-${r.verdict}">${r.verdict}</span>` +
+          `<span class="what">${docLine(i)} → ${escape(r.anchor)}</span>` +
+          `<span class="detail">${escape(r.detail)}</span>` +
+          `<span class="hash">sealed ${e.hash.slice(0, 8)}${ahora}</span></div>`;
+      }).join("");
+      const codigo = results.some((r) => r.verdict === "CHANGED") ? 1 : 0;
+      exit.textContent = `exit ${codigo}`;
+      exit.dataset.code = String(codigo);
+      fixBtn.disabled = !results.some((r) => r.verdict === "MOVED");
+      acceptBtn.disabled = !results.some((r) => r.verdict === "CHANGED");
+      root.querySelectorAll<HTMLElement>("[data-claim]").forEach((el, i) => {
+        const v = results[i]?.verdict ?? "OK";
+        el.dataset.v = v;
+        const pill = el.querySelector<HTMLElement>("[data-claim-v]")!;
+        pill.textContent = v;
+        pill.className = `v v-${v}`;
+      });
+    }
+
+    async function run() {
+      const mio = ++turno;
+      const lines = toLines(area.value);
+      const nuevos = await Promise.all(entries.map((e) => verify(lines, e)));
+      if (mio !== turno) return; // llegó otra edición mientras se calculaba
+      results = nuevos;
+      paint(lines);
+      report();
+    }
+
+    function select(id: string | null) {
+      chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.scenario === id)));
+      const escenario = data.scenarios.find((s) => s.id === id);
+      hint.textContent = escenario ? escenario.hint : "Your own edit. The seal is still the original one.";
+    }
+
+    async function load(id: string) {
+      const escenario = data.scenarios.find((s) => s.id === id)!;
+      area.value = (escenario.code ?? data.original).join("\n");
+      select(id);
+      await sealOriginal();
+      await run();
+    }
+
+    chips.forEach((c) => c.addEventListener("click", () => load(c.dataset.scenario!)));
+    let espera: number | undefined;
+    area.addEventListener("input", () => {
+      select(null);
+      paint(toLines(area.value));
+      clearTimeout(espera);
+      espera = window.setTimeout(run, 120);
+    });
+    area.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      e.preventDefault();
+      area.setRangeText("    ", area.selectionStart, area.selectionEnd, "end");
+      area.dispatchEvent(new Event("input"));
+    });
+    fixBtn.addEventListener("click", async () => {
+      entries = entries.map((e, i) => relocate(e, results[i]));
+      hint.textContent = "fix relocated the moved blocks in the seal. The document was not touched.";
+      await run();
+    });
+    acceptBtn.addEventListener("click", async () => {
+      const lines = toLines(area.value);
+      entries = await Promise.all(entries.map((e, i) => (results[i].verdict === "CHANGED" ? accept(lines, e) : e)));
+      hint.textContent = "Accepted after review: the changed blocks are the new truth (a symbol that no longer exists can't be accepted).";
+      await run();
+    });
+    q<HTMLButtonElement>("[data-reset]").addEventListener("click", () => load("original"));
+
+    load("original");
+  }
+</script>

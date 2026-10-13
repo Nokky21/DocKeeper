@@ -1,0 +1,123 @@
+{
+  "_comentario": "Escenarios de la demo de la web. tests/test_demo.py los pasa por el motor real (Python) y scripts/check-demo.ts por el port de la web: los dos tienen que dar estos veredictos.",
+  "doc": "docs/payments.md",
+  "file": "src/payments.py",
+  "title": "# Payments",
+  "claims": [
+    { "text": "Every payment is validated before it is charged.", "anchor": "src/payments.py#validate_payment" },
+    { "text": "A successful charge returns its status.", "anchor": "src/payments.py:12" }
+  ],
+  "original": [
+    "import os",
+    "",
+    "",
+    "def validate_payment(payment):",
+    "    if payment[\"amount\"] <= 0:",
+    "        raise ValueError(\"invalid amount\")",
+    "    return True",
+    "",
+    "",
+    "def charge(payment):",
+    "    validate_payment(payment)",
+    "    return {\"status\": \"charged\"}"
+  ],
+  "sealed": {
+    "src/payments.py#validate_payment": "06d5eca737fe9faf",
+    "src/payments.py:12": "1dc56444c9d1946a"
+  },
+  "scenarios": [
+    {
+      "id": "original",
+      "label": "Original",
+      "hint": "The code the docs were sealed against.",
+      "code": null,
+      "expected": { "src/payments.py#validate_payment": "OK", "src/payments.py:12": "OK" }
+    },
+    {
+      "id": "reformat",
+      "label": "Reformat",
+      "hint": "Extra spaces only. Fingerprints ignore formatting.",
+      "code": [
+        "import os",
+        "",
+        "",
+        "def validate_payment(payment):",
+        "    if   payment[\"amount\"]   <=   0:",
+        "        raise    ValueError(\"invalid amount\")",
+        "    return True",
+        "",
+        "",
+        "def charge(payment):",
+        "    validate_payment(payment)",
+        "    return {\"status\": \"charged\"}"
+      ],
+      "expected": { "src/payments.py#validate_payment": "OK", "src/payments.py:12": "OK" }
+    },
+    {
+      "id": "move",
+      "label": "Move code",
+      "hint": "A new function above pushes everything down. Nothing changed, so fix relocates it.",
+      "code": [
+        "import os",
+        "",
+        "",
+        "def log(event):",
+        "    print(event)",
+        "",
+        "",
+        "def validate_payment(payment):",
+        "    if payment[\"amount\"] <= 0:",
+        "        raise ValueError(\"invalid amount\")",
+        "    return True",
+        "",
+        "",
+        "def charge(payment):",
+        "    validate_payment(payment)",
+        "    return {\"status\": \"charged\"}"
+      ],
+      "expected": { "src/payments.py#validate_payment": "MOVED", "src/payments.py:12": "MOVED" },
+      "afterFix": { "src/payments.py#validate_payment": "OK", "src/payments.py:12": "OK" }
+    },
+    {
+      "id": "change",
+      "label": "Change logic",
+      "hint": "Zero-amount payments are now accepted. The first sentence is no longer true.",
+      "code": [
+        "import os",
+        "",
+        "",
+        "def validate_payment(payment):",
+        "    if payment[\"amount\"] < 0:",
+        "        raise ValueError(\"invalid amount\")",
+        "    return True",
+        "",
+        "",
+        "def charge(payment):",
+        "    validate_payment(payment)",
+        "    return {\"status\": \"charged\"}"
+      ],
+      "expected": { "src/payments.py#validate_payment": "CHANGED", "src/payments.py:12": "OK" },
+      "afterAccept": { "src/payments.py#validate_payment": "OK", "src/payments.py:12": "OK" }
+    },
+    {
+      "id": "rename",
+      "label": "Rename",
+      "hint": "validate_payment is now check_payment. Both claims need a look.",
+      "code": [
+        "import os",
+        "",
+        "",
+        "def check_payment(payment):",
+        "    if payment[\"amount\"] <= 0:",
+        "        raise ValueError(\"invalid amount\")",
+        "    return True",
+        "",
+        "",
+        "def charge(payment):",
+        "    check_payment(payment)",
+        "    return {\"status\": \"charged\"}"
+      ],
+      "expected": { "src/payments.py#validate_payment": "CHANGED", "src/payments.py:12": "CHANGED" }
+    }
+  ]
+}

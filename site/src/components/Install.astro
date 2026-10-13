@@ -24,14 +24,14 @@ const pestanas = [
   {
     id: "project", etiqueta: "One project",
     titulo: "Only for one repository",
-    texto: "Commit it with the project so everyone on the team gets it. Use <code>.agents/skills</code> for non-Claude agents.",
+    texto: "Commit it with the project so the whole team gets it. Use <code>.agents/skills</code> for non-Claude agents.",
     cmds: [{ cmd: `${clonar} .claude/skills/dockeeper` }],
   },
   {
     id: "cli", etiqueta: "CLI only",
     titulo: "No agent: by hand, in a git hook or in CI",
     texto: "Run it from the root of the project you document.",
-    cmds: [{ cmd: `git clone --depth 1 https://github.com/Nokky21/DocKeeper.git ~/dockeeper` }, { cmd: "python3 ~/dockeeper/bin/dockeeper check" }],
+    cmds: [{ cmd: "git clone --depth 1 https://github.com/Nokky21/DocKeeper.git ~/dockeeper" }, { cmd: "python3 ~/dockeeper/bin/dockeeper check" }],
   },
 ];
 const peticiones = [
@@ -41,20 +41,24 @@ const peticiones = [
   "“Write the decisions page from the git history. Don't invent reasons.”",
 ];
 ---
-<section id="install">
+<section class="section" id="install">
   <div class="wrap">
-    <p class="eyebrow">Install</p>
-    <h2>One folder. Every agent.</h2>
-    <p class="lead">DocKeeper follows the open <a href="https://agentskills.io">Agent Skills</a> standard: the repository is the skill. Clone it into your agent's skills folder and start asking.</p>
+    <div class="head" data-reveal>
+      <div>
+        <p class="label">Install</p>
+        <h2 class="h2">One folder. Every agent.</h2>
+      </div>
+      <p class="lead">DocKeeper follows the open <a href="https://agentskills.io">Agent Skills</a> standard: the repository is the skill. Clone it into your agent's skills folder and start asking.</p>
+    </div>
 
-    <div class="tabs">
+    <div class="panel tabs" data-reveal>
       <div class="tablist" role="tablist" aria-label="Where you work">
         {pestanas.map((p, i) => (
-          <button role="tab" aria-selected={i === 0 ? "true" : "false"} aria-controls={`p-${p.id}`} id={`t-${p.id}`}>{p.etiqueta}</button>
+          <button role="tab" type="button" aria-selected={i === 0 ? "true" : "false"} aria-controls={`p-${p.id}`} id={`t-${p.id}`}>{p.etiqueta}</button>
         ))}
       </div>
       {pestanas.map((p) => (
-        <div class="panel" role="tabpanel" id={`p-${p.id}`} aria-labelledby={`t-${p.id}`}>
+        <div class="tabpanel" role="tabpanel" id={`p-${p.id}`} aria-labelledby={`t-${p.id}`}>
           <h3>{p.titulo}</h3>
           <p set:html={p.texto} />
           {p.cmds.map((c) => <Cmd cmd={c.cmd} prompt={c.prompt} />)}
@@ -63,8 +67,8 @@ const peticiones = [
     </div>
     <p class="note">The folder must be called <code>dockeeper</code>: the standard requires it to match the skill name. Requirements: <code>python3</code> and <code>git</code>. Update with <code>git -C ~/.claude/skills/dockeeper pull</code>.</p>
 
-    <h3 style="margin-top:48px">Then just ask</h3>
-    <div class="asks">
+    <h3 style="margin-top:56px;font-weight:600" data-reveal>Then just ask</h3>
+    <div class="asks" data-reveal>
       {peticiones.map((p) => <div class="ask" set:html={p} />)}
     </div>
   </div>

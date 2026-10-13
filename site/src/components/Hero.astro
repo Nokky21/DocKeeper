@@ -1,32 +1,43 @@
 ---
+import Cmd from "./Cmd.astro";
+
 const repo = "https://github.com/Nokky21/DocKeeper";
 ---
 <section class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Agent Skill + CLI · open source · MIT</p>
-    <h1>Documentation that doesn't rot.</h1>
-    <p class="lead">DocKeeper anchors every claim in your docs to the code behind it, and tells you the moment that code changes. Your agent writes the docs. DocKeeper keeps them true.</p>
-    <div class="ctas">
-      <a class="btn primary" href="#install">Install the skill</a>
-      <a class="btn ghost" href={repo}>View on GitHub</a>
-    </div>
-    <p class="compat">Works with Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot and any Agent Skills agent. Python 3, zero dependencies.</p>
-
-    <div class="demo" role="img" aria-label="A documentation claim anchored to a function, and dockeeper check reporting that the function changed">
-      <div class="doc">
-        <div class="filebar">docs/payments.md</div>
-        <p class="h"># Payments</p>
-        <p>Every payment is validated before it is charged.</p>
-        <span class="anchor">&#91;&#91;src/payments.py#validate_payment&#93;&#93;</span>
-        <p style="margin-top:14px">A successful charge returns its status.</p>
-        <span class="anchor">&#91;&#91;src/payments.py:12&#93;&#93;</span>
+  <div class="wrap hero-grid">
+    <div>
+      <a class="pill" href={`${repo}/releases/latest`} data-reveal><b>v0.1.0</b> Open source · MIT · Read the release <span aria-hidden="true">→</span></a>
+      <h1 data-reveal style="--d:60ms">Documentation that doesn't rot.</h1>
+      <p class="lead" data-reveal style="--d:120ms">DocKeeper anchors every claim in your docs to the code behind it. When that code changes, <em>your CI knows which sentence just became false.</em></p>
+      <div class="ctas" data-reveal style="--d:180ms">
+        <a class="btn btn-primary" href="#demo">Try it live</a>
+        <a class="textlink" href="#install">Install the skill <span class="arr" aria-hidden="true">→</span></a>
       </div>
-      <div class="term">
+      <div class="oneliner" data-reveal style="--d:240ms">
+        <Cmd cmd="git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper" />
+      </div>
+      <p class="compat" data-reveal style="--d:300ms">An Agent Skill for <span>Claude Code</span><span>Codex</span><span>Gemini CLI</span><span>Cursor</span><span>GitHub Copilot</span> and a zero-dependency CLI for CI.</p>
+    </div>
+
+    <div class="stack" data-reveal style="--d:200ms" role="img" aria-label="A documentation page whose two claims are anchored to code, and the output of dockeeper check: one claim changed, one moved, exit code 1">
+      <div class="card doccard">
+        <div class="file"><i></i>docs/payments.md</div>
+        <div class="doc-title">Payments</div>
+        <div class="claim" data-v="CHANGED">
+          <p>Every payment is validated before it is charged.</p>
+          <span class="anchor"><span>&#91;&#91;src/payments.py#validate_payment&#93;&#93;</span><b class="v v-CHANGED">CHANGED</b></span>
+        </div>
+        <div class="claim" data-v="MOVED">
+          <p>A successful charge returns its status.</p>
+          <span class="anchor"><span>&#91;&#91;src/payments.py:12&#93;&#93;</span><b class="v v-MOVED">MOVED</b></span>
+        </div>
+      </div>
+      <div class="card termcard">
         <div class="dots"><i></i><i></i><i></i></div>
-<pre><span class="t-cmd">$ dockeeper check</span>
-<span class="t-ch">CHANGED</span>  docs/payments.md:3  → src/payments.py#validate_payment
-<span class="t-mv">MOVED</span>    docs/payments.md:4  → src/payments.py:12
-<span class="t-cmd">$ echo $?</span>
+<pre><span class="cmdl">$ dockeeper check</span>
+<span class="v-CHANGED">CHANGED</span>  docs/payments.md:3 → src/payments.py#validate_payment
+<span class="v-MOVED">MOVED</span>    docs/payments.md:4 → src/payments.py:12
+<span class="cmdl">$ echo $?</span>
 1</pre>
       </div>
     </div>

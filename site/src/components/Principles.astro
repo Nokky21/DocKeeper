@@ -5,7 +5,7 @@ const hechos = [
   ["No AI in the engine", "The agent writes. DocKeeper verifies, deterministically."],
   ["Zero dependencies", "Python standard library only. The folder is the whole install."],
   ["The full engine, MIT", "Every check is in the open-source version."],
-  ["It checks itself", "Its own README is sealed. CI fails if the docs stop being true, on Linux, macOS and Windows."],
+  ["It checks itself", "Its own README and this page are sealed. CI fails if they stop being true, on Linux, macOS and Windows."],
 ];
 const limites = [
   "It compares content, not meaning: a block rewritten with the same behavior is reported as <code>CHANGED</code>.",
@@ -14,16 +14,25 @@ const limites = [
   "It checks that documentation is still <em>true</em>, not that it is <em>useful</em>.",
 ];
 ---
-<section id="principles">
-  <div class="wrap">
-    <p class="eyebrow">Principles</p>
-    <h2>Free, local and complete.</h2>
-    <div class="grid6">
-      {hechos.map(([titulo, texto]) => <div class="card fact"><h3>{titulo}</h3><p>{texto}</p></div>)}
+<section class="section" id="principles">
+  <div class="wrap split">
+    <div data-reveal>
+      <p class="label">Principles</p>
+      <h2 class="h2">Free, local and complete.</h2>
+      <ul class="facts">
+        {hechos.map(([titulo, texto]) => (
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><div><b>{titulo}</b><span>{texto}</span></div></li>
+        ))}
+      </ul>
     </div>
-    <h3 style="margin-top:56px">Honest limits</h3>
-    <ul class="limits">
-      {limites.map((l) => <li set:html={l} />)}
-    </ul>
+    <div data-reveal style="--d:100ms">
+      <p class="label">Honest limits</p>
+      <h2 class="h2">What it won't do.</h2>
+      <ul class="facts limits">
+        {limites.map((l) => (
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><div><span set:html={l} /></div></li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>

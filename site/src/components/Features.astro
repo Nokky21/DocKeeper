@@ -1,0 +1,80 @@
+---
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div>
+        <p class="label">What's inside</p>
+        <h2 class="h2">Built for the docs you actually ship.</h2>
+      </div>
+      <p class="lead">From a private runbook to a public API reference: the same check, with the rules each one needs.</p>
+    </div>
+
+    <div class="bento">
+      <article class="tile span-4" data-reveal>
+        <span class="kicker">publico · publicado</span>
+        <h3>Publish docs without leaking your code</h3>
+        <p>Public pages can't carry internal paths or copied source, and they still need checking. Store the link outside the text: readers see clean prose, CI verifies both the sentence and the code.</p>
+        <figure style="margin-top:20px"><div class="scroll"><img src={`${base}assets/published-docs.svg`} alt="Diagram: the public page shows only prose; the link from guide.md line 12 to validate_payment lives in the seal file; check verifies the sentence and the private code" width="960" height="300" loading="lazy"></div></figure>
+        <!-- dockeeper: dockeeper/publicado.py#IndiceCopias dockeeper/motor.py#vincular -->
+      </article>
+
+      <article class="tile span-2" data-reveal style="--d:80ms">
+        <span class="kicker">syntax</span>
+        <h3>Anchor it your way</h3>
+        <ul class="syntax">
+          <li><code>&#91;&#91;pay.ts#validate&#93;&#93;</code><span>symbol</span></li>
+          <li><code>&#91;&#91;pay.ts:147&#93;&#93;</code><span>line</span></li>
+          <li><code>&lt;!-- dockeeper: … --&gt;</code><span>hidden</span></li>
+          <li><code>dockeeper link</code><span>outside</span></li>
+        </ul>
+      </article>
+
+      <article class="tile span-2" data-reveal>
+        <span class="kicker">--solo · --sin</span>
+        <h3>Check one part at a time</h3>
+        <p>Point <code>--solo</code> at code and every doc that talks about it is checked. Point it at a doc and it keeps the code it cites.</p>
+        <pre class="code">dockeeper check --solo src/payments</pre>
+        <!-- dockeeper: dockeeper/alcance.py#Alcance -->
+      </article>
+
+      <article class="tile span-2" data-reveal style="--d:80ms">
+        <span class="kicker">why</span>
+        <h3>The why, never invented</h3>
+        <p>Decisions come from your git history. If the reason isn't there, the docs say so.</p>
+<pre class="code"><span class="k">Decision:</span> seal lives in its own file
+<span class="k">Why:</span> public pages must not leak paths</pre>
+        <!-- dockeeper: dockeeper/porque.py#historial -->
+      </article>
+
+      <article class="tile span-2" data-reveal style="--d:160ms">
+        <span class="kicker">the skill</span>
+        <h3>Your agent's loop</h3>
+        <p>One rule, every verifiable claim gets an anchor, and one workflow it can't skip.</p>
+        <div class="loop"><span>audit</span><i>→</i><span>write</span><i>→</i><span>scan</span><i>→</i><span>check</span><i>→</i><span>fix</span></div>
+        <!-- dockeeper: dockeeper/motor.py#comprobar -->
+      </article>
+
+      <article class="tile span-6" id="ci" data-reveal>
+        <span class="kicker">continuous integration</span>
+        <h3>Keep it true on every pull request</h3>
+        <p>The repository is also a GitHub Action. Anywhere else, it's two lines of shell. No green when nothing was checked.</p>
+        <div class="ci-grid">
+<pre class="code"><span class="c"># .github/workflows/docs.yml</span>
+<span class="k">jobs:</span>
+  <span class="k">dockeeper:</span>
+    <span class="k">runs-on:</span> ubuntu-latest
+    <span class="k">steps:</span>
+      - <span class="k">uses:</span> <span class="s">actions/checkout@v6</span>
+      - <span class="k">uses:</span> <span class="s">Nokky21/DocKeeper@v0.1.0</span></pre>
+<pre class="code"><span class="c"># any other CI</span>
+git clone --depth 1 \
+  https://github.com/Nokky21/DocKeeper.git /tmp/dk
+python3 /tmp/dk/bin/dockeeper check</pre>
+        </div>
+        <!-- dockeeper: dockeeper/motor.py#FALLOS -->
+      </article>
+    </div>
+  </div>
+</section>

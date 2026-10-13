@@ -31,6 +31,8 @@ jobs:
           cache: yarn
           cache-dependency-path: site/yarn.lock
       - run: yarn install --frozen-lockfile
+      - name: The demo agrees with the Python engine (same scenarios as tests/test_demo.py)
+        run: yarn test
       - run: yarn build
       - uses: actions/upload-pages-artifact@v5
         with:

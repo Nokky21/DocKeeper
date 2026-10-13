@@ -1,19 +1,25 @@
 ---
 const preguntas = [
-  ["Which agents can use it?", "Any agent that supports the Agent Skills standard and can run shell commands: Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot in VS Code and many more. In a chat without a terminal (for example claude.ai) it can draft documentation, but the chat has no access to your repository, so it can't keep docs verified."],
+  ["Which agents can use it?", "Any agent that supports the Agent Skills standard and can run shell commands: Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot in VS Code and many more. A chat without a terminal can draft docs but can't keep them verified, because it has no access to your repository."],
   ["Does my code leave my machine?", "No. DocKeeper makes no network calls. The seal file contains file paths, line numbers and hashes, never code."],
   ["Do I need an AI model to run the check?", "No. Your agent uses the skill to write documentation; the check itself is plain Python and runs anywhere, including CI."],
-  ["What happens when I rename a function?", "Anchors to it report <code>CHANGED</code> (symbol not found). Update the anchor in the document and run <code>dockeeper scan</code>."],
+  ["What happens when I rename a function?", "Anchors to it report <code>CHANGED</code> (symbol not found). Update the anchor in the document and run <code>dockeeper scan</code>. Try it in the demo above."],
   ["What should I commit?", "Your documents, <code>.dockeeper.json</code> if you use one, and <code>.dockeeper.sello.json</code>, the seal that CI checks against."],
   ["Is the CLI in English?", "Its messages are in Spanish today. Verdict codes and the <code>--json</code> output are stable, so agents and scripts are not affected."],
 ];
 ---
-<section id="faq">
+<section class="section" id="faq">
   <div class="wrap">
-    <p class="eyebrow">FAQ</p>
-    <h2>Questions</h2>
+    <div class="head" data-reveal>
+      <div>
+        <p class="label">FAQ</p>
+        <h2 class="h2">Questions, answered.</h2>
+      </div>
+    </div>
     <div class="faq">
-      {preguntas.map(([pregunta, respuesta]) => <details><summary>{pregunta}</summary><p set:html={respuesta} /></details>)}
+      {preguntas.map(([pregunta, respuesta], i) => (
+        <div data-reveal style={`--d:${(i % 2) * 80}ms`}><h3>{pregunta}</h3><p set:html={respuesta} /></div>
+      ))}
     </div>
   </div>
 </section>

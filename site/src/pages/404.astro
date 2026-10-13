@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+<Base title="Page not found · DocKeeper">
+  <section class="hero" style="min-height:70dvh">
+    <div class="wrap">
+      <p class="label">404</p>
+      <h1>This page doesn't exist.</h1>
+      <p class="lead">The link may be outdated. Everything about DocKeeper is on the home page.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href={base}>Go to the home page</a>
+        <a class="textlink" href="https://github.com/Nokky21/DocKeeper">GitHub <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</Base>
