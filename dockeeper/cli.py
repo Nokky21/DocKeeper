@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
 from dockeeper import __version__
-from dockeeper import motor
+from dockeeper import auditoria, motor, porque
 from dockeeper.config import ErrorDeUso, buscar_raiz
 
 _ANCHO = 15
@@ -35,6 +35,8 @@ def _parser() -> argparse.ArgumentParser:
     alcance.add_argument("--sin", action="append", default=[], metavar="PATRÓN",
                          help="descarta lo que case con este patrón o prefijo (repetible)")
 
+    ordenes.add_parser("audit", parents=[comun, alcance],
+                       help="inventario: páginas que faltan, documentos sin anclas y código sin documentar")
     s = ordenes.add_parser("scan", parents=[comun, alcance],
                            help="sella las anclas nuevas y enseña en qué bloque queda cada una")
     s.add_argument("--resellar", action="store_true",
@@ -49,6 +51,8 @@ def _parser() -> argparse.ArgumentParser:
     v.add_argument("destino", metavar="DOC:LÍNEA", help="documento y línea de la afirmación")
     v.add_argument("ancla", nargs="?", metavar="RUTA:LÍNEA|RUTA#SÍMBOLO", help="código que la respalda")
     v.add_argument("--quitar", action="store_true", help="quita los vínculos de esa línea (o solo el indicado)")
+    ordenes.add_parser("why", parents=[comun, alcance],
+                       help="decisiones del historial (Decision:, Motivo:, Why:, ADR) y entradas sin motivo")
     return p
 
 
@@ -213,7 +217,83 @@ def _link(args, raiz: Path) -> int:
     return codigo
 
 
+def _audit(args, raiz: Path) -> int:
+    ctx = motor.Contexto(raiz, args.solo, args.sin)
+    datos = auditoria.auditar(ctx)
+    datos["codigo"] = 0
+    if args.json:
+        _emitir(datos)
+        return 0
+    git, tot = datos["git"], datos["totales"]
+    print(f"dockeeper audit · {datos['raiz']}")
+    if git["historial"]:
+        print(f"Git: {git['commits']} commits · {git['commits_con_decision']} con marcas de decisión (dockeeper why)")
+    else:
+        print("Git: sin historial (why no tendrá de dónde sacar el porqué)")
+    print(f"Totales: {tot['documentos']} documentos · {tot['ficheros_de_codigo']} ficheros de código · "
+          f"{tot['anclas_selladas']} anclas selladas · {tot['vinculos']} vínculos")
+    print("Páginas base:")
+    for p in datos["paginas"]:
+        if p["documentos"]:
+            print(f"  ✓ {p['pagina']:<15} {', '.join(p['documentos'])}")
+        else:
+            print(f"  ✗ {p['pagina']:<15} falta (plantilla: templates/{p['pagina']}.md)")
+    print("Documentos:")
+    for doc in datos["documentos"]:
+        nota = "  ← sin anclas: nada de lo que dice está comprobado" if doc["sin_anclas"] else ""
+        print(f"  {doc['doc']:<40} {doc['clase']:<10} {doc['anclas']} anclas ({doc['selladas']} selladas) · "
+              f"{doc['vinculos']} vínculos{nota}")
+    print("Cobertura (definiciones de primer nivel con alguna afirmación anclada):")
+    for c in datos["cobertura"]:
+        nota = "  ← sin documentar" if c["definiciones"] and not c["ancladas"] else ""
+        carpeta = c["carpeta"] if c["carpeta"] == "(raíz)" else c["carpeta"] + "/"
+        print(f"  {carpeta:<25} {c['ancladas']:>4}/{c['definiciones']:<4} definiciones · "
+              f"{c['ficheros']} ficheros{nota}")
+    if datos["mayores_sin_ancla"]:
+        print("Mayores definiciones sin ninguna afirmación anclada:")
+        for x in datos["mayores_sin_ancla"]:
+            print(f"  {x['simbolo']} ({x['lineas']} líneas)")
+    return 0
+
+
+def _why(args, raiz: Path) -> int:
+    ctx = motor.Contexto(raiz, args.solo, args.sin)
+    decisiones = porque.historial(ctx)
+    if decisiones:
+        porque.marcar_documentadas(ctx, decisiones)
+    entradas = porque.entradas_sin_motivo(ctx)
+    if args.json:
+        _emitir({"orden": "why", "raiz": str(ctx.cfg.raiz), "codigo": 0, "historial": decisiones is not None,
+                 "decisiones": [d.a_dict() for d in decisiones or []],
+                 "documentos": porque.documentos_de_decisiones(ctx),
+                 "entradas": [e.a_dict() for e in entradas]})
+        return 0
+    if decisiones is None:
+        print("Sin historial de git: no hay de dónde sacar el porqué. Lo que no consta, se escribe que no consta.")
+    else:
+        print(f"Decisiones en el historial ({len(decisiones)}):")
+        for d in decisiones:
+            marca = " [ADR]" if d.adr else ""
+            print(f"  {d.commit} {d.fecha}  {d.decision}{marca}")
+            print(f"      motivo: {d.motivo or 'no consta en el historial'}")
+            if d.alternativas:
+                print(f"      alternativas descartadas: {d.alternativas}")
+            print(f"      documentada: {'sí' if d.documentada else 'no'}")
+    documentos = porque.documentos_de_decisiones(ctx)
+    if documentos:
+        sin_motivo = [e for e in entradas if not e.con_motivo]
+        print(f"Documentos de decisiones: {', '.join(documentos)} · {len(entradas)} entradas · "
+              f"{len(sin_motivo)} sin motivo escrito")
+        for e in sin_motivo:
+            print(f"  SIN_MOTIVO  {e.doc}:{e.linea}  {e.titulo}")
+    else:
+        print("No hay documentos de decisiones (plantilla: templates/DECISIONES.md).")
+    return 0
+
+
 _ORDENES: Dict[str, Callable[[argparse.Namespace, Path], int]] = {
+    "audit": _audit,
+    "why": _why,
     "scan": _scan,
     "check": _check,
     "fix": _fix,
