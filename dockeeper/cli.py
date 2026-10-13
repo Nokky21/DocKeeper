@@ -44,6 +44,11 @@ def _parser() -> argparse.ArgumentParser:
                            help="recoloca los MOVED y quita huérfanas (solo toca el sello)")
     f.add_argument("--aceptar", action="store_true",
                    help="acepta los CHANGED como nueva verdad (después de revisar el texto)")
+    v = ordenes.add_parser("link", parents=[comun],
+                           help="vincula una línea de un documento con código sin tocar el documento")
+    v.add_argument("destino", metavar="DOC:LÍNEA", help="documento y línea de la afirmación")
+    v.add_argument("ancla", nargs="?", metavar="RUTA:LÍNEA|RUTA#SÍMBOLO", help="código que la respalda")
+    v.add_argument("--quitar", action="store_true", help="quita los vínculos de esa línea (o solo el indicado)")
     return p
 
 
@@ -125,6 +130,10 @@ _PISTAS = {
     "SIN_SELLAR": "dockeeper scan las sella",
     "HUERFANA": "dockeeper fix las quita del sello",
     "DESAPARECIDO": "corrige o quita el ancla del documento y vuelve a ejecutar scan",
+    "VINCULO_SUELTO": "revisa la frase y vuelve a vincularla (dockeeper link) o quítalo (link --quitar)",
+    "ANCLA_INTERNA": "en documentos «publico» usa dockeeper link en vez de anclas en el texto",
+    "CODIGO_COPIADO": "describe el código o escribe un ejemplo propio en vez de copiarlo",
+    "RUTA_INTERNA": "quita la ruta interna del texto publicado",
 }
 
 
@@ -184,8 +193,29 @@ def _fix(args, raiz: Path) -> int:
     return final.codigo
 
 
+def _link(args, raiz: Path) -> int:
+    ctx = motor.Contexto(raiz)
+    if args.quitar:
+        items = motor.desvincular(ctx, args.destino, args.ancla)
+    elif not args.ancla:
+        raise ErrorDeUso("falta el ancla: dockeeper link DOC:LÍNEA RUTA:LÍNEA|RUTA#SÍMBOLO")
+    else:
+        items = [motor.vincular(ctx, args.destino, args.ancla)]
+    codigo = 1 if any(i.falla for i in items) else 0
+    if args.json:
+        _emitir({"orden": "link", "raiz": str(ctx.cfg.raiz), "codigo": codigo, "items": [i.a_dict() for i in items]})
+        return codigo
+    for item in items:
+        _linea(item)
+        _bloque(item)
+    if not args.quitar and not codigo:
+        print("El documento no se ha tocado: el vínculo vive en el sello.")
+    return codigo
+
+
 _ORDENES: Dict[str, Callable[[argparse.Namespace, Path], int]] = {
     "scan": _scan,
     "check": _check,
     "fix": _fix,
+    "link": _link,
 }

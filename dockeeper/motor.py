@@ -17,15 +17,18 @@ from typing import Dict, Iterable, List, Optional, Tuple
 from . import bloques as B
 from . import huellas as H
 from . import markdown as M
+from . import publicado as P
 from .alcance import Alcance
-from .config import cargar
+from .config import ErrorDeUso, cargar
 from .repo import Repo
+from .rutas import normalizar_ruta
 from .sello import Entrada, Sello
 
 # Veredictos que hacen fallar la orden (código de salida 1).
 FALLOS = {
     "CHANGED", "DESAPARECIDO", "SIN_SELLAR", "ANCLA_MAL_ESCRITA", "NADA_COMPROBADO",
     "NO_EXISTE", "SIN_SIMBOLO", "FUERA_DE_RANGO", "SIN_CONTENIDO",
+    "ANCLA_INTERNA", "RUTA_INTERNA", "CODIGO_COPIADO", "VINCULO_SUELTO",
 }
 _GRAVEDAD = {"OK": 0, "MOVED": 1, "VINCULO_SUELTO": 2, "CHANGED": 3, "DESAPARECIDO": 4}
 
@@ -84,6 +87,8 @@ class Contexto:
             conocidas.update((e.fichero, e.doc))
         self.alcance = Alcance(list(solo), list(self.cfg.sin) + list(sin), conocidas, self.repo.es_documento)
         self._docs: Dict[str, M.Documento] = {}
+        self.indice_copias: Optional[P.IndiceCopias] = None
+        self.rutas_internas: Optional[set] = None
 
     def documento(self, ruta: str) -> M.Documento:
         if ruta not in self._docs:
@@ -159,6 +164,12 @@ def _problemas(doc: str, documento: M.Documento) -> List[Item]:
     return [Item("ANCLA_MAL_ESCRITA", doc, p.linea_doc, p.texto, detalle=p.motivo) for p in documento.problemas]
 
 
+def _ancla_interna(a: M.Ancla) -> Item:
+    forma = "comentario oculto" if a.oculta else "ancla visible"
+    return Item("ANCLA_INTERNA", a.doc, a.linea_doc, a.texto,
+                detalle=f"{forma} en un documento «publico»: usa dockeeper link (se guarda fuera del texto)")
+
+
 # --- scan --------------------------------------------------------------------------------
 
 def escanear(ctx: Contexto, resellar: bool = False) -> Resultado:
@@ -168,6 +179,7 @@ def escanear(ctx: Contexto, resellar: bool = False) -> Resultado:
     cambios = False
     for doc in ctx.documentos():
         documento = ctx.documento(doc)
+        publico = ctx.repo.clase(doc) == "publico"
         res.items.extend(_problemas(doc, documento))
         vistas = set()
         for a in documento.anclas:
@@ -178,7 +190,7 @@ def escanear(ctx: Contexto, resellar: bool = False) -> Resultado:
                 continue
             vistas.add(a.texto)
             res.examinados += 1
-            item = _sellar_ancla(ctx, doc, a, resellar)
+            item = _ancla_interna(a) if publico else _sellar_ancla(ctx, doc, a, resellar)
             cambios = cambios or item.estado in ("NUEVA", "RESELLADA")
             res.items.append(item)
         for clave, e in list(sello.anclas.items()):
@@ -219,6 +231,7 @@ def comprobar(ctx: Contexto) -> Resultado:
     comprobadas = set()
     for doc in ctx.documentos():
         documento = ctx.documento(doc)
+        clase = ctx.repo.clase(doc)
         res.items.extend(_problemas(doc, documento))
         vistas = set()
         for a in documento.anclas:
@@ -229,6 +242,9 @@ def comprobar(ctx: Contexto) -> Resultado:
                 continue
             vistas.add(a.texto)
             res.examinados += 1
+            if clase == "publico":
+                res.items.append(_ancla_interna(a))
+                continue
             e = sello.anclas.get((doc, a.texto))
             if e is None:
                 res.items.append(Item("SIN_SELLAR", doc, a.linea_doc, a.texto,
@@ -236,10 +252,17 @@ def comprobar(ctx: Contexto) -> Resultado:
                 continue
             comprobadas.add((doc, a.texto))
             res.items.append(_verificar_ancla(ctx, e, a.linea_doc))
+        if clase != "interno":
+            res.examinados += 1
+            res.items.extend(P.revisar(ctx, doc, documento, clase))
     for clave, e in sello.anclas.items():
         if clave not in comprobadas and alcance.doc_en_alcance(e.doc) and alcance.codigo_en_alcance(e.fichero):
             res.items.append(Item("HUERFANA", e.doc, None, e.ancla, entrada=e,
                                   detalle="el documento ya no contiene esta ancla: fix la quita del sello"))
+    for v in sello.vinculos:
+        if alcance.doc_en_alcance(v.doc) and alcance.codigo_en_alcance(v.fichero):
+            res.examinados += 1
+            res.items.append(_verificar_vinculo(ctx, v))
     if res.examinados == 0:
         res.items.append(Item("NADA_COMPROBADO", tipo="repo",
                               detalle="no hay ninguna afirmación que comprobar en este alcance"))
@@ -249,6 +272,34 @@ def comprobar(ctx: Contexto) -> Resultado:
 def _verificar_ancla(ctx: Contexto, e: Entrada, linea_doc: Optional[int]) -> Item:
     estado, detalle, nueva, bloque = verificar_codigo(ctx, e)
     return Item(estado, e.doc, linea_doc, e.ancla, detalle=detalle, bloque=bloque, entrada=e, nueva=nueva)
+
+
+def _verificar_vinculo(ctx: Contexto, v: Entrada) -> Item:
+    """Un vínculo se comprueba por los dos lados: la frase del documento y el código."""
+    lineas_doc = ctx.repo.lineas(v.doc) if ctx.repo.existe(v.doc) else None
+    if lineas_doc is None:
+        return Item("HUERFANA", v.doc, v.linea_doc, v.ancla, tipo="vinculo", entrada=v,
+                    detalle="el documento ya no existe: fix quita el vínculo")
+    nueva: dict = {}
+    detalles = []
+    estado_doc = "OK"
+    linea_ok = 1 <= v.linea_doc <= len(lineas_doc) and H.huella_linea(lineas_doc[v.linea_doc - 1]) == v.huella_doc
+    if not linea_ok:
+        candidatas = [n for n, linea in enumerate(lineas_doc, 1) if H.huella_linea(linea) == v.huella_doc]
+        if candidatas:
+            estado_doc = "MOVED"
+            nueva["linea_doc"] = min(candidatas, key=lambda n: (abs(n - v.linea_doc), n))
+            detalles.append(f"la frase vinculada pasó de la línea {v.linea_doc} a la {nueva['linea_doc']}")
+        else:
+            estado_doc = "VINCULO_SUELTO"
+            detalles.append(f"la frase de la línea {v.linea_doc} ya no está: revísala y vuelve a vincular")
+    estado_codigo, detalle, nueva_codigo, bloque = verificar_codigo(ctx, v)
+    if detalle:
+        detalles.append(detalle)
+    nueva.update(nueva_codigo or {})
+    estado = max(estado_doc, estado_codigo, key=_GRAVEDAD.get)
+    return Item(estado, v.doc, nueva.get("linea_doc", v.linea_doc), v.ancla, tipo="vinculo",
+                detalle="; ".join(detalles), bloque=bloque, entrada=v, nueva=nueva or None)
 
 
 def verificar_codigo(ctx: Contexto, e: Entrada) -> Tuple[str, str, Optional[dict], Optional[dict]]:
@@ -325,3 +376,58 @@ def arreglar(ctx: Contexto, aceptar: bool = False) -> Tuple[List[Item], Resultad
     if hechos:
         ctx.sello.guardar()
     return hechos, comprobar(ctx)
+
+
+# --- link --------------------------------------------------------------------------------
+
+def _doc_linea(destino: str) -> Tuple[str, int]:
+    ruta, _, num = destino.rpartition(":")
+    doc = normalizar_ruta(ruta)
+    if not ruta or doc is None or not num.isdigit() or int(num) < 1:
+        raise ErrorDeUso(f"«{destino}» no es DOCUMENTO:LÍNEA (rutas relativas a la raíz)")
+    return doc, int(num)
+
+
+def vincular(ctx: Contexto, destino: str, ancla: str) -> Item:
+    """Vincula una línea de un documento con código, sin tocar el documento."""
+    doc, linea_doc = _doc_linea(destino)
+    lineas = ctx.repo.lineas(doc) if ctx.repo.existe(doc) else None
+    if lineas is None:
+        raise ErrorDeUso(f"{doc} no existe o no es texto")
+    if linea_doc > len(lineas):
+        raise ErrorDeUso(f"{doc} tiene {len(lineas)} líneas")
+    if not lineas[linea_doc - 1].strip():
+        raise ErrorDeUso(f"la línea {linea_doc} de {doc} está vacía: vincula la frase, no el hueco")
+    try:
+        fichero, linea, simbolo, texto = M.leer_ancla(ancla)
+    except ValueError as e:
+        raise ErrorDeUso(str(e)) from e
+    b, error, avisos = resolver(ctx, fichero, linea, simbolo)
+    if error:
+        return Item(error[0], doc, linea_doc, texto, tipo="vinculo", detalle=error[1])
+    entrada = _entrada(doc, texto, fichero, linea, simbolo, b)
+    entrada.linea_doc = linea_doc
+    entrada.huella_doc = H.huella_linea(lineas[linea_doc - 1])
+    existia = ctx.sello.poner_vinculo(entrada)
+    ctx.sello.guardar()
+    return Item("REVINCULADO" if existia else "VINCULADO", doc, linea_doc, texto, tipo="vinculo",
+                detalle=f"«{lineas[linea_doc - 1].strip()[:100]}»", bloque=vista(ctx.repo, fichero, b, linea),
+                avisos=avisos)
+
+
+def desvincular(ctx: Contexto, destino: str, ancla: Optional[str] = None) -> List[Item]:
+    doc, linea_doc = _doc_linea(destino)
+    texto = None
+    if ancla:
+        try:
+            texto = M.leer_ancla(ancla)[3]
+        except ValueError as e:
+            raise ErrorDeUso(str(e)) from e
+    quitados = [v for v in ctx.sello.vinculos
+                if v.doc == doc and v.linea_doc == linea_doc and (texto is None or v.ancla == texto)]
+    if not quitados:
+        raise ErrorDeUso(f"no hay vínculos en {doc}:{linea_doc}" + (f" hacia {texto}" if texto else ""))
+    for v in quitados:
+        ctx.sello.quitar(v)
+    ctx.sello.guardar()
+    return [Item("DESVINCULADO", v.doc, v.linea_doc, v.ancla, tipo="vinculo") for v in quitados]
