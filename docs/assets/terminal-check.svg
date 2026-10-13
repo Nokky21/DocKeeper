@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 328" width="900" height="328" role="img" aria-label="Real output of dockeeper check after editing the code: one claim CHANGED, one MOVED">
+<style>
+  .win { fill: #0d1117; stroke: #30363d; }
+  .l { fill: #e6edf3; font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+  .dim { fill: #9198a1; } .cmd { fill: #79c0ff; } .ok { fill: #3fb950; } .mv { fill: #d29922; } .ch { fill: #f85149; } .nw { fill: #79c0ff; }
+</style>
+<rect class="win" x="0.5" y="0.5" width="899" height="327" rx="12"/>
+<circle cx="22" cy="20" r="6" fill="#ff5f57"/><circle cx="42" cy="20" r="6" fill="#febc2e"/><circle cx="62" cy="20" r="6" fill="#28c840"/>
+<text class="l cmd" x="20" y="60" xml:space="preserve">$ dockeeper check</text>
+<text class="l" x="20" y="80" xml:space="preserve">dockeeper check · 2 afirmaciones comprobadas</text>
+<text class="l" x="20" y="100" xml:space="preserve"><tspan class="ch">CHANGED</tspan>          docs/payments.md:3  → src/payments.py#validate_payment</text>
+<text class="l" x="20" y="120" xml:space="preserve">                 el contenido de «validate_payment» cambió (src/payments.py:6-9)</text>
+<text class="l dim" x="20" y="140" xml:space="preserve">                 bloque: definición «validate_payment» src/payments.py:6-9</text>
+<text class="l dim" x="20" y="160" xml:space="preserve">                       6 │ def validate_payment(payment):</text>
+<text class="l dim" x="20" y="180" xml:space="preserve">                       9 │     return True</text>
+<text class="l" x="20" y="200" xml:space="preserve"><tspan class="mv">MOVED</tspan>            docs/payments.md:4  → src/payments.py:12</text>
+<text class="l" x="20" y="220" xml:space="preserve">                 el bloque pasó de 10-12 a 12-14</text>
+<text class="l dim" x="20" y="240" xml:space="preserve">Resumen: 1 CHANGED · 1 MOVED</text>
+<text class="l dim" x="20" y="260" xml:space="preserve">  → dockeeper fix las recoloca (solo toca el sello)</text>
+<text class="l dim" x="20" y="280" xml:space="preserve">  → revisa el código y el texto; luego dockeeper fix --aceptar</text>
+<text class="l" x="20" y="300" xml:space="preserve">Resultado: <tspan class="ch">FALLA</tspan></text>
+</svg>

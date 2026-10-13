@@ -1,5 +1,6 @@
 {
-  "_comentario": "Las plantillas llevan anclas de ejemplo a propósito; README y SKILL se publican con el código.",
+  "_comentario": "Las plantillas llevan anclas de ejemplo a propósito. README, SKILL y la web se publican con el código.",
+  "documentos": ["*.md", "*.markdown", "*.mdx", "docs/*.html"],
   "sin": ["templates/"],
-  "publicado": ["README.md", "SKILL.md"]
+  "publicado": ["README.md", "SKILL.md", "docs/"]
 }

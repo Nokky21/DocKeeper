@@ -25,6 +25,28 @@
     },
     {
       "doc": "README.md",
+      "ancla": "dockeeper/cli.py#main",
+      "fichero": "dockeeper/cli.py",
+      "simbolo": "main",
+      "tipo": "definicion",
+      "inicio": 67,
+      "fin": 80,
+      "n": 14,
+      "huella": "9cea41b5396bd921"
+    },
+    {
+      "doc": "README.md",
+      "ancla": "dockeeper/config.py#cargar",
+      "fichero": "dockeeper/config.py",
+      "simbolo": "cargar",
+      "tipo": "definicion",
+      "inicio": 58,
+      "fin": 79,
+      "n": 22,
+      "huella": "884632778c84abfc"
+    },
+    {
+      "doc": "README.md",
       "ancla": "dockeeper/huellas.py#huella",
       "fichero": "dockeeper/huellas.py",
       "simbolo": "huella",
@@ -183,10 +205,10 @@
       "fichero": "dockeeper/cli.py",
       "simbolo": "main",
       "tipo": "definicion",
-      "inicio": 59,
-      "fin": 71,
-      "n": 13,
-      "huella": "29c3b30469653283"
+      "inicio": 67,
+      "fin": 80,
+      "n": 14,
+      "huella": "9cea41b5396bd921"
     },
     {
       "doc": "SKILL.md",
@@ -381,8 +403,8 @@
       "fichero": "tests/test_cli.py",
       "simbolo": "PruebasCli.test_solo_escribe_el_sello",
       "tipo": "definicion",
-      "inicio": 71,
-      "fin": 83,
+      "inicio": 73,
+      "fin": 85,
       "n": 13,
       "huella": "c6cf1577c0e7232c"
     },
@@ -392,8 +414,8 @@
       "fichero": "tests/test_cli.py",
       "simbolo": "PruebasCli.test_todas_las_ordenes_aceptan_json",
       "tipo": "definicion",
-      "inicio": 43,
-      "fin": 59,
+      "inicio": 45,
+      "fin": 61,
       "n": 17,
       "huella": "9dd349f7e93f766f"
     },
@@ -440,13 +462,134 @@
       "fin": 110,
       "n": 15,
       "huella": "d92dc538bc969b49"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/alcance.py#Alcance",
+      "fichero": "dockeeper/alcance.py",
+      "simbolo": "Alcance",
+      "tipo": "definicion",
+      "inicio": 21,
+      "fin": 52,
+      "n": 28,
+      "huella": "ebb5161aeec72fca"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/bloques.py#bloque_en",
+      "fichero": "dockeeper/bloques.py",
+      "simbolo": "bloque_en",
+      "tipo": "definicion",
+      "inicio": 432,
+      "fin": 446,
+      "n": 15,
+      "huella": "52dc02de4c500aa3"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/huellas.py#normalizar_linea",
+      "fichero": "dockeeper/huellas.py",
+      "simbolo": "normalizar_linea",
+      "tipo": "definicion",
+      "inicio": 13,
+      "fin": 14,
+      "n": 2,
+      "huella": "6e7095e24c19f1ce"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/markdown.py#analizar",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "analizar",
+      "tipo": "definicion",
+      "inicio": 108,
+      "fin": 142,
+      "n": 33,
+      "huella": "445dc9dcf963c5af"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/motor.py#FALLOS",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "FALLOS",
+      "tipo": "declaracion",
+      "inicio": 28,
+      "fin": 32,
+      "n": 5,
+      "huella": "0ada6d59a451cdfb"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/motor.py#arreglar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "arreglar",
+      "tipo": "definicion",
+      "inicio": 344,
+      "fin": 378,
+      "n": 34,
+      "huella": "d98730ced313b990"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 228,
+      "fin": 269,
+      "n": 42,
+      "huella": "05284a158194de1b"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/motor.py#verificar_codigo",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "verificar_codigo",
+      "tipo": "definicion",
+      "inicio": 305,
+      "fin": 339,
+      "n": 35,
+      "huella": "4a25fda97dac3e6b"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/motor.py#vincular",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "vincular",
+      "tipo": "definicion",
+      "inicio": 391,
+      "fin": 415,
+      "n": 25,
+      "huella": "08d357dec9a85ac0"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/publicado.py#IndiceCopias",
+      "fichero": "dockeeper/publicado.py",
+      "simbolo": "IndiceCopias",
+      "tipo": "definicion",
+      "inicio": 31,
+      "fin": 64,
+      "n": 31,
+      "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "docs/index.html",
+      "ancla": "dockeeper/sello.py#Entrada",
+      "fichero": "dockeeper/sello.py",
+      "simbolo": "Entrada",
+      "tipo": "definicion",
+      "inicio": 19,
+      "fin": 46,
+      "n": 25,
+      "huella": "9f3dff024513ed97"
     }
   ],
   "vinculos": [
     {
       "doc": "README.md",
-      "linea_doc": 84,
-      "huella_doc": "2f85f532dc7b6bbe",
+      "linea_doc": 206,
+      "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",
       "simbolo": "vincular",

@@ -1,6 +1,8 @@
 ---
 name: dockeeper
 description: Use when writing, updating or auditing repository documentation that must stay true to the code (README, architecture, decisions, runbooks, API, onboarding) — every claim is anchored to code and checked with the local `dockeeper` CLI (OK / MOVED / CHANGED), including published docs that must not leak internal paths or copied code, and "why" sections drawn only from git history.
+license: MIT
+compatibility: Needs python3 (3.9+, standard library only) and git; runs locally, no network or account.
 ---
 
 # DocKeeper — documentación que no se pudre
@@ -17,6 +19,9 @@ raíz del repositorio que se documenta:
 python3 <carpeta-de-este-skill>/bin/dockeeper <orden> [--json] [--solo RUTA]... [--sin PATRÓN]...
 ```
 
+En Claude Code la carpeta del skill es `${CLAUDE_SKILL_DIR}`. En Windows, si no existe `python3`, usa
+`python` (o `py`).
+
 Órdenes: `audit`, `scan`, `check`, `fix`, `link`, `why`. Todas aceptan `--json` (úsalo para leer
 resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problemas · 2 error de uso.
 <!-- dockeeper: dockeeper/cli.py#main dockeeper/motor.py#FALLOS -->
@@ -27,6 +32,10 @@ resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problem
 valida el pago» + ancla a la definición. Si una frase no se puede anclar (opiniones, planes,
 promesas), o se convierte en algo comprobable o se marca como lo que es. Lo que no se sabe no se
 inventa: se escribe «No consta».
+
+**Idioma:** escribe la documentación en el idioma del repositorio (o en el que pida la persona). Las
+plantillas de `templates/` están en español: traduce sus encabezados y textos guía; no impongas el
+español a un proyecto en otro idioma. Para no consta, usa la expresión equivalente («Not documented»).
 
 ## Sintaxis de anclas
 
