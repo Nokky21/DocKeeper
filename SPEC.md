@@ -1,6 +1,6 @@
 # SPEC — DocKeeper
 
-> Estado: v0.1 · 2026-10-13 · Origen: encargo «DocKeeper» (CEO, encargo de Edgar, 2026-10-12).
+> Estado: v0.1 · 2026-10-13.
 > Este documento manda sobre el código: si discrepan, uno de los dos está mal.
 
 ## 1. El problema
@@ -153,9 +153,10 @@ Se para y se replantea si ocurre cualquiera de estas cosas:
    forma sostenida: el coste de revisar supera el valor del aviso.
 2. La detección de definiciones por patrones falla en más del **10 %** de las anclas de un lenguaje
    objetivo y la previa de `scan` no basta para corregirlo a mano.
-3. El valor principal empieza a necesitar IA para funcionar (regla 3 del encargo).
-4. Para que la versión de pago tenga sentido habría que empeorar la gratuita (regla 2): se abandona
-   el modelo, no la gratuita.
+3. El valor principal empieza a necesitar IA para funcionar (principio: el motor son comparaciones de
+   contenido y huellas; la IA, si llega, será opcional y encima).
+4. Una versión de pago, si algún día existe, solo puede **añadir** (lo que tiene sentido a escala); si
+   para que tuviera sentido hubiera que empeorar la gratuita, se abandona ese modelo, no la gratuita.
 
 ### Medición (2026-10-13)
 
@@ -175,7 +176,7 @@ en varias líneas) se corrigió y tiene prueba.
 | `[[algo#x]]` sin `.` ni `/` en la ruta | No es ancla. | No confundir con wikilinks de Obsidian (`[[nota#encabezado]]`). |
 | Bloques de Markdown indentados (4 espacios) | Se leen como texto, no como código. | Tratarlos como código haría desaparecer en silencio anclas de listas anidadas; un ancla falsa al menos da error visible. Para enseñar la sintaxis: ` ``` `. |
 | Qué línea cuenta para «código copiado» | Solo líneas con algún carácter alfanumérico. | Una ristra de `}` o `)` no es copiar código y daría falsos avisos. |
-| «No puede llevar rutas internas» | Además de las anclas, `RUTA_INTERNA` busca en el texto de un doc `publico` rutas de ficheros o carpetas del repo (con al menos una `/`). | El encargo habla de rutas, no solo de anclas. |
+| «No puede llevar rutas internas» | Además de las anclas, `RUTA_INTERNA` busca en el texto de un doc `publico` rutas de ficheros o carpetas del repo (con al menos una `/`). | El requisito habla de rutas, no solo de anclas. |
 | `check` sin nada en alcance | Falla con `NADA_COMPROBADO`. | Un verde vacío es exactamente el fallo del prototipo. |
 | Versión de Python | Objetivo 3.10+; el código evita lo que no existe en 3.9 y la suite pasa también en 3.9 (el `python3` del sistema en macOS). | Que funcione sin instalar nada. |
 | Ancla huérfana (en el sello, ya no en el doc) | Aviso `HUERFANA` (salida 0); `scan` y `fix` la quitan. | Ya no hay afirmación que comprobar. |

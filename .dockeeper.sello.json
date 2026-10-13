@@ -445,7 +445,7 @@
   "vinculos": [
     {
       "doc": "README.md",
-      "linea_doc": 75,
+      "linea_doc": 84,
       "huella_doc": "2f85f532dc7b6bbe",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",

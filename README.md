@@ -26,18 +26,27 @@ motor. Solo Python 3.10+ y su biblioteca estándar.
    `fix`); `CHANGED` si ya no aparece (lo tiene que mirar una persona); `DESAPARECIDO` si el fichero
    ya no existe. <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->
 
-## Empezar
+## Instalar y empezar
+
+Como skill de Claude Code, para todos tus proyectos:
 
 ```bash
-git clone <este repositorio> dockeeper
-cd tu-proyecto
-python3 ../dockeeper/bin/dockeeper audit      # qué hay, qué falta, qué no está anclado
-python3 ../dockeeper/bin/dockeeper scan       # sella las anclas y enseña en qué bloque queda cada una
-python3 ../dockeeper/bin/dockeeper check      # ¿sigue siendo cierto? (0 sí · 1 no · 2 error de uso)
+git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper
 ```
 
-También funciona `python3 -m dockeeper` desde la carpeta del proyecto, y `bin/dockeeper` se puede
-enlazar desde el `PATH`.
+Para un solo proyecto, clónalo en `.claude/skills/dockeeper` dentro de ese repositorio. Después
+basta con pedírselo al agente («documenta este repositorio con dockeeper», «¿sigue siendo cierta la
+documentación?») o invocar `/dockeeper`. Solo necesita `python3` (y `git` para `why`).
+
+La CLI funciona igual sin agente, a mano o en CI, desde la raíz del proyecto que documentas:
+
+```bash
+python3 ~/.claude/skills/dockeeper/bin/dockeeper audit   # qué hay, qué falta, qué no está anclado
+python3 ~/.claude/skills/dockeeper/bin/dockeeper scan    # sella las anclas y enseña el bloque de cada una
+python3 ~/.claude/skills/dockeeper/bin/dockeeper check   # ¿sigue siendo cierto? (0 sí · 1 no · 2 error de uso)
+```
+
+`bin/dockeeper` se puede enlazar desde el `PATH` para escribir solo `dockeeper`.
 
 | Orden | Qué hace |
 |---|---|
@@ -119,6 +128,11 @@ MIT. Ver [LICENSE](LICENSE).
 DocKeeper anchors every claim to the code behind it and tells you when that code changes. Free,
 local and complete: no account, no server, no network, no artificial limits, no AI in the engine.
 Python 3.10+ standard library only.
+
+**Install.** As a Claude Code skill: `git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper`
+(or `.claude/skills/dockeeper` inside one project), then ask the agent to document the repository
+with dockeeper or run `/dockeeper`. Without an agent, run `python3 <that folder>/bin/dockeeper check`
+from your project root, by hand or in CI. Only `python3` is required (`git` for `why`).
 
 **How it works.** Anchor each claim by symbol (`[[src/pay.ts#validatePayment]]`), by line
 (`[[src/pay.ts:147]]`), in a hidden comment (`<!-- dockeeper: src/pay.ts:147 -->`) or, for
