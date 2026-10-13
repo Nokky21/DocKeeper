@@ -1,0 +1,26 @@
+name: DocKeeper check
+description: Fail the job when documentation anchored to code is no longer true.
+branding:
+  icon: check-circle
+  color: green
+inputs:
+  args:
+    description: Extra arguments for `dockeeper check`, e.g. `--solo src --sin vendor/`.
+    required: false
+    default: ""
+  working-directory:
+    description: Root of the repository to check.
+    required: false
+    default: "."
+runs:
+  using: composite
+  steps:
+    - name: dockeeper check
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        DOCKEEPER_ARGS: ${{ inputs.args }}
+      run: |
+        if [ "$RUNNER_OS" = "Windows" ]; then PY=python; else PY=python3; fi
+        # Sin comillas a propósito: los argumentos se separan por espacios.
+        "$PY" "$GITHUB_ACTION_PATH/bin/dockeeper" check $DOCKEEPER_ARGS
