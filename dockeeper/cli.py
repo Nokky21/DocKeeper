@@ -56,7 +56,16 @@ def _parser() -> argparse.ArgumentParser:
     return p
 
 
+def _salida_utf8() -> None:
+    """En Windows la consola o un pipe pueden no ser UTF-8, y «→» o «│» romperían la salida."""
+    for flujo in (sys.stdout, sys.stderr):
+        codificacion = (getattr(flujo, "encoding", None) or "").lower().replace("-", "")
+        if hasattr(flujo, "reconfigure") and codificacion != "utf8":
+            flujo.reconfigure(encoding="utf-8", errors="replace")
+
+
 def main(argv: Optional[List[str]] = None) -> int:
+    _salida_utf8()
     args = _parser().parse_args(argv)
     try:
         raiz = Path(args.raiz).resolve() if args.raiz else buscar_raiz(Path.cwd())

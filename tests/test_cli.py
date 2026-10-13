@@ -30,12 +30,14 @@ def instantanea(raiz: Path) -> dict:
 
 class PruebasCli(unittest.TestCase):
     def test_version(self):
-        r = subprocess.run([sys.executable, "-m", "dockeeper", "--version"], cwd=RAIZ, capture_output=True, text=True)
+        r = subprocess.run([sys.executable, "-m", "dockeeper", "--version"], cwd=RAIZ, capture_output=True, text=True,
+                           encoding="utf-8")
         self.assertEqual(r.returncode, 0)
         self.assertIn("dockeeper", r.stdout)
 
     def test_lanzador_bin(self):
-        r = subprocess.run([sys.executable, str(RAIZ / "bin" / "dockeeper"), "--help"], capture_output=True, text=True)
+        r = subprocess.run([sys.executable, str(RAIZ / "bin" / "dockeeper"), "--help"], capture_output=True, text=True,
+                           encoding="utf-8")
         self.assertEqual(r.returncode, 0)
         for orden in ("audit", "scan", "check", "fix", "link", "why"):
             self.assertIn(orden, r.stdout)

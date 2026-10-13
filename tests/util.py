@@ -65,7 +65,7 @@ class RepoDePrueba:
 
     def git(self, *args) -> str:
         r = subprocess.run(["git", "-c", "commit.gpgsign=false", *args], cwd=self.raiz,
-                           capture_output=True, text=True, check=True)
+                           capture_output=True, text=True, encoding="utf-8", check=True)
         return r.stdout
 
     def iniciar_git(self) -> None:
