@@ -13,31 +13,48 @@ CLI for you and your CI.
 ![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[Website](https://nokky21.github.io/DocKeeper/) · [Install](#install) · [How it works](#how-it-works) ·
-[Commands](#commands) · [CI](#continuous-integration) · [FAQ](#faq)
+[Website](https://nokky21.github.io/DocKeeper/) · [Install](#install) · [Quick start](#quick-start) ·
+[Usage](#usage) · [CI](#continuous-integration) · [FAQ](#faq)
 
 </div>
 
 ---
 
-## Why
+## Contents
+
+1. [What it is](#what-it-is)
+2. [How it works](#how-it-works)
+3. [Install](#install)
+   - [Paths by agent](#paths-by-agent) · [Windows](#windows) · [Update and uninstall](#update-and-uninstall) · [claude.ai, API and SDK](#claudeai-the-claude-api-and-the-agent-sdk)
+4. [Quick start](#quick-start) — [with an agent](#with-an-agent) · [by hand](#by-hand)
+5. [Usage](#usage)
+   - [Anchors](#anchors) · [Commands](#commands) · [Verdicts and exit codes](#verdicts-and-exit-codes) · [Partial scope](#partial-scope) · [Published documentation](#published-documentation) · [The "why"](#the-why)
+6. [Continuous integration](#continuous-integration)
+7. [Configuration](#configuration)
+8. [Files and paths](#files-and-paths)
+9. [Limits](#limits) · [FAQ](#faq)
+10. [Repository layout and development](#repository-layout-and-development)
+
+---
+
+## What it is
 
 Writing documentation is cheap now: an agent can produce a README in seconds. Keeping it **true** is
 the expensive part. A few months later the text describes code that no longer exists, and nobody
 knows which pages are lying.
 
-Tools that check docs against code exist, but they are priced for companies. DocKeeper is the free,
-local and complete version:
+Tools that check docs against code exist, but they are hosted and paid. DocKeeper is the free, local
+and complete version:
 
 - **No account, no server, no network.** Everything runs on your machine or in your CI.
 - **No AI in the engine.** The check is content comparison and fingerprints. Your agent writes the
   docs; DocKeeper verifies them deterministically.
 - **Zero dependencies.** Python standard library only.
-- **Nothing held back.** The full engine is MIT-licensed. There is no "pro" check you are missing.
+- **Nothing held back.** The full engine is MIT-licensed.
 
 ## How it works
 
-<p align="center"><img src="docs/assets/how-it-works.svg" alt="How DocKeeper works: a claim is anchored to a code block, the block is fingerprinted, and check reports OK, MOVED or CHANGED" width="100%"></p>
+<p align="center"><img src="site/public/assets/how-it-works.svg" alt="How DocKeeper works: a claim is anchored to a code block, the block is fingerprinted, and check reports OK, MOVED or CHANGED" width="100%"></p>
 
 1. **Anchor every claim.** Next to "every payment is validated before it is charged" you write an
    anchor to the code that proves it: `[[src/payments.py#validate_payment]]`. Anchors inside code
@@ -53,7 +70,7 @@ local and complete version:
    fingerprint somewhere else in the file: `MOVED`, and `fix` relocates it for you. Fingerprint gone:
    `CHANGED`, and a person has to look. <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->
 
-<p align="center"><img src="docs/assets/terminal-check.svg" alt="Real output of dockeeper check after editing the code: one claim CHANGED, one MOVED" width="100%"></p>
+<p align="center"><img src="site/public/assets/terminal-check.svg" alt="Real output of dockeeper check after editing the code: one claim CHANGED, one MOVED" width="100%"></p>
 
 <sub>Real output after editing the code from the diagram. CLI messages are in Spanish for now; the
 verdict codes and the `--json` output are stable and documented [below](#verdicts-and-exit-codes).</sub>
@@ -61,53 +78,76 @@ verdict codes and the `--json` output are stable and documented [below](#verdict
 ## Install
 
 The repository root **is** the skill folder. Clone it into a folder named exactly `dockeeper`: the
-Agent Skills standard requires the folder name to match the skill name. You need `python3` and
-`git`; nothing else.
+Agent Skills standard requires the folder name to match the skill name. Requirements: `python3`
+(3.10+) and `git`.
 
-| You work with | Install (macOS / Linux) |
+**Claude Code** (terminal, desktop app, VS Code or JetBrains):
+
+```bash
+git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper
+```
+
+**Codex, Gemini CLI, Cursor, GitHub Copilot / VS Code** (all of them read `~/.agents/skills`):
+
+```bash
+git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
+```
+
+**One project only** (commit it so the whole team gets it): run the same `git clone` into
+`.claude/skills/dockeeper` or `.agents/skills/dockeeper` inside that repository.
+
+**No agent** (by hand, git hook or CI): clone it anywhere and run `python3 <folder>/bin/dockeeper`.
+
+### Paths by agent
+
+Where each tool looks for skills, according to its own documentation. Clone into any one of the
+listed folders.
+
+| Agent | All your projects | One project | Docs |
+|---|---|---|---|
+| Claude Code | `~/.claude/skills/dockeeper` | `.claude/skills/dockeeper` | [skills](https://code.claude.com/docs/en/skills) |
+| Codex | `~/.agents/skills/dockeeper` | `.agents/skills/dockeeper` | [skills](https://developers.openai.com/codex/skills/) |
+| Gemini CLI | `~/.gemini/skills/dockeeper` or `~/.agents/skills/dockeeper` | `.gemini/skills/dockeeper` or `.agents/skills/dockeeper` | [skills](https://geminicli.com/docs/cli/skills/) |
+| Cursor | `~/.cursor/skills/dockeeper`, `~/.agents/skills/dockeeper` (also reads `~/.claude/skills`) | `.cursor/skills/dockeeper` or `.agents/skills/dockeeper` | [skills](https://cursor.com/docs/context/skills) |
+| GitHub Copilot / VS Code | `~/.copilot/skills/dockeeper`, `~/.agents/skills/dockeeper` (also reads `~/.claude/skills`) | `.github/skills/dockeeper`, `.agents/skills/dockeeper` or `.claude/skills/dockeeper` | [skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) |
+| Other Agent Skills clients | see their docs | see their docs | [client list](https://agentskills.io) |
+
+### Windows
+
+Same folders under your user profile (`%USERPROFILE%`, `$env:USERPROFILE` in PowerShell). Use
+`python` if `python3` is not on your `PATH`.
+
+| Agent | Folder |
 |---|---|
-| **Claude Code** (terminal, desktop app, VS Code / JetBrains) | `git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper` |
-| **Codex**, **Gemini CLI**, **Cursor**, **GitHub Copilot / VS Code** | `git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper` |
-| Any of the above, **one project only** | clone into `.claude/skills/dockeeper` or `.agents/skills/dockeeper` inside that repository |
-| **No agent** (by hand or in CI) | clone anywhere and run `python3 <folder>/bin/dockeeper` |
-
-Where each tool looks for skills, from its own docs:
-[Claude Code](https://code.claude.com/docs/en/skills) (`~/.claude/skills`, `.claude/skills`) ·
-[Codex](https://developers.openai.com/codex/skills/) (`~/.agents/skills`, `.agents/skills`) ·
-[Gemini CLI](https://geminicli.com/docs/cli/skills/) (`~/.gemini/skills` or `~/.agents/skills`) ·
-[Cursor](https://cursor.com/docs/context/skills) (`~/.cursor/skills`, `~/.agents/skills`, also `~/.claude/skills`) ·
-[GitHub Copilot / VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills) (`~/.copilot/skills`, `~/.claude/skills`, `~/.agents/skills`).
-Dozens of other agents support the same format: see the [Agent Skills client list](https://agentskills.io).
-
-**Windows (PowerShell).** Same folders under your user profile. Use `python` if `python3` is not on
-your `PATH`:
+| Claude Code | `%USERPROFILE%\.claude\skills\dockeeper` |
+| Codex, Gemini CLI, Cursor, Copilot | `%USERPROFILE%\.agents\skills\dockeeper` |
 
 ```powershell
 git clone https://github.com/Nokky21/DocKeeper.git "$env:USERPROFILE\.claude\skills\dockeeper"
 python "$env:USERPROFILE\.claude\skills\dockeeper\bin\dockeeper" --version
 ```
 
-**Update** with `git -C ~/.claude/skills/dockeeper pull` (or the folder you used).
+### Update and uninstall
 
-<details>
-<summary><b>claude.ai, the Claude API and the Agent SDK</b></summary>
+- Update: `git -C ~/.claude/skills/dockeeper pull` (use the folder you cloned into).
+- Uninstall: delete that folder. Nothing else is installed anywhere.
+
+### claude.ai, the Claude API and the Agent SDK
 
 - **claude.ai (web or desktop chat).** Download `dockeeper-skill.zip` from the
   [latest release](https://github.com/Nokky21/DocKeeper/releases/latest) and upload it in the Skills
   section of your settings (code execution must be enabled). Be aware of the limit: a chat sandbox
   does not have your repository or its git history, and the seal file would not persist. It is fine
   for drafting documentation, not for keeping it verified. Use a coding agent or CI for that.
-- **Claude Agent SDK.** It reads the same `~/.claude/skills` and `.claude/skills` folders as
-  Claude Code. See the [Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+- **Claude Agent SDK.** It reads the same `~/.claude/skills` and `.claude/skills` folders as Claude
+  Code. See the [Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
 - **Claude API.** Custom skills are uploaded through the Skills API and run with the code execution
-  tool; the same repository and sandbox limits as claude.ai apply. See the
+  tool; the same limits as claude.ai apply. See the
   [skills guide](https://platform.claude.com/docs/en/build-with-claude/skills-guide).
-
-</details>
 
 ## Quick start
 
-### With your agent
+### With an agent
 
 Open your project with any agent that has the skill installed and ask in plain words:
 
@@ -118,9 +158,9 @@ Open your project with any agent that has the skill installed and ask in plain w
 
 In Claude Code you can also type `/dockeeper`. The skill makes the agent follow the same loop every
 time: **audit → write → seal → check → fix**. When it seals, it reads the block each anchor landed on
-and corrects anchors that point at the wrong code, before telling you it is done:
+and corrects anchors that point at the wrong code before telling you it is done:
 
-<p align="center"><img src="docs/assets/terminal-scan.svg" alt="Real output of dockeeper scan: every anchor and the code block it landed on" width="100%"></p>
+<p align="center"><img src="site/public/assets/terminal-scan.svg" alt="Real output of dockeeper scan: every anchor and the code block it landed on" width="100%"></p>
 
 ### By hand
 
@@ -136,7 +176,9 @@ $DK fix      # relocate MOVED anchors (only touches the seal file)
 
 Tip: symlink `bin/dockeeper` into a folder on your `PATH` to type just `dockeeper`.
 
-## Anchors
+## Usage
+
+### Anchors
 
 | Form | Syntax | Use it for |
 |---|---|---|
@@ -154,7 +196,7 @@ Definitions are recognized for Python, JavaScript/TypeScript, Go, Rust, Java, Ko
 C/C++, Swift, PHP, Dart, Ruby, Elixir, Lua, Julia and shell. Any other text file still works with
 line anchors (window blocks).
 
-## Commands
+### Commands
 
 | Command | What it does | Writes |
 |---|---|---|
@@ -169,7 +211,7 @@ Every command accepts `--json` (stable, machine-readable) and `--raiz PATH` (rep
 defaults to the nearest folder with `.dockeeper.json` or `.git`). `audit`, `scan`, `check`, `fix` and
 `why` accept `--solo` and `--sin` ([partial scope](#partial-scope)).
 
-## Verdicts and exit codes
+### Verdicts and exit codes
 
 | Code | Meaning | Exit | What to do |
 |---|---|---|---|
@@ -190,7 +232,18 @@ defaults to the nearest folder with `.dockeeper.json` or `.git`). `audit`, `scan
 (file, symbol or line not found), exit code 1. Exit code **2** always means a usage or
 configuration error. <!-- dockeeper: dockeeper/motor.py#FALLOS dockeeper/motor.py#comprobar dockeeper/cli.py#main -->
 
-## Published documentation
+### Partial scope
+
+- `--solo PATH` (repeatable). If the path points only at documents, it narrows the **documents**; if
+  it points at code, it narrows the **code**. `--solo src/payments` checks that part against every
+  document that talks about it; `--solo docs/api.md` checks that document without losing the code it
+  points to.
+- `--sin PATTERN` (repeatable, globs or folder prefixes) excludes documents and code. The `sin` key
+  in `.dockeeper.json` excludes permanently.
+- No `--solo` means no restriction; no `--sin` means nothing excluded. A `--solo` that matches
+  nothing is an error. <!-- dockeeper: dockeeper/alcance.py#Alcance -->
+
+### Published documentation
 
 Documentation that leaves the repository is the hard case: it can't carry internal paths or copied
 code, and it still has to be checkable. Declare it in `.dockeeper.json`:
@@ -208,24 +261,13 @@ code, and it still has to be checkable. Declare it in `.dockeeper.json`:
 - **`publicado`**: published, and the code is **public** (like this README). Anchors are allowed
   (hidden ones are best); copying code is not.
 
-<p align="center"><img src="docs/assets/published-docs.svg" alt="Published docs: the public page shows no paths; the link lives in the seal file and check verifies both the sentence and the private code" width="100%"></p>
+<p align="center"><img src="site/public/assets/published-docs.svg" alt="Published docs: the public page shows no paths; the link lives in the seal file and check verifies both the sentence and the private code" width="100%"></p>
 
 Copied code means a code block in the document with `bloque_minimo` (default 3) or more consecutive
 lines identical, spacing aside, to a file in the repository. The report names the source file.
 <!-- dockeeper: dockeeper/publicado.py#IndiceCopias dockeeper/publicado.py#rutas_en_texto -->
 
-## Partial scope
-
-- `--solo PATH` (repeatable). If the path points only at documents, it narrows the **documents**; if
-  it points at code, it narrows the **code**. `--solo src/payments` checks that part against every
-  document that talks about it; `--solo docs/api.md` checks that document without losing the code it
-  points to.
-- `--sin PATTERN` (repeatable, globs or folder prefixes) excludes documents and code. The `sin` key
-  in `.dockeeper.json` excludes permanently.
-- No `--solo` means no restriction; no `--sin` means nothing excluded. A `--solo` that matches
-  nothing is an error. <!-- dockeeper: dockeeper/alcance.py#Alcance -->
-
-## The "why"
+### The "why"
 
 `why` reads the git history looking for decision markers and checks your decision documents for
 entries with no written reason. What is not in the history is never invented: the agent writes
@@ -258,6 +300,8 @@ jobs:
         #   args: --sin vendor/
 ```
 
+Inputs: `args` (extra arguments for `check`) and `working-directory` (repository root, default `.`).
+
 **Any other CI.** Only Python and git are needed:
 
 ```bash
@@ -287,6 +331,20 @@ typo can't silently disable a rule. <!-- dockeeper: dockeeper/config.py#cargar -
 | `bloque_minimo` | `3` | consecutive lines that count as copied code |
 | `ventana` | `3` | window radius when a line is not inside any definition |
 
+## Files and paths
+
+What DocKeeper reads and writes in **your** repository:
+
+| Path | Written by | Commit it? |
+|---|---|---|
+| your documents (`*.md` by default) | you or your agent; DocKeeper never rewrites them | yes |
+| `.dockeeper.json` | you (optional) | yes |
+| `.dockeeper.sello.json` | `scan`, `fix`, `link` | yes: CI checks against it |
+
+Everything is relative to the repository root, found by walking up from the current folder to the
+first one with `.dockeeper.json` or `.git` (or given with `--raiz`). DocKeeper never writes outside
+that root, and with git it respects `.gitignore`. <!-- dockeeper: dockeeper/config.py#buscar_raiz dockeeper/repo.py#Repo -->
+
 ## Limits
 
 DocKeeper is honest about what it can't do:
@@ -309,30 +367,42 @@ deterministic and runs without any model.
 **I renamed a function. What happens?** Its symbol anchors report `CHANGED` ("symbol not found").
 Update the anchor in the document, then run `scan`.
 
-**What should I commit?** The documents, `.dockeeper.json` and `.dockeeper.sello.json`. The seal is
-what CI checks against.
-
 **Is the CLI in English?** Messages are in Spanish today. Verdict codes and `--json` keys are stable,
 so scripts and agents are not affected.
 
-## Development
-
-```bash
-python3 -m unittest
-```
-
-The suite covers every acceptance criterion in [SPEC.md](SPEC.md) (Spanish) and includes a
-self-check: this README is sealed, and CI fails if it stops being true. CI runs the tests on Linux,
-macOS and Windows with Python 3.10 to 3.14.
+## Repository layout and development
 
 ```text
-bin/dockeeper        CLI launcher (no install needed)
-dockeeper/           engine: anchors, blocks, fingerprints, seal, scope, published docs, why, audit
-templates/           page templates the skill writes from
-SKILL.md             instructions for agents
-action.yml           GitHub Action
-docs/                website (GitHub Pages)
+bin/dockeeper            CLI launcher (no install needed)
+dockeeper/               the engine (Python standard library only)
+  cli.py                 commands and output
+  motor.py               scan, check, fix, link
+  markdown.py            reading anchors from documents
+  bloques.py             definitions and the block behind each anchor
+  huellas.py             normalization and fingerprints
+  sello.py               the seal file
+  alcance.py             --solo / --sin
+  publicado.py           published-doc rules (copied code, internal paths)
+  porque.py              the "why" from git history
+  auditoria.py           audit
+  config.py, repo.py, rutas.py   configuration, file access, path patterns
+templates/               page templates the skill writes from
+SKILL.md                 instructions for agents
+action.yml               GitHub Action
+site/                    website (Astro)
+tests/                   test suite
+.github/workflows/       CI, website deploy, release
+SPEC.md                  specification and acceptance criteria (Spanish)
 ```
+
+```bash
+python3 -m unittest              # the whole suite, including the self-check of this repository
+cd site && yarn install && yarn dev   # the website, at http://localhost:4321/DocKeeper/
+```
+
+The suite covers every acceptance criterion in [SPEC.md](SPEC.md) and includes a self-check: this
+README is sealed, and CI fails if it stops being true. CI runs the tests on Linux, macOS and Windows
+with Python 3.10 to 3.14, and the website is built with Astro and deployed to GitHub Pages.
 
 ## License
 

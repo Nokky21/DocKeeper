@@ -36,6 +36,17 @@
     },
     {
       "doc": "README.md",
+      "ancla": "dockeeper/config.py#buscar_raiz",
+      "fichero": "dockeeper/config.py",
+      "simbolo": "buscar_raiz",
+      "tipo": "definicion",
+      "inicio": 49,
+      "fin": 55,
+      "n": 7,
+      "huella": "21c166005e168e15"
+    },
+    {
+      "doc": "README.md",
       "ancla": "dockeeper/config.py#cargar",
       "fichero": "dockeeper/config.py",
       "simbolo": "cargar",
@@ -165,6 +176,17 @@
       "fin": 120,
       "n": 22,
       "huella": "94a62ef3d6898ea2"
+    },
+    {
+      "doc": "README.md",
+      "ancla": "dockeeper/repo.py#Repo",
+      "fichero": "dockeeper/repo.py",
+      "simbolo": "Repo",
+      "tipo": "definicion",
+      "inicio": 19,
+      "fin": 106,
+      "n": 77,
+      "huella": "9cf1363202e7c2a8"
     },
     {
       "doc": "README.md",
@@ -464,7 +486,7 @@
       "huella": "d92dc538bc969b49"
     },
     {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/Ci.astro",
       "ancla": "dockeeper/alcance.py#Alcance",
       "fichero": "dockeeper/alcance.py",
       "simbolo": "Alcance",
@@ -475,40 +497,7 @@
       "huella": "ebb5161aeec72fca"
     },
     {
-      "doc": "docs/index.html",
-      "ancla": "dockeeper/bloques.py#bloque_en",
-      "fichero": "dockeeper/bloques.py",
-      "simbolo": "bloque_en",
-      "tipo": "definicion",
-      "inicio": 432,
-      "fin": 446,
-      "n": 15,
-      "huella": "52dc02de4c500aa3"
-    },
-    {
-      "doc": "docs/index.html",
-      "ancla": "dockeeper/huellas.py#normalizar_linea",
-      "fichero": "dockeeper/huellas.py",
-      "simbolo": "normalizar_linea",
-      "tipo": "definicion",
-      "inicio": 13,
-      "fin": 14,
-      "n": 2,
-      "huella": "6e7095e24c19f1ce"
-    },
-    {
-      "doc": "docs/index.html",
-      "ancla": "dockeeper/markdown.py#analizar",
-      "fichero": "dockeeper/markdown.py",
-      "simbolo": "analizar",
-      "tipo": "definicion",
-      "inicio": 108,
-      "fin": 142,
-      "n": 33,
-      "huella": "445dc9dcf963c5af"
-    },
-    {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/Ci.astro",
       "ancla": "dockeeper/motor.py#FALLOS",
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
@@ -519,7 +508,40 @@
       "huella": "0ada6d59a451cdfb"
     },
     {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/How.astro",
+      "ancla": "dockeeper/bloques.py#bloque_en",
+      "fichero": "dockeeper/bloques.py",
+      "simbolo": "bloque_en",
+      "tipo": "definicion",
+      "inicio": 432,
+      "fin": 446,
+      "n": 15,
+      "huella": "52dc02de4c500aa3"
+    },
+    {
+      "doc": "site/src/components/How.astro",
+      "ancla": "dockeeper/huellas.py#normalizar_linea",
+      "fichero": "dockeeper/huellas.py",
+      "simbolo": "normalizar_linea",
+      "tipo": "definicion",
+      "inicio": 13,
+      "fin": 14,
+      "n": 2,
+      "huella": "6e7095e24c19f1ce"
+    },
+    {
+      "doc": "site/src/components/How.astro",
+      "ancla": "dockeeper/markdown.py#analizar",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "analizar",
+      "tipo": "definicion",
+      "inicio": 108,
+      "fin": 142,
+      "n": 33,
+      "huella": "445dc9dcf963c5af"
+    },
+    {
+      "doc": "site/src/components/How.astro",
       "ancla": "dockeeper/motor.py#arreglar",
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
@@ -530,18 +552,7 @@
       "huella": "d98730ced313b990"
     },
     {
-      "doc": "docs/index.html",
-      "ancla": "dockeeper/motor.py#comprobar",
-      "fichero": "dockeeper/motor.py",
-      "simbolo": "comprobar",
-      "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
-      "n": 42,
-      "huella": "05284a158194de1b"
-    },
-    {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/How.astro",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -552,7 +563,29 @@
       "huella": "4a25fda97dac3e6b"
     },
     {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/How.astro",
+      "ancla": "dockeeper/sello.py#Entrada",
+      "fichero": "dockeeper/sello.py",
+      "simbolo": "Entrada",
+      "tipo": "definicion",
+      "inicio": 19,
+      "fin": 46,
+      "n": 25,
+      "huella": "9f3dff024513ed97"
+    },
+    {
+      "doc": "site/src/components/Loop.astro",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 228,
+      "fin": 269,
+      "n": 42,
+      "huella": "05284a158194de1b"
+    },
+    {
+      "doc": "site/src/components/Published.astro",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",
       "simbolo": "vincular",
@@ -563,7 +596,7 @@
       "huella": "08d357dec9a85ac0"
     },
     {
-      "doc": "docs/index.html",
+      "doc": "site/src/components/Published.astro",
       "ancla": "dockeeper/publicado.py#IndiceCopias",
       "fichero": "dockeeper/publicado.py",
       "simbolo": "IndiceCopias",
@@ -572,23 +605,12 @@
       "fin": 64,
       "n": 31,
       "huella": "a56e9f44192d6c12"
-    },
-    {
-      "doc": "docs/index.html",
-      "ancla": "dockeeper/sello.py#Entrada",
-      "fichero": "dockeeper/sello.py",
-      "simbolo": "Entrada",
-      "tipo": "definicion",
-      "inicio": 19,
-      "fin": 46,
-      "n": 25,
-      "huella": "9f3dff024513ed97"
     }
   ],
   "vinculos": [
     {
       "doc": "README.md",
-      "linea_doc": 206,
+      "linea_doc": 259,
       "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",
