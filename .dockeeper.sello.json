@@ -486,7 +486,7 @@
       "huella": "d92dc538bc969b49"
     },
     {
-      "doc": "site/src/components/Ci.astro",
+      "doc": "site/src/components/Features.astro",
       "ancla": "dockeeper/alcance.py#Alcance",
       "fichero": "dockeeper/alcance.py",
       "simbolo": "Alcance",
@@ -497,7 +497,7 @@
       "huella": "ebb5161aeec72fca"
     },
     {
-      "doc": "site/src/components/Ci.astro",
+      "doc": "site/src/components/Features.astro",
       "ancla": "dockeeper/motor.py#FALLOS",
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
@@ -506,6 +506,50 @@
       "fin": 32,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 228,
+      "fin": 269,
+      "n": 42,
+      "huella": "05284a158194de1b"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/motor.py#vincular",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "vincular",
+      "tipo": "definicion",
+      "inicio": 391,
+      "fin": 415,
+      "n": 25,
+      "huella": "08d357dec9a85ac0"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/porque.py#historial",
+      "fichero": "dockeeper/porque.py",
+      "simbolo": "historial",
+      "tipo": "definicion",
+      "inicio": 83,
+      "fin": 111,
+      "n": 29,
+      "huella": "8a9ea5dff24ecc9e"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/publicado.py#IndiceCopias",
+      "fichero": "dockeeper/publicado.py",
+      "simbolo": "IndiceCopias",
+      "tipo": "definicion",
+      "inicio": 31,
+      "fin": 64,
+      "n": 31,
+      "huella": "a56e9f44192d6c12"
     },
     {
       "doc": "site/src/components/How.astro",
@@ -572,39 +616,6 @@
       "fin": 46,
       "n": 25,
       "huella": "9f3dff024513ed97"
-    },
-    {
-      "doc": "site/src/components/Loop.astro",
-      "ancla": "dockeeper/motor.py#comprobar",
-      "fichero": "dockeeper/motor.py",
-      "simbolo": "comprobar",
-      "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
-      "n": 42,
-      "huella": "05284a158194de1b"
-    },
-    {
-      "doc": "site/src/components/Published.astro",
-      "ancla": "dockeeper/motor.py#vincular",
-      "fichero": "dockeeper/motor.py",
-      "simbolo": "vincular",
-      "tipo": "definicion",
-      "inicio": 391,
-      "fin": 415,
-      "n": 25,
-      "huella": "08d357dec9a85ac0"
-    },
-    {
-      "doc": "site/src/components/Published.astro",
-      "ancla": "dockeeper/publicado.py#IndiceCopias",
-      "fichero": "dockeeper/publicado.py",
-      "simbolo": "IndiceCopias",
-      "tipo": "definicion",
-      "inicio": 31,
-      "fin": 64,
-      "n": 31,
-      "huella": "a56e9f44192d6c12"
     }
   ],
   "vinculos": [

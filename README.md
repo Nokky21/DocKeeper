@@ -13,7 +13,7 @@ CLI for you and your CI.
 ![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[Website](https://nokky21.github.io/DocKeeper/) · [Install](#install) · [Quick start](#quick-start) ·
+[Website](https://nokky21.github.io/DocKeeper/) · [Live demo](https://nokky21.github.io/DocKeeper/#demo) · [Install](#install) · [Quick start](#quick-start) ·
 [Usage](#usage) · [CI](#continuous-integration) · [FAQ](#faq)
 
 </div>
@@ -390,6 +390,7 @@ templates/               page templates the skill writes from
 SKILL.md                 instructions for agents
 action.yml               GitHub Action
 site/                    website (Astro)
+  src/demo/              live demo: a TypeScript port of the check + shared scenarios
 tests/                   test suite
 .github/workflows/       CI, website deploy, release
 SPEC.md                  specification and acceptance criteria (Spanish)
@@ -398,11 +399,14 @@ SPEC.md                  specification and acceptance criteria (Spanish)
 ```bash
 python3 -m unittest              # the whole suite, including the self-check of this repository
 cd site && yarn install && yarn dev   # the website, at http://localhost:4321/DocKeeper/
+cd site && yarn test             # the live demo gives the same verdicts as the Python engine
 ```
 
 The suite covers every acceptance criterion in [SPEC.md](SPEC.md) and includes a self-check: this
 README is sealed, and CI fails if it stops being true. CI runs the tests on Linux, macOS and Windows
-with Python 3.10 to 3.14, and the website is built with Astro and deployed to GitHub Pages.
+with Python 3.10 to 3.14, and the website is built with Astro and deployed to GitHub Pages. The live
+demo runs a TypeScript port of the check; `tests/test_demo.py` (real engine) and `site/scripts/check-demo.ts`
+(port) run the same scenarios from `site/src/demo/scenarios.json`, so the demo can't drift from the CLI.
 
 ## License
 
