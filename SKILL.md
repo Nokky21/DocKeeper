@@ -19,6 +19,7 @@ python3 <carpeta-de-este-skill>/bin/dockeeper <orden> [--json] [--solo RUTA]... 
 
 Órdenes: `audit`, `scan`, `check`, `fix`, `link`, `why`. Todas aceptan `--json` (úsalo para leer
 resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problemas · 2 error de uso.
+<!-- dockeeper: dockeeper/cli.py#main dockeeper/motor.py#FALLOS -->
 
 ## La regla
 
@@ -40,12 +41,12 @@ inventa: se escribe «No consta».
 - Rutas **relativas a la raíz** del repositorio.
 - El bloque de un ancla es la **definición entera** que contiene la línea (la más interior); si no
   hay definición, una ventana de ±3 líneas. Por eso un ancla por línea dentro de una función vigila
-  la función completa.
+  la función completa. <!-- dockeeper: dockeeper/bloques.py#bloque_en -->
 - Prefiere símbolos: el número de línea escrito en un documento envejece a la vista cuando el código
   se mueve (el sello sabe la posición real, pero el lector ve la antigua). `fix` no reescribe
   documentos.
 - Lo que va dentro de bloques de código o código en línea **no** es un ancla: así se enseña la
-  sintaxis sin crear anclas falsas.
+  sintaxis sin crear anclas falsas. <!-- dockeeper: dockeeper/markdown.py#analizar -->
 
 ## Flujo de trabajo
 
@@ -61,7 +62,7 @@ inventa: se escribe «No consta».
    previa es la única red.
 4. **Comprobar** — `dockeeper check`. En CI, el código de salida decide.
 5. **Arreglar**:
-   - `MOVED` → `dockeeper fix` (solo toca el sello).
+   - `MOVED` → `dockeeper fix` (solo toca el sello). <!-- dockeeper: dockeeper/motor.py#arreglar -->
    - `CHANGED` → lee el código nuevo, **corrige el texto** si ya no es cierto y después
      `dockeeper fix --aceptar` (acota con `--solo` para no aceptar más de lo revisado).
    - `DESAPARECIDO` → el fichero ya no existe: reescribe la afirmación o quítala; luego `scan`.
@@ -99,6 +100,7 @@ Declárala en `.dockeeper.json` (en la raíz del repositorio documentado):
   `VINCULO_SUELTO` → revisar y volver a vincular, o `link --quitar`).
 - Código copiado = 3 o más líneas seguidas idénticas (espacios aparte) a un fichero del repositorio;
   el aviso dice de qué fichero sale. Umbral: `bloque_minimo`.
+  <!-- dockeeper: dockeeper/publicado.py#IndiceCopias dockeeper/motor.py#_verificar_vinculo -->
 
 Otras claves: `documentos` (qué ficheros son documentos, por defecto Markdown), `sin` (lo que se
 descarta siempre), `decisiones` (qué documentos son de decisiones), `ventana` (radio de la ventana).
@@ -111,7 +113,7 @@ descarta siempre), `decisiones` (qué documentos son de decisiones), `ventana` (
   al que apunta. Varias rutas se combinan.
 - `--sin PATRÓN` (repetible) descarta documentos y código (`*`, `?` o prefijos de carpeta).
 - Un `--solo` que no casa con nada es un error; un `check` sin nada que comprobar **falla**
-  (`NADA_COMPROBADO`): no existe el verde vacío.
+  (`NADA_COMPROBADO`): no existe el verde vacío. <!-- dockeeper: dockeeper/alcance.py#Alcance dockeeper/motor.py#comprobar -->
 - Úsalo para documentar una zona cada vez: `audit --solo zona` → escribir → `scan --solo zona` →
   `check --solo zona`.
 

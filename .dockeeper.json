@@ -1,0 +1,5 @@
+{
+  "_comentario": "Las plantillas llevan anclas de ejemplo a propósito; README y SKILL se publican con el código.",
+  "sin": ["templates/"],
+  "publicado": ["README.md", "SKILL.md"]
+}

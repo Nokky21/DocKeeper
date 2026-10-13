@@ -157,6 +157,13 @@ Se para y se replantea si ocurre cualquiera de estas cosas:
 4. Para que la versión de pago tenga sentido habría que empeorar la gratuita (regla 2): se abandona
    el modelo, no la gratuita.
 
+### Medición (2026-10-13)
+
+Para el criterio 2, `audit` sobre un backend NestJS/TypeScript real (960 ficheros de código, sin
+escribir nada en él): 1,4 s; 1518 métodos de clase según un oráculo aproximado por expresión
+regular, 0 sin detectar. El único fallo visto en la muestra previa (tipo de retorno genérico partido
+en varias líneas) se corrigió y tiene prueba.
+
 ## 7. Decisiones tomadas ante ambigüedades
 
 | Ambigüedad | Decisión | Por qué |

@@ -202,10 +202,14 @@ def _sangria(texto: str) -> int:
     return len(expandido) - len(expandido.lstrip())
 
 
-def _siguiente_empieza(limpias: Sequence[str], i: int, prefijo: str) -> bool:
+_SIGUE = ("{", ">", ")", "]", ".", ":", "|", "&", "?", "=", ",")
+
+
+def _siguiente_continua(limpias: Sequence[str], i: int) -> bool:
+    """¿La siguiente línea con contenido continúa la cabecera? (``{`` en otra línea, ``> {`` de un genérico…)"""
     for j in range(i + 1, min(len(limpias), i + 4)):
         if limpias[j].strip():
-            return limpias[j].strip().startswith(prefijo)
+            return limpias[j].strip().startswith(_SIGUE)
     return False
 
 
@@ -238,7 +242,7 @@ def _ext_llaves(limpias: Sequence[str], i0: int) -> Tuple[int, bool, int]:
             elif par == 0 and c == ";":
                 return i, False, i
         s = t.strip()
-        if s and par == 0 and not s.endswith(_CONTINUACION) and not _siguiente_empieza(limpias, i, "{"):
+        if s and par == 0 and not s.endswith(_CONTINUACION) and not _siguiente_continua(limpias, i):
             return i, False, i
         i += 1
     return i0, False, i0

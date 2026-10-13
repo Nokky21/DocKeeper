@@ -75,6 +75,16 @@ TS = d('''
     ): Promise<void> => {
       await procesar(evento);
     };
+
+    class Saldos {
+      private async ajustar(
+        id: number,
+      ): Promise<
+        Pick<Saldo, 'a' | 'b'>
+      > {
+        return { a: 1 };
+      }
+    }
 ''')
 
 
@@ -100,6 +110,7 @@ class PruebasBloques(unittest.TestCase):
         self.assertEqual(bloque("a.ts", TS, 19), ("definicion", "anular", 18, 20))
         self.assertEqual(bloque("a.ts", TS, 24), ("definicion", "sumar", 23, 25))
         self.assertEqual(bloque("a.ts", TS, 30), ("definicion", "handler", 27, 31))
+        self.assertEqual(bloque("a.ts", TS, 40), ("definicion", "ajustar", 34, 40))  # genérico multilínea
 
     def test_go_rust_ruby(self):
         go = d('''
