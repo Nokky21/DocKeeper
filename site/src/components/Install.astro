@@ -1,0 +1,71 @@
+---
+import Cmd from "./Cmd.astro";
+
+const clonar = "git clone https://github.com/Nokky21/DocKeeper.git";
+const pestanas = [
+  {
+    id: "claude", etiqueta: "Claude Code",
+    titulo: "Claude Code — terminal, desktop app, VS Code or JetBrains",
+    texto: "Available in every project. Type <code>/dockeeper</code> or just ask.",
+    cmds: [{ cmd: `${clonar} ~/.claude/skills/dockeeper` }],
+  },
+  {
+    id: "agents", etiqueta: "Codex · Gemini CLI · Cursor · Copilot",
+    titulo: "Codex, Gemini CLI, Cursor, GitHub Copilot and VS Code",
+    texto: "All of them read the shared <code>~/.agents/skills</code> folder.",
+    cmds: [{ cmd: `${clonar} ~/.agents/skills/dockeeper` }],
+  },
+  {
+    id: "windows", etiqueta: "Windows",
+    titulo: "Windows (PowerShell)",
+    texto: "Same folders under your user profile. Use <code>python</code> if <code>python3</code> is not on your PATH.",
+    cmds: [{ cmd: `${clonar} "$env:USERPROFILE\\.claude\\skills\\dockeeper"`, prompt: "PS> " }],
+  },
+  {
+    id: "project", etiqueta: "One project",
+    titulo: "Only for one repository",
+    texto: "Commit it with the project so everyone on the team gets it. Use <code>.agents/skills</code> for non-Claude agents.",
+    cmds: [{ cmd: `${clonar} .claude/skills/dockeeper` }],
+  },
+  {
+    id: "cli", etiqueta: "CLI only",
+    titulo: "No agent: by hand, in a git hook or in CI",
+    texto: "Run it from the root of the project you document.",
+    cmds: [{ cmd: `git clone --depth 1 https://github.com/Nokky21/DocKeeper.git ~/dockeeper` }, { cmd: "python3 ~/dockeeper/bin/dockeeper check" }],
+  },
+];
+const peticiones = [
+  "“Document this repository with dockeeper.”",
+  "“Check whether our docs are still true and fix what isn't.”",
+  "“Document only <code>src/payments</code> with dockeeper.”",
+  "“Write the decisions page from the git history. Don't invent reasons.”",
+];
+---
+<section id="install">
+  <div class="wrap">
+    <p class="eyebrow">Install</p>
+    <h2>One folder. Every agent.</h2>
+    <p class="lead">DocKeeper follows the open <a href="https://agentskills.io">Agent Skills</a> standard: the repository is the skill. Clone it into your agent's skills folder and start asking.</p>
+
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="Where you work">
+        {pestanas.map((p, i) => (
+          <button role="tab" aria-selected={i === 0 ? "true" : "false"} aria-controls={`p-${p.id}`} id={`t-${p.id}`}>{p.etiqueta}</button>
+        ))}
+      </div>
+      {pestanas.map((p) => (
+        <div class="panel" role="tabpanel" id={`p-${p.id}`} aria-labelledby={`t-${p.id}`}>
+          <h3>{p.titulo}</h3>
+          <p set:html={p.texto} />
+          {p.cmds.map((c) => <Cmd cmd={c.cmd} prompt={c.prompt} />)}
+        </div>
+      ))}
+    </div>
+    <p class="note">The folder must be called <code>dockeeper</code>: the standard requires it to match the skill name. Requirements: <code>python3</code> and <code>git</code>. Update with <code>git -C ~/.claude/skills/dockeeper pull</code>.</p>
+
+    <h3 style="margin-top:48px">Then just ask</h3>
+    <div class="asks">
+      {peticiones.map((p) => <div class="ask" set:html={p} />)}
+    </div>
+  </div>
+</section>

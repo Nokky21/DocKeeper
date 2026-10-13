@@ -1,0 +1,34 @@
+---
+const repo = "https://github.com/Nokky21/DocKeeper";
+---
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Agent Skill + CLI · open source · MIT</p>
+    <h1>Documentation that doesn't rot.</h1>
+    <p class="lead">DocKeeper anchors every claim in your docs to the code behind it, and tells you the moment that code changes. Your agent writes the docs. DocKeeper keeps them true.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#install">Install the skill</a>
+      <a class="btn ghost" href={repo}>View on GitHub</a>
+    </div>
+    <p class="compat">Works with Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot and any Agent Skills agent. Python 3, zero dependencies.</p>
+
+    <div class="demo" role="img" aria-label="A documentation claim anchored to a function, and dockeeper check reporting that the function changed">
+      <div class="doc">
+        <div class="filebar">docs/payments.md</div>
+        <p class="h"># Payments</p>
+        <p>Every payment is validated before it is charged.</p>
+        <span class="anchor">&#91;&#91;src/payments.py#validate_payment&#93;&#93;</span>
+        <p style="margin-top:14px">A successful charge returns its status.</p>
+        <span class="anchor">&#91;&#91;src/payments.py:12&#93;&#93;</span>
+      </div>
+      <div class="term">
+        <div class="dots"><i></i><i></i><i></i></div>
+<pre><span class="t-cmd">$ dockeeper check</span>
+<span class="t-ch">CHANGED</span>  docs/payments.md:3  → src/payments.py#validate_payment
+<span class="t-mv">MOVED</span>    docs/payments.md:4  → src/payments.py:12
+<span class="t-cmd">$ echo $?</span>
+1</pre>
+      </div>
+    </div>
+  </div>
+</section>

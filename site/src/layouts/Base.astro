@@ -1,0 +1,96 @@
+---
+import "../styles/global.css";
+
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const title = "DocKeeper — documentation that doesn't rot";
+const description =
+  "DocKeeper anchors every claim in your docs to the code behind it and tells you when that code changes. " +
+  "An Agent Skill for Claude Code, Codex, Gemini CLI, Cursor and Copilot, plus a zero-dependency CLI for CI.";
+const repo = "https://github.com/Nokky21/DocKeeper";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content="Anchor every claim to its code. Seal it. Check it on every pull request. Free, local, zero dependencies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={new URL(base, Astro.site).href}>
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`}>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="DocKeeper home">
+        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"></rect><path d="M9 16.5l4.5 4.5L23 11.5" stroke="var(--on-accent)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        DocKeeper
+      </a>
+      <nav aria-label="Main">
+        <a class="opt" href="#how">How it works</a>
+        <a class="opt" href="#install">Install</a>
+        <a class="opt" href="#ci">CI</a>
+        <a class="opt" href="#faq">FAQ</a>
+        <a class="btn ghost small-btn" href={repo}>GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <slot />
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>DocKeeper · MIT license</span>
+      <span><a href={repo}>GitHub</a> · <a href={`${repo}/blob/main/SKILL.md`}>SKILL.md</a> · <a href={`${repo}/blob/main/SPEC.md`}>Spec (ES)</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    // Pestañas de instalación: sin JS se ven todos los paneles.
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const activar = (tab: HTMLButtonElement) => {
+      for (const t of tabs) {
+        const activo = t === tab;
+        t.setAttribute("aria-selected", String(activo));
+        t.tabIndex = activo ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls") ?? "");
+        if (panel) panel.hidden = !activo;
+      }
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => activar(t));
+      t.addEventListener("keydown", (e) => {
+        const paso = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!paso) return;
+        const siguiente = tabs[(i + paso + tabs.length) % tabs.length];
+        activar(siguiente);
+        siguiente.focus();
+      });
+    });
+    if (tabs.length) activar(tabs[0]);
+
+    // Botones de copiar: copian el comando sin el «$ » del prompt.
+    for (const boton of document.querySelectorAll<HTMLButtonElement>(".copy")) {
+      boton.addEventListener("click", async () => {
+        const pre = boton.parentElement?.querySelector("pre")?.cloneNode(true) as HTMLElement | undefined;
+        if (!pre) return;
+        pre.querySelectorAll(".p").forEach((p) => p.remove());
+        try {
+          await navigator.clipboard.writeText(pre.textContent?.trim() ?? "");
+          boton.textContent = "Copied";
+          setTimeout(() => (boton.textContent = "Copy"), 1600);
+        } catch {
+          boton.textContent = "Select and copy";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

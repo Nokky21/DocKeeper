@@ -1,0 +1,16 @@
+---
+import Cmd from "./Cmd.astro";
+
+const repo = "https://github.com/Nokky21/DocKeeper";
+---
+<section class="final">
+  <div class="wrap">
+    <h2>Make every claim in your docs provable.</h2>
+    <p class="lead">Install it once and ask your agent to document the repository.</p>
+    <Cmd cmd="git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper" />
+    <div class="ctas">
+      <a class="btn primary" href={repo}>Star it on GitHub</a>
+      <a class="btn ghost" href={`${repo}#readme`}>Read the docs</a>
+    </div>
+  </div>
+</section>

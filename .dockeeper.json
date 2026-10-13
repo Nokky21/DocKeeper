@@ -1,6 +1,6 @@
 {
-  "_comentario": "Las plantillas llevan anclas de ejemplo a propósito. README, SKILL y la web se publican con el código.",
-  "documentos": ["*.md", "*.markdown", "*.mdx", "docs/*.html"],
-  "sin": ["templates/"],
-  "publicado": ["README.md", "SKILL.md", "docs/"]
+  "_comentario": "Las plantillas llevan anclas de ejemplo a propósito. README, SKILL y la web (fuentes .astro) se publican con el código.",
+  "documentos": ["*.md", "*.markdown", "*.mdx", "site/src/*.astro"],
+  "sin": ["templates/", "site/yarn.lock"],
+  "publicado": ["README.md", "SKILL.md", "site/"]
 }

@@ -1,0 +1,9 @@
+---
+// Un comando listo para copiar (el prompt no se copia).
+interface Props {
+  cmd: string;
+  prompt?: string;
+}
+const { cmd, prompt = "$ " } = Astro.props;
+---
+<div class="cmd"><pre><span class="p">{prompt}</span>{cmd}</pre><button class="copy" type="button">Copy</button></div>

@@ -1,0 +1,29 @@
+---
+const hechos = [
+  ["No account, no server", "It runs where your code is: your machine or your CI."],
+  ["No network", "Your code never leaves the machine. The seal stores hashes, not code."],
+  ["No AI in the engine", "The agent writes. DocKeeper verifies, deterministically."],
+  ["Zero dependencies", "Python standard library only. The folder is the whole install."],
+  ["The full engine, MIT", "Every check is in the open-source version."],
+  ["It checks itself", "Its own README is sealed. CI fails if the docs stop being true, on Linux, macOS and Windows."],
+];
+const limites = [
+  "It compares content, not meaning: a block rewritten with the same behavior is reported as <code>CHANGED</code>.",
+  "Copies that are not contiguous go unnoticed, and copies of one or two lines are allowed on purpose.",
+  "Definitions are found with patterns, not a parser. Rare constructs fall back to the enclosing definition, and <code>scan</code> shows every block so you can confirm it.",
+  "It checks that documentation is still <em>true</em>, not that it is <em>useful</em>.",
+];
+---
+<section id="principles">
+  <div class="wrap">
+    <p class="eyebrow">Principles</p>
+    <h2>Free, local and complete.</h2>
+    <div class="grid6">
+      {hechos.map(([titulo, texto]) => <div class="card fact"><h3>{titulo}</h3><p>{texto}</p></div>)}
+    </div>
+    <h3 style="margin-top:56px">Honest limits</h3>
+    <ul class="limits">
+      {limites.map((l) => <li set:html={l} />)}
+    </ul>
+  </div>
+</section>
