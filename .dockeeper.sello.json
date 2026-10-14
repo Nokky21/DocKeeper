@@ -3115,6 +3115,39 @@
       "huella": "a36fcdbd6ec2c58c"
     },
     {
+      "doc": "docs/install.md",
+      "ancla": ".github/workflows/ci.yml:20",
+      "fichero": ".github/workflows/ci.yml",
+      "linea": 20,
+      "tipo": "ventana",
+      "inicio": 17,
+      "fin": 23,
+      "n": 7,
+      "huella": "2a51cfbb5a466ab9"
+    },
+    {
+      "doc": "docs/install.md",
+      "ancla": ".github/workflows/release.yml:28",
+      "fichero": ".github/workflows/release.yml",
+      "linea": 28,
+      "tipo": "ventana",
+      "inicio": 25,
+      "fin": 31,
+      "n": 7,
+      "huella": "63bd45f8e1bc6b71"
+    },
+    {
+      "doc": "docs/install.md",
+      "ancla": "bin/dockeeper:7",
+      "fichero": "bin/dockeeper",
+      "linea": 7,
+      "tipo": "ventana",
+      "inicio": 4,
+      "fin": 9,
+      "n": 4,
+      "huella": "8a732cde0edb651e"
+    },
+    {
       "doc": "docs/procedures.md",
       "ancla": ".github/workflows/pages.yml:35",
       "fichero": ".github/workflows/pages.yml",

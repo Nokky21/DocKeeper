@@ -4,7 +4,7 @@
 
 The repository root **is** the skill folder. Clone it into a folder named exactly `dockeeper`: the
 Agent Skills standard requires the folder name to match the skill name. Requirements: `python3`
-(3.10+) and `git`.
+(3.10+) and `git`. <!-- dockeeper: .github/workflows/ci.yml:20 -->
 
 **Claude Code** (terminal, desktop app, VS Code or JetBrains):
 
@@ -22,6 +22,7 @@ git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
 `.claude/skills/dockeeper` or `.agents/skills/dockeeper` inside that repository.
 
 **No agent** (by hand, git hook or CI): clone it anywhere and run `python3 <folder>/bin/dockeeper`.
+<!-- dockeeper: bin/dockeeper:7 -->
 
 ## Paths by agent
 
@@ -55,7 +56,7 @@ python "$env:USERPROFILE\.claude\skills\dockeeper\bin\dockeeper" --version
 ## Update and uninstall
 
 - Update: `git -C ~/.claude/skills/dockeeper pull` (use the folder you cloned into).
-- Uninstall: delete that folder. Nothing else is installed anywhere.
+- Uninstall: delete that folder. Nothing else is installed anywhere. <!-- dockeeper: bin/dockeeper:7 -->
 
 ## claude.ai, the Claude API and the Agent SDK
 
@@ -64,6 +65,7 @@ python "$env:USERPROFILE\.claude\skills\dockeeper\bin\dockeeper" --version
   section of your settings (code execution must be enabled). Be aware of the limit: a chat sandbox
   does not have your repository or its git history, and the seal file would not persist. It is fine
   for drafting documentation, not for keeping it verified. Use a coding agent or CI for that.
+  <!-- dockeeper: .github/workflows/release.yml:28 -->
 - **Claude Agent SDK.** It reads the same `~/.claude/skills` and `.claude/skills` folders as Claude
   Code. See the [Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
 - **Claude API.** Custom skills are uploaded through the Skills API and run with the code execution
