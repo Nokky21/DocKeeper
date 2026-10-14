@@ -4116,6 +4116,105 @@
       "huella": "5a0baac673dd338a"
     },
     {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": ".github/workflows/ci.yml:39",
+      "fichero": ".github/workflows/ci.yml",
+      "linea": 39,
+      "tipo": "ventana",
+      "inicio": 36,
+      "fin": 39,
+      "n": 4,
+      "huella": "cecf16cc00e78e16"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "bin/dockeeper:7",
+      "fichero": "bin/dockeeper",
+      "linea": 7,
+      "tipo": "ventana",
+      "inicio": 4,
+      "fin": 9,
+      "n": 4,
+      "huella": "8a732cde0edb651e"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/config.py#NOMBRE_SELLO",
+      "fichero": "dockeeper/config.py",
+      "simbolo": "NOMBRE_SELLO",
+      "tipo": "declaracion",
+      "inicio": 13,
+      "fin": 13,
+      "n": 1,
+      "huella": "3cc90a342dee6e98"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/markdown.py#analizar",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "analizar",
+      "tipo": "definicion",
+      "inicio": 124,
+      "fin": 161,
+      "n": 36,
+      "huella": "1e9bcc33005f12a4"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/motor.py#verificar_codigo",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "verificar_codigo",
+      "tipo": "definicion",
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/paquetes.py#MANIFIESTOS",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "MANIFIESTOS",
+      "tipo": "declaracion",
+      "inicio": 17,
+      "fin": 21,
+      "n": 5,
+      "huella": "d808131b4fe32fc7"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 218,
+      "fin": 262,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/sello.py#Entrada",
+      "fichero": "dockeeper/sello.py",
+      "simbolo": "Entrada",
+      "tipo": "definicion",
+      "inicio": 20,
+      "fin": 47,
+      "n": 25,
+      "huella": "ae8c5a60259dc138"
+    },
+    {
+      "doc": "site/src/components/Faq.astro",
+      "ancla": "dockeeper/textos.py#espanol",
+      "fichero": "dockeeper/textos.py",
+      "simbolo": "espanol",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 20,
+      "n": 6,
+      "huella": "c56769d023137391"
+    },
+    {
       "doc": "site/src/components/Hero.astro",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
@@ -4301,6 +4400,94 @@
       "fin": 70,
       "n": 31,
       "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": ".github/workflows/ci.yml:19",
+      "fichero": ".github/workflows/ci.yml",
+      "linea": 19,
+      "tipo": "ventana",
+      "inicio": 16,
+      "fin": 22,
+      "n": 7,
+      "huella": "fb648209e212d0ed"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "bin/dockeeper:7",
+      "fichero": "bin/dockeeper",
+      "linea": 7,
+      "tipo": "ventana",
+      "inicio": 4,
+      "fin": 9,
+      "n": 4,
+      "huella": "8a732cde0edb651e"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "dockeeper/bloques.py#Analisis",
+      "fichero": "dockeeper/bloques.py",
+      "simbolo": "Analisis",
+      "tipo": "definicion",
+      "inicio": 325,
+      "fin": 417,
+      "n": 85,
+      "huella": "f314ab14afc9455f"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "dockeeper/huellas.py#huella",
+      "fichero": "dockeeper/huellas.py",
+      "simbolo": "huella",
+      "tipo": "definicion",
+      "inicio": 21,
+      "fin": 22,
+      "n": 2,
+      "huella": "6e0b2be31c4aa55d"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "dockeeper/huellas.py#normalizar",
+      "fichero": "dockeeper/huellas.py",
+      "simbolo": "normalizar",
+      "tipo": "definicion",
+      "inicio": 17,
+      "fin": 18,
+      "n": 2,
+      "huella": "517271db6b9d9fee"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "dockeeper/publicado.py#IndiceCopias",
+      "fichero": "dockeeper/publicado.py",
+      "simbolo": "IndiceCopias",
+      "tipo": "definicion",
+      "inicio": 37,
+      "fin": 70,
+      "n": 31,
+      "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "dockeeper/sello.py#Entrada",
+      "fichero": "dockeeper/sello.py",
+      "simbolo": "Entrada",
+      "tipo": "definicion",
+      "inicio": 20,
+      "fin": 47,
+      "n": 25,
+      "huella": "ae8c5a60259dc138"
+    },
+    {
+      "doc": "site/src/components/Principles.astro",
+      "ancla": "tests/test_autocomprobacion.py#PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio",
+      "fichero": "tests/test_autocomprobacion.py",
+      "simbolo": "PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 25,
+      "n": 11,
+      "huella": "109b908881bdf51c"
     },
     {
       "doc": "site/src/components/Writes.astro",

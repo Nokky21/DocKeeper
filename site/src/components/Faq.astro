@@ -1,14 +1,14 @@
 ---
 const preguntas = [
   ["Which agents can use it?", "Any agent that supports the Agent Skills standard and can run shell commands: Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot in VS Code and many more. A chat without a terminal can draft docs but can't keep them verified, because it has no access to your repository."],
-  ["Does my code leave my machine?", "No. DocKeeper makes no network calls. The seal file contains file paths, line numbers and hashes, never code."],
-  ["Do I need an AI model to run the check?", "No. Your agent uses the skill to write documentation; the check itself is plain Python and runs anywhere, including CI."],
-  ["What happens when I rename a function?", "Anchors to it report <code>CHANGED</code> (symbol not found). Update the anchor in the document and run <code>dockeeper scan</code>. Try it in the demo above."],
-  ["Can it review every commit by itself?", "Yes. Ask your agent to “review the docs on every commit” and it installs a git <code>post-commit</code> hook that runs <code>dockeeper review</code>. It never blocks a commit; whoever commits sees which claims changed and what new code has no docs yet."],
-  ["Does it work with monorepos?", "Yes. <code>audit</code> lists every package it finds by its manifest (npm, pnpm, Go, Cargo, Python, Maven, Gradle and more), and the agent documents them one at a time with <code>--solo</code>."],
-  ["Will the diagrams show in Obsidian?", "Yes. They are plain Mermaid blocks inside Markdown, which Obsidian and GitHub both render, and the <code>%% dockeeper:</code> lines are Mermaid comments that neither shows. Pages link to each other with ordinary Markdown links, so Obsidian's graph view picks them up too."],
-  ["What should I commit?", "Your documents, <code>.dockeeper.json</code> if you use one, and <code>.dockeeper.sello.json</code>, the seal that CI checks against."],
-  ["Is the CLI in English?", "Yes, by default, and in Spanish when your environment is (<code>LANG=es_…</code>). Verdict codes and the keys of the <code>--json</code> output are the same in both languages, so agents and scripts are not affected."],
+  ["Does my code leave my machine?", "No. DocKeeper makes no network calls. The seal file contains file paths, line numbers and hashes, never code. <!-- dockeeper: dockeeper/sello.py#Entrada -->"],
+  ["Do I need an AI model to run the check?", "No. Your agent uses the skill to write documentation; the check itself is plain Python and runs anywhere, including CI. <!-- dockeeper: bin/dockeeper:7 .github/workflows/ci.yml:39 -->"],
+  ["What happens when I rename a function?", "Anchors to it report <code>CHANGED</code> (symbol not found). Update the anchor in the document and run <code>dockeeper scan</code>. Try it in the demo above. <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->"],
+  ["Can it review every commit by itself?", "Yes. Ask your agent to “review the docs on every commit” and it installs a git <code>post-commit</code> hook that runs <code>dockeeper review</code>. It never blocks a commit; whoever commits sees which claims changed and what new code has no docs yet. <!-- dockeeper: dockeeper/revision.py#revisar -->"],
+  ["Does it work with monorepos?", "Yes. <code>audit</code> lists every package it finds by its manifest (npm, pnpm, Go, Cargo, Python, Maven, Gradle and more), and the agent documents them one at a time with <code>--solo</code>. <!-- dockeeper: dockeeper/paquetes.py#MANIFIESTOS -->"],
+  ["Will the diagrams show in Obsidian?", "Yes. They are plain Mermaid blocks inside Markdown, which Obsidian and GitHub both render, and the <code>%% dockeeper:</code> lines are Mermaid comments that neither shows. Pages link to each other with ordinary Markdown links, so Obsidian's graph view picks them up too. <!-- dockeeper: dockeeper/markdown.py#analizar -->"],
+  ["What should I commit?", "Your documents, <code>.dockeeper.json</code> if you use one, and <code>.dockeeper.sello.json</code>, the seal that CI checks against. <!-- dockeeper: dockeeper/config.py#NOMBRE_SELLO -->"],
+  ["Is the CLI in English?", "Yes, by default, and in Spanish when your environment is (<code>LANG=es_…</code>). Verdict codes and the keys of the <code>--json</code> output are the same in both languages, so agents and scripts are not affected. <!-- dockeeper: dockeeper/textos.py#espanol -->"],
 ];
 ---
 <section class="sec" id="faq" aria-labelledby="t-faq">

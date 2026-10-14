@@ -5,7 +5,7 @@ const hechos = [
   ["No AI in the check.", "The agent writes. DocKeeper verifies, the same way every time."],
   ["No dependencies.", "Python standard library only. The folder is the whole install."],
   ["The whole engine, MIT.", "Every check is in the open-source version."],
-  ["It checks itself.", "Its README in 23 languages, its reference, its architecture page and this page are sealed. CI fails if they stop being true, on Linux, macOS and Windows."],
+  ["It checks itself.", "Its README in 23 languages, every page of its docs and this page are sealed. CI fails if they stop being true, on Linux, macOS and Windows."],
 ];
 const limites = [
   "It compares content, not meaning: a block rewritten with the same behaviour is reported as <code>CHANGED</code>.",
@@ -22,12 +22,14 @@ const limites = [
       <ul class="list">
         {hechos.map(([titulo, texto]) => <li><b>{titulo}</b> {texto}</li>)}
       </ul>
+      <!-- dockeeper: dockeeper/sello.py#Entrada dockeeper/huellas.py#huella bin/dockeeper:7 tests/test_autocomprobacion.py#PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio .github/workflows/ci.yml:19 -->
     </div>
     <div>
       <h3>What it won't do</h3>
       <ul class="list">
         {limites.map((l) => <li set:html={l} />)}
       </ul>
+      <!-- dockeeper: dockeeper/huellas.py#normalizar dockeeper/publicado.py#IndiceCopias dockeeper/bloques.py#Analisis -->
     </div>
   </div>
 </section>
