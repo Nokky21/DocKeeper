@@ -6,14 +6,24 @@
 
 סוכן הקוד שלך כותב את התיעוד, כולל דיאגרמות. DocKeeper קושר כל טענה וכל דיאגרמה לקוד שמאחוריהן ומודיע לך ברגע שהקוד הזה משתנה.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [אתר](https://nokky21.github.io/DocKeeper/) · [הדגמה חיה](https://nokky21.github.io/DocKeeper/#demo) · [התקנה](#install) · [עיון](../reference.md)
 
+<details>
+<summary>🌐 עברית</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · **עברית** · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="דף תיעוד שהסוכן כתב: כל טענה מעוגנת לקוד שלה, ו-dockeeper check מסמן את הטענה שהקוד שלה השתנה" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ README שנכתב היום שגוי כעבור כמה חודשים, ואף אח�
 
 בקשו פעם אחת, והסוכן יתעד את כל המאגר, דף אחר דף, לפי התבניות של ה-skill:
 
-- **README**: מה זה, איך זה עובד ואיך מריצים.
-- **ארכיטקטורה**: רכיבים, זרימות, נתונים וגבולות, עם דיאגרמות.
-- **החלטות**: מה הוחלט ולמה, רק מתוך היסטוריית ה-git.
-- **נהלים**: ספרי הפעלה עם הפקודות המדויקות.
-- **API**: כל פעולה עם הקלטים, השגיאות וההשפעות שלה.
-- **קליטה**: מסלול קריאה ליום הראשון.
+<table dir="rtl">
+<tr><td><b>README</b></td><td>מה זה, איך זה עובד ואיך מריצים.</td></tr>
+<tr><td><b>ארכיטקטורה</b></td><td>רכיבים, זרימות, נתונים וגבולות, עם דיאגרמות.</td></tr>
+<tr><td><b>החלטות</b></td><td>מה הוחלט ולמה, רק מתוך היסטוריית ה-git.</td></tr>
+<tr><td><b>נהלים</b></td><td>ספרי הפעלה עם הפקודות המדויקות.</td></tr>
+<tr><td><b>API</b></td><td>כל פעולה עם הקלטים, השגיאות וההשפעות שלה.</td></tr>
+<tr><td><b>קליטה</b></td><td>מסלול קריאה ליום הראשון.</td></tr>
+</table>
 
 במונוריפו הוא כותב גם README לכל חבילה. כל טענה מצביעה על הקוד שלה. ראו את [הארכיטקטורה של DocKeeper עצמו](../architecture.md), שנכתבה עם ה-skill.
 

@@ -6,14 +6,24 @@
 
 Váš programovací agent píše dokumentaci, včetně diagramů. DocKeeper spojí každé tvrzení a každý diagram s kódem, který za nimi stojí, a dá vám vědět, jakmile se ten kód změní.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Web](https://nokky21.github.io/DocKeeper/) · [Živé demo](https://nokky21.github.io/DocKeeper/#demo) · [Instalace](#install) · [Reference](../reference.md)
 
+<details>
+<summary>🌐 Čeština</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · **Čeština** · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Stránka dokumentace napsaná agentem, každé tvrzení ukotvené ke svému kódu a dockeeper check, který označí tvrzení, jehož kód se změnil" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ README napsané dnes je za pár měsíců špatně a nikdo neví, které stránk
 
 Stačí požádat jednou a váš agent zdokumentuje celý repozitář, stránku po stránce, podle šablon ze skillu:
 
-- **README**: co to je, jak to funguje a jak to spustit.
-- **Architektura**: komponenty, toky, data a hranice, s diagramy.
-- **Rozhodnutí**: co se rozhodlo a proč, jen z historie gitu.
-- **Postupy**: runbooky s přesnými příkazy.
-- **API**: každá operace se vstupy, chybami a účinky.
-- **Zaškolení**: trasa čtení na první den.
+<table>
+<tr><td><b>README</b></td><td>Co to je, jak to funguje a jak to spustit.</td></tr>
+<tr><td><b>Architektura</b></td><td>Komponenty, toky, data a hranice, s diagramy.</td></tr>
+<tr><td><b>Rozhodnutí</b></td><td>Co se rozhodlo a proč, jen z historie gitu.</td></tr>
+<tr><td><b>Postupy</b></td><td>Runbooky s přesnými příkazy.</td></tr>
+<tr><td><b>API</b></td><td>Každá operace se vstupy, chybami a účinky.</td></tr>
+<tr><td><b>Zaškolení</b></td><td>Trasa čtení na první den.</td></tr>
+</table>
 
 V monorepu navíc napíše README pro každý balíček. Každé tvrzení ukazuje na svůj kód. Podívejte se na [architekturu samotného DocKeeperu](../architecture.md), napsanou pomocí skillu.
 

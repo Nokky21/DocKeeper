@@ -6,14 +6,24 @@
 
 Dein Coding-Agent schreibt die Doku, Diagramme inklusive. DocKeeper verknüpft jede Aussage und jedes Diagramm mit dem Code dahinter und meldet sich, sobald sich dieser Code ändert.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Website](https://nokky21.github.io/DocKeeper/) · [Live-Demo](https://nokky21.github.io/DocKeeper/#demo) · [Installation](#install) · [Referenz](../reference.md)
 
+<details>
+<summary>🌐 Deutsch</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · **Deutsch** · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Eine vom Agenten geschriebene Dokumentationsseite, jede Aussage an ihren Code verankert, und dockeeper check meldet die Aussage, deren Code sich geändert hat" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ Ein README, das heute geschrieben wird, ist ein paar Monate später falsch, und 
 
 Einmal bitten, und dein Agent dokumentiert das ganze Repository Seite für Seite, nach den Vorlagen des Skills:
 
-- **README**: was es ist, wie es funktioniert, wie man es startet.
-- **Architektur**: Komponenten, Abläufe, Daten und Grenzen, mit Diagrammen.
-- **Entscheidungen**: was entschieden wurde und warum, nur aus der Git-Historie.
-- **Betriebsanleitungen**: Runbooks mit den genauen Befehlen.
-- **API**: jede Operation mit Eingaben, Fehlern und Wirkungen.
-- **Einarbeitung**: ein Lesepfad für den ersten Tag.
+<table>
+<tr><td><b>README</b></td><td>Was es ist, wie es funktioniert, wie man es startet.</td></tr>
+<tr><td><b>Architektur</b></td><td>Komponenten, Abläufe, Daten und Grenzen, mit Diagrammen.</td></tr>
+<tr><td><b>Entscheidungen</b></td><td>Was entschieden wurde und warum, nur aus der Git-Historie.</td></tr>
+<tr><td><b>Betriebsanleitungen</b></td><td>Runbooks mit den genauen Befehlen.</td></tr>
+<tr><td><b>API</b></td><td>Jede Operation mit Eingaben, Fehlern und Wirkungen.</td></tr>
+<tr><td><b>Einarbeitung</b></td><td>Ein Lesepfad für den ersten Tag.</td></tr>
+</table>
 
 In einem Monorepo schreibt er zusätzlich ein README pro Paket. Jede Aussage zeigt auf ihren Code. Siehe [die Architektur von DocKeeper selbst](../architecture.md), geschrieben mit dem Skill.
 

@@ -6,14 +6,24 @@
 
 Agen coding Anda yang menulis dokumentasinya, termasuk diagram. DocKeeper mengikat setiap klaim dan setiap diagram ke kode di baliknya dan memberi tahu Anda begitu kode itu berubah.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Situs web](https://nokky21.github.io/DocKeeper/) · [Demo langsung](https://nokky21.github.io/DocKeeper/#demo) · [Instal](#install) · [Referensi](../reference.md)
 
+<details>
+<summary>🌐 Bahasa Indonesia</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · **Bahasa Indonesia** · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Halaman dokumentasi yang ditulis agen: setiap klaim ditambatkan ke kodenya, dan dockeeper check menandai klaim yang kodenya berubah" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ README yang ditulis hari ini sudah salah beberapa bulan kemudian, dan tidak ada 
 
 Minta sekali, dan agen Anda mendokumentasikan seluruh repositori halaman demi halaman berdasarkan templat di skill:
 
-- **README**: apa itu, cara kerjanya, cara menjalankannya.
-- **Arsitektur**: komponen, alur, data, dan batasan, lengkap dengan diagram.
-- **Keputusan**: apa yang diputuskan dan mengapa, hanya dari riwayat git.
-- **Prosedur**: runbook dengan perintah yang tepat.
-- **API**: setiap operasi beserta input, galat, dan efeknya.
-- **Orientasi**: jalur bacaan untuk hari pertama.
+<table>
+<tr><td><b>README</b></td><td>Apa itu, cara kerjanya, cara menjalankannya.</td></tr>
+<tr><td><b>Arsitektur</b></td><td>Komponen, alur, data, dan batasan, lengkap dengan diagram.</td></tr>
+<tr><td><b>Keputusan</b></td><td>Apa yang diputuskan dan mengapa, hanya dari riwayat git.</td></tr>
+<tr><td><b>Prosedur</b></td><td>Runbook dengan perintah yang tepat.</td></tr>
+<tr><td><b>API</b></td><td>Setiap operasi beserta input, galat, dan efeknya.</td></tr>
+<tr><td><b>Orientasi</b></td><td>Jalur bacaan untuk hari pertama.</td></tr>
+</table>
 
 Di monorepo, ia juga menulis README untuk setiap paket. Setiap klaim menunjuk ke kodenya. Lihat [arsitektur DocKeeper sendiri](../architecture.md), yang ditulis dengan skill ini.
 

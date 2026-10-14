@@ -7,14 +7,24 @@
 Your coding agent writes the docs, diagrams included. DocKeeper ties every claim and every diagram to
 the code behind it and tells you the moment that code changes.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](LICENSE)
 
 [Website](https://nokky21.github.io/DocKeeper/) · [Live demo](https://nokky21.github.io/DocKeeper/#demo) · [Install](#install) · [Reference](docs/reference.md)
 
+<details>
+<summary>🌐 English</summary>
+
 <sub>**English** · [Español](docs/i18n/README.es.md) · [Português](docs/i18n/README.pt-BR.md) · [Français](docs/i18n/README.fr.md) · [Deutsch](docs/i18n/README.de.md) · [Italiano](docs/i18n/README.it.md) · [Nederlands](docs/i18n/README.nl.md) · [Polski](docs/i18n/README.pl.md) · [Čeština](docs/i18n/README.cs.md) · [Svenska](docs/i18n/README.sv.md) · [Русский](docs/i18n/README.ru.md) · [Українська](docs/i18n/README.uk.md) · [Türkçe](docs/i18n/README.tr.md) · [العربية](docs/i18n/README.ar.md) · [עברית](docs/i18n/README.he.md) · [हिन्दी](docs/i18n/README.hi.md) · [简体中文](docs/i18n/README.zh-CN.md) · [繁體中文](docs/i18n/README.zh-TW.md) · [日本語](docs/i18n/README.ja.md) · [한국어](docs/i18n/README.ko.md) · [Tiếng Việt](docs/i18n/README.vi.md) · [Bahasa Indonesia](docs/i18n/README.id.md) · [ไทย](docs/i18n/README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="site/public/assets/readme-hero-dark.png">
+  <img src="site/public/assets/readme-hero-light.png" alt="A documentation page written by the agent, every claim anchored to its code, and dockeeper check flagging the claim whose code changed" width="100%">
+</picture>
 
 </div>
 
@@ -36,12 +46,14 @@ DocKeeper fixes the "nobody knows" part, for free and on your machine:
 Ask once and your agent documents the whole repository, page by page, from the templates in the
 skill:
 
-- **README**: what it is, how it works, how to run it.
-- **Architecture**: components, flows, data and boundaries, with diagrams.
-- **Decisions**: what was decided and why, taken only from the git history.
-- **Procedures**: runbooks with exact commands.
-- **API**: every operation with its inputs, errors and effects.
-- **Onboarding**: a reading path for the first day.
+<table>
+<tr><td><b>README</b></td><td>What it is, how it works, how to run it.</td></tr>
+<tr><td><b>Architecture</b></td><td>Components, flows, data and boundaries, with diagrams.</td></tr>
+<tr><td><b>Decisions</b></td><td>What was decided and why, taken only from the git history.</td></tr>
+<tr><td><b>Procedures</b></td><td>Runbooks with exact commands.</td></tr>
+<tr><td><b>API</b></td><td>Every operation with its inputs, errors and effects.</td></tr>
+<tr><td><b>Onboarding</b></td><td>A reading path for the first day.</td></tr>
+</table>
 
 In a monorepo it also writes a README for every package. Every claim points at its code. See
 [DocKeeper's own architecture](docs/architecture.md), written by the skill.

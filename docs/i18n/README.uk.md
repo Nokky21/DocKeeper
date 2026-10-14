@@ -6,14 +6,24 @@
 
 Ваш агент для програмування пише документацію, разом із діаграмами. DocKeeper прив’язує кожне твердження й кожну діаграму до коду, що за ними стоїть, і повідомляє вас, щойно цей код змінюється.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Сайт](https://nokky21.github.io/DocKeeper/) · [Живе демо](https://nokky21.github.io/DocKeeper/#demo) · [Встановлення](#install) · [Довідник](../reference.md)
 
+<details>
+<summary>🌐 Українська</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · **Українська** · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Сторінка документації, написана агентом: кожне твердження прив’язане до свого коду, а dockeeper check позначає твердження, чий код змінився" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ README, написаний сьогодні, за кілька місяців у
 
 Попросіть один раз — і агент задокументує весь репозиторій, сторінку за сторінкою, за шаблонами зі скіла:
 
-- **README**: що це, як працює і як запустити.
-- **Архітектура**: компоненти, потоки, дані й межі, з діаграмами.
-- **Рішення**: що вирішили і чому — лише з історії git.
-- **Процедури**: ранбуки з точними командами.
-- **API**: кожна операція з вхідними даними, помилками й ефектами.
-- **Онбординг**: маршрут читання на перший день.
+<table>
+<tr><td><b>README</b></td><td>Що це, як працює і як запустити.</td></tr>
+<tr><td><b>Архітектура</b></td><td>Компоненти, потоки, дані й межі, з діаграмами.</td></tr>
+<tr><td><b>Рішення</b></td><td>Що вирішили і чому — лише з історії git.</td></tr>
+<tr><td><b>Процедури</b></td><td>Ранбуки з точними командами.</td></tr>
+<tr><td><b>API</b></td><td>Кожна операція з вхідними даними, помилками й ефектами.</td></tr>
+<tr><td><b>Онбординг</b></td><td>Маршрут читання на перший день.</td></tr>
+</table>
 
 У монорепозиторії він також пише README для кожного пакета. Кожне твердження вказує на свій код. Погляньте на [архітектуру самого DocKeeper](../architecture.md), написану за допомогою скіла.
 

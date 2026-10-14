@@ -6,14 +6,24 @@
 
 Kodlama ajanınız dokümantasyonu diyagramlarıyla birlikte yazar. DocKeeper her iddiayı ve her diyagramı arkasındaki koda bağlar ve o kod değiştiği anda size haber verir.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Web sitesi](https://nokky21.github.io/DocKeeper/) · [Canlı demo](https://nokky21.github.io/DocKeeper/#demo) · [Kurulum](#install) · [Başvuru](../reference.md)
 
+<details>
+<summary>🌐 Türkçe</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · **Türkçe** · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Ajanın yazdığı bir dokümantasyon sayfası: her iddia kendi koduna sabitlenmiş ve dockeeper check, kodu değişen iddiayı işaretliyor" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ Bugün yazılan bir README birkaç ay sonra yanlıştır ve hangi sayfaların ya
 
 Bir kez isteyin; ajanınız skill’deki şablonlardan yola çıkarak tüm depoyu sayfa sayfa belgelesin:
 
-- **README**: ne olduğu, nasıl çalıştığı, nasıl başlatılacağı.
-- **Mimari**: bileşenler, akışlar, veriler ve sınırlar, diyagramlarla.
-- **Kararlar**: neyin neden kararlaştırıldığı, yalnızca git geçmişinden.
-- **Prosedürler**: tam komutlarıyla runbook’lar.
-- **API**: her işlem; girdileri, hataları ve etkileriyle.
-- **Oryantasyon**: ilk gün için bir okuma rotası.
+<table>
+<tr><td><b>README</b></td><td>Ne olduğu, nasıl çalıştığı, nasıl başlatılacağı.</td></tr>
+<tr><td><b>Mimari</b></td><td>Bileşenler, akışlar, veriler ve sınırlar, diyagramlarla.</td></tr>
+<tr><td><b>Kararlar</b></td><td>Neyin neden kararlaştırıldığı, yalnızca git geçmişinden.</td></tr>
+<tr><td><b>Prosedürler</b></td><td>Tam komutlarıyla runbook’lar.</td></tr>
+<tr><td><b>API</b></td><td>Her işlem; girdileri, hataları ve etkileriyle.</td></tr>
+<tr><td><b>Oryantasyon</b></td><td>İlk gün için bir okuma rotası.</td></tr>
+</table>
 
 Bir monorepoda her paket için ayrıca bir README yazar. Her iddia kendi koduna işaret eder. Skill ile yazılmış [DocKeeper’ın kendi mimarisine](../architecture.md) göz atın.
 

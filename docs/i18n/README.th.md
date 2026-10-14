@@ -6,14 +6,24 @@
 
 เอเจนต์เขียนโค้ดของคุณเป็นคนเขียนเอกสาร รวมถึงไดอะแกรมด้วย DocKeeper ผูกทุกข้อความและทุกไดอะแกรมไว้กับโค้ดที่อยู่เบื้องหลัง และบอกคุณทันทีที่โค้ดนั้นเปลี่ยน
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [เว็บไซต์](https://nokky21.github.io/DocKeeper/) · [เดโมสด](https://nokky21.github.io/DocKeeper/#demo) · [ติดตั้ง](#install) · [คู่มืออ้างอิง](../reference.md)
 
+<details>
+<summary>🌐 ไทย</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · **ไทย**</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="หน้าเอกสารที่เอเจนต์เขียน: ทุกข้อความถูกยึดไว้กับโค้ดของมัน และ dockeeper check แจ้งข้อความที่โค้ดเปลี่ยนไป" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ README ที่เขียนวันนี้ อีกไม่กี่เ
 
 ขอแค่ครั้งเดียว เอเจนต์จะเขียนเอกสารให้ทั้งรีโพทีละหน้า ตามเทมเพลตในสกิล:
 
-- **README**: คืออะไร ทำงานอย่างไร และรันอย่างไร
-- **สถาปัตยกรรม**: คอมโพเนนต์ โฟลว์ ข้อมูล และขอบเขต พร้อมไดอะแกรม
-- **การตัดสินใจ**: ตัดสินใจอะไรและทำไม โดยอิงจากประวัติ git เท่านั้น
-- **ขั้นตอนการทำงาน**: รันบุ๊กพร้อมคำสั่งที่แน่นอน
-- **API**: ทุกการทำงาน พร้อมอินพุต ข้อผิดพลาด และผลกระทบ
-- **การเริ่มงาน**: ลำดับการอ่านสำหรับวันแรก
+<table>
+<tr><td><b>README</b></td><td>คืออะไร ทำงานอย่างไร และรันอย่างไร</td></tr>
+<tr><td><b>สถาปัตยกรรม</b></td><td>คอมโพเนนต์ โฟลว์ ข้อมูล และขอบเขต พร้อมไดอะแกรม</td></tr>
+<tr><td><b>การตัดสินใจ</b></td><td>ตัดสินใจอะไรและทำไม โดยอิงจากประวัติ git เท่านั้น</td></tr>
+<tr><td><b>ขั้นตอนการทำงาน</b></td><td>รันบุ๊กพร้อมคำสั่งที่แน่นอน</td></tr>
+<tr><td><b>API</b></td><td>ทุกการทำงาน พร้อมอินพุต ข้อผิดพลาด และผลกระทบ</td></tr>
+<tr><td><b>การเริ่มงาน</b></td><td>ลำดับการอ่านสำหรับวันแรก</td></tr>
+</table>
 
 ใน monorepo จะเขียน README ให้ทุกแพ็กเกจด้วย ทุกข้อความชี้ไปยังโค้ดของมัน ดู[สถาปัตยกรรมของ DocKeeper เอง](../architecture.md) ที่เขียนด้วยสกิลนี้
 

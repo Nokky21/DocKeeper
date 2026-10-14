@@ -6,14 +6,24 @@
 
 Agent lập trình của bạn viết tài liệu, kể cả sơ đồ. DocKeeper gắn mỗi khẳng định và mỗi sơ đồ với đoạn mã đứng sau chúng và báo cho bạn ngay khi đoạn mã đó thay đổi.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Trang web](https://nokky21.github.io/DocKeeper/) · [Demo trực tiếp](https://nokky21.github.io/DocKeeper/#demo) · [Cài đặt](#install) · [Tham khảo](../reference.md)
 
+<details>
+<summary>🌐 Tiếng Việt</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · **Tiếng Việt** · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Một trang tài liệu do agent viết: mỗi khẳng định được neo vào mã của nó, và dockeeper check đánh dấu khẳng định có mã đã thay đổi" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ Một README viết hôm nay sẽ sai sau vài tháng, và không ai biết tran
 
 Chỉ cần nhờ một lần, agent sẽ viết tài liệu cho cả kho mã, từng trang một, dựa trên các mẫu trong skill:
 
-- **README**: nó là gì, hoạt động ra sao, chạy thế nào.
-- **Kiến trúc**: thành phần, luồng, dữ liệu và ranh giới, kèm sơ đồ.
-- **Quyết định**: đã quyết định gì và vì sao, chỉ lấy từ lịch sử git.
-- **Quy trình**: runbook với lệnh chính xác.
-- **API**: mọi thao tác cùng đầu vào, lỗi và tác động.
-- **Hướng dẫn nhập môn**: lộ trình đọc cho ngày đầu tiên.
+<table>
+<tr><td><b>README</b></td><td>Nó là gì, hoạt động ra sao, chạy thế nào.</td></tr>
+<tr><td><b>Kiến trúc</b></td><td>Thành phần, luồng, dữ liệu và ranh giới, kèm sơ đồ.</td></tr>
+<tr><td><b>Quyết định</b></td><td>Đã quyết định gì và vì sao, chỉ lấy từ lịch sử git.</td></tr>
+<tr><td><b>Quy trình</b></td><td>Runbook với lệnh chính xác.</td></tr>
+<tr><td><b>API</b></td><td>Mọi thao tác cùng đầu vào, lỗi và tác động.</td></tr>
+<tr><td><b>Hướng dẫn nhập môn</b></td><td>Lộ trình đọc cho ngày đầu tiên.</td></tr>
+</table>
 
 Với monorepo, nó còn viết một README cho mỗi gói. Mỗi khẳng định đều trỏ tới mã của nó. Xem [kiến trúc của chính DocKeeper](../architecture.md), được viết bằng skill.
 

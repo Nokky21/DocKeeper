@@ -6,14 +6,24 @@
 
 문서는 다이어그램까지 코딩 에이전트가 씁니다. DocKeeper는 모든 주장과 모든 다이어그램을 그 뒤에 있는 코드에 묶어 두고, 그 코드가 바뀌는 순간 알려 줍니다.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [웹사이트](https://nokky21.github.io/DocKeeper/) · [라이브 데모](https://nokky21.github.io/DocKeeper/#demo) · [설치](#install) · [레퍼런스](../reference.md)
 
+<details>
+<summary>🌐 한국어</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · **한국어** · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="에이전트가 쓴 문서 페이지: 모든 주장이 코드에 앵커로 연결되어 있고, dockeeper check가 코드가 바뀐 주장을 알려 준다" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@
 
 한 번만 부탁하면 에이전트가 스킬의 템플릿을 바탕으로 저장소 전체를 한 페이지씩 문서화합니다.
 
-- **README**: 무엇인지, 어떻게 동작하는지, 어떻게 실행하는지.
-- **아키텍처**: 컴포넌트, 흐름, 데이터, 경계를 다이어그램과 함께.
-- **의사 결정**: 무엇을 왜 결정했는지, git 기록에서만 가져와서.
-- **절차**: 정확한 명령어가 담긴 런북.
-- **API**: 모든 작업의 입력, 오류, 효과.
-- **온보딩**: 첫날을 위한 읽기 순서.
+<table>
+<tr><td><b>README</b></td><td>무엇인지, 어떻게 동작하는지, 어떻게 실행하는지.</td></tr>
+<tr><td><b>아키텍처</b></td><td>컴포넌트, 흐름, 데이터, 경계를 다이어그램과 함께.</td></tr>
+<tr><td><b>의사 결정</b></td><td>무엇을 왜 결정했는지, git 기록에서만 가져와서.</td></tr>
+<tr><td><b>절차</b></td><td>정확한 명령어가 담긴 런북.</td></tr>
+<tr><td><b>API</b></td><td>모든 작업의 입력, 오류, 효과.</td></tr>
+<tr><td><b>온보딩</b></td><td>첫날을 위한 읽기 순서.</td></tr>
+</table>
 
 모노레포에서는 패키지마다 README도 씁니다. 모든 주장은 자기 코드를 가리킵니다. 스킬로 쓴 [DocKeeper 자체의 아키텍처](../architecture.md)를 확인해 보세요.
 

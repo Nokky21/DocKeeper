@@ -6,14 +6,24 @@
 
 आपका कोडिंग एजेंट डायग्राम समेत दस्तावेज़ लिखता है। DocKeeper हर दावे और हर डायग्राम को उनके पीछे के कोड से जोड़ता है और जैसे ही वह कोड बदलता है, आपको बता देता है।
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [वेबसाइट](https://nokky21.github.io/DocKeeper/) · [लाइव डेमो](https://nokky21.github.io/DocKeeper/#demo) · [इंस्टॉल](#install) · [संदर्भ](../reference.md)
 
+<details>
+<summary>🌐 हिन्दी</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · **हिन्दी** · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="एजेंट का लिखा एक दस्तावेज़ पेज: हर दावा अपने कोड से जुड़ा है, और dockeeper check उस दावे को चिह्नित करता है जिसका कोड बदल गया" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@
 
 एक बार कहिए, और आपका एजेंट स्किल के टेम्पलेट से पूरी रिपॉज़िटरी का दस्तावेज़ पेज-दर-पेज लिख देगा:
 
-- **README**: यह क्या है, कैसे काम करता है, कैसे चलाएँ।
-- **आर्किटेक्चर**: कंपोनेंट, फ़्लो, डेटा और सीमाएँ, डायग्राम के साथ।
-- **फ़ैसले**: क्या तय हुआ और क्यों, सिर्फ़ git इतिहास से।
-- **प्रक्रियाएँ**: सटीक कमांड के साथ रनबुक।
-- **API**: हर ऑपरेशन, उसके इनपुट, त्रुटियों और असर के साथ।
-- **ऑनबोर्डिंग**: पहले दिन के लिए पढ़ने का रास्ता।
+<table>
+<tr><td><b>README</b></td><td>यह क्या है, कैसे काम करता है, कैसे चलाएँ।</td></tr>
+<tr><td><b>आर्किटेक्चर</b></td><td>कंपोनेंट, फ़्लो, डेटा और सीमाएँ, डायग्राम के साथ।</td></tr>
+<tr><td><b>फ़ैसले</b></td><td>क्या तय हुआ और क्यों, सिर्फ़ git इतिहास से।</td></tr>
+<tr><td><b>प्रक्रियाएँ</b></td><td>सटीक कमांड के साथ रनबुक।</td></tr>
+<tr><td><b>API</b></td><td>हर ऑपरेशन, उसके इनपुट, त्रुटियों और असर के साथ।</td></tr>
+<tr><td><b>ऑनबोर्डिंग</b></td><td>पहले दिन के लिए पढ़ने का रास्ता।</td></tr>
+</table>
 
 मोनोरेपो में यह हर पैकेज के लिए अलग README भी लिखता है। हर दावा अपने कोड की ओर इशारा करता है। स्किल से लिखा गया [DocKeeper का अपना आर्किटेक्चर](../architecture.md) देखें।
 

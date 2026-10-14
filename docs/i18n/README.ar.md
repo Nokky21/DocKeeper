@@ -6,14 +6,24 @@
 
 يكتب وكيل البرمجة لديك التوثيق، بما فيه المخططات. يربط DocKeeper كل ادعاء وكل مخطط بالشيفرة التي تقف وراءهما، ويخبرك فور تغيّر تلك الشيفرة.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [الموقع](https://nokky21.github.io/DocKeeper/) · [عرض حي](https://nokky21.github.io/DocKeeper/#demo) · [التثبيت](#install) · [المرجع](../reference.md)
 
+<details>
+<summary>🌐 العربية</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · **العربية** · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="صفحة توثيق كتبها الوكيل: كل ادعاء مربوط بشيفرته، و dockeeper check يشير إلى الادعاء الذي تغيّرت شيفرته" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@
 
 اطلب مرة واحدة، فيوثّق وكيلك المستودع كاملًا صفحةً بعد صفحة انطلاقًا من قوالب المهارة:
 
-- **README**: ما هو، وكيف يعمل، وكيف تشغّله.
-- **البنية**: المكوّنات والتدفقات والبيانات والحدود، مع مخططات.
-- **القرارات**: ما الذي تقرّر ولماذا، من سجل git وحده.
-- **الإجراءات**: أدلة تشغيل بالأوامر الدقيقة.
-- **الواجهة البرمجية**: كل عملية بمدخلاتها وأخطائها وآثارها.
-- **الإعداد للقادمين الجدد**: مسار قراءة لليوم الأول.
+<table dir="rtl">
+<tr><td><b>README</b></td><td>ما هو، وكيف يعمل، وكيف تشغّله.</td></tr>
+<tr><td><b>البنية</b></td><td>المكوّنات والتدفقات والبيانات والحدود، مع مخططات.</td></tr>
+<tr><td><b>القرارات</b></td><td>ما الذي تقرّر ولماذا، من سجل git وحده.</td></tr>
+<tr><td><b>الإجراءات</b></td><td>أدلة تشغيل بالأوامر الدقيقة.</td></tr>
+<tr><td><b>الواجهة البرمجية</b></td><td>كل عملية بمدخلاتها وأخطائها وآثارها.</td></tr>
+<tr><td><b>الإعداد للقادمين الجدد</b></td><td>مسار قراءة لليوم الأول.</td></tr>
+</table>
 
 وفي المستودع الأحادي يكتب أيضًا ملف README لكل حزمة. كل ادعاء يشير إلى شيفرته. اطّلع على [بنية DocKeeper نفسه](../architecture.md)، المكتوبة بالمهارة.
 

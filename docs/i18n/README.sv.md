@@ -6,14 +6,24 @@
 
 Din kodagent skriver dokumentationen, diagram inräknade. DocKeeper knyter varje påstående och varje diagram till koden bakom dem och säger till så fort den koden ändras.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Webbplats](https://nokky21.github.io/DocKeeper/) · [Live-demo](https://nokky21.github.io/DocKeeper/#demo) · [Installera](#install) · [Referens](../reference.md)
 
+<details>
+<summary>🌐 Svenska</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · **Svenska** · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="En dokumentationssida skriven av agenten, varje påstående förankrat i sin kod, och dockeeper check som flaggar påståendet vars kod har ändrats" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ En README som skrivs i dag är fel några månader senare, och ingen vet vilka s
 
 Be en gång så dokumenterar din agent hela repot, sida för sida, utifrån skillens mallar:
 
-- **README**: vad det är, hur det fungerar och hur man kör det.
-- **Arkitektur**: komponenter, flöden, data och gränser, med diagram.
-- **Beslut**: vad som beslutades och varför, bara från git-historiken.
-- **Rutiner**: runbooks med exakta kommandon.
-- **API**: varje operation med indata, fel och effekter.
-- **Introduktion**: en läsväg för första dagen.
+<table>
+<tr><td><b>README</b></td><td>Vad det är, hur det fungerar och hur man kör det.</td></tr>
+<tr><td><b>Arkitektur</b></td><td>Komponenter, flöden, data och gränser, med diagram.</td></tr>
+<tr><td><b>Beslut</b></td><td>Vad som beslutades och varför, bara från git-historiken.</td></tr>
+<tr><td><b>Rutiner</b></td><td>Runbooks med exakta kommandon.</td></tr>
+<tr><td><b>API</b></td><td>Varje operation med indata, fel och effekter.</td></tr>
+<tr><td><b>Introduktion</b></td><td>En läsväg för första dagen.</td></tr>
+</table>
 
 I ett monorepo skriver den också en README per paket. Varje påstående pekar på sin kod. Se [DocKeepers egen arkitektur](../architecture.md), skriven med skillen.
 

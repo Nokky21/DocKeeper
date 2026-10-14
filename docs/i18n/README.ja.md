@@ -6,14 +6,24 @@
 
 ドキュメントは図も含めてコーディングエージェントが書きます。DocKeeper はすべての記述とすべての図をその裏付けとなるコードに結び付け、そのコードが変わった瞬間に知らせます。
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [ウェブサイト](https://nokky21.github.io/DocKeeper/) · [ライブデモ](https://nokky21.github.io/DocKeeper/#demo) · [インストール](#install) · [リファレンス](../reference.md)
 
+<details>
+<summary>🌐 日本語</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · **日本語** · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="エージェントが書いたドキュメントのページ: すべての記述がコードにアンカーされ、dockeeper check がコードの変わった記述を知らせている" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@
 
 一度頼めば、エージェントがスキルのテンプレートをもとに、リポジトリ全体のドキュメントを 1 ページずつ書き上げます。
 
-- **README**: 何なのか、どう動くのか、どう起動するのか。
-- **アーキテクチャ**: コンポーネント、フロー、データ、境界を図付きで。
-- **意思決定**: 何をなぜ決めたのか。git の履歴だけをもとに。
-- **手順書**: 正確なコマンド付きのランブック。
-- **API**: 各操作の入力、エラー、副作用。
-- **オンボーディング**: 初日に読む順番。
+<table>
+<tr><td><b>README</b></td><td>何なのか、どう動くのか、どう起動するのか。</td></tr>
+<tr><td><b>アーキテクチャ</b></td><td>コンポーネント、フロー、データ、境界を図付きで。</td></tr>
+<tr><td><b>意思決定</b></td><td>何をなぜ決めたのか。git の履歴だけをもとに。</td></tr>
+<tr><td><b>手順書</b></td><td>正確なコマンド付きのランブック。</td></tr>
+<tr><td><b>API</b></td><td>各操作の入力、エラー、副作用。</td></tr>
+<tr><td><b>オンボーディング</b></td><td>初日に読む順番。</td></tr>
+</table>
 
 モノレポでは、パッケージごとの README も書きます。すべての記述が自分のコードを指しています。スキルで書かれた [DocKeeper 自身のアーキテクチャ](../architecture.md) をご覧ください。
 

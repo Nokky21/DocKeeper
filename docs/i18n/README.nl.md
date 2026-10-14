@@ -6,14 +6,24 @@
 
 Je codeeragent schrijft de documentatie, diagrammen inbegrepen. DocKeeper koppelt elke bewering en elk diagram aan de code erachter en waarschuwt je zodra die code verandert.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Website](https://nokky21.github.io/DocKeeper/) · [Live demo](https://nokky21.github.io/DocKeeper/#demo) · [Installeren](#install) · [Referentie](../reference.md)
 
+<details>
+<summary>🌐 Nederlands</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · **Nederlands** · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Een documentatiepagina geschreven door de agent, elke bewering verankerd aan haar code, en dockeeper check die de bewering meldt waarvan de code is veranderd" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ Een README die je vandaag schrijft, klopt een paar maanden later niet meer, en n
 
 Vraag het één keer en je agent documenteert de hele repository, pagina voor pagina, op basis van de sjablonen in de skill:
 
-- **README**: wat het is, hoe het werkt, hoe je het start.
-- **Architectuur**: componenten, stromen, data en grenzen, met diagrammen.
-- **Beslissingen**: wat er besloten is en waarom, alleen uit de git-geschiedenis.
-- **Procedures**: runbooks met de exacte commando’s.
-- **API**: elke operatie met invoer, fouten en effecten.
-- **Onboarding**: een leesroute voor de eerste dag.
+<table>
+<tr><td><b>README</b></td><td>Wat het is, hoe het werkt, hoe je het start.</td></tr>
+<tr><td><b>Architectuur</b></td><td>Componenten, stromen, data en grenzen, met diagrammen.</td></tr>
+<tr><td><b>Beslissingen</b></td><td>Wat er besloten is en waarom, alleen uit de git-geschiedenis.</td></tr>
+<tr><td><b>Procedures</b></td><td>Runbooks met de exacte commando’s.</td></tr>
+<tr><td><b>API</b></td><td>Elke operatie met invoer, fouten en effecten.</td></tr>
+<tr><td><b>Onboarding</b></td><td>Een leesroute voor de eerste dag.</td></tr>
+</table>
 
 In een monorepo schrijft hij ook een README per pakket. Elke bewering wijst naar haar code. Bekijk [de architectuur van DocKeeper zelf](../architecture.md), geschreven met de skill.
 

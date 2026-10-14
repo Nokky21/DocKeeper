@@ -6,14 +6,24 @@
 
 你的程式設計代理負責寫文件，圖表也包含在內。DocKeeper 把每一項陳述、每一張圖都綁定到背後的程式碼，程式碼一改就立刻通知你。
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [官網](https://nokky21.github.io/DocKeeper/) · [線上展示](https://nokky21.github.io/DocKeeper/#demo) · [安裝](#install) · [參考手冊](../reference.md)
 
+<details>
+<summary>🌐 繁體中文</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · **繁體中文** · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="程式設計代理寫的一頁文件：每項陳述都錨定到它的程式碼，dockeeper check 標出程式碼已變更的那項陳述" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@
 
 只要說一次，代理就會依照 skill 裡的範本，一頁一頁為整個儲存庫寫好文件：
 
-- **README**：是什麼、如何運作、怎麼執行。
-- **架構**：元件、流程、資料和邊界，附上圖表。
-- **決策**：決定了什麼、為什麼，只取自 git 歷史。
-- **作業程序**：附有確切指令的操作手冊。
-- **API**：每個操作的輸入、錯誤與影響。
-- **新人導覽**：第一天的閱讀路線。
+<table>
+<tr><td><b>README</b></td><td>是什麼、如何運作、怎麼執行。</td></tr>
+<tr><td><b>架構</b></td><td>元件、流程、資料和邊界，附上圖表。</td></tr>
+<tr><td><b>決策</b></td><td>決定了什麼、為什麼，只取自 git 歷史。</td></tr>
+<tr><td><b>作業程序</b></td><td>附有確切指令的操作手冊。</td></tr>
+<tr><td><b>API</b></td><td>每個操作的輸入、錯誤與影響。</td></tr>
+<tr><td><b>新人導覽</b></td><td>第一天的閱讀路線。</td></tr>
+</table>
 
 在 monorepo 中，它還會為每個套件寫一份 README。每項陳述都指向對應的程式碼。看看用這個 skill 寫成的[DocKeeper 自己的架構文件](../architecture.md)。
 

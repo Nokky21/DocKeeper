@@ -6,14 +6,24 @@
 
 Il tuo agente di programmazione scrive la documentazione, diagrammi compresi. DocKeeper lega ogni affermazione e ogni diagramma al codice che li sostiene e ti avvisa appena quel codice cambia.
 
-[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
-![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Nokky21/DocKeeper/ci.yml?branch=main&label=CI)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-1f4e8c)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-1f4e8c)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f4e8c)](../../LICENSE)
 
 [Sito](https://nokky21.github.io/DocKeeper/) · [Demo dal vivo](https://nokky21.github.io/DocKeeper/#demo) · [Installa](#install) · [Riferimento](../reference.md)
 
+<details>
+<summary>🌐 Italiano</summary>
+
 <sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · **Italiano** · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</details>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../site/public/assets/readme-hero-dark.png">
+  <img src="../../site/public/assets/readme-hero-light.png" alt="Una pagina di documentazione scritta dall’agente, ogni affermazione ancorata al suo codice, e dockeeper check che segnala l’affermazione il cui codice è cambiato" width="100%">
+</picture>
 
 </div>
 
@@ -31,12 +41,14 @@ Un README scritto oggi è sbagliato qualche mese dopo, e nessuno sa quali pagine
 
 Chiedilo una volta e il tuo agente documenta l’intero repository, pagina per pagina, a partire dai modelli della skill:
 
-- **README**: cos’è, come funziona, come avviarlo.
-- **Architettura**: componenti, flussi, dati e confini, con diagrammi.
-- **Decisioni**: cosa è stato deciso e perché, preso solo dalla cronologia di git.
-- **Procedure**: runbook con i comandi esatti.
-- **API**: ogni operazione con input, errori ed effetti.
-- **Onboarding**: un percorso di lettura per il primo giorno.
+<table>
+<tr><td><b>README</b></td><td>Cos’è, come funziona, come avviarlo.</td></tr>
+<tr><td><b>Architettura</b></td><td>Componenti, flussi, dati e confini, con diagrammi.</td></tr>
+<tr><td><b>Decisioni</b></td><td>Cosa è stato deciso e perché, preso solo dalla cronologia di git.</td></tr>
+<tr><td><b>Procedure</b></td><td>Runbook con i comandi esatti.</td></tr>
+<tr><td><b>API</b></td><td>Ogni operazione con input, errori ed effetti.</td></tr>
+<tr><td><b>Onboarding</b></td><td>Un percorso di lettura per il primo giorno.</td></tr>
+</table>
 
 In un monorepo scrive anche un README per ogni pacchetto. Ogni affermazione punta al suo codice. Guarda [l’architettura di DocKeeper stesso](../architecture.md), scritta con la skill.
 
