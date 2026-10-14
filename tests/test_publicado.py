@@ -42,6 +42,21 @@ class PruebasPublicado(unittest.TestCase):
             rutas = [(i["linea_doc"], i["estado"]) for i in datos["items"]]
             self.assertEqual(rutas, [(1, "RUTA_INTERNA"), (2, "RUTA_INTERNA")])
 
+    def test_rutas_internas_con_corchetes(self):
+        with RepoDePrueba({"src/pagos.py": PAGOS, "app/[id]/page.tsx": "export default function Page() {}\n",
+                           "src/routes/[slug]/x.ts": "export const x = 1\n",
+                           "docs/publica/guia.md": d('''
+                               La página vive en app/[id]/page.tsx y en [la ruta](src/routes/[slug]/x.ts).
+                               Un enlace [a la guía](https://example.com/guia) no es una ruta.
+                               Con nota al pie pegada: src/pagos.py[1] y [2]src/pagos.py.
+                           ''')}, config=CONFIG) as r:
+            _, datos = r.dk_json("check")
+            rutas = [(i["linea_doc"], i["detalle"]) for i in datos["items"] if i["estado"] == "RUTA_INTERNA"]
+            self.assertEqual([n for n, _ in rutas], [1, 1, 3])
+            self.assertIn("«app/[id]/page.tsx»", rutas[0][1])
+            self.assertIn("«src/routes/[slug]/x.ts»", rutas[1][1])
+            self.assertIn("«src/pagos.py»", rutas[2][1])
+
     def test_publico_limpio_pasa(self):
         with repo({"docs/publica/guia.md": GUIA}) as r:
             self.assertEqual(r.dk("check")[0], 0)

@@ -21,7 +21,10 @@ from .textos import t
 if TYPE_CHECKING:  # solo para anotaciones: evita el import circular con motor
     from .motor import Contexto, Item
 
-_TOKEN_RUTA = re.compile(r"[\w.\-]+(?:/[\w.\-]+)+/?")
+# Un segmento de ruta. Los corchetes de las rutas dinámicas (app/[id]/page.tsx, [...slug].astro) solo como
+# segmento entero: pegados a otro texto («src/a.ts[1]», una nota al pie) no esconden la ruta.
+_TROZO_RUTA = r"(?:[\w.\-]+|(?:\[[\w.\-=]+\]|\[\[[\w.\-=]+\]\])(?:\.[\w.\-]+)?)"
+_TOKEN_RUTA = re.compile(rf"{_TROZO_RUTA}(?:/{_TROZO_RUTA})+/?")
 
 
 def lineas_utiles(lineas: Sequence[str]) -> List[Tuple[int, str]]:
