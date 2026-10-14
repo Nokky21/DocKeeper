@@ -3115,6 +3115,138 @@
       "huella": "a36fcdbd6ec2c58c"
     },
     {
+      "doc": "docs/procedures.md",
+      "ancla": ".github/workflows/pages.yml:35",
+      "fichero": ".github/workflows/pages.yml",
+      "linea": 35,
+      "tipo": "ventana",
+      "inicio": 32,
+      "fin": 38,
+      "n": 7,
+      "huella": "cff1cb94481f5fcd"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": ".github/workflows/pages.yml:6",
+      "fichero": ".github/workflows/pages.yml",
+      "linea": 6,
+      "tipo": "ventana",
+      "inicio": 3,
+      "fin": 9,
+      "n": 7,
+      "huella": "ade326e8ca7fdae3"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": ".github/workflows/release.yml:21",
+      "fichero": ".github/workflows/release.yml",
+      "linea": 21,
+      "tipo": "ventana",
+      "inicio": 18,
+      "fin": 24,
+      "n": 7,
+      "huella": "02889dc80bb1867e"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": ".github/workflows/release.yml:28",
+      "fichero": ".github/workflows/release.yml",
+      "linea": 28,
+      "tipo": "ventana",
+      "inicio": 25,
+      "fin": 31,
+      "n": 7,
+      "huella": "63bd45f8e1bc6b71"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "dockeeper/motor.py#arreglar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "arreglar",
+      "tipo": "definicion",
+      "inicio": 353,
+      "fin": 387,
+      "n": 34,
+      "huella": "156615b04ac5a6e2"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "dockeeper/porque.py#historial",
+      "fichero": "dockeeper/porque.py",
+      "simbolo": "historial",
+      "tipo": "definicion",
+      "inicio": 83,
+      "fin": 115,
+      "n": 32,
+      "huella": "c555825dc87e1380"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "site/package.json:10",
+      "fichero": "site/package.json",
+      "linea": 10,
+      "tipo": "ventana",
+      "inicio": 7,
+      "fin": 13,
+      "n": 7,
+      "huella": "d6d1aa53299837d6"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "site/scripts/check-demo.ts#compare",
+      "fichero": "site/scripts/check-demo.ts",
+      "simbolo": "compare",
+      "tipo": "definicion",
+      "inicio": 16,
+      "fin": 18,
+      "n": 3,
+      "huella": "5d36e0f6f99444ca"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "tests/test_autocomprobacion.py#PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio",
+      "fichero": "tests/test_autocomprobacion.py",
+      "simbolo": "PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 25,
+      "n": 11,
+      "huella": "109b908881bdf51c"
+    },
+    {
+      "doc": "docs/procedures.md",
+      "ancla": "tests/test_textos.py#PruebasTextos.test_cada_mensaje_tiene_version_en_ingles",
+      "fichero": "tests/test_textos.py",
+      "simbolo": "PruebasTextos.test_cada_mensaje_tiene_version_en_ingles",
+      "tipo": "definicion",
+      "inicio": 65,
+      "fin": 79,
+      "n": 15,
+      "huella": "893f348b2cf1afa0"
+    },
+    {
       "doc": "docs/reference.md",
       "ancla": "dockeeper/alcance.py#Alcance",
       "fichero": "dockeeper/alcance.py",
