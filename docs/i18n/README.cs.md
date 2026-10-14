@@ -147,6 +147,7 @@ Jakékoli jiné CI potřebuje jen Python a git: [naklonujte ho a spusťte `check
 - [Instalační příručka](../install.md): každý agent, jediný projekt, Windows, claude.ai a API.
 - [Reference](../reference.md): kotvy, příkazy, verdikty, částečný rozsah, publikovaná dokumentace, „proč“, konfigurace, omezení a FAQ.
 - [Architektura](../architecture.md): jak DocKeeper funguje uvnitř, v šesti ukotvených diagramech.
+- [Rozhodnutí](../decisions.md), [postupy](../procedures.md), [API `--json`](../api.md) a [zaškolení](../onboarding.md): pro ty, kdo pracují na samotném DocKeeperu.
 - [SKILL.md](../../SKILL.md), pokyny, kterými se váš agent řídí, a [specifikace](../../SPEC.md) (obojí ve španělštině).
 
 ## Licence

@@ -147,6 +147,7 @@ flowchart LR
 - [설치 가이드](../install.md): 모든 에이전트, 단일 프로젝트, Windows, claude.ai, API.
 - [레퍼런스](../reference.md): 앵커, 명령어, 판정, 부분 범위, 공개 문서, ‘왜’, 설정, 한계, FAQ.
 - [아키텍처](../architecture.md): DocKeeper의 내부 동작을 앵커가 달린 다이어그램 여섯 개로.
+- [결정 사항](../decisions.md), [절차](../procedures.md), [`--json` API](../api.md), [온보딩](../onboarding.md): DocKeeper 자체를 개발하는 사람을 위해.
 - 에이전트가 따르는 지침인 [SKILL.md](../../SKILL.md)와 [명세](../../SPEC.md) (둘 다 스페인어).
 
 ## 라이선스

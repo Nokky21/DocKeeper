@@ -147,6 +147,7 @@ Qualsiasi altra CI ha bisogno solo di Python e git: [clonalo ed esegui `check`](
 - [Guida all’installazione](../install.md): ogni agente, un solo progetto, Windows, claude.ai e l’API.
 - [Riferimento](../reference.md): ancore, comandi, verdetti, ambito parziale, documentazione pubblicata, il «perché», configurazione, limiti e FAQ.
 - [Architettura](../architecture.md): come funziona DocKeeper dentro, in sei diagrammi ancorati.
+- [Decisioni](../decisions.md), [procedure](../procedures.md), l’[API di `--json`](../api.md) e [onboarding](../onboarding.md): per chi lavora su DocKeeper stesso.
 - [SKILL.md](../../SKILL.md), le istruzioni che segue il tuo agente, e la [specifica](../../SPEC.md) (entrambe in spagnolo).
 
 ## Licenza

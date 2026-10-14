@@ -147,6 +147,7 @@ flowchart LR
 - [安装指南](../install.md)：所有智能体、单个项目、Windows、claude.ai 和 API。
 - [参考手册](../reference.md)：锚点、命令、结论、部分范围、对外发布的文档、“为什么”、配置、限制和常见问题。
 - [架构](../architecture.md)：DocKeeper 的内部原理，用六张带锚点的图表说明。
+- [决策](../decisions.md)、[操作流程](../procedures.md)、[`--json` API](../api.md) 和[入职指南](../onboarding.md)：给参与 DocKeeper 本身开发的人。
 - [SKILL.md](../../SKILL.md)（智能体遵循的指令）和[规格说明](../../SPEC.md)（二者均为西班牙语）。
 
 ## 许可证

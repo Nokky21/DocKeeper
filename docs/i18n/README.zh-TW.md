@@ -147,6 +147,7 @@ flowchart LR
 - [安裝指南](../install.md)：所有代理、單一專案、Windows、claude.ai 和 API。
 - [參考手冊](../reference.md)：錨點、指令、結論、部分範圍、對外發布的文件、「為什麼」、設定、限制和常見問題。
 - [架構](../architecture.md)：DocKeeper 的內部運作，用六張帶錨點的圖表說明。
+- [決策](../decisions.md)、[操作流程](../procedures.md)、[`--json` API](../api.md) 與[新人導覽](../onboarding.md)：給參與 DocKeeper 本身開發的人。
 - [SKILL.md](../../SKILL.md)（代理遵循的指示）和[規格說明](../../SPEC.md)（兩者皆為西班牙文）。
 
 ## 授權

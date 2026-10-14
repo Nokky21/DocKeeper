@@ -147,6 +147,7 @@ Diğer tüm CI’lar yalnızca Python ve git ister: [klonlayın ve `check` çal�
 - [Kurulum kılavuzu](../install.md): tüm ajanlar, tek proje, Windows, claude.ai ve API.
 - [Başvuru](../reference.md): çapalar, komutlar, kararlar, kısmi kapsam, yayımlanan dokümantasyon, “neden”, yapılandırma, sınırlar ve SSS.
 - [Mimari](../architecture.md): DocKeeper’ın içeride nasıl çalıştığı, altı sabitlenmiş diyagramda.
+- [Kararlar](../decisions.md), [prosedürler](../procedures.md), [`--json` API'si](../api.md) ve [oryantasyon](../onboarding.md): DocKeeper'ın kendisi üzerinde çalışanlar için.
 - [SKILL.md](../../SKILL.md), ajanınızın izlediği talimatlar, ve [şartname](../../SPEC.md) (ikisi de İspanyolca).
 
 ## Lisans

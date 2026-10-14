@@ -147,6 +147,7 @@ Mọi hệ thống CI khác chỉ cần Python và git: [clone về và chạy `
 - [Hướng dẫn cài đặt](../install.md): mọi agent, một dự án riêng, Windows, claude.ai và API.
 - [Tham khảo](../reference.md): điểm neo, lệnh, phán quyết, phạm vi một phần, tài liệu công khai, phần “vì sao”, cấu hình, giới hạn và câu hỏi thường gặp.
 - [Kiến trúc](../architecture.md): DocKeeper hoạt động bên trong ra sao, qua sáu sơ đồ có neo.
+- [Quyết định](../decisions.md), [quy trình](../procedures.md), [API `--json`](../api.md) và [hướng dẫn nhập môn](../onboarding.md): cho người phát triển chính DocKeeper.
 - [SKILL.md](../../SKILL.md), các chỉ dẫn mà agent của bạn làm theo, và [đặc tả](../../SPEC.md) (cả hai bằng tiếng Tây Ban Nha).
 
 ## Giấy phép

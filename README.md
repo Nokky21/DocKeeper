@@ -166,6 +166,8 @@ Any other CI only needs Python and git: [clone it and run `check`](docs/referenc
 - [Reference](docs/reference.md): anchors, commands, verdicts, partial scope, published docs, the
   "why", configuration, limits and FAQ.
 - [Architecture](docs/architecture.md): how DocKeeper works inside, in six anchored diagrams.
+- [Decisions](docs/decisions.md), [procedures](docs/procedures.md), the [`--json` API](docs/api.md)
+  and [onboarding](docs/onboarding.md): for whoever works on DocKeeper itself.
 - [SKILL.md](SKILL.md), the instructions your agent follows, and the [specification](SPEC.md)
   (both in Spanish).
 

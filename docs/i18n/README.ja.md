@@ -147,6 +147,7 @@ flowchart LR
 - [インストールガイド](../install.md): 各エージェント、単一プロジェクト、Windows、claude.ai、API。
 - [リファレンス](../reference.md): アンカー、コマンド、判定、部分的な範囲、公開ドキュメント、「なぜ」、設定、制限、FAQ。
 - [アーキテクチャ](../architecture.md): DocKeeper の内部の仕組みを、アンカー付きの 6 つの図で。
+- [決定事項](../decisions.md)、[手順](../procedures.md)、[`--json` API](../api.md)、[オンボーディング](../onboarding.md): DocKeeper 自体に手を入れる人向け。
 - エージェントが従う指示である [SKILL.md](../../SKILL.md) と[仕様書](../../SPEC.md)（どちらもスペイン語）。
 
 ## ライセンス

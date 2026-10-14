@@ -147,6 +147,7 @@ CI lain hanya butuh Python dan git: [klon lalu jalankan `check`](../reference.md
 - [Panduan instalasi](../install.md): semua agen, satu proyek saja, Windows, claude.ai, dan API.
 - [Referensi](../reference.md): jangkar, perintah, putusan, cakupan sebagian, dokumentasi terbitan, “mengapa”, konfigurasi, batasan, dan FAQ.
 - [Arsitektur](../architecture.md): cara kerja DocKeeper di dalam, dalam enam diagram berjangkar.
+- [Keputusan](../decisions.md), [prosedur](../procedures.md), [API `--json`](../api.md), dan [orientasi](../onboarding.md): untuk yang mengerjakan DocKeeper itu sendiri.
 - [SKILL.md](../../SKILL.md), instruksi yang diikuti agen Anda, dan [spesifikasi](../../SPEC.md) (keduanya dalam bahasa Spanyol).
 
 ## Lisensi
