@@ -21,9 +21,11 @@ from .textos import t
 if TYPE_CHECKING:  # solo para anotaciones: evita el import circular con motor
     from .motor import Contexto, Item
 
-# Un segmento de ruta. Los corchetes de las rutas dinámicas (app/[id]/page.tsx, [...slug].astro) solo como
-# segmento entero: pegados a otro texto («src/a.ts[1]», una nota al pie) no esconden la ruta.
-_TROZO_RUTA = r"(?:[\w.\-]+|(?:\[[\w.\-=]+\]|\[\[[\w.\-=]+\]\])(?:\.[\w.\-]+)?)"
+# Un segmento de ruta, también los de las rutas de los frameworks web: [id], [...slug].astro, +page.svelte,
+# @modal, (auth). Corchetes y paréntesis solo como segmento entero: pegados a otro texto («src/a.ts[1]», una nota
+# al pie; «(ver src/a.ts)», prosa) no esconden la ruta.
+_TROZO_RUTA = (r"(?:\+?[\w.\-]+|@[\w.\-]+|\([\w.\-]+\)[\w.\-]*"
+               r"|(?:\[[\w.\-=]+\]|\[\[[\w.\-=]+\]\])(?:\.[\w.\-]+)?)")
 _TOKEN_RUTA = re.compile(rf"{_TROZO_RUTA}(?:/{_TROZO_RUTA})+/?")
 
 
@@ -114,8 +116,10 @@ def rutas_en_texto(ctx: "Contexto", doc: str, lineas: Sequence[str]) -> List["It
             partes = token.split("/")
             # La ruta entera o cualquier final suyo (p. ej., dentro de una URL al repositorio privado).
             for i in range(len(partes) - 1):
-                candidata = "/".join(partes[i:])
-                if candidata in internas and candidata not in vistas:
+                cola = "/".join(partes[i:])
+                # «@src/a.ts» (mención de fichero) o «1+src/a.ts»: el @ o el + pegados delante no son de la ruta.
+                candidata = next((c for c in (cola, cola.lstrip("@+")) if c in internas), None)
+                if candidata and candidata not in vistas:
                     vistas.append(candidata)
                     break
         for ruta in vistas:

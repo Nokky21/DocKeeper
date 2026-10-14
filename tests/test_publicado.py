@@ -57,6 +57,20 @@ class PruebasPublicado(unittest.TestCase):
             self.assertIn("«src/routes/[slug]/x.ts»", rutas[1][1])
             self.assertIn("«src/pagos.py»", rutas[2][1])
 
+    def test_rutas_internas_de_frameworks_web(self):
+        with RepoDePrueba({"src/pagos.py": PAGOS, "src/routes/[slug]/+page.svelte": "<h1>x</h1>\n",
+                           "app/@modal/(auth)/login/page.tsx": "export default function L() {}\n",
+                           "docs/publica/guia.md": d('''
+                               La página es src/routes/[slug]/+page.svelte.
+                               El modal vive en app/@modal/(auth)/login/page.tsx (ver la guía).
+                               Mención @src/pagos.py y suma 1+src/pagos.py.
+                           ''')}, config=CONFIG) as r:
+            _, datos = r.dk_json("check")
+            rutas = [(i["linea_doc"], i["detalle"]) for i in datos["items"] if i["estado"] == "RUTA_INTERNA"]
+            self.assertEqual([n for n, _ in rutas], [1, 2, 3])
+            self.assertIn("«src/routes/[slug]/+page.svelte»", rutas[0][1])
+            self.assertIn("«app/@modal/(auth)/login/page.tsx»", rutas[1][1])
+
     def test_publico_limpio_pasa(self):
         with repo({"docs/publica/guia.md": GUIA}) as r:
             self.assertEqual(r.dk("check")[0], 0)
