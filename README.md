@@ -155,7 +155,7 @@ fits. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
 
 ```yaml
 - uses: actions/checkout@v6
-- uses: Nokky21/DocKeeper@v0.3.0
+- uses: Nokky21/DocKeeper@v0.4.0
 ```
 
 Any other CI only needs Python and git: [clone it and run `check`](docs/reference.md#continuous-integration).

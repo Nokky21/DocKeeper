@@ -162,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: Nokky21/DocKeeper@v0.3.0
+      - uses: Nokky21/DocKeeper@v0.4.0
         # with:
         #   args: --sin vendor/
 ```

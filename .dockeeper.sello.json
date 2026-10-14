@@ -707,6 +707,17 @@
     },
     {
       "doc": "docs/architecture.md",
+      "ancla": "dockeeper/paquetes.py#ajena",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "ajena",
+      "tipo": "definicion",
+      "inicio": 101,
+      "fin": 105,
+      "n": 5,
+      "huella": "87caddddaf4826c0"
+    },
+    {
+      "doc": "docs/architecture.md",
       "ancla": "dockeeper/paquetes.py#detectar",
       "fichero": "dockeeper/paquetes.py",
       "simbolo": "detectar",

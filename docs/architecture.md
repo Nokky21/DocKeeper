@@ -140,7 +140,9 @@ timeline
                     : A package is any subfolder with a known manifest
                     : Messages in English by default, in Spanish when the environment asks
   v0.3 · 2026-10-14 : Diagrams are anchored inside their own block
+  v0.4 · 2026-10-14 : Dependencies committed to git are not your code for audit
   %% dockeeper: dockeeper/revision.py#revisar dockeeper/paquetes.py#detectar dockeeper/textos.py#espanol dockeeper/markdown.py#_fichas
+  %% dockeeper: dockeeper/paquetes.py#ajena
 ```
 
 > [!TIP]

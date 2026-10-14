@@ -1,6 +1,6 @@
 # SPEC — DocKeeper
 
-> Estado: v0.3 · 2026-10-14.
+> Estado: v0.4 · 2026-10-14.
 > Este documento manda sobre el código: si discrepan, uno de los dos está mal.
 
 ## 1. El problema
