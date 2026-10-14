@@ -1,0 +1,115 @@
+<div align="center">
+
+# DocKeeper
+
+**썩지 않는 문서.**
+
+문서는 코딩 에이전트가 씁니다. DocKeeper는 모든 주장을 그 뒤에 있는 코드에 묶어 두고, 그 코드가 바뀌는 순간 알려 줍니다.
+
+[![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-2ea44f)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](../../LICENSE)
+
+[웹사이트](https://nokky21.github.io/DocKeeper/) · [라이브 데모](https://nokky21.github.io/DocKeeper/#demo) · [설치](#install) · [레퍼런스](../reference.md)
+
+<sub>[English](../../README.md) · [Español](README.es.md) · [Português](README.pt-BR.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Čeština](README.cs.md) · [Svenska](README.sv.md) · [Русский](README.ru.md) · [Українська](README.uk.md) · [Türkçe](README.tr.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [हिन्दी](README.hi.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · **한국어** · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [ไทย](README.th.md)</sub>
+
+</div>
+
+---
+
+## 왜 필요한가
+
+오늘 쓴 README는 몇 달 뒤면 틀리게 되고, 어느 페이지가 거짓말을 하는지 아무도 모릅니다. DocKeeper는 이 ‘아무도 모른다’는 문제를 무료로, 여러분의 컴퓨터에서 해결합니다.
+
+- **모든 주장을 검사합니다.** “결제는 청구 전에 검증된다”는 문장은 그 일을 하는 함수에 묶입니다. 그 함수가 바뀌면 DocKeeper가 알려 줍니다.
+- **검사에 AI를 쓰지 않습니다.** 글은 에이전트가 쓰고, 검사는 지문을 비교하므로 항상 같은 답을 냅니다.
+- **로컬이고 무료입니다.** 계정, 서버, 네트워크, 의존성이 모두 필요 없습니다. MIT 라이선스.
+
+## 작동 방식
+
+<p align="center"><img src="../../site/public/assets/how-it-works.svg" alt="DocKeeper 작동 방식: 주장을 코드 블록에 앵커로 연결하고, 블록의 지문을 만든 뒤, check가 OK, MOVED 또는 CHANGED를 보고" width="100%"></p>
+
+1. **앵커 달기.** 에이전트는 각 주장 옆에 그것이 코드의 어디에 있는지 적습니다: `[[src/payments.py#validate_payment]]`. 페이지를 깔끔하게 두려면 같은 내용을 HTML 주석 안에 넣으면 됩니다.
+2. **봉인하기.** `dockeeper scan`은 각 앵커 뒤의 코드, 보통은 함수 전체의 지문을 만듭니다. 서식을 바꾸는 것은 상관없고, 로직을 바꾸면 감지됩니다.
+   <!-- dockeeper: dockeeper/bloques.py#bloque_en dockeeper/huellas.py#huella -->
+3. **검사하기.** `dockeeper check`는 주장마다 판정을 내립니다: `OK`, `MOVED`(코드가 자리만 옮겼고, `dockeeper fix`가 검토 없이 따라갑니다), 또는 `CHANGED`(코드가 바뀌었으니 사람이 읽고 글을 고칩니다). `CHANGED`가 하나라도 있으면 종료 코드가 1이 되어 CI가 실패합니다.
+   <!-- dockeeper: dockeeper/motor.py#verificar_codigo dockeeper/motor.py#FALLOS -->
+
+<p align="center"><img src="../../site/public/assets/terminal-check.svg" alt="코드를 수정한 뒤 dockeeper check의 실제 출력: CHANGED 1건, MOVED 1건" width="100%"></p>
+
+<a id="install"></a>
+
+## 설치
+
+`python3`(3.10 이상)와 `git`이 필요합니다. 저장소를 이름이 정확히 `dockeeper`인 폴더에 클론하세요.
+
+```bash
+# Claude Code
+git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper
+
+# Codex, Gemini CLI, Cursor, GitHub Copilot
+git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
+```
+
+다른 폴더, 단일 프로젝트, Windows, claude.ai, API는 [설치 가이드](../install.md)를 참고하세요.
+
+## 사용법
+
+에이전트에게 평소 말투로 부탁하세요.
+
+- *“dockeeper로 이 저장소를 문서화해 줘.”* 모노레포도 패키지 하나씩 처리합니다.
+- *“우리 문서가 아직 사실인지 확인하고, 아닌 부분은 고쳐 줘.”*
+- *“커밋할 때마다 문서를 검토해 줘.”* 커밋을 절대 막지 않는 git 훅을 설치합니다.
+- *“git 기록을 바탕으로 의사 결정 페이지를 써 줘. 이유를 지어내지는 마.”*
+
+아니면 프로젝트 루트에서 직접 실행하세요.
+
+```bash
+DK="python3 $HOME/.claude/skills/dockeeper/bin/dockeeper"
+$DK audit    # 빠진 것: 페이지, 패키지, 문서가 없는 코드
+$DK scan     # 새 앵커를 봉인하고 각 앵커가 가리키는 코드를 보여 줌
+$DK check    # 아직 사실인가? 종료 코드 0 = 예, 1 = 무언가 바뀜
+$DK fix      # 옮겨 간 코드를 따라감 (봉인 파일만 수정)
+$DK review   # 마지막 커밋이 문서에 어떤 의미인지
+```
+
+<!-- dockeeper: dockeeper/motor.py#arreglar -->
+
+## 커밋할 때마다
+
+`review`는 마지막 커밋(또는 `--desde main`으로 브랜치 전체)을 살펴보고, 영향을 받은 주장, 아직 어떤 주장도 다루지 않는 새 코드나 바뀐 코드, 그리고 그 커밋들에 있지만 아직 문서로 남기지 않은 결정을 나열합니다. `post-commit` 훅으로 설정하면 커밋하는 사람이 여러분이든 에이전트든 매번 이 목록을 보게 되고, 문서가 코드와 함께 자랍니다.
+<!-- dockeeper: dockeeper/revision.py#revisar -->
+
+```sh
+#!/bin/sh
+python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
+```
+
+## 모노레포
+
+`audit`는 모든 패키지(`package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` 등이 있는 하위 폴더)를 찾아서 문서가 없는 것을 보여 줍니다. 에이전트는 먼저 루트 페이지를 패키지 지도와 함께 쓰고, 그다음 패키지를 하나씩 문서화하므로 아무리 큰 저장소도 감당할 수 있습니다. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
+
+## CI에서
+
+```yaml
+- uses: actions/checkout@v6
+- uses: Nokky21/DocKeeper@v0.1.0
+```
+
+다른 CI에서는 Python과 git만 있으면 됩니다: [클론하고 `check` 실행](../reference.md#continuous-integration).
+
+## 더 알아보기
+
+- [설치 가이드](../install.md): 모든 에이전트, 단일 프로젝트, Windows, claude.ai, API.
+- [레퍼런스](../reference.md): 앵커, 명령어, 판정, 부분 범위, 공개 문서, ‘왜’, 설정, 한계, FAQ.
+- 에이전트가 따르는 지침인 [SKILL.md](../../SKILL.md)와 [명세](../../SPEC.md) (둘 다 스페인어).
+
+## 라이선스
+
+[MIT](../../LICENSE).
+
+---
+
+<sub>[영어 README](../../README.md)의 번역입니다. 내용이 다르면 영어판을 기준으로 합니다. 설치 가이드와 레퍼런스는 영어로 되어 있습니다.</sub>
