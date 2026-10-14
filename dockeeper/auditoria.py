@@ -47,8 +47,12 @@ def _commits(ctx: "Contexto") -> int:
 
 def auditar(ctx: "Contexto") -> dict:
     repo, alcance, sello = ctx.repo, ctx.alcance, ctx.sello
-    documentos = ctx.documentos()
-    codigo = [f for f in repo.ficheros if not repo.es_documento(f) and alcance.codigo_en_alcance(f)]
+    # Dependencias subidas a git (node_modules/, vendor/…): ni código ni documentación propios. Qué paquete
+    # es propio lo dice el repositorio entero, no el alcance.
+    propios = PQ.detectar(repo.ficheros, repo.lineas)
+    documentos = [doc for doc in ctx.documentos() if not PQ.ajena(doc, propios)]
+    codigo = [f for f in repo.ficheros
+              if not repo.es_documento(f) and alcance.codigo_en_alcance(f) and not PQ.ajena(f, propios)]
 
     paginas = []
     for nombre, alias in PAGINAS:

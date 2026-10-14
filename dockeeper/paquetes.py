@@ -98,6 +98,13 @@ def detectar(ficheros: List[str], leer: Callable[[str], Optional[List[str]]]) ->
     return paquetes
 
 
+def ajena(ruta: str, paquetes: List[Paquete]) -> bool:
+    """¿Está la ruta dentro de dependencias copiadas (node_modules/, vendor/…) que no son un paquete propio?"""
+    raices = {p.ruta for p in paquetes}
+    partes = ruta.split("/")
+    return any(parte in _AJENAS and "/".join(partes[:i + 1]) not in raices for i, parte in enumerate(partes[:-1]))
+
+
 def paquete_de(ruta: str, paquetes: List[Paquete]) -> Optional[Paquete]:
     """El paquete más profundo que contiene la ruta (None si solo la contiene la raíz)."""
     dentro = [p for p in paquetes if ruta.startswith(p.ruta + "/")]
