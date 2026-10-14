@@ -95,7 +95,7 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 ```yaml
 - uses: actions/checkout@v6
-- uses: Nokky21/DocKeeper@v0.1.0
+- uses: Nokky21/DocKeeper@v0.2.0
 ```
 
 Toute autre CI n’a besoin que de Python et git : [clonez-le et lancez `check`](../reference.md#continuous-integration).
