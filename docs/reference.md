@@ -1,6 +1,6 @@
 # DocKeeper reference
 
-[← README](../README.md) · [Install](install.md)
+[← README](../README.md) · [Install](install.md) · [Architecture](architecture.md)
 
 ## Anchors
 

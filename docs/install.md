@@ -1,6 +1,6 @@
 # Installing DocKeeper
 
-[← README](../README.md) · [Reference](reference.md)
+[← README](../README.md) · [Reference](reference.md) · [Architecture](architecture.md)
 
 The repository root **is** the skill folder. Clone it into a folder named exactly `dockeeper`: the
 Agent Skills standard requires the folder name to match the skill name. Requirements: `python3`
