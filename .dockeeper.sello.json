@@ -2423,6 +2423,17 @@
     },
     {
       "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/paquetes.py#detectar",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "detectar",
+      "tipo": "definicion",
+      "inicio": 81,
+      "fin": 98,
+      "n": 18,
+      "huella": "249d62d5889846c3"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
       "ancla": "dockeeper/porque.py#historial",
       "fichero": "dockeeper/porque.py",
       "simbolo": "historial",
@@ -2442,6 +2453,17 @@
       "fin": 65,
       "n": 31,
       "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "site/src/components/Features.astro",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 218,
+      "fin": 262,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
     },
     {
       "doc": "site/src/components/How.astro",

@@ -56,6 +56,32 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
         <!-- dockeeper: dockeeper/motor.py#comprobar -->
       </article>
 
+      <article class="tile span-3" id="review" data-reveal>
+        <span class="kicker">review · post-commit</span>
+        <h3>Docs that keep up with every commit</h3>
+        <p>After each commit, <code>review</code> lists the claims it touched, the new code nothing documents yet and the decisions nobody wrote down. As a git hook it never blocks: your agent reads it and updates the docs as it goes.</p>
+<pre class="code"><span class="c">$ git commit -m "feat: refunds"</span>
+dockeeper review · changes since HEAD~1
+<span class="v-CHANGED">CHANGED</span>  docs/payments.md:3 → validate_payment
+<span class="s">new</span>      src/payments.py#refund (3 lines)
+Decisions not documented yet:
+  refunds reuse the payment validation</pre>
+        <!-- dockeeper: dockeeper/revision.py#revisar -->
+      </article>
+
+      <article class="tile span-3" id="monorepos" data-reveal style="--d:80ms">
+        <span class="kicker">audit · monorepos</span>
+        <h3>Whole repositories, monorepos included</h3>
+        <p><code>audit</code> finds every package by its manifest, from <code>package.json</code> to <code>go.mod</code> or <code>Cargo.toml</code>. The agent writes the root map first, then documents one package at a time, so even a huge repository fits.</p>
+<pre class="code"><span class="c">$ dockeeper audit</span>
+Packages (4): document one at a time
+apps/web/          1/2  README.md
+packages/api/      0/3  no README  <span class="v-CHANGED">← undocumented</span>
+services/billing/  0/2  no README  <span class="v-CHANGED">← undocumented</span>
+libs/core/         0/1  no README  <span class="v-CHANGED">← undocumented</span></pre>
+        <!-- dockeeper: dockeeper/paquetes.py#detectar -->
+      </article>
+
       <article class="tile span-6" id="ci" data-reveal>
         <span class="kicker">continuous integration</span>
         <h3>Keep it true on every pull request</h3>
