@@ -61,8 +61,10 @@ def auditar(ctx: "Contexto") -> dict:
         anclas = sorted({a.texto for a in documento.anclas})
         selladas = sum(1 for a in anclas if (doc, a) in sello.anclas)
         vinculos = sum(1 for v in sello.vinculos if v.doc == doc)
+        diagramas = [b for b in documento.bloques if b.diagrama]
         docs.append({"doc": doc, "clase": repo.clase(doc), "anclas": len(anclas), "selladas": selladas,
                      "vinculos": vinculos, "bloques_de_codigo": len(documento.bloques),
+                     "diagramas": len(diagramas), "diagramas_sin_anclas": sum(1 for b in diagramas if not b.anclado),
                      "sin_anclas": not anclas and not vinculos})
 
     # Tramos anclados por fichero (posiciones del sello: ejecuta check/fix para tenerlas al día).

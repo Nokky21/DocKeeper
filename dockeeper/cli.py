@@ -260,6 +260,9 @@ def _audit(args, raiz: Path) -> int:
     print(t("Documentos:"))
     for doc in datos["documentos"]:
         nota = t("  ← sin anclas: nada de lo que dice está comprobado") if doc["sin_anclas"] else ""
+        if doc["diagramas_sin_anclas"]:
+            nota += tn("  ← 1 diagrama sin anclas («%% dockeeper:»)", "  ← {n} diagramas sin anclas («%% dockeeper:»)",
+                       doc["diagramas_sin_anclas"])
         print(f"  {doc['doc']:<40} {doc['clase']:<10} " + t("{anclas} anclas ({selladas} selladas) · {vinculos} vínculos",
               anclas=doc["anclas"], selladas=doc["selladas"], vinculos=doc["vinculos"]) + nota)
     if datos["paquetes"]:

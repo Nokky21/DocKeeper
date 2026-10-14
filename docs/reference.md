@@ -11,6 +11,12 @@
 | By line | `[[src/pay.ts:147]]` | things that are not definitions (config, a single line) |
 | Hidden | `<!-- dockeeper: src/pay.ts:147 src/pay.ts#validatePayment -->` | keep the rendered text clean |
 | Linked, outside the text | `dockeeper link guide.md:12 src/pay.ts#validatePayment` | published docs whose code is private |
+| Inside a diagram | a `%% dockeeper: src/pay.ts#validatePayment` line in a `mermaid` block | diagrams that must stay true |
+
+Anchors inside code blocks and inline code are ignored, so docs can teach the syntax safely. The one
+exception is a `%% dockeeper:` line inside a `mermaid` block: `%%` is a Mermaid comment, so Obsidian
+and GitHub don't show it, and it keeps each anchor next to the nodes it describes. `audit` counts the
+diagrams that have no anchors. <!-- dockeeper: dockeeper/markdown.py#analizar dockeeper/markdown.py#_fichas -->
 
 Paths are relative to the repository root. Prefer symbols: a line number written in a document ages
 when code moves. The seal file always knows the real position, but readers see the old number, and

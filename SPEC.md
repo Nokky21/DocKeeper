@@ -142,7 +142,7 @@ Cada criterio tiene una prueba que lo demuestra (`python3 -m unittest`).
 | CA-08 | `--solo` restringe a una parte (código o documentos según a qué señale). | [[tests/test_alcance.py#PruebasAlcance.test_solo_codigo_recorta_el_codigo]] |
 | CA-09 | Listas vacías: sin `--solo` no hay restricción y `--sin` vacío no descarta nada. | [[tests/test_alcance.py#PruebasAlcance.test_listas_vacias]] |
 | CA-10 | Reformatear (espacios, líneas vacías) no rompe una ancla. | [[tests/test_check.py#PruebasCheck.test_reformatear_no_rompe]] |
-| CA-11 | Las anclas dentro de bloques de código y código en línea se ignoran. | [[tests/test_anclas.py#PruebasAnclas.test_salta_bloques_y_codigo_en_linea]] |
+| CA-11 | Las anclas dentro de bloques de código y código en línea se ignoran (salvo `%% dockeeper:` en un diagrama Mermaid, CA-22). | [[tests/test_anclas.py#PruebasAnclas.test_salta_bloques_y_codigo_en_linea]] |
 | CA-12 | `scan` enseña en qué bloque queda cada ancla. | [[tests/test_check.py#PruebasCheck.test_scan_ensena_el_bloque]] |
 | CA-13 | `check` sin nada que comprobar falla: no existe el verde vacío. | [[tests/test_check.py#PruebasCheck.test_nada_comprobado_falla]] |
 | CA-14 | `why` extrae decisiones del historial, no inventa motivos y señala entradas sin motivo. | [[tests/test_porque.py#PruebasPorque.test_decisiones_del_historial]] |
@@ -153,6 +153,7 @@ Cada criterio tiene una prueba que lo demuestra (`python3 -m unittest`).
 | CA-19 | `review --desde RAMA` cuenta desde la bifurcación; sin commit anterior, todo es nuevo. | [[tests/test_revision.py#PruebasRevision.test_desde_una_rama_cuenta_desde_la_bifurcacion]] [[tests/test_revision.py#PruebasRevision.test_primer_commit_todo_es_nuevo]] |
 | CA-20 | `audit` detecta los paquetes de un monorepo (npm, Go, Python, Cargo…) con su nombre, README y cobertura; ignora las dependencias copiadas y la raíz. | [[tests/test_paquetes.py#PruebasPaquetes.test_monorepo]] |
 | CA-21 | Los mensajes salen en inglés por defecto y en español si el entorno lo pide; los códigos y la estructura del `--json` no cambian. | [[tests/test_textos.py#PruebasTextos.test_ingles_por_defecto]] [[tests/test_textos.py#PruebasTextos.test_codigos_y_claves_del_json_no_cambian]] |
+| CA-22 | Las líneas `%% dockeeper:` de un bloque `mermaid` son anclas ocultas que se sellan y comprueban; fuera de un diagrama no lo son, y `audit` cuenta los diagramas sin anclas. | [[tests/test_diagramas.py#PruebasDiagramas.test_las_anclas_de_un_diagrama_se_comprueban]] [[tests/test_diagramas.py#PruebasDiagramas.test_fuera_de_un_diagrama_no_es_un_ancla]] |
 
 ## 6. Criterios de abandono
 
@@ -191,6 +192,7 @@ en varias líneas) se corrigió y tiene prueba.
 | Ancla huérfana (en el sello, ya no en el doc) | Aviso `HUERFANA` (salida 0); `scan` y `fix` la quitan. | Ya no hay afirmación que comprobar. |
 | «Que revise la documentación en cada commit» | `review` es informativa (salida 0) y el hook `post-commit` lo instala el agente a petición de la persona; la CLI no escribe hooks. | La puerta sigue siendo `check`; §3: la CLI no toca la configuración de otros programas. |
 | Qué es un cambio para `review` | De `merge-base(--desde, HEAD)` al árbol de trabajo, solo ficheros que git conoce. | Sirve igual tras un commit, para una rama entera y antes de commitear; los ficheros sin seguimiento ajenos al cambio no meten ruido en el hook. |
+| Diagramas que no se pudran | Mermaid dentro del Markdown (lo pintan Obsidian y GitHub) con anclas en líneas `%% dockeeper:` dentro del propio bloque: única excepción a «en un bloque de código no hay anclas». | `%%` es comentario de Mermaid (no se ve) y deja cada ancla junto a sus nodos; un bloque `markdown` o `text` que enseña la sintaxis sigue sin crear anclas. |
 | Idioma de los mensajes | Inglés por defecto; español si la primera variable con valor entre `LC_ALL`, `LC_MESSAGES` y `LANG` empieza por `es`. El código escribe el mensaje en español (la clave) y `textos.EN` da el inglés. No se traducen los códigos ni las claves del `--json`; sus textos para personas (`detalle`, `avisos`, `error`) sí siguen el idioma. | Que sirva a cualquiera sin configurar nada, sin perder el español; el contrato con agentes y scripts (claves y códigos) no cambia con el idioma. Traducir solo al imprimir obligaría a rehacer el motor. |
 | Qué es un paquete | Una subcarpeta con un manifiesto conocido (no la raíz, ni dentro de `node_modules`, `vendor`…); el nombre sale del manifiesto si se lee sin dependencias, si no la carpeta. Un fichero pertenece al paquete más profundo. | No interpretar los espacios de trabajo de cada herramienta: el manifiesto basta para npm, pnpm, Nx, Go, Cargo, Maven o una mezcla. |
 | Qué definición señala `review` | La más interior que contiene cada línea cambiada; si un contenedor es nuevo, el nuevo más externo. Cuenta como documentada si solapa con el tramo actual de alguna afirmación, sellada o no. | Una clase nueva es una cosa que documentar, no diez métodos. |

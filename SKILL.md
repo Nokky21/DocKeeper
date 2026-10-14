@@ -58,7 +58,8 @@ español a un proyecto en otro idioma. Para no consta, usa la expresión equival
   se mueve (el sello sabe la posición real, pero el lector ve la antigua). `fix` no reescribe
   documentos.
 - Lo que va dentro de bloques de código o código en línea **no** es un ancla: así se enseña la
-  sintaxis sin crear anclas falsas. <!-- dockeeper: dockeeper/markdown.py#analizar -->
+  sintaxis sin crear anclas falsas. La única excepción son las líneas `%% dockeeper:` de un diagrama
+  Mermaid (ver «Diagramas y gráficos»). <!-- dockeeper: dockeeper/markdown.py#analizar -->
 
 ## Flujo de trabajo
 
@@ -136,12 +137,55 @@ Hazlo ejecutable (`chmod +x`). Su salida aparece al hacer cada commit, también 
 un agente: cuando la veas, sigue el paso 2. Para quitarla, borra esa línea o el fichero. La CLI no
 instala nada por su cuenta: solo escribe el sello.
 
+## Diagramas y gráficos (estilo Obsidian, también en GitHub)
+
+Cuando hay un flujo, una conversación entre piezas, estados o datos relacionados, dibújalo. Se
+escribe en Mermaid dentro del Markdown: Obsidian y GitHub lo pintan igual, y se comprueba como el
+texto.
+
+| Qué enseñas | Mermaid |
+|---|---|
+| Un proceso de principio a fin, con su camino de error | `flowchart` |
+| Quién llama a quién y en qué orden (petición, webhook, cola) | `sequenceDiagram` |
+| El ciclo de vida de una entidad (pedido, pago, tarjeta) | `stateDiagram-v2` |
+| Datos y sus relaciones | `erDiagram` o `classDiagram` |
+| Los paquetes de un monorepo y de quién depende cada uno (de los manifiestos) | `flowchart` |
+| Un reparto medido (por ejemplo la cobertura de `audit --json`) | `pie` |
+| Las decisiones en el tiempo (de `why --json`) | `timeline` |
+
+- **Cada nodo existe en el código** y se llama como allí. Nada de cajas inventadas.
+- **Ancla el diagrama dentro del bloque** con líneas `%% dockeeper: ruta#símbolo …` junto a los
+  nodos de los que hablan. `%%` es un comentario de Mermaid: no se ve. Si el código cambia, `check`
+  marca esa línea (`CHANGED`) y rehaces el diagrama. Es la única ancla que vale dentro de un bloque
+  de código. <!-- dockeeper: dockeeper/markdown.py#analizar dockeeper/markdown.py#_fichas -->
+- **Las cifras de un gráfico salen de una orden** (`audit --json`, `why --json`), con su fecha;
+  nunca estimadas.
+- Un diagrama por idea, de 5 a 15 nodos; si crece, divídelo.
+- Avisos con callouts: `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`.
+- Enlaza las páginas entre sí con enlaces Markdown (`[Arquitectura](ARQUITECTURA.md)`): Obsidian los
+  dibuja en su grafo y GitHub los sigue. No uses `[[wikilinks]]`, que se confunden con las anclas.
+- `audit` cuenta los diagramas sin anclas de cada documento.
+  <!-- dockeeper: dockeeper/auditoria.py#auditar -->
+
+````markdown
+```mermaid
+flowchart LR
+  W[Webhook] --> F{¿Firma válida?}
+  %% dockeeper: src/webhook.ts#verificarFirma
+  F -- no --> R[401]
+  F -- sí --> P[Procesar el pago]
+  %% dockeeper: src/pagos.ts#procesar
+```
+````
+
 ## Qué escribe cada página
 
 - **README** — qué es, para quién, cómo funciona en una vuelta (un ancla por paso), cómo arrancar,
   configuración (ancla al código que lee cada variable), estado y límites.
 - **ARQUITECTURA** — componentes con responsabilidad, entradas/salidas, dependencias e invariantes;
   flujos principales paso a paso incluidos los fallos; datos; fronteras de seguridad. Todo anclado.
+  Con diagramas: un `flowchart` de componentes, uno por flujo principal y `sequenceDiagram` o
+  `stateDiagram-v2` donde aclaren.
 - **DECISIONES** — una entrada por decisión: fecha, decisión, **motivo**, alternativas descartadas,
   consecuencias, fuente (commit/ADR/persona) y ancla al código. Motivo y alternativas **solo si
   constan** (historial, ADR o una persona); si no, «**Motivo:** No consta». `why` señala las

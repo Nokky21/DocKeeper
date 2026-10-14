@@ -96,9 +96,9 @@
       "simbolo": "auditar",
       "tipo": "definicion",
       "inicio": 48,
-      "fin": 130,
-      "n": 77,
-      "huella": "a37e8999307b8ad2"
+      "fin": 132,
+      "n": 79,
+      "huella": "0cf8c5cfcfd24f0f"
     },
     {
       "doc": "SKILL.md",
@@ -124,14 +124,25 @@
     },
     {
       "doc": "SKILL.md",
+      "ancla": "dockeeper/markdown.py#_fichas",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "_fichas",
+      "tipo": "definicion",
+      "inicio": 194,
+      "fin": 204,
+      "n": 11,
+      "huella": "5a0baac673dd338a"
+    },
+    {
+      "doc": "SKILL.md",
       "ancla": "dockeeper/markdown.py#analizar",
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 109,
-      "fin": 143,
-      "n": 33,
-      "huella": "445dc9dcf963c5af"
+      "inicio": 122,
+      "fin": 159,
+      "n": 36,
+      "huella": "1e9bcc33005f12a4"
     },
     {
       "doc": "SKILL.md",
@@ -374,6 +385,28 @@
       "fin": 63,
       "n": 19,
       "huella": "85b39599e59ab0b0"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_diagramas.py#PruebasDiagramas.test_fuera_de_un_diagrama_no_es_un_ancla",
+      "fichero": "tests/test_diagramas.py",
+      "simbolo": "PruebasDiagramas.test_fuera_de_un_diagrama_no_es_un_ancla",
+      "tipo": "definicion",
+      "inicio": 38,
+      "fin": 52,
+      "n": 13,
+      "huella": "5b2ebde2749aea9b"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_diagramas.py#PruebasDiagramas.test_las_anclas_de_un_diagrama_se_comprueban",
+      "fichero": "tests/test_diagramas.py",
+      "simbolo": "PruebasDiagramas.test_las_anclas_de_un_diagrama_se_comprueban",
+      "tipo": "definicion",
+      "inicio": 27,
+      "fin": 36,
+      "n": 10,
+      "huella": "0e48b4c181f364a9"
     },
     {
       "doc": "SPEC.md",
@@ -2236,6 +2269,28 @@
     },
     {
       "doc": "docs/reference.md",
+      "ancla": "dockeeper/markdown.py#_fichas",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "_fichas",
+      "tipo": "definicion",
+      "inicio": 194,
+      "fin": 204,
+      "n": 11,
+      "huella": "5a0baac673dd338a"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/markdown.py#analizar",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "analizar",
+      "tipo": "definicion",
+      "inicio": 122,
+      "fin": 159,
+      "n": 36,
+      "huella": "1e9bcc33005f12a4"
+    },
+    {
+      "doc": "docs/reference.md",
       "ancla": "dockeeper/motor.py#FALLOS",
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
@@ -2493,10 +2548,10 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 109,
-      "fin": 143,
-      "n": 33,
-      "huella": "445dc9dcf963c5af"
+      "inicio": 122,
+      "fin": 159,
+      "n": 36,
+      "huella": "1e9bcc33005f12a4"
     },
     {
       "doc": "site/src/components/How.astro",
@@ -2535,7 +2590,7 @@
   "vinculos": [
     {
       "doc": "docs/reference.md",
-      "linea_doc": 118,
+      "linea_doc": 124,
       "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",

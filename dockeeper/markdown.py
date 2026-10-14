@@ -22,6 +22,8 @@ _TOKEN = re.compile(rf"^({_RUTA})(?::(\d+)|#({_SIMBOLO}))$")
 _COMENTARIO_DK = re.compile(r"^<!--\s*dockeeper\s*:(.*?)-->$", re.I | re.S)
 _APERTURA_DK = re.compile(r"^<!--\s*dockeeper\s*:", re.I)
 _DK_EN_LINEA = re.compile(r"<!--\s*dockeeper\s*:.*?-->", re.I)
+# En un diagrama Mermaid, «%%» es un comentario: ni Obsidian ni GitHub lo enseñan.
+_MERMAID_DK = re.compile(r"^\s*%%\s*dockeeper\s*:(.*)$", re.I)
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,15 @@ class BloqueCodigo:
     inicio: int  # línea del documento donde empieza el contenido (tras la valla)
     lineas: List[str] = field(default_factory=list)
     info: str = ""
+
+    @property
+    def diagrama(self) -> bool:
+        return self.info.lower().split()[:1] == ["mermaid"]
+
+    @property
+    def anclado(self) -> bool:
+        """Un diagrama está anclado si alguna de sus líneas es «%% dockeeper: …»."""
+        return any(_MERMAID_DK.match(linea) for linea in self.lineas)
 
 
 @dataclass
@@ -102,7 +113,9 @@ def sin_codigo_en_linea(texto: str) -> str:
 
 
 def sin_anclas(linea: str) -> str:
-    """La línea sin anclas visibles ni comentarios dockeeper (para buscar rutas sueltas)."""
+    """La línea sin anclas visibles ni comentarios dockeeper, «%%» incluidos (para buscar rutas sueltas)."""
+    if _MERMAID_DK.match(linea):
+        return " " * len(linea)
     return _ANCLA.sub(" ", _DK_EN_LINEA.sub(" ", linea))
 
 
@@ -123,6 +136,9 @@ def analizar(doc: str, lineas: List[str]) -> Documento:
                 valla, actual = None, None
             else:
                 actual.lineas.append(linea)
+                m = _MERMAID_DK.match(linea) if actual.diagrama else None
+                if m:  # la única forma de ancla dentro de un bloque: explícita y solo en diagramas
+                    _fichas(doc, num, m.group(1), linea.strip(), anclas, problemas)
             continue
         m = _VALLA.match(linea)
         if m and not (m.group(1)[0] == "`" and "`" in m.group(2)):
@@ -170,17 +186,22 @@ def _visible(doc, num, linea, en_comentario, anclas, problemas) -> Tuple[str, bo
         comentario = texto[k:fin + 3]
         m = _COMENTARIO_DK.match(comentario)
         if m:
-            fichas = [f for f in re.split(r"[\s,]+", m.group(1).strip()) if f]
-            if not fichas:
-                problemas.append(Problema(doc, num, comentario, textos.t("comentario dockeeper sin anclas")))
-            for ficha in fichas:
-                t = _TOKEN.match(ficha)
-                if not t:
-                    problemas.append(Problema(doc, num, ficha, textos.t("no es un ancla (usa ruta:línea o ruta#símbolo)")))
-                    continue
-                _anadir(doc, num, ficha, t.group(1), t.group(2), t.group(3), True, anclas, problemas)
+            _fichas(doc, num, m.group(1), comentario, anclas, problemas)
         trozos.append(" " * len(comentario))
         i = fin + 3
+
+
+def _fichas(doc, num, contenido, original, anclas, problemas) -> None:
+    """Anclas ocultas de un comentario dockeeper (HTML, o «%%» en un diagrama Mermaid)."""
+    fichas = [f for f in re.split(r"[\s,]+", contenido.strip()) if f]
+    if not fichas:
+        problemas.append(Problema(doc, num, original, textos.t("comentario dockeeper sin anclas")))
+    for ficha in fichas:
+        t = _TOKEN.match(ficha)
+        if not t:
+            problemas.append(Problema(doc, num, ficha, textos.t("no es un ancla (usa ruta:línea o ruta#símbolo)")))
+            continue
+        _anadir(doc, num, ficha, t.group(1), t.group(2), t.group(3), True, anclas, problemas)
 
 
 def _anadir(doc, num, original, ruta, linea, simbolo, oculta, anclas, problemas) -> None:

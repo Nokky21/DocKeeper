@@ -10,11 +10,18 @@ Borra este comentario al rellenar.
 
 ## Vista general
 
-Qué piezas hay y cómo se hablan, en un párrafo. Un diagrama en texto si ayuda:
+Qué piezas hay y cómo se hablan, en un párrafo, y su diagrama. Cada nodo existe en el código; las
+líneas `%% dockeeper:` lo anclan (no se ven en Obsidian ni en GitHub).
 
-```
-cliente → entrada → dominio → almacenamiento
-                  ↘ integraciones externas
+```mermaid
+flowchart LR
+  C[Cliente] --> E[Entrada]
+  %% dockeeper: ruta/a/la/entrada.ext#Simbolo
+  E --> D[Dominio]
+  %% dockeeper: ruta/al/dominio.ext#Simbolo
+  D --> A[(Almacenamiento)]
+  D -.-> X[Integración externa]
+  %% dockeeper: ruta/a/la/integracion.ext#Simbolo
 ```
 
 ## Componentes
@@ -33,11 +40,37 @@ cliente → entrada → dominio → almacenamiento
 ### Nombre del flujo
 
 Paso a paso, un ancla por paso. Incluye qué pasa cuando falla (reintentos, compensaciones, errores
-que ve el usuario).
+que ve el usuario). Si intervienen varias piezas, su secuencia:
+
+```mermaid
+sequenceDiagram
+  participant U as Usuario
+  participant API
+  participant P as Proveedor
+  U->>API: petición
+  %% dockeeper: ruta/al/controlador.ext#Simbolo
+  API->>P: llamada
+  %% dockeeper: ruta/al/cliente.ext#Simbolo
+  P-->>API: respuesta o error
+  API-->>U: resultado
+```
+
+> [!WARNING]
+> Lo que puede salir mal en este flujo y cómo se nota.
 
 ## Datos
 
-Modelos o tablas principales, quién los escribe y quién los lee, con ancla a su definición.
+Modelos o tablas principales, quién los escribe y quién los lee, con ancla a su definición. Si una
+entidad pasa por estados, dibújalos:
+
+```mermaid
+stateDiagram-v2
+  [*] --> Pendiente
+  Pendiente --> Pagado: cobro confirmado
+  Pendiente --> Fallido: cobro rechazado
+  %% dockeeper: ruta/al/modelo.ext#Estado
+  Pagado --> [*]
+```
 
 ## Fronteras y seguridad
 

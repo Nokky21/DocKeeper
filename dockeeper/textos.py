@@ -160,6 +160,8 @@ EN = {
     "falta (plantilla: templates/{pagina}.md)": "missing (template: templates/{pagina}.md)",
     "Documentos:": "Documents:",
     "  ← sin anclas: nada de lo que dice está comprobado": "  ← no anchors: nothing it says is checked",
+    "  ← 1 diagrama sin anclas («%% dockeeper:»)": "  ← 1 diagram without anchors (“%% dockeeper:”)",
+    "  ← {n} diagramas sin anclas («%% dockeeper:»)": "  ← {n} diagrams without anchors (“%% dockeeper:”)",
     "{anclas} anclas ({selladas} selladas) · {vinculos} vínculos": "{anclas} anchors ({selladas} sealed) · {vinculos} links",
     "Paquetes ({n}): documenta uno cada vez con --solo RUTA": "Packages ({n}): document one at a time with --solo PATH",
     "sin README": "no README",
