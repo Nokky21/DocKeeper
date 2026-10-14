@@ -4,7 +4,7 @@
 
 **Dokumentation som inte ruttnar.**
 
-Din kodagent skriver dokumentationen. DocKeeper knyter varje påstående till koden bakom det och säger till så fort den koden ändras.
+Din kodagent skriver dokumentationen, diagram inräknade. DocKeeper knyter varje påstående och varje diagram till koden bakom dem och säger till så fort den koden ändras.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ En README som skrivs i dag är fel några månader senare, och ingen vet vilka s
 - **Varje påstående kontrolleras.** ”Betalningar valideras innan de dras” är knutet till funktionen som gör det. När den funktionen ändras säger DocKeeper till.
 - **Ingen AI i kontrollen.** Din agent skriver; kontrollen jämför fingeravtryck och ger därför alltid samma svar.
 - **Lokalt och gratis.** Inget konto, ingen server, inget nätverk, inga beroenden. MIT-licens.
+
+## Vad den skriver
+
+Be en gång så dokumenterar din agent hela repot, sida för sida, utifrån skillens mallar:
+
+- **README**: vad det är, hur det fungerar och hur man kör det.
+- **Arkitektur**: komponenter, flöden, data och gränser, med diagram.
+- **Beslut**: vad som beslutades och varför, bara från git-historiken.
+- **Rutiner**: runbooks med exakta kommandon.
+- **API**: varje operation med indata, fel och effekter.
+- **Introduktion**: en läsväg för första dagen.
+
+I ett monorepo skriver den också en README per paket. Varje påstående pekar på sin kod. Se [DocKeepers egen arkitektur](../architecture.md), skriven med skillen.
 
 ## Så fungerar det
 
@@ -63,6 +76,7 @@ Be din agent med egna ord:
 - *”Kontrollera om vår dokumentation fortfarande stämmer och rätta det som inte gör det.”*
 - *”Granska dokumentationen vid varje commit.”* Den installerar en git-hook som aldrig blockerar en commit.
 - *”Skriv beslutssidan utifrån git-historiken. Hitta inte på skäl.”*
+- *”Rita arkitekturen med flödesdiagram.”*
 
 Eller kör det själv från projektets rotmapp:
 
@@ -87,6 +101,22 @@ $DK review   # vad den senaste committen betyder för dokumentationen
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagram som förblir sanna
+
+Agenten ritar flöden, sekvenser, tillstånd och data i Mermaid, som GitHub och Obsidian visar likadant. Varje diagram bär sina ankare inuti, på `%% dockeeper:`-rader som ingen ser, så `check` flaggar det när koden det visar ändras. Det här är på riktigt:
+
+```mermaid
+flowchart LR
+  A["Din agent skriver en sida"] --> B["scan förseglar varje ankare"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Dokumentationen förblir sann"]
+  C -- CHANGED --> E["Uppdatera texten"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepon
 
 `audit` hittar varje paket (varje undermapp med `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` och så vidare) och visar vilka som saknar dokumentation. Agenten skriver rotens sidor med en karta över paketen och dokumenterar sedan ett paket i taget, så även ett enormt repo får plats. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ All annan CI behöver bara Python och git: [klona det och kör `check`](../refer
 
 - [Installationsguide](../install.md): varje agent, ett enskilt projekt, Windows, claude.ai och API:t.
 - [Referens](../reference.md): ankare, kommandon, utlåtanden, delomfång, publicerad dokumentation, ”varför”, konfiguration, begränsningar och vanliga frågor.
+- [Arkitektur](../architecture.md): hur DocKeeper fungerar inuti, i sex förankrade diagram.
 - [SKILL.md](../../SKILL.md), instruktionerna din agent följer, och [specifikationen](../../SPEC.md) (båda på spanska).
 
 ## Licens
@@ -112,4 +143,4 @@ All annan CI behöver bara Python och git: [klona det och kör `check`](../refer
 
 ---
 
-<sub>Översättning av [README på engelska](../../README.md), som gäller vid skillnader. Installationsguiden och referensen är på engelska.</sub>
+<sub>Översättning av [README på engelska](../../README.md), som gäller vid skillnader. Installationsguiden, referensen och arkitekturen är på engelska.</sub>

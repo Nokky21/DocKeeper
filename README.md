@@ -4,8 +4,8 @@
 
 **Documentation that doesn't rot.**
 
-Your coding agent writes the docs. DocKeeper ties every claim to the code behind it and tells you
-the moment that code changes.
+Your coding agent writes the docs, diagrams included. DocKeeper ties every claim and every diagram to
+the code behind it and tells you the moment that code changes.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -30,6 +30,21 @@ DocKeeper fixes the "nobody knows" part, for free and on your machine:
 - **No AI in the check.** Your agent writes; the check compares fingerprints, so it gives the same
   answer every time.
 - **Local and free.** No account, no server, no network, no dependencies. MIT license.
+
+## What it writes
+
+Ask once and your agent documents the whole repository, page by page, from the templates in the
+skill:
+
+- **README**: what it is, how it works, how to run it.
+- **Architecture**: components, flows, data and boundaries, with diagrams.
+- **Decisions**: what was decided and why, taken only from the git history.
+- **Procedures**: runbooks with exact commands.
+- **API**: every operation with its inputs, errors and effects.
+- **Onboarding**: a reading path for the first day.
+
+In a monorepo it also writes a README for every package. Every claim points at its code. See
+[DocKeeper's own architecture](docs/architecture.md), written by the skill.
 
 ## How it works
 
@@ -70,6 +85,7 @@ Ask your agent in plain words:
 - *"Document this repository with dockeeper."* Monorepos too, one package at a time.
 - *"Check whether our docs are still true and fix what isn't."*
 - *"Review the docs on every commit."* It installs a git hook that never blocks a commit.
+- *"Draw the architecture with flow diagrams."*
 - *"Write the decisions page from the git history. Don't invent reasons."*
 
 Or run it yourself from the root of your project:
@@ -98,6 +114,24 @@ every time, and the docs grow with the code:
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagrams that stay true
+
+The agent draws flows, sequences, states and data as Mermaid, which GitHub and Obsidian render the
+same way. Each diagram carries its anchors inside, on `%% dockeeper:` lines nobody sees, so `check`
+flags it when the code it shows changes. This one is live:
+
+```mermaid
+flowchart LR
+  A["Your agent writes a page"] --> B["scan seals every anchor"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Docs stay true"]
+  C -- CHANGED --> E["Update the text"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepos
 
 `audit` finds every package (any subfolder with a `package.json`, `go.mod`, `Cargo.toml`,
@@ -119,6 +153,7 @@ Any other CI only needs Python and git: [clone it and run `check`](docs/referenc
 - [Install guide](docs/install.md): every agent, a single project, Windows, claude.ai and the API.
 - [Reference](docs/reference.md): anchors, commands, verdicts, partial scope, published docs, the
   "why", configuration, limits and FAQ.
+- [Architecture](docs/architecture.md): how DocKeeper works inside, in six anchored diagrams.
 - [SKILL.md](SKILL.md), the instructions your agent follows, and the [specification](SPEC.md)
   (both in Spanish).
 

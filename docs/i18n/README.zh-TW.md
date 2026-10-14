@@ -4,7 +4,7 @@
 
 **不會腐爛的文件。**
 
-你的程式設計代理負責寫文件。DocKeeper 把每一項陳述綁定到背後的程式碼，程式碼一改就立刻通知你。
+你的程式設計代理負責寫文件，圖表也包含在內。DocKeeper 把每一項陳述、每一張圖都綁定到背後的程式碼，程式碼一改就立刻通知你。
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@
 - **每項陳述都會被檢查。** 「付款在扣款前會先驗證」這句話會綁定到實作它的函式。這個函式一改，DocKeeper 就會告訴你。
 - **檢查過程不用 AI。** 代理負責寫，檢查只比對指紋，所以每次給出的答案都一樣。
 - **本機執行且免費。** 不需要帳號、伺服器或網路，零相依。MIT 授權。
+
+## 它會寫什麼
+
+只要說一次，代理就會依照 skill 裡的範本，一頁一頁為整個儲存庫寫好文件：
+
+- **README**：是什麼、如何運作、怎麼執行。
+- **架構**：元件、流程、資料和邊界，附上圖表。
+- **決策**：決定了什麼、為什麼，只取自 git 歷史。
+- **作業程序**：附有確切指令的操作手冊。
+- **API**：每個操作的輸入、錯誤與影響。
+- **新人導覽**：第一天的閱讀路線。
+
+在 monorepo 中，它還會為每個套件寫一份 README。每項陳述都指向對應的程式碼。看看用這個 skill 寫成的[DocKeeper 自己的架構文件](../architecture.md)。
 
 ## 運作方式
 
@@ -63,6 +76,7 @@ git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
 - *「檢查我們的文件是否仍然正確，把不對的地方改掉。」*
 - *「每次 commit 都檢查一下文件。」* 它會安裝一個永遠不會擋下 commit 的 git hook。
 - *「根據 git 歷史寫決策頁面，不要捏造理由。」*
+- *「用流程圖畫出架構。」*
 
 或者在專案根目錄自己執行：
 
@@ -87,6 +101,22 @@ $DK review   # 最近一次 commit 對文件代表什麼
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## 始終正確的圖表
+
+代理用 Mermaid 畫出流程、時序、狀態和資料，GitHub 與 Obsidian 的呈現方式相同。每張圖都在內部帶著自己的錨點，寫在沒人看得到的 `%% dockeeper:` 行裡，所以圖中呈現的程式碼一改，`check` 就會把它標出來。下面這張是真的：
+
+```mermaid
+flowchart LR
+  A["代理寫一頁文件"] --> B["scan 封存每個錨點"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["文件始終正確"]
+  C -- CHANGED --> E["更新文字"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepo
 
 `audit` 會找出每個套件（任何含有 `package.json`、`go.mod`、`Cargo.toml`、`pyproject.toml`、`pom.xml` 等檔案的子資料夾），並指出哪些還沒有文件。代理先寫根目錄的頁面和套件地圖，再一次只為一個套件寫文件，所以再大的儲存庫也容得下。 <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 - [安裝指南](../install.md)：所有代理、單一專案、Windows、claude.ai 和 API。
 - [參考手冊](../reference.md)：錨點、指令、結論、部分範圍、對外發布的文件、「為什麼」、設定、限制和常見問題。
+- [架構](../architecture.md)：DocKeeper 的內部運作，用六張帶錨點的圖表說明。
 - [SKILL.md](../../SKILL.md)（代理遵循的指示）和[規格說明](../../SPEC.md)（兩者皆為西班牙文）。
 
 ## 授權
@@ -112,4 +143,4 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 ---
 
-<sub>本文譯自[英文 README](../../README.md)，如有出入以英文版為準。安裝指南和參考手冊為英文。</sub>
+<sub>本文譯自[英文 README](../../README.md)，如有出入以英文版為準。安裝指南、參考手冊和架構文件為英文。</sub>

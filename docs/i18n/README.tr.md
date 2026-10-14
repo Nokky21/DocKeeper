@@ -4,7 +4,7 @@
 
 **Çürümeyen dokümantasyon.**
 
-Kodlama ajanınız dokümantasyonu yazar. DocKeeper her iddiayı arkasındaki koda bağlar ve o kod değiştiği anda size haber verir.
+Kodlama ajanınız dokümantasyonu diyagramlarıyla birlikte yazar. DocKeeper her iddiayı ve her diyagramı arkasındaki koda bağlar ve o kod değiştiği anda size haber verir.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Bugün yazılan bir README birkaç ay sonra yanlıştır ve hangi sayfaların ya
 - **Her iddia kontrol edilir.** “Ödemeler tahsil edilmeden önce doğrulanır” cümlesi bunu yapan fonksiyona bağlanır. O fonksiyon değiştiğinde DocKeeper size söyler.
 - **Kontrolde yapay zekâ yok.** Ajanınız yazar; kontrol parmak izlerini karşılaştırır, bu yüzden her seferinde aynı cevabı verir.
 - **Yerel ve ücretsiz.** Hesap yok, sunucu yok, ağ yok, bağımlılık yok. MIT lisansı.
+
+## Neler yazar
+
+Bir kez isteyin; ajanınız skill’deki şablonlardan yola çıkarak tüm depoyu sayfa sayfa belgelesin:
+
+- **README**: ne olduğu, nasıl çalıştığı, nasıl başlatılacağı.
+- **Mimari**: bileşenler, akışlar, veriler ve sınırlar, diyagramlarla.
+- **Kararlar**: neyin neden kararlaştırıldığı, yalnızca git geçmişinden.
+- **Prosedürler**: tam komutlarıyla runbook’lar.
+- **API**: her işlem; girdileri, hataları ve etkileriyle.
+- **Oryantasyon**: ilk gün için bir okuma rotası.
+
+Bir monorepoda her paket için ayrıca bir README yazar. Her iddia kendi koduna işaret eder. Skill ile yazılmış [DocKeeper’ın kendi mimarisine](../architecture.md) göz atın.
 
 ## Nasıl çalışır
 
@@ -63,6 +76,7 @@ Ajanınızdan kendi sözlerinizle isteyin:
 - *“Dokümantasyonumuzun hâlâ doğru olup olmadığını kontrol et ve doğru olmayanı düzelt.”*
 - *“Her commit’te dokümantasyonu gözden geçir.”* Hiçbir commit’i engellemeyen bir git hook’u kurar.
 - *“Kararlar sayfasını git geçmişinden yaz. Gerekçe uydurma.”*
+- *“Mimariyi akış diyagramlarıyla çiz.”*
 
 Ya da projenizin kök klasöründen kendiniz çalıştırın:
 
@@ -87,6 +101,22 @@ $DK review   # son commit’in dokümantasyon için anlamı
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Doğru kalan diyagramlar
+
+Ajan akışları, dizileri, durumları ve verileri, GitHub ile Obsidian’ın aynı şekilde gösterdiği Mermaid ile çizer. Her diyagram çapalarını içinde, kimsenin görmediği `%% dockeeper:` satırlarında taşır; böylece gösterdiği kod değiştiğinde `check` onu işaretler. Bu diyagram gerçek:
+
+```mermaid
+flowchart LR
+  A["Ajanınız bir sayfa yazar"] --> B["scan her çapayı mühürler"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Dokümantasyon doğru kalır"]
+  C -- CHANGED --> E["Metni güncelleyin"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepolar
 
 `audit` her paketi bulur (`package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` vb. içeren her alt klasör) ve hangilerinin dokümantasyonu olmadığını gösterir. Ajan kök sayfaları paketlerin haritasıyla yazar, sonra paketleri birer birer belgeler; böylece devasa bir depo bile sığar. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Diğer tüm CI’lar yalnızca Python ve git ister: [klonlayın ve `check` çal�
 
 - [Kurulum kılavuzu](../install.md): tüm ajanlar, tek proje, Windows, claude.ai ve API.
 - [Başvuru](../reference.md): çapalar, komutlar, kararlar, kısmi kapsam, yayımlanan dokümantasyon, “neden”, yapılandırma, sınırlar ve SSS.
+- [Mimari](../architecture.md): DocKeeper’ın içeride nasıl çalıştığı, altı sabitlenmiş diyagramda.
 - [SKILL.md](../../SKILL.md), ajanınızın izlediği talimatlar, ve [şartname](../../SPEC.md) (ikisi de İspanyolca).
 
 ## Lisans
@@ -112,4 +143,4 @@ Diğer tüm CI’lar yalnızca Python ve git ister: [klonlayın ve `check` çal�
 
 ---
 
-<sub>[İngilizce README](../../README.md)’nin çevirisidir; farklılık olursa o esas alınır. Kurulum kılavuzu ve başvuru belgesi İngilizcedir.</sub>
+<sub>[İngilizce README](../../README.md)’nin çevirisidir; farklılık olursa o esas alınır. Kurulum kılavuzu, başvuru belgesi ve mimari İngilizcedir.</sub>

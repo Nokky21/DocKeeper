@@ -4,7 +4,7 @@
 
 **Documentação que não apodrece.**
 
-Seu agente de código escreve a documentação. O DocKeeper liga cada afirmação ao código que a sustenta e avisa você no momento em que esse código muda.
+Seu agente de código escreve a documentação, diagramas incluídos. O DocKeeper liga cada afirmação e cada diagrama ao código que os sustenta e avisa você no momento em que esse código muda.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Um README escrito hoje estará errado alguns meses depois, e ninguém sabe quais
 - **Cada afirmação é verificada.** “Os pagamentos são validados antes de serem cobrados” fica ligado à função que faz isso. Quando essa função muda, o DocKeeper avisa.
 - **Sem IA na verificação.** Seu agente escreve; a verificação compara impressões digitais, então dá sempre a mesma resposta.
 - **Local e gratuito.** Sem conta, sem servidor, sem rede, sem dependências. Licença MIT.
+
+## O que ele escreve
+
+Peça uma vez e seu agente documenta o repositório inteiro, página por página, a partir dos modelos da skill:
+
+- **README**: o que é, como funciona e como rodar.
+- **Arquitetura**: componentes, fluxos, dados e fronteiras, com diagramas.
+- **Decisões**: o que foi decidido e por quê, tirado só do histórico do git.
+- **Procedimentos**: runbooks com os comandos exatos.
+- **API**: cada operação com suas entradas, erros e efeitos.
+- **Onboarding**: um roteiro de leitura para o primeiro dia.
+
+Em um monorepo, ele também escreve um README para cada pacote. Cada afirmação aponta para o seu código. Veja [a arquitetura do próprio DocKeeper](../architecture.md), escrita pela skill.
 
 ## Como funciona
 
@@ -63,6 +76,7 @@ Peça ao seu agente com suas palavras:
 - *“Verifique se a nossa documentação ainda é verdadeira e corrija o que não for.”*
 - *“Revise a documentação a cada commit.”* Ele instala um hook do git que nunca bloqueia um commit.
 - *“Escreva a página de decisões a partir do histórico do git. Não invente motivos.”*
+- *“Desenhe a arquitetura com diagramas de fluxo.”*
 
 Ou execute você mesmo na raiz do seu projeto:
 
@@ -87,6 +101,22 @@ $DK review   # o que o último commit significa para a documentação
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagramas que continuam verdadeiros
+
+O agente desenha fluxos, sequências, estados e dados em Mermaid, que o GitHub e o Obsidian renderizam do mesmo jeito. Cada diagrama carrega suas âncoras por dentro, em linhas `%% dockeeper:` que ninguém vê, então o `check` o aponta quando o código que ele mostra muda. Este aqui é real:
+
+```mermaid
+flowchart LR
+  A["Seu agente escreve uma página"] --> B["scan sela cada âncora"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["A documentação continua verdadeira"]
+  C -- CHANGED --> E["Atualize o texto"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepos
 
 `audit` encontra cada pacote (qualquer subpasta com `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` etc.) e mostra quais não têm documentação. O agente escreve as páginas da raiz com um mapa dos pacotes e depois documenta um pacote por vez, então até um repositório enorme cabe. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Qualquer outro CI só precisa de Python e git: [clone e rode o `check`](../refer
 
 - [Guia de instalação](../install.md): cada agente, um único projeto, Windows, claude.ai e a API.
 - [Referência](../reference.md): âncoras, comandos, veredictos, escopo parcial, documentação publicada, o “porquê”, configuração, limites e perguntas frequentes.
+- [Arquitetura](../architecture.md): como o DocKeeper funciona por dentro, em seis diagramas ancorados.
 - [SKILL.md](../../SKILL.md), as instruções que seu agente segue, e a [especificação](../../SPEC.md) (ambas em espanhol).
 
 ## Licença
@@ -112,4 +143,4 @@ Qualquer outro CI só precisa de Python e git: [clone e rode o `check`](../refer
 
 ---
 
-<sub>Tradução do [README em inglês](../../README.md), que é a referência em caso de diferença. O guia de instalação e a referência estão em inglês.</sub>
+<sub>Tradução do [README em inglês](../../README.md), que é a referência em caso de diferença. O guia de instalação, a referência e a arquitetura estão em inglês.</sub>

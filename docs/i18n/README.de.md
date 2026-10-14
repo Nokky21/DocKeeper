@@ -4,7 +4,7 @@
 
 **Dokumentation, die nicht verrottet.**
 
-Dein Coding-Agent schreibt die Doku. DocKeeper verknüpft jede Aussage mit dem Code dahinter und meldet sich, sobald sich dieser Code ändert.
+Dein Coding-Agent schreibt die Doku, Diagramme inklusive. DocKeeper verknüpft jede Aussage und jedes Diagramm mit dem Code dahinter und meldet sich, sobald sich dieser Code ändert.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Ein README, das heute geschrieben wird, ist ein paar Monate später falsch, und 
 - **Jede Aussage wird geprüft.** „Zahlungen werden vor der Abbuchung validiert“ ist mit der Funktion verknüpft, die das tut. Ändert sich diese Funktion, sagt DocKeeper es dir.
 - **Keine KI in der Prüfung.** Dein Agent schreibt; die Prüfung vergleicht Fingerabdrücke und liefert deshalb immer dieselbe Antwort.
 - **Lokal und kostenlos.** Kein Konto, kein Server, kein Netzwerk, keine Abhängigkeiten. MIT-Lizenz.
+
+## Was er schreibt
+
+Einmal bitten, und dein Agent dokumentiert das ganze Repository Seite für Seite, nach den Vorlagen des Skills:
+
+- **README**: was es ist, wie es funktioniert, wie man es startet.
+- **Architektur**: Komponenten, Abläufe, Daten und Grenzen, mit Diagrammen.
+- **Entscheidungen**: was entschieden wurde und warum, nur aus der Git-Historie.
+- **Betriebsanleitungen**: Runbooks mit den genauen Befehlen.
+- **API**: jede Operation mit Eingaben, Fehlern und Wirkungen.
+- **Einarbeitung**: ein Lesepfad für den ersten Tag.
+
+In einem Monorepo schreibt er zusätzlich ein README pro Paket. Jede Aussage zeigt auf ihren Code. Siehe [die Architektur von DocKeeper selbst](../architecture.md), geschrieben mit dem Skill.
 
 ## So funktioniert es
 
@@ -63,6 +76,7 @@ Bitte deinen Agenten in deinen eigenen Worten:
 - *„Prüfe, ob unsere Doku noch stimmt, und korrigiere, was nicht stimmt.“*
 - *„Prüfe die Doku bei jedem Commit.“* Dafür installiert er einen Git-Hook, der nie einen Commit blockiert.
 - *„Schreib die Seite mit den Entscheidungen aus der Git-Historie. Erfinde keine Gründe.“*
+- *„Zeichne die Architektur mit Ablaufdiagrammen.“*
 
 Oder führe es selbst im Wurzelverzeichnis deines Projekts aus:
 
@@ -87,6 +101,22 @@ $DK review   # was der letzte Commit für die Doku bedeutet
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagramme, die stimmen bleiben
+
+Der Agent zeichnet Abläufe, Sequenzen, Zustände und Daten in Mermaid, das GitHub und Obsidian gleich darstellen. Jedes Diagramm trägt seine Anker in sich, in unsichtbaren `%% dockeeper:`-Zeilen, sodass `check` es meldet, wenn sich der gezeigte Code ändert. Dieses hier ist echt:
+
+```mermaid
+flowchart LR
+  A["Dein Agent schreibt eine Seite"] --> B["scan versiegelt jeden Anker"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Die Doku bleibt wahr"]
+  C -- CHANGED --> E["Text anpassen"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepos
 
 `audit` findet jedes Paket (jeden Unterordner mit `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` usw.) und zeigt, welche keine Doku haben. Der Agent schreibt die Seiten im Wurzelverzeichnis mit einer Karte der Pakete und dokumentiert dann ein Paket nach dem anderen. So passt auch ein riesiges Repository. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Jede andere CI braucht nur Python und git: [klonen und `check` ausführen](../re
 
 - [Installationsanleitung](../install.md): jeder Agent, ein einzelnes Projekt, Windows, claude.ai und die API.
 - [Referenz](../reference.md): Anker, Befehle, Urteile, Teilbereiche, veröffentlichte Doku, das „Warum“, Konfiguration, Grenzen und FAQ.
+- [Architektur](../architecture.md): wie DocKeeper innen funktioniert, in sechs verankerten Diagrammen.
 - [SKILL.md](../../SKILL.md), die Anweisungen, denen dein Agent folgt, und die [Spezifikation](../../SPEC.md) (beide auf Spanisch).
 
 ## Lizenz
@@ -112,4 +143,4 @@ Jede andere CI braucht nur Python und git: [klonen und `check` ausführen](../re
 
 ---
 
-<sub>Übersetzung des [englischen README](../../README.md), das bei Abweichungen maßgeblich ist. Installationsanleitung und Referenz sind auf Englisch.</sub>
+<sub>Übersetzung des [englischen README](../../README.md), das bei Abweichungen maßgeblich ist. Installationsanleitung, Referenz und Architektur sind auf Englisch.</sub>

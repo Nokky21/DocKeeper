@@ -4,7 +4,7 @@
 
 **Documentatie die niet verrot.**
 
-Je codeeragent schrijft de documentatie. DocKeeper koppelt elke bewering aan de code erachter en waarschuwt je zodra die code verandert.
+Je codeeragent schrijft de documentatie, diagrammen inbegrepen. DocKeeper koppelt elke bewering en elk diagram aan de code erachter en waarschuwt je zodra die code verandert.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Een README die je vandaag schrijft, klopt een paar maanden later niet meer, en n
 - **Elke bewering wordt gecontroleerd.** ‘Betalingen worden gevalideerd voordat ze worden afgeschreven’ is gekoppeld aan de functie die dat doet. Verandert die functie, dan zegt DocKeeper het je.
 - **Geen AI in de controle.** Je agent schrijft; de controle vergelijkt vingerafdrukken en geeft dus altijd hetzelfde antwoord.
 - **Lokaal en gratis.** Geen account, geen server, geen netwerk, geen afhankelijkheden. MIT-licentie.
+
+## Wat hij schrijft
+
+Vraag het één keer en je agent documenteert de hele repository, pagina voor pagina, op basis van de sjablonen in de skill:
+
+- **README**: wat het is, hoe het werkt, hoe je het start.
+- **Architectuur**: componenten, stromen, data en grenzen, met diagrammen.
+- **Beslissingen**: wat er besloten is en waarom, alleen uit de git-geschiedenis.
+- **Procedures**: runbooks met de exacte commando’s.
+- **API**: elke operatie met invoer, fouten en effecten.
+- **Onboarding**: een leesroute voor de eerste dag.
+
+In een monorepo schrijft hij ook een README per pakket. Elke bewering wijst naar haar code. Bekijk [de architectuur van DocKeeper zelf](../architecture.md), geschreven met de skill.
 
 ## Hoe het werkt
 
@@ -63,6 +76,7 @@ Vraag het je agent in je eigen woorden:
 - *‘Controleer of onze documentatie nog klopt en verbeter wat niet klopt.’*
 - *‘Controleer de documentatie bij elke commit.’* Hij installeert een git-hook die nooit een commit blokkeert.
 - *‘Schrijf de beslissingenpagina op basis van de git-geschiedenis. Verzin geen redenen.’*
+- *‘Teken de architectuur met stroomdiagrammen.’*
 
 Of voer het zelf uit vanuit de hoofdmap van je project:
 
@@ -87,6 +101,22 @@ $DK review   # wat de laatste commit betekent voor de documentatie
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagrammen die blijven kloppen
+
+De agent tekent stromen, sequenties, toestanden en data in Mermaid, dat GitHub en Obsidian op dezelfde manier weergeven. Elk diagram draagt zijn ankers in zich, op `%% dockeeper:`-regels die niemand ziet, zodat `check` het meldt als de code die het toont verandert. Dit diagram is echt:
+
+```mermaid
+flowchart LR
+  A["Je agent schrijft een pagina"] --> B["scan verzegelt elk anker"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["De documentatie blijft kloppen"]
+  C -- CHANGED --> E["Werk de tekst bij"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepo’s
 
 `audit` vindt elk pakket (elke submap met een `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` enzovoort) en laat zien welke geen documentatie hebben. De agent schrijft de pagina’s in de hoofdmap met een kaart van de pakketten en documenteert daarna één pakket per keer, zodat zelfs een enorme repository past. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Elke andere CI heeft alleen Python en git nodig: [kloon het en voer `check` uit]
 
 - [Installatiegids](../install.md): elke agent, één project, Windows, claude.ai en de API.
 - [Referentie](../reference.md): ankers, commando’s, oordelen, gedeeltelijke scope, gepubliceerde documentatie, het ‘waarom’, configuratie, grenzen en FAQ.
+- [Architectuur](../architecture.md): hoe DocKeeper vanbinnen werkt, in zes verankerde diagrammen.
 - [SKILL.md](../../SKILL.md), de instructies die je agent volgt, en de [specificatie](../../SPEC.md) (beide in het Spaans).
 
 ## Licentie
@@ -112,4 +143,4 @@ Elke andere CI heeft alleen Python en git nodig: [kloon het en voer `check` uit]
 
 ---
 
-<sub>Vertaling van de [Engelse README](../../README.md), die bij verschillen leidend is. De installatiegids en de referentie zijn in het Engels.</sub>
+<sub>Vertaling van de [Engelse README](../../README.md), die bij verschillen leidend is. De installatiegids, de referentie en de architectuur zijn in het Engels.</sub>

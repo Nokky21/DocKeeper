@@ -4,7 +4,7 @@
 
 **Dokumentacja, która się nie psuje.**
 
-Twój agent programistyczny pisze dokumentację. DocKeeper wiąże każde stwierdzenie z kodem, który za nim stoi, i daje znać, gdy tylko ten kod się zmieni.
+Twój agent programistyczny pisze dokumentację, razem z diagramami. DocKeeper wiąże każde stwierdzenie i każdy diagram z kodem, który za nimi stoi, i daje znać, gdy tylko ten kod się zmieni.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ README napisane dziś po kilku miesiącach jest już nieaktualne, a nikt nie wie
 - **Każde stwierdzenie jest sprawdzane.** „Płatności są weryfikowane przed obciążeniem” jest powiązane z funkcją, która to robi. Gdy ta funkcja się zmieni, DocKeeper ci o tym powie.
 - **Bez AI w sprawdzaniu.** Twój agent pisze; sprawdzanie porównuje odciski, więc zawsze daje tę samą odpowiedź.
 - **Lokalnie i za darmo.** Bez konta, bez serwera, bez sieci, bez zależności. Licencja MIT.
+
+## Co pisze
+
+Poproś raz, a twój agent udokumentuje całe repozytorium, strona po stronie, według szablonów ze skilla:
+
+- **README**: czym to jest, jak działa i jak to uruchomić.
+- **Architektura**: komponenty, przepływy, dane i granice, z diagramami.
+- **Decyzje**: co postanowiono i dlaczego, tylko na podstawie historii gita.
+- **Procedury**: runbooki z dokładnymi poleceniami.
+- **API**: każda operacja z danymi wejściowymi, błędami i skutkami.
+- **Wdrożenie**: ścieżka czytania na pierwszy dzień.
+
+W monorepo pisze też README dla każdego pakietu. Każde stwierdzenie wskazuje na swój kod. Zobacz [architekturę samego DocKeepera](../architecture.md), napisaną za pomocą skilla.
 
 ## Jak to działa
 
@@ -63,6 +76,7 @@ Poproś swojego agenta własnymi słowami:
 - *„Sprawdź, czy nasza dokumentacja jest wciąż prawdziwa, i popraw to, co nie jest.”*
 - *„Sprawdzaj dokumentację przy każdym commicie.”* Instaluje hook gita, który nigdy nie blokuje commita.
 - *„Napisz stronę decyzji na podstawie historii gita. Nie wymyślaj powodów.”*
+- *„Narysuj architekturę na diagramach przepływu.”*
 
 Albo uruchom go sam w katalogu głównym projektu:
 
@@ -87,6 +101,22 @@ $DK review   # co ostatni commit oznacza dla dokumentacji
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagramy, które pozostają prawdziwe
+
+Agent rysuje przepływy, sekwencje, stany i dane w Mermaid, który GitHub i Obsidian wyświetlają tak samo. Każdy diagram ma swoje kotwice w środku, w niewidocznych liniach `%% dockeeper:`, więc `check` go zgłasza, gdy zmieni się pokazany kod. Ten jest prawdziwy:
+
+```mermaid
+flowchart LR
+  A["Twój agent pisze stronę"] --> B["scan pieczętuje każdą kotwicę"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Dokumentacja pozostaje prawdziwa"]
+  C -- CHANGED --> E["Zaktualizuj tekst"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepo
 
 `audit` znajduje każdy pakiet (dowolny podfolder z `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` itd.) i pokazuje, które nie mają dokumentacji. Agent pisze strony w katalogu głównym z mapą pakietów, a potem dokumentuje po jednym pakiecie, więc mieści się nawet ogromne repozytorium. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Każde inne CI potrzebuje tylko Pythona i gita: [sklonuj i uruchom `check`](../r
 
 - [Przewodnik instalacji](../install.md): każdy agent, pojedynczy projekt, Windows, claude.ai i API.
 - [Dokumentacja referencyjna](../reference.md): kotwice, polecenia, werdykty, częściowy zakres, publikowana dokumentacja, „dlaczego”, konfiguracja, ograniczenia i FAQ.
+- [Architektura](../architecture.md): jak DocKeeper działa w środku, w sześciu zakotwiczonych diagramach.
 - [SKILL.md](../../SKILL.md), czyli instrukcje, których przestrzega twój agent, oraz [specyfikacja](../../SPEC.md) (obie po hiszpańsku).
 
 ## Licencja
@@ -112,4 +143,4 @@ Każde inne CI potrzebuje tylko Pythona i gita: [sklonuj i uruchom `check`](../r
 
 ---
 
-<sub>Tłumaczenie [angielskiego README](../../README.md), które jest wiążące w razie różnic. Przewodnik instalacji i dokumentacja referencyjna są po angielsku.</sub>
+<sub>Tłumaczenie [angielskiego README](../../README.md), które jest wiążące w razie różnic. Przewodnik instalacji, dokumentacja referencyjna i architektura są po angielsku.</sub>

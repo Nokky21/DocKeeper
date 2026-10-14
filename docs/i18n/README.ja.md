@@ -4,7 +4,7 @@
 
 **腐らないドキュメント。**
 
-ドキュメントはコーディングエージェントが書きます。DocKeeper はすべての記述をその裏付けとなるコードに結び付け、そのコードが変わった瞬間に知らせます。
+ドキュメントは図も含めてコーディングエージェントが書きます。DocKeeper はすべての記述とすべての図をその裏付けとなるコードに結び付け、そのコードが変わった瞬間に知らせます。
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@
 - **すべての記述がチェックされます。** 「支払いは請求前に検証される」という記述は、それを行う関数に結び付けられます。その関数が変わると、DocKeeper が知らせます。
 - **チェックに AI は使いません。** 書くのはエージェント、チェックはフィンガープリントの比較なので、毎回同じ答えが返ります。
 - **ローカルで無料。** アカウントもサーバーもネットワークも依存関係も不要。MIT ライセンス。
+
+## 何を書くか
+
+一度頼めば、エージェントがスキルのテンプレートをもとに、リポジトリ全体のドキュメントを 1 ページずつ書き上げます。
+
+- **README**: 何なのか、どう動くのか、どう起動するのか。
+- **アーキテクチャ**: コンポーネント、フロー、データ、境界を図付きで。
+- **意思決定**: 何をなぜ決めたのか。git の履歴だけをもとに。
+- **手順書**: 正確なコマンド付きのランブック。
+- **API**: 各操作の入力、エラー、副作用。
+- **オンボーディング**: 初日に読む順番。
+
+モノレポでは、パッケージごとの README も書きます。すべての記述が自分のコードを指しています。スキルで書かれた [DocKeeper 自身のアーキテクチャ](../architecture.md) をご覧ください。
 
 ## 仕組み
 
@@ -63,6 +76,7 @@ git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
 - *「ドキュメントがまだ正しいか確認して、正しくないところを直して。」*
 - *「コミットのたびにドキュメントを見直して。」* コミットを決してブロックしない git フックをインストールします。
 - *「git の履歴から意思決定のページを書いて。理由はでっち上げないで。」*
+- *「アーキテクチャをフロー図で描いて。」*
 
 または、プロジェクトのルートで自分で実行します。
 
@@ -87,6 +101,22 @@ $DK review   # 直前のコミットがドキュメントにとって何を意�
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## 正しさが保たれる図
+
+エージェントはフロー、シーケンス、状態、データを Mermaid で描きます。GitHub でも Obsidian でも同じように表示されます。各図は自分のアンカーを内側に持っていて、それは誰にも見えない `%% dockeeper:` 行に書かれます。そのため、図が示すコードが変わると `check` がその図を指摘します。次の図は本物です。
+
+```mermaid
+flowchart LR
+  A["エージェントがページを書く"] --> B["scan が各アンカーを封印"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["ドキュメントは正しいまま"]
+  C -- CHANGED --> E["本文を更新"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## モノレポ
 
 `audit` はすべてのパッケージ（`package.json`、`go.mod`、`Cargo.toml`、`pyproject.toml`、`pom.xml` などを含むサブフォルダー）を見つけ、ドキュメントのないものを示します。エージェントはまずルートのページをパッケージの地図付きで書き、そのあとパッケージをひとつずつ文書化するので、巨大なリポジトリでも収まります。 <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 - [インストールガイド](../install.md): 各エージェント、単一プロジェクト、Windows、claude.ai、API。
 - [リファレンス](../reference.md): アンカー、コマンド、判定、部分的な範囲、公開ドキュメント、「なぜ」、設定、制限、FAQ。
+- [アーキテクチャ](../architecture.md): DocKeeper の内部の仕組みを、アンカー付きの 6 つの図で。
 - エージェントが従う指示である [SKILL.md](../../SKILL.md) と[仕様書](../../SPEC.md)（どちらもスペイン語）。
 
 ## ライセンス
@@ -112,4 +143,4 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 ---
 
-<sub>[英語の README](../../README.md) の翻訳です。内容が異なる場合は英語版が優先されます。インストールガイドとリファレンスは英語です。</sub>
+<sub>[英語の README](../../README.md) の翻訳です。内容が異なる場合は英語版が優先されます。インストールガイド、リファレンス、アーキテクチャは英語です。</sub>

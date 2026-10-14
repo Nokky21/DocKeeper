@@ -4,7 +4,7 @@
 
 **Dokumentace, která nehnije.**
 
-Váš programovací agent píše dokumentaci. DocKeeper spojí každé tvrzení s kódem, který za ním stojí, a dá vám vědět, jakmile se ten kód změní.
+Váš programovací agent píše dokumentaci, včetně diagramů. DocKeeper spojí každé tvrzení a každý diagram s kódem, který za nimi stojí, a dá vám vědět, jakmile se ten kód změní.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ README napsané dnes je za pár měsíců špatně a nikdo neví, které stránk
 - **Každé tvrzení se ověřuje.** „Platby se ověřují před stržením“ je svázané s funkcí, která to dělá. Když se ta funkce změní, DocKeeper vám to řekne.
 - **Žádná AI v kontrole.** Váš agent píše; kontrola porovnává otisky, takže vždy dá stejnou odpověď.
 - **Lokálně a zdarma.** Žádný účet, žádný server, žádná síť, žádné závislosti. Licence MIT.
+
+## Co píše
+
+Stačí požádat jednou a váš agent zdokumentuje celý repozitář, stránku po stránce, podle šablon ze skillu:
+
+- **README**: co to je, jak to funguje a jak to spustit.
+- **Architektura**: komponenty, toky, data a hranice, s diagramy.
+- **Rozhodnutí**: co se rozhodlo a proč, jen z historie gitu.
+- **Postupy**: runbooky s přesnými příkazy.
+- **API**: každá operace se vstupy, chybami a účinky.
+- **Zaškolení**: trasa čtení na první den.
+
+V monorepu navíc napíše README pro každý balíček. Každé tvrzení ukazuje na svůj kód. Podívejte se na [architekturu samotného DocKeeperu](../architecture.md), napsanou pomocí skillu.
 
 ## Jak to funguje
 
@@ -63,6 +76,7 @@ Požádejte svého agenta vlastními slovy:
 - *„Zkontroluj, jestli je naše dokumentace pořád pravdivá, a oprav, co není.“*
 - *„Kontroluj dokumentaci při každém commitu.“* Nainstaluje git hook, který nikdy neblokuje commit.
 - *„Napiš stránku rozhodnutí z historie gitu. Nevymýšlej si důvody.“*
+- *„Nakresli architekturu pomocí vývojových diagramů.“*
 
 Nebo to spusťte sami z kořene projektu:
 
@@ -87,6 +101,22 @@ $DK review   # co poslední commit znamená pro dokumentaci
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagramy, které zůstávají pravdivé
+
+Agent kreslí toky, sekvence, stavy a data v Mermaidu, který GitHub i Obsidian zobrazí stejně. Každý diagram nese své kotvy uvnitř, na řádcích `%% dockeeper:`, které nikdo nevidí, takže ho `check` označí, když se změní kód, který ukazuje. Tenhle je skutečný:
+
+```mermaid
+flowchart LR
+  A["Váš agent napíše stránku"] --> B["scan zapečetí každou kotvu"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Dokumentace zůstává pravdivá"]
+  C -- CHANGED --> E["Upravte text"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepa
 
 `audit` najde každý balíček (jakoukoli podsložku s `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` a podobně) a ukáže, které nemají dokumentaci. Agent napíše stránky v kořeni s mapou balíčků a pak dokumentuje jeden balíček po druhém, takže se vejde i obrovský repozitář. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Jakékoli jiné CI potřebuje jen Python a git: [naklonujte ho a spusťte `check
 
 - [Instalační příručka](../install.md): každý agent, jediný projekt, Windows, claude.ai a API.
 - [Reference](../reference.md): kotvy, příkazy, verdikty, částečný rozsah, publikovaná dokumentace, „proč“, konfigurace, omezení a FAQ.
+- [Architektura](../architecture.md): jak DocKeeper funguje uvnitř, v šesti ukotvených diagramech.
 - [SKILL.md](../../SKILL.md), pokyny, kterými se váš agent řídí, a [specifikace](../../SPEC.md) (obojí ve španělštině).
 
 ## Licence
@@ -112,4 +143,4 @@ Jakékoli jiné CI potřebuje jen Python a git: [naklonujte ho a spusťte `check
 
 ---
 
-<sub>Překlad [anglického README](../../README.md), které platí v případě rozdílů. Instalační příručka a reference jsou v angličtině.</sub>
+<sub>Překlad [anglického README](../../README.md), které platí v případě rozdílů. Instalační příručka, reference a architektura jsou v angličtině.</sub>

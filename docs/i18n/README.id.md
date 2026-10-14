@@ -4,7 +4,7 @@
 
 **Dokumentasi yang tidak membusuk.**
 
-Agen coding Anda yang menulis dokumentasinya. DocKeeper mengikat setiap klaim ke kode di baliknya dan memberi tahu Anda begitu kode itu berubah.
+Agen coding Anda yang menulis dokumentasinya, termasuk diagram. DocKeeper mengikat setiap klaim dan setiap diagram ke kode di baliknya dan memberi tahu Anda begitu kode itu berubah.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ README yang ditulis hari ini sudah salah beberapa bulan kemudian, dan tidak ada 
 - **Setiap klaim diperiksa.** “Pembayaran divalidasi sebelum ditagih” diikat ke fungsi yang melakukannya. Saat fungsi itu berubah, DocKeeper memberi tahu Anda.
 - **Tanpa AI dalam pemeriksaan.** Agen Anda yang menulis; pemeriksaan membandingkan sidik jari, jadi jawabannya selalu sama.
 - **Lokal dan gratis.** Tanpa akun, tanpa server, tanpa jaringan, tanpa dependensi. Lisensi MIT.
+
+## Apa yang ditulisnya
+
+Minta sekali, dan agen Anda mendokumentasikan seluruh repositori halaman demi halaman berdasarkan templat di skill:
+
+- **README**: apa itu, cara kerjanya, cara menjalankannya.
+- **Arsitektur**: komponen, alur, data, dan batasan, lengkap dengan diagram.
+- **Keputusan**: apa yang diputuskan dan mengapa, hanya dari riwayat git.
+- **Prosedur**: runbook dengan perintah yang tepat.
+- **API**: setiap operasi beserta input, galat, dan efeknya.
+- **Orientasi**: jalur bacaan untuk hari pertama.
+
+Di monorepo, ia juga menulis README untuk setiap paket. Setiap klaim menunjuk ke kodenya. Lihat [arsitektur DocKeeper sendiri](../architecture.md), yang ditulis dengan skill ini.
 
 ## Cara kerjanya
 
@@ -63,6 +76,7 @@ Minta agen Anda dengan kata-kata sendiri:
 - *“Periksa apakah dokumentasi kita masih benar dan perbaiki yang tidak.”*
 - *“Tinjau dokumentasi di setiap commit.”* Agen memasang git hook yang tidak pernah memblokir commit.
 - *“Tulis halaman keputusan dari riwayat git. Jangan mengarang alasan.”*
+- *“Gambar arsitekturnya dengan diagram alur.”*
 
 Atau jalankan sendiri dari root proyek Anda:
 
@@ -87,6 +101,22 @@ $DK review   # apa arti commit terakhir bagi dokumentasi
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Diagram yang tetap benar
+
+Agen menggambar alur, urutan, status, dan data dengan Mermaid, yang ditampilkan sama oleh GitHub dan Obsidian. Setiap diagram membawa jangkarnya di dalam, pada baris `%% dockeeper:` yang tidak terlihat, sehingga `check` menandainya saat kode yang ditampilkannya berubah. Diagram ini nyata:
+
+```mermaid
+flowchart LR
+  A["Agen Anda menulis halaman"] --> B["scan menyegel setiap jangkar"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Dokumentasi tetap benar"]
+  C -- CHANGED --> E["Perbarui teks"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepo
 
 `audit` menemukan setiap paket (subfolder apa pun yang berisi `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml`, dan sebagainya) dan menunjukkan mana yang belum punya dokumentasi. Agen menulis halaman root beserta peta paketnya, lalu mendokumentasikan satu paket setiap kali, sehingga repositori raksasa pun muat. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ CI lain hanya butuh Python dan git: [klon lalu jalankan `check`](../reference.md
 
 - [Panduan instalasi](../install.md): semua agen, satu proyek saja, Windows, claude.ai, dan API.
 - [Referensi](../reference.md): jangkar, perintah, putusan, cakupan sebagian, dokumentasi terbitan, “mengapa”, konfigurasi, batasan, dan FAQ.
+- [Arsitektur](../architecture.md): cara kerja DocKeeper di dalam, dalam enam diagram berjangkar.
 - [SKILL.md](../../SKILL.md), instruksi yang diikuti agen Anda, dan [spesifikasi](../../SPEC.md) (keduanya dalam bahasa Spanyol).
 
 ## Lisensi
@@ -112,4 +143,4 @@ CI lain hanya butuh Python dan git: [klon lalu jalankan `check`](../reference.md
 
 ---
 
-<sub>Terjemahan dari [README berbahasa Inggris](../../README.md), yang menjadi acuan bila ada perbedaan. Panduan instalasi dan referensi berbahasa Inggris.</sub>
+<sub>Terjemahan dari [README berbahasa Inggris](../../README.md), yang menjadi acuan bila ada perbedaan. Panduan instalasi, referensi, dan arsitektur berbahasa Inggris.</sub>

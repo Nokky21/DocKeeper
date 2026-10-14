@@ -4,7 +4,7 @@
 
 **썩지 않는 문서.**
 
-문서는 코딩 에이전트가 씁니다. DocKeeper는 모든 주장을 그 뒤에 있는 코드에 묶어 두고, 그 코드가 바뀌는 순간 알려 줍니다.
+문서는 다이어그램까지 코딩 에이전트가 씁니다. DocKeeper는 모든 주장과 모든 다이어그램을 그 뒤에 있는 코드에 묶어 두고, 그 코드가 바뀌는 순간 알려 줍니다.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@
 - **모든 주장을 검사합니다.** “결제는 청구 전에 검증된다”는 문장은 그 일을 하는 함수에 묶입니다. 그 함수가 바뀌면 DocKeeper가 알려 줍니다.
 - **검사에 AI를 쓰지 않습니다.** 글은 에이전트가 쓰고, 검사는 지문을 비교하므로 항상 같은 답을 냅니다.
 - **로컬이고 무료입니다.** 계정, 서버, 네트워크, 의존성이 모두 필요 없습니다. MIT 라이선스.
+
+## 무엇을 쓰나
+
+한 번만 부탁하면 에이전트가 스킬의 템플릿을 바탕으로 저장소 전체를 한 페이지씩 문서화합니다.
+
+- **README**: 무엇인지, 어떻게 동작하는지, 어떻게 실행하는지.
+- **아키텍처**: 컴포넌트, 흐름, 데이터, 경계를 다이어그램과 함께.
+- **의사 결정**: 무엇을 왜 결정했는지, git 기록에서만 가져와서.
+- **절차**: 정확한 명령어가 담긴 런북.
+- **API**: 모든 작업의 입력, 오류, 효과.
+- **온보딩**: 첫날을 위한 읽기 순서.
+
+모노레포에서는 패키지마다 README도 씁니다. 모든 주장은 자기 코드를 가리킵니다. 스킬로 쓴 [DocKeeper 자체의 아키텍처](../architecture.md)를 확인해 보세요.
 
 ## 작동 방식
 
@@ -63,6 +76,7 @@ git clone https://github.com/Nokky21/DocKeeper.git ~/.agents/skills/dockeeper
 - *“우리 문서가 아직 사실인지 확인하고, 아닌 부분은 고쳐 줘.”*
 - *“커밋할 때마다 문서를 검토해 줘.”* 커밋을 절대 막지 않는 git 훅을 설치합니다.
 - *“git 기록을 바탕으로 의사 결정 페이지를 써 줘. 이유를 지어내지는 마.”*
+- *“흐름도로 아키텍처를 그려 줘.”*
 
 아니면 프로젝트 루트에서 직접 실행하세요.
 
@@ -87,6 +101,22 @@ $DK review   # 마지막 커밋이 문서에 어떤 의미인지
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## 계속 사실로 남는 다이어그램
+
+에이전트는 흐름, 시퀀스, 상태, 데이터를 Mermaid로 그리며, GitHub와 Obsidian은 이를 똑같이 보여 줍니다. 각 다이어그램은 아무도 보지 못하는 `%% dockeeper:` 줄에 앵커를 품고 있어서, 다이어그램이 보여 주는 코드가 바뀌면 `check`가 표시합니다. 아래 다이어그램은 실제입니다.
+
+```mermaid
+flowchart LR
+  A["에이전트가 페이지를 씀"] --> B["scan이 모든 앵커를 봉인"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["문서가 계속 사실로 남음"]
+  C -- CHANGED --> E["글을 고침"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## 모노레포
 
 `audit`는 모든 패키지(`package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml` 등이 있는 하위 폴더)를 찾아서 문서가 없는 것을 보여 줍니다. 에이전트는 먼저 루트 페이지를 패키지 지도와 함께 쓰고, 그다음 패키지를 하나씩 문서화하므로 아무리 큰 저장소도 감당할 수 있습니다. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 - [설치 가이드](../install.md): 모든 에이전트, 단일 프로젝트, Windows, claude.ai, API.
 - [레퍼런스](../reference.md): 앵커, 명령어, 판정, 부분 범위, 공개 문서, ‘왜’, 설정, 한계, FAQ.
+- [아키텍처](../architecture.md): DocKeeper의 내부 동작을 앵커가 달린 다이어그램 여섯 개로.
 - 에이전트가 따르는 지침인 [SKILL.md](../../SKILL.md)와 [명세](../../SPEC.md) (둘 다 스페인어).
 
 ## 라이선스
@@ -112,4 +143,4 @@ python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 
 ---
 
-<sub>[영어 README](../../README.md)의 번역입니다. 내용이 다르면 영어판을 기준으로 합니다. 설치 가이드와 레퍼런스는 영어로 되어 있습니다.</sub>
+<sub>[영어 README](../../README.md)의 번역입니다. 내용이 다르면 영어판을 기준으로 합니다. 설치 가이드, 레퍼런스, 아키텍처 문서는 영어로 되어 있습니다.</sub>

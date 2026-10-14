@@ -47,6 +47,28 @@
     },
     {
       "doc": "README.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "README.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "README.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -850,6 +872,28 @@
     },
     {
       "doc": "docs/i18n/README.ar.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.ar.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.ar.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -927,6 +971,28 @@
     },
     {
       "doc": "docs/i18n/README.cs.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.cs.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.cs.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1004,6 +1070,28 @@
     },
     {
       "doc": "docs/i18n/README.de.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.de.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.de.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1081,6 +1169,28 @@
     },
     {
       "doc": "docs/i18n/README.es.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.es.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.es.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1158,6 +1268,28 @@
     },
     {
       "doc": "docs/i18n/README.fr.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.fr.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.fr.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1235,6 +1367,28 @@
     },
     {
       "doc": "docs/i18n/README.he.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.he.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.he.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1312,6 +1466,28 @@
     },
     {
       "doc": "docs/i18n/README.hi.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.hi.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.hi.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1389,6 +1565,28 @@
     },
     {
       "doc": "docs/i18n/README.id.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.id.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.id.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1466,6 +1664,28 @@
     },
     {
       "doc": "docs/i18n/README.it.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.it.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.it.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1543,6 +1763,28 @@
     },
     {
       "doc": "docs/i18n/README.ja.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.ja.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.ja.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1620,6 +1862,28 @@
     },
     {
       "doc": "docs/i18n/README.ko.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.ko.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.ko.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1697,6 +1961,28 @@
     },
     {
       "doc": "docs/i18n/README.nl.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.nl.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.nl.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1774,6 +2060,28 @@
     },
     {
       "doc": "docs/i18n/README.pl.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.pl.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.pl.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1851,6 +2159,28 @@
     },
     {
       "doc": "docs/i18n/README.pt-BR.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.pt-BR.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.pt-BR.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -1928,6 +2258,28 @@
     },
     {
       "doc": "docs/i18n/README.ru.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.ru.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.ru.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2005,6 +2357,28 @@
     },
     {
       "doc": "docs/i18n/README.sv.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.sv.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.sv.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2082,6 +2456,28 @@
     },
     {
       "doc": "docs/i18n/README.th.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.th.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.th.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2159,6 +2555,28 @@
     },
     {
       "doc": "docs/i18n/README.tr.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.tr.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.tr.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2236,6 +2654,28 @@
     },
     {
       "doc": "docs/i18n/README.uk.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.uk.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.uk.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2313,6 +2753,28 @@
     },
     {
       "doc": "docs/i18n/README.vi.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.vi.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.vi.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2390,6 +2852,28 @@
     },
     {
       "doc": "docs/i18n/README.zh-CN.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.zh-CN.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
+    },
+    {
+      "doc": "docs/i18n/README.zh-CN.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -2464,6 +2948,28 @@
       "fin": 387,
       "n": 34,
       "huella": "156615b04ac5a6e2"
+    },
+    {
+      "doc": "docs/i18n/README.zh-TW.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 232,
+      "fin": 273,
+      "n": 42,
+      "huella": "eff1b806a2e5f01c"
+    },
+    {
+      "doc": "docs/i18n/README.zh-TW.md",
+      "ancla": "dockeeper/motor.py#escanear",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "escanear",
+      "tipo": "definicion",
+      "inicio": 178,
+      "fin": 211,
+      "n": 34,
+      "huella": "dad39081b2dd4bb1"
     },
     {
       "doc": "docs/i18n/README.zh-TW.md",

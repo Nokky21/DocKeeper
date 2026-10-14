@@ -4,7 +4,7 @@
 
 **Une documentation qui ne pourrit pas.**
 
-Votre agent de code écrit la documentation. DocKeeper relie chaque affirmation au code qui la justifie et vous prévient dès que ce code change.
+Votre agent de code écrit la documentation, schémas compris. DocKeeper relie chaque affirmation et chaque schéma au code qui les justifie et vous prévient dès que ce code change.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Un README écrit aujourd’hui est faux quelques mois plus tard, et personne ne 
 - **Chaque affirmation est vérifiée.** « Les paiements sont validés avant d’être encaissés » est relié à la fonction qui le fait. Quand cette fonction change, DocKeeper vous le dit.
 - **Pas d’IA dans la vérification.** Votre agent écrit ; la vérification compare des empreintes, donc elle donne toujours la même réponse.
 - **Local et gratuit.** Pas de compte, pas de serveur, pas de réseau, aucune dépendance. Licence MIT.
+
+## Ce qu’il écrit
+
+Demandez-le une fois et votre agent documente tout le dépôt, page par page, à partir des modèles de la skill :
+
+- **README** : ce que c’est, comment ça marche, comment le lancer.
+- **Architecture** : composants, flux, données et frontières, avec des schémas.
+- **Décisions** : ce qui a été décidé et pourquoi, tiré uniquement de l’historique git.
+- **Procédures** : des runbooks avec les commandes exactes.
+- **API** : chaque opération avec ses entrées, ses erreurs et ses effets.
+- **Intégration** : un parcours de lecture pour le premier jour.
+
+Dans un monorepo, il écrit aussi un README par paquet. Chaque affirmation pointe vers son code. Voyez [l’architecture de DocKeeper lui-même](../architecture.md), écrite avec la skill.
 
 ## Comment ça marche
 
@@ -63,6 +76,7 @@ Demandez-le à votre agent avec vos mots :
 - *« Vérifie si notre documentation est toujours vraie et corrige ce qui ne l’est plus. »*
 - *« Relis la documentation à chaque commit. »* Il installe un hook git qui ne bloque jamais un commit.
 - *« Écris la page des décisions à partir de l’historique git. N’invente pas de raisons. »*
+- *« Dessine l’architecture avec des diagrammes de flux. »*
 
 Ou lancez-le vous-même depuis la racine de votre projet :
 
@@ -87,6 +101,22 @@ $DK review   # ce que le dernier commit implique pour la documentation
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Des schémas qui restent vrais
+
+L’agent dessine les flux, les séquences, les états et les données en Mermaid, que GitHub et Obsidian affichent de la même façon. Chaque schéma porte ses ancres à l’intérieur, sur des lignes `%% dockeeper:` invisibles, si bien que `check` le signale quand le code qu’il montre change. Celui-ci est bien réel :
+
+```mermaid
+flowchart LR
+  A["Votre agent écrit une page"] --> B["scan scelle chaque ancre"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["La documentation reste vraie"]
+  C -- CHANGED --> E["Mettre le texte à jour"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepos
 
 `audit` trouve chaque paquet (tout sous-dossier avec un `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml`, etc.) et indique ceux qui n’ont pas de documentation. L’agent écrit les pages de la racine avec une carte des paquets, puis documente un paquet à la fois : même un dépôt énorme tient. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Toute autre CI n’a besoin que de Python et git : [clonez-le et lancez `check`]
 
 - [Guide d’installation](../install.md) : chaque agent, un seul projet, Windows, claude.ai et l’API.
 - [Référence](../reference.md) : ancres, commandes, verdicts, périmètre partiel, documentation publiée, le « pourquoi », configuration, limites et FAQ.
+- [Architecture](../architecture.md) : le fonctionnement interne de DocKeeper en six schémas ancrés.
 - [SKILL.md](../../SKILL.md), les instructions que suit votre agent, et la [spécification](../../SPEC.md) (toutes deux en espagnol).
 
 ## Licence
@@ -112,4 +143,4 @@ Toute autre CI n’a besoin que de Python et git : [clonez-le et lancez `check`]
 
 ---
 
-<sub>Traduction du [README en anglais](../../README.md), qui fait foi en cas de différence. Le guide d’installation et la référence sont en anglais.</sub>
+<sub>Traduction du [README en anglais](../../README.md), qui fait foi en cas de différence. Le guide d’installation, la référence et l’architecture sont en anglais.</sub>

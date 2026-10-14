@@ -4,7 +4,7 @@
 
 **Tài liệu không bao giờ mục rữa.**
 
-Agent lập trình của bạn viết tài liệu. DocKeeper gắn mỗi khẳng định với đoạn mã đứng sau nó và báo cho bạn ngay khi đoạn mã đó thay đổi.
+Agent lập trình của bạn viết tài liệu, kể cả sơ đồ. DocKeeper gắn mỗi khẳng định và mỗi sơ đồ với đoạn mã đứng sau chúng và báo cho bạn ngay khi đoạn mã đó thay đổi.
 
 [![CI](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml/badge.svg)](https://github.com/Nokky21/DocKeeper/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
@@ -26,6 +26,19 @@ Một README viết hôm nay sẽ sai sau vài tháng, và không ai biết tran
 - **Mọi khẳng định đều được kiểm tra.** “Thanh toán được xác thực trước khi bị trừ tiền” được gắn với hàm thực hiện việc đó. Khi hàm ấy thay đổi, DocKeeper sẽ báo cho bạn.
 - **Không dùng AI khi kiểm tra.** Agent của bạn viết; phần kiểm tra so sánh dấu vân tay, nên lần nào cũng cho cùng một câu trả lời.
 - **Chạy cục bộ và miễn phí.** Không tài khoản, không máy chủ, không mạng, không phụ thuộc. Giấy phép MIT.
+
+## Nó viết những gì
+
+Chỉ cần nhờ một lần, agent sẽ viết tài liệu cho cả kho mã, từng trang một, dựa trên các mẫu trong skill:
+
+- **README**: nó là gì, hoạt động ra sao, chạy thế nào.
+- **Kiến trúc**: thành phần, luồng, dữ liệu và ranh giới, kèm sơ đồ.
+- **Quyết định**: đã quyết định gì và vì sao, chỉ lấy từ lịch sử git.
+- **Quy trình**: runbook với lệnh chính xác.
+- **API**: mọi thao tác cùng đầu vào, lỗi và tác động.
+- **Hướng dẫn nhập môn**: lộ trình đọc cho ngày đầu tiên.
+
+Với monorepo, nó còn viết một README cho mỗi gói. Mỗi khẳng định đều trỏ tới mã của nó. Xem [kiến trúc của chính DocKeeper](../architecture.md), được viết bằng skill.
 
 ## Cách hoạt động
 
@@ -63,6 +76,7 @@ Nhờ agent của bạn bằng lời của chính bạn:
 - *“Kiểm tra xem tài liệu của chúng ta còn đúng không và sửa những chỗ sai.”*
 - *“Rà soát tài liệu sau mỗi commit.”* Nó cài một git hook không bao giờ chặn commit.
 - *“Viết trang quyết định từ lịch sử git. Đừng bịa ra lý do.”*
+- *“Vẽ kiến trúc bằng sơ đồ luồng.”*
 
 Hoặc tự chạy từ thư mục gốc của dự án:
 
@@ -87,6 +101,22 @@ $DK review   # commit gần nhất có ý nghĩa gì với tài liệu
 python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
 ```
 
+## Sơ đồ luôn đúng
+
+Agent vẽ luồng, trình tự, trạng thái và dữ liệu bằng Mermaid, thứ mà GitHub và Obsidian hiển thị giống nhau. Mỗi sơ đồ mang điểm neo bên trong, trên các dòng `%% dockeeper:` mà không ai thấy, nên `check` sẽ đánh dấu nó khi đoạn mã nó thể hiện thay đổi. Sơ đồ này là thật:
+
+```mermaid
+flowchart LR
+  A["Agent viết một trang"] --> B["scan niêm phong mọi điểm neo"]
+  %% dockeeper: dockeeper/motor.py#escanear
+  B --> C{"check"}
+  %% dockeeper: dockeeper/motor.py#comprobar
+  C -- OK --> D["Tài liệu luôn đúng"]
+  C -- CHANGED --> E["Cập nhật nội dung"]
+  E --> B
+  %% dockeeper: dockeeper/motor.py#arreglar
+```
+
 ## Monorepo
 
 `audit` tìm mọi gói (bất kỳ thư mục con nào có `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml`, v.v.) và cho biết gói nào chưa có tài liệu. Agent viết các trang ở thư mục gốc kèm bản đồ các gói, rồi viết tài liệu cho từng gói một, nên kho mã khổng lồ cũng xử lý được. <!-- dockeeper: dockeeper/paquetes.py#detectar -->
@@ -104,6 +134,7 @@ Mọi hệ thống CI khác chỉ cần Python và git: [clone về và chạy `
 
 - [Hướng dẫn cài đặt](../install.md): mọi agent, một dự án riêng, Windows, claude.ai và API.
 - [Tham khảo](../reference.md): điểm neo, lệnh, phán quyết, phạm vi một phần, tài liệu công khai, phần “vì sao”, cấu hình, giới hạn và câu hỏi thường gặp.
+- [Kiến trúc](../architecture.md): DocKeeper hoạt động bên trong ra sao, qua sáu sơ đồ có neo.
 - [SKILL.md](../../SKILL.md), các chỉ dẫn mà agent của bạn làm theo, và [đặc tả](../../SPEC.md) (cả hai bằng tiếng Tây Ban Nha).
 
 ## Giấy phép
@@ -112,4 +143,4 @@ Mọi hệ thống CI khác chỉ cần Python và git: [clone về và chạy `
 
 ---
 
-<sub>Bản dịch của [README tiếng Anh](../../README.md); nếu có khác biệt thì bản tiếng Anh là chuẩn. Hướng dẫn cài đặt và tài liệu tham khảo bằng tiếng Anh.</sub>
+<sub>Bản dịch của [README tiếng Anh](../../README.md); nếu có khác biệt thì bản tiếng Anh là chuẩn. Hướng dẫn cài đặt, tài liệu tham khảo và kiến trúc bằng tiếng Anh.</sub>
