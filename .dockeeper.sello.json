@@ -150,8 +150,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "_fichas",
       "tipo": "definicion",
-      "inicio": 194,
-      "fin": 204,
+      "inicio": 196,
+      "fin": 206,
       "n": 11,
       "huella": "5a0baac673dd338a"
     },
@@ -161,8 +161,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 122,
-      "fin": 159,
+      "inicio": 124,
+      "fin": 161,
       "n": 36,
       "huella": "1e9bcc33005f12a4"
     },
@@ -271,8 +271,8 @@
       "fichero": "tests/test_alcance.py",
       "simbolo": "PruebasAlcance.test_listas_vacias",
       "tipo": "definicion",
-      "inicio": 89,
-      "fin": 102,
+      "inicio": 90,
+      "fin": 103,
       "n": 14,
       "huella": "e2de9abad01794f7"
     },
@@ -282,8 +282,8 @@
       "fichero": "tests/test_alcance.py",
       "simbolo": "PruebasAlcance.test_solo_codigo_recorta_el_codigo",
       "tipo": "definicion",
-      "inicio": 41,
-      "fin": 47,
+      "inicio": 42,
+      "fin": 48,
       "n": 7,
       "huella": "c9470bb2be3383d8"
     },
@@ -623,8 +623,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "_fichas",
       "tipo": "definicion",
-      "inicio": 194,
-      "fin": 204,
+      "inicio": 196,
+      "fin": 206,
       "n": 11,
       "huella": "5a0baac673dd338a"
     },
@@ -634,8 +634,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 122,
-      "fin": 159,
+      "inicio": 124,
+      "fin": 161,
       "n": 36,
       "huella": "1e9bcc33005f12a4"
     },
@@ -3050,12 +3050,23 @@
     },
     {
       "doc": "docs/reference.md",
+      "ancla": "dockeeper/markdown.py#_RUTA",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "_RUTA",
+      "tipo": "declaracion",
+      "inicio": 20,
+      "fin": 20,
+      "n": 1,
+      "huella": "e23442ee1af89e4f"
+    },
+    {
+      "doc": "docs/reference.md",
       "ancla": "dockeeper/markdown.py#_fichas",
       "fichero": "dockeeper/markdown.py",
       "simbolo": "_fichas",
       "tipo": "definicion",
-      "inicio": 194,
-      "fin": 204,
+      "inicio": 196,
+      "fin": 206,
       "n": 11,
       "huella": "5a0baac673dd338a"
     },
@@ -3065,8 +3076,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 122,
-      "fin": 159,
+      "inicio": 124,
+      "fin": 161,
       "n": 36,
       "huella": "1e9bcc33005f12a4"
     },
@@ -3230,8 +3241,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "_fichas",
       "tipo": "definicion",
-      "inicio": 194,
-      "fin": 204,
+      "inicio": 196,
+      "fin": 206,
       "n": 11,
       "huella": "5a0baac673dd338a"
     },
@@ -3263,8 +3274,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 122,
-      "fin": 159,
+      "inicio": 124,
+      "fin": 161,
       "n": 36,
       "huella": "1e9bcc33005f12a4"
     },
@@ -3393,7 +3404,7 @@
   "vinculos": [
     {
       "doc": "docs/reference.md",
-      "linea_doc": 124,
+      "linea_doc": 126,
       "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",

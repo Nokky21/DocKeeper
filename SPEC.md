@@ -49,7 +49,9 @@ trabajan juntos:
 | Oculta | `<!-- dockeeper: src/pagos.ts:147 src/pagos.ts#validar -->` | no ensucia el Markdown visible |
 | Vínculo (fuera del doc) | `dockeeper link doc.md:12 src/pagos.ts#validar` | documentación publicada |
 
-- Rutas **relativas a la raíz** del repositorio. Una ruta absoluta o que sale de la raíz es un error.
+- Rutas **relativas a la raíz** del repositorio, con los segmentos entre corchetes de las rutas
+  dinámicas (`app/[id]/page.tsx`, `[...slug].astro`, `[[...slug]]`). Una ruta absoluta o que sale de
+  la raíz es un error.
 - Al leer un documento se saltan los bloques de código (` ``` ` y `~~~`), el código en línea y los
   comentarios HTML que no son de dockeeper. Así un documento que *enseña* la sintaxis no se llena de
   anclas falsas (fallo del prototipo).
@@ -184,6 +186,7 @@ en varias líneas) se corrigió y tiene prueba.
 | Ventana frente a definición al comprobar | La definición se recalcula desde la línea; la ventana se comprueba por su tramo guardado. | Recalcular una ventana por radio tras borrar una línea vacía interna daría `MOVED` eternos. |
 | Ancla por símbolo que cambia de línea | `MOVED` (salida 0) y `fix` actualiza el tramo. | Uniforme con las anclas por línea; el sello no queda desfasado. |
 | `[[algo#x]]` sin `.` ni `/` en la ruta | No es ancla. | No confundir con wikilinks de Obsidian (`[[nota#encabezado]]`). |
+| Rutas con corchetes (`app/[id]/page.tsx`) | Valen en todas las formas de ancla; un segmento entre corchetes no lleva espacios. En `--solo`, `--sin` y la configuración, un patrón que nombra una ruta tal cual casa con ella aunque lleve `[`, y si es un glob casa además como glob. | Las rutas dinámicas de Next, Astro, SvelteKit o Nuxt son código como cualquier otro; sin espacios, un wikilink `[[Nota [borrador]]]` sigue sin ser ancla. |
 | Bloques de Markdown indentados (4 espacios) | Se leen como texto, no como código. | Tratarlos como código haría desaparecer en silencio anclas de listas anidadas; un ancla falsa al menos da error visible. Para enseñar la sintaxis: ` ``` `. |
 | Qué línea cuenta para «código copiado» | Solo líneas con algún carácter alfanumérico. | Una ristra de `}` o `)` no es copiar código y daría falsos avisos. |
 | «No puede llevar rutas internas» | Además de las anclas, `RUTA_INTERNA` busca en el texto de un doc `publico` rutas de ficheros o carpetas del repo (con al menos una `/`). | El requisito habla de rutas, no solo de anclas. |

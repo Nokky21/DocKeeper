@@ -4,6 +4,7 @@ import unittest
 
 from dockeeper.alcance import Alcance
 from dockeeper.config import ErrorDeUso
+from dockeeper.rutas import casa
 from tests.util import RepoDePrueba, d, estados
 
 PAGOS = d('''
@@ -100,6 +101,14 @@ class PruebasAlcance(unittest.TestCase):
         solo_sin = Alcance([], ["src"], conocidas, es_doc)
         self.assertFalse(solo_sin.codigo_en_alcance("src/a.py"))
         self.assertTrue(solo_sin.codigo_en_alcance("lib/b.py"))
+
+    def test_rutas_con_corchetes_casan_literalmente(self):
+        self.assertTrue(casa("app/[id]/page.tsx", "app/[id]/page.tsx"))
+        self.assertTrue(casa("app/[id]/page.tsx", "app/[id]"))
+        self.assertTrue(casa("app/x.tsx", "app/[xy].tsx"))  # sin ruta literal, sigue siendo glob
+        with RepoDePrueba({"app/[id]/page.py": PAGOS, "docs/a.md": "Valida [[app/[id]/page.py#validar]].\n"}) as r:
+            r.dk("scan")
+            self.assertEqual(r.dk("check", "--solo", "app/[id]/page.py")[0], 0)
 
     def test_solo_que_no_casa_es_error_de_uso(self):
         with repo() as r:

@@ -18,9 +18,11 @@ exception is a `%% dockeeper:` line inside a `mermaid` block: `%%` is a Mermaid 
 and GitHub don't show it, and it keeps each anchor next to the nodes it describes. `audit` counts the
 diagrams that have no anchors. <!-- dockeeper: dockeeper/markdown.py#analizar dockeeper/markdown.py#_fichas -->
 
-Paths are relative to the repository root. Prefer symbols: a line number written in a document ages
-when code moves. The seal file always knows the real position, but readers see the old number, and
-`fix` never rewrites your documents. <!-- dockeeper: dockeeper/motor.py#arreglar -->
+Paths are relative to the repository root, and may contain the bracket segments of dynamic routes
+(`app/[id]/page.tsx`, `[...slug].astro`, `[[...slug]]`). Prefer symbols: a line number written in a
+document ages when code moves. The seal file always knows the real position, but readers see the old
+number, and `fix` never rewrites your documents.
+<!-- dockeeper: dockeeper/markdown.py#_RUTA dockeeper/motor.py#arreglar -->
 
 Definitions are recognized for Python, JavaScript/TypeScript, Go, Rust, Java, Kotlin, Scala, C#,
 C/C++, Swift, PHP, Dart, Ruby, Elixir, Lua, Julia and shell. Any other text file still works with

@@ -28,18 +28,21 @@ def normalizar_patron(patron: str) -> str:
 def casa(ruta: str, patron: str, sin_mayusculas: bool = False) -> bool:
     """¿Casa la ruta con el patrón?
 
-    - Con comodines (``*``, ``?``, ``[``): glob sobre la ruta entera y, si el patrón no
+    - La ruta exacta o cualquier cosa por debajo de ese directorio, aunque lleve corchetes
+      (rutas dinámicas como ``app/[id]/page.tsx``).
+    - Con comodines (``*``, ``?``, ``[``): además, glob sobre la ruta entera y, si el patrón no
       lleva barra, también sobre el nombre del fichero.
-    - Sin comodines: la ruta exacta o cualquier cosa por debajo de ese directorio.
     """
     patron = normalizar_patron(patron)
     if sin_mayusculas:
         ruta, patron = ruta.lower(), patron.lower()
     if patron in ("", "."):
         return True
+    base = patron.rstrip("/")
+    if ruta == base or ruta.startswith(base + "/"):
+        return True
     if any(c in patron for c in "*?["):
         if fnmatch.fnmatchcase(ruta, patron):
             return True
         return "/" not in patron and fnmatch.fnmatchcase(posixpath.basename(ruta), patron)
-    base = patron.rstrip("/")
-    return ruta == base or ruta.startswith(base + "/")
+    return False

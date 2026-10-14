@@ -15,7 +15,9 @@ from . import textos
 from .rutas import normalizar_ruta
 
 _VALLA = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
-_RUTA = r"[^\[\]\s|#:<>\"'`]+"
+_TROZO = r"[^\[\]\s|#:<>\"'`]"
+# Rutas dinámicas de los frameworks web: app/[id]/page.tsx, [...slug].astro, [[...slug]].
+_RUTA = rf"(?:{_TROZO}|\[{_TROZO}+\]|\[\[{_TROZO}+\]\])+"
 _SIMBOLO = r"[A-Za-z_$][\w$.]*"
 _ANCLA = re.compile(rf"\[\[({_RUTA})(?::(\d+)|#({_SIMBOLO}))\]\]")
 _TOKEN = re.compile(rf"^({_RUTA})(?::(\d+)|#({_SIMBOLO}))$")

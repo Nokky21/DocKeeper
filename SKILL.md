@@ -50,7 +50,8 @@ español a un proyecto en otro idioma. Para no consta, usa la expresión equival
 | Oculta | `<!-- dockeeper: ruta:147 ruta#nombre -->` | no ensuciar el texto visible (código público) |
 | Vínculo | `dockeeper link doc.md:12 ruta#nombre` | documentación publicada con código privado |
 
-- Rutas **relativas a la raíz** del repositorio.
+- Rutas **relativas a la raíz** del repositorio (también las rutas dinámicas con corchetes:
+  `app/[id]/page.tsx`).
 - El bloque de un ancla es la **definición entera** que contiene la línea (la más interior); si no
   hay definición, una ventana de ±3 líneas. Por eso un ancla por línea dentro de una función vigila
   la función completa. <!-- dockeeper: dockeeper/bloques.py#bloque_en -->

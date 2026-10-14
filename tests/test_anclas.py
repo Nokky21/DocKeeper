@@ -52,6 +52,21 @@ class PruebasAnclas(unittest.TestCase):
         self.assertEqual(doc.bloques[0].inicio, 3)
         self.assertEqual(doc.bloques[0].info, "markdown")
 
+    def test_rutas_con_corchetes(self):
+        encontradas, doc = anclas(d('''
+            Ruta dinámica [[app/[id]/page.tsx#GET]] y [[src/pages/[...slug].astro:3]].
+            Opcional [[app/[[...slug]]/page.tsx:2]] y con matcher [[src/routes/[page=integer]/+page.ts#load]].
+            Oculta <!-- dockeeper: app/[id]/route.ts:4 --> y un wikilink [[Nota [borrador]]].
+        '''))
+        self.assertEqual(encontradas, [
+            (1, "app/[id]/page.tsx#GET", False),
+            (1, "src/pages/[...slug].astro:3", False),
+            (2, "app/[[...slug]]/page.tsx:2", False),
+            (2, "src/routes/[page=integer]/+page.ts#load", False),
+            (3, "app/[id]/route.ts:4", True),
+        ])
+        self.assertEqual(doc.problemas, [])
+
     def test_wikilinks_no_son_anclas(self):
         encontradas, _ = anclas("Ver [[Nota]] y [[Nota#Encabezado]] y [[otra nota]].\n")
         self.assertEqual(encontradas, [])
@@ -72,6 +87,7 @@ class PruebasAnclas(unittest.TestCase):
     def test_leer_ancla(self):
         self.assertEqual(leer_ancla("src/a.py:3"), ("src/a.py", 3, None, "src/a.py:3"))
         self.assertEqual(leer_ancla("./src/a.py#Clase.m"), ("src/a.py", None, "Clase.m", "src/a.py#Clase.m"))
+        self.assertEqual(leer_ancla("app/[id]/page.tsx#GET"), ("app/[id]/page.tsx", None, "GET", "app/[id]/page.tsx#GET"))
         for malo in ("src/a.py", "/etc/passwd:1", "a.py#", "a.py#Clase.", "../a.py:1"):
             with self.assertRaises(ValueError, msg=malo):
                 leer_ancla(malo)
