@@ -1,11 +1,13 @@
 <section class="sec" id="review" aria-labelledby="t-review">
   <h2 id="t-review"><span class="n">5</span> Docs that keep up with every commit</h2>
-  <p class="lede">After each commit, <code>dockeeper review</code> lists the claims the change touched, the new code that nothing documents yet and the decisions nobody wrote down. Your agent reads that list and updates the docs as it goes.</p>
+  <p class="lede"><span class="nt">After each commit,</span> <code>dockeeper review</code> lists the claims the change touched, the new code that nothing documents yet and the decisions nobody wrote down. Your agent reads that list and updates the docs as it goes.</p>
   <aside class="mn"><b>It never blocks</b>A <code>post-commit</code> hook runs it after the commit is made. Ask your agent to “review the docs on every commit” and it installs the hook. With <code>--desde main</code> it reviews a whole branch.
     <!-- dockeeper: dockeeper/revision.py#revisar -->
   </aside>
   <div class="wide">
     <p class="term-label">After a commit that changed one function and added another</p>
+<figure class="termwin">
+<figcaption class="termbar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>post-commit hook — dockeeper review</figcaption>
 <pre class="term"><span class="c">$ git commit -m "feat: refunds"</span>
 dockeeper review · changes since HEAD~1 (85753313b3) · 1 code file · 0 documents
 Claims this change touches (review the text):
@@ -15,5 +17,6 @@ New or changed code with no claim (worth adding to the docs?):
 Decisions in these commits not documented yet (dockeeper why):
   6abae57d27 2026-10-14  refunds reuse the payment validation
 <span class="c">[main 6abae57] feat: refunds</span></pre>
+</figure>
   </div>
 </section>

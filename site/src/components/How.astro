@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
 ---
 <section class="sec" id="how" aria-labelledby="t-how">
   <h2 id="t-how"><span class="n">4</span> How a claim is checked</h2>
-  <p class="lede">No model in the loop. DocKeeper compares fingerprints of normalized code, so it gives the same answer every time it runs, on your machine or in CI.</p>
+  <p class="lede"><span class="nt">No model in the loop.</span> DocKeeper compares fingerprints of normalized code, so it gives the same answer every time it runs, on your machine or in CI.</p>
   <aside class="mn"><b>The code behind this section</b><code>markdown.py</code> reads the anchors, <code>bloques.py</code> finds the block, <code>huellas.py</code> fingerprints it and <code>motor.py</code> gives the verdict.</aside>
   <ol class="steps">
     <li>

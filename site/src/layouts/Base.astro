@@ -54,21 +54,31 @@ const url = new URL(base, Astro.site).href;
   </main>
 
   <footer>
-    <div class="page">
-      <nav class="langs" aria-label="README in other languages">
-        <span>README in</span>
-        {idiomas.map(([nombre, ruta]) => <a href={`${repo}/blob/main/${ruta}`}>{nombre}</a>)}
-      </nav>
-      <nav class="links" aria-label="Footer">
+    <div class="page colophon">
+      <div class="colo-brand">
+        <p class="brand">DocKeeper <small>v0.3</small></p>
+        <p class="motto">Documentation that doesn't rot.</p>
+        <p>MIT license. No account, no network, no tracking. This page loads no third-party scripts or fonts.</p>
+      </div>
+      <nav aria-label="Project">
+        <b>Project</b>
         <a href={repo}>GitHub</a>
         <a href={`${repo}/releases/latest`}>Releases</a>
-        <a href={`${repo}/blob/main/docs/architecture.md`}>Architecture</a>
-        <a href={`${repo}/blob/main/docs/reference.md`}>Reference</a>
         <a href={`${repo}/blob/main/SKILL.md`}>SKILL.md</a>
         <a href={`${repo}/blob/main/SPEC.md`}>Spec (Spanish)</a>
       </nav>
-      <p>DocKeeper · MIT license · No account, no network, no tracking. This page loads no third-party scripts or fonts.</p>
+      <nav aria-label="Docs">
+        <b>Docs</b>
+        <a href={`${repo}/blob/main/docs/install.md`}>Install guide</a>
+        <a href={`${repo}/blob/main/docs/reference.md`}>Reference</a>
+        <a href={`${repo}/blob/main/docs/architecture.md`}>Architecture</a>
+      </nav>
+      <nav class="langs" aria-label="README in other languages">
+        <b>README in</b>
+        <div>{idiomas.map(([nombre, ruta]) => <a href={`${repo}/blob/main/${ruta}`} dir="auto">{nombre}</a>)}</div>
+      </nav>
     </div>
+    <div class="page"><p class="set">Set in Newsreader and Geist.</p></div>
   </footer>
 
   <script>
@@ -126,6 +136,24 @@ const url = new URL(base, Astro.site).href;
       observador.observe(el);
     }
     document.fonts?.ready.then(() => anchos.forEach(medir));
+
+    // Índice lateral: aparece al dejar atrás el héroe y marca la sección que se está leyendo.
+    const indice = document.querySelector<HTMLElement>(".onpage");
+    if (indice) {
+      const enlaces = Array.from(indice.querySelectorAll<HTMLAnchorElement>("a"));
+      const secciones = enlaces.map((a) => document.getElementById(a.hash.slice(1)));
+      let pendiente = false;
+      const actualizar = () => {
+        pendiente = false;
+        const linea = innerHeight * 0.35;
+        let actual = -1;
+        secciones.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= linea) actual = i; });
+        indice.toggleAttribute("data-on", actual >= 0);
+        enlaces.forEach((a, i) => (i === actual ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current")));
+      };
+      addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(actualizar); } }, { passive: true });
+      actualizar();
+    }
 
   </script>
 </body>

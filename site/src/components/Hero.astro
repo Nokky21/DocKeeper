@@ -7,6 +7,13 @@ import flujoOscuro from "../assets/flujo-dark.svg?raw";
   <div class="hero-text">
     <h1 id="titulo">Documentation that doesn't rot.</h1>
     <p class="lede">Your coding agent writes the docs: the README, the architecture and its diagrams, the decisions, the runbooks. DocKeeper ties every sentence and every diagram to the code behind it, and tells you the moment that code changes.</p>
+    <aside class="mn hero-mn" aria-label="Verdicts">
+      <b>Every claim gets a verdict</b>
+      <span class="vl"><span class="v v-OK">OK</span><span>same code, same place</span></span>
+      <span class="vl"><span class="v v-MOVED">MOVED</span><span>the code moved; <code>fix</code> follows it</span></span>
+      <span class="vl"><span class="v v-CHANGED">CHANGED</span><span>the code changed; a person reads it</span></span>
+      <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->
+    </aside>
     <div class="hero-actions">
       <Cmd cmd="git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper" />
       <a class="textlink" href="#demo">Try it in the browser</a>

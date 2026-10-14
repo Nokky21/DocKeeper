@@ -115,6 +115,28 @@ h2 .n { color: var(--muted); font-weight: 400; margin-right: .08em; font-variant
 .mn-col { display: grid; gap: 22px; align-content: start; }
 @media (max-width: 1080px) { .mn { margin: 18px 0 0; } .mn-col { margin-top: 20px; } }
 
+/* Las primeras palabras de cada sección en versalitas, como el «newthought» de Tufte CSS. */
+.nt { font-variant-caps: small-caps; letter-spacing: .03em; color: var(--ink); }
+.nt code { font-variant-caps: normal; letter-spacing: 0; }
+
+/* Bandas a todo el ancho para las secciones que se usan (demo, instalar): rompen la monotonía del papel. */
+main { overflow-x: clip; }
+.sec.band { position: relative; border-top-color: transparent; }
+.sec.band::before { content: ""; position: absolute; inset: 0 calc(50% - 50vw); background: var(--paper-2); z-index: -1; }
+.sec.band + .sec { border-top-color: transparent; }
+.sec.band :not(pre) > code { background: var(--card); }
+
+/* Índice lateral en pantallas anchas, como el de un documento largo; aparece al dejar atrás el héroe. */
+.onpage { display: none; }
+@media (min-width: 1440px) {
+  .onpage { display: grid; position: fixed; top: 112px; left: calc(50% - 528px - 176px); width: 150px; z-index: 10; font: 500 .78rem/1.35 var(--sans); transition: opacity .3s var(--ease), visibility 0s; }
+  .js .onpage:not([data-on]) { opacity: 0; visibility: hidden; transition: opacity .3s var(--ease), visibility 0s .3s; }
+  .onpage a { display: grid; grid-template-columns: 24px minmax(0, 1fr); padding: 5px 0 5px 12px; border-left: 1px solid var(--line); color: var(--muted); text-decoration: none; transition: color .2s var(--ease), border-color .2s var(--ease); }
+  .onpage a span { font: 400 .88rem/1.2 var(--serif); font-variant-numeric: oldstyle-nums; }
+  .onpage a:hover { color: var(--ink); }
+  .onpage a[aria-current] { color: var(--ink); border-left-color: var(--ink); }
+}
+
 /* --- Cabecera y pie -------------------------------------------------------------------- */
 
 .top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--line); }
@@ -126,12 +148,20 @@ h2 .n { color: var(--muted); font-weight: 400; margin-right: .08em; font-variant
 .top nav a:hover { color: var(--ink); }
 @media (max-width: 760px) { .top nav a.opt { display: none; } .top nav { gap: 18px; } }
 
-footer { border-top: 1px solid var(--line); padding: 48px 0 64px; color: var(--muted); font-size: .88rem; }
-footer .page { display: grid; gap: 22px; }
-footer .langs { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-footer .langs a, footer .links a { color: var(--ink-2); text-decoration: none; }
-footer .langs a:hover, footer .links a:hover { color: var(--accent); text-decoration: underline; }
-footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+/* El pie, como el colofón de un libro. */
+footer { border-top: 1px solid var(--line); padding: 56px 0 44px; color: var(--muted); font-size: .86rem; }
+.colophon { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr) minmax(0, .8fr) minmax(0, 2fr); gap: 32px 40px; }
+.colophon nav { display: grid; align-content: start; gap: 8px; }
+.colophon b { font: 600 .74rem/1.4 var(--sans); color: var(--ink-2); letter-spacing: .02em; margin-bottom: 4px; }
+.colophon a { color: var(--ink-2); text-decoration: none; }
+.colophon a:hover { color: var(--accent); text-decoration: underline; }
+.colo-brand { display: grid; gap: 10px; align-content: start; }
+.colo-brand .motto { font: italic 400 1.04rem/1.4 var(--serif); color: var(--ink-2); }
+.colophon .langs div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px 16px; }
+.colophon .langs a { justify-self: start; }
+footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font: italic 400 .92rem/1.4 var(--serif); }
+@media (max-width: 860px) { .colophon { grid-template-columns: 1fr 1fr; } .colo-brand, .colophon .langs { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .colophon .langs div { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* --- Botones y comandos ---------------------------------------------------------------- */
 
@@ -167,6 +197,10 @@ footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .term .c { color: var(--term-dim); }
 .term .ok { color: #7cc79a; } .term .mv { color: #e0b25e; } .term .ch { color: #ee8273; } .term .ac { color: #a9c6f0; }
 .term-label { font: 500 .78rem/1 var(--sans); color: var(--muted); margin: 0 0 10px; }
+.termwin { margin: 0; border-radius: 12px; overflow: hidden; background: var(--term); }
+.termbar { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, .07); font: 500 .74rem/1 var(--mono); color: var(--term-dim); }
+.termbar .dots i { background: rgba(255, 255, 255, .16); }
+.termwin .term { border-radius: 0; }
 .v-OK { color: var(--ok); } .v-MOVED { color: var(--moved); } .v-CHANGED { color: var(--changed); }
 
 /* --- Hero ------------------------------------------------------------------------------ */
@@ -175,7 +209,15 @@ footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .hero-text { max-width: 760px; }
 .hero .lede { font-size: clamp(1.25rem, 2.1vw, 1.5rem); max-width: 40ch; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 34px; }
-.hero-actions .cmd { flex: 1 1 100%; }
+.hero-actions .cmd { flex: 1 1 100%; max-width: 780px; }
+.hero-mn { display: none; }
+.hero-mn .vl { display: grid; grid-template-columns: 68px minmax(0, 1fr); margin-top: 7px; }
+@media (min-width: 1081px) {
+  .hero-text { max-width: none; display: grid; grid-template-columns: minmax(0, var(--main)) var(--margin); column-gap: var(--gap); }
+  .hero-text > * { grid-column: 1; }
+  .hero-text > .hero-actions { grid-column: 1 / -1; }
+  .hero-text > .hero-mn { display: block; grid-column: 2; grid-row: 2; align-self: start; margin-top: 30px; }
+}
 .hero-meta { margin-top: 22px; color: var(--muted); font-size: .9rem; }
 
 /* La ventana de un documento escrito por el skill, como lo enseñaría Obsidian. */

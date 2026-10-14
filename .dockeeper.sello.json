@@ -3247,6 +3247,17 @@
       "huella": "5a0baac673dd338a"
     },
     {
+      "doc": "site/src/components/Hero.astro",
+      "ancla": "dockeeper/motor.py#verificar_codigo",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "verificar_codigo",
+      "tipo": "definicion",
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
+    },
+    {
       "doc": "site/src/components/How.astro",
       "ancla": "dockeeper/bloques.py#bloque_en",
       "fichero": "dockeeper/bloques.py",
