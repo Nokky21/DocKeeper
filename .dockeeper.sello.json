@@ -838,6 +838,105 @@
       "huella": "c56769d023137391"
     },
     {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/auditoria.py#auditar",
+      "fichero": "dockeeper/auditoria.py",
+      "simbolo": "auditar",
+      "tipo": "definicion",
+      "inicio": 48,
+      "fin": 136,
+      "n": 83,
+      "huella": "da10a6483ca3afb6"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/markdown.py#analizar",
+      "fichero": "dockeeper/markdown.py",
+      "simbolo": "analizar",
+      "tipo": "definicion",
+      "inicio": 124,
+      "fin": 161,
+      "n": 36,
+      "huella": "1e9bcc33005f12a4"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/paquetes.py#ajena",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "ajena",
+      "tipo": "definicion",
+      "inicio": 101,
+      "fin": 105,
+      "n": 5,
+      "huella": "87caddddaf4826c0"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/paquetes.py#detectar",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "detectar",
+      "tipo": "definicion",
+      "inicio": 81,
+      "fin": 98,
+      "n": 18,
+      "huella": "249d62d5889846c3"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/paquetes.py#paquete_de",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "paquete_de",
+      "tipo": "definicion",
+      "inicio": 108,
+      "fin": 111,
+      "n": 4,
+      "huella": "7c73c85c442dea61"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 218,
+      "fin": 262,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/textos.py#espanol",
+      "fichero": "dockeeper/textos.py",
+      "simbolo": "espanol",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 20,
+      "n": 6,
+      "huella": "c56769d023137391"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "dockeeper/textos.py#t",
+      "fichero": "dockeeper/textos.py",
+      "simbolo": "t",
+      "tipo": "definicion",
+      "inicio": 23,
+      "fin": 26,
+      "n": 4,
+      "huella": "11c8b96d78a722f0"
+    },
+    {
+      "doc": "docs/decisions.md",
+      "ancla": "tests/__init__.py:5",
+      "fichero": "tests/__init__.py",
+      "linea": 5,
+      "tipo": "ventana",
+      "inicio": 3,
+      "fin": 5,
+      "n": 2,
+      "huella": "5bd5e158bbd721c1"
+    },
+    {
       "doc": "docs/i18n/README.ar.md",
       "ancla": "dockeeper/bloques.py#bloque_en",
       "fichero": "dockeeper/bloques.py",
