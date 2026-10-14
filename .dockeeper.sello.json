@@ -3,17 +3,6 @@
   "anclas": [
     {
       "doc": "README.md",
-      "ancla": "dockeeper/alcance.py#Alcance",
-      "fichero": "dockeeper/alcance.py",
-      "simbolo": "Alcance",
-      "tipo": "definicion",
-      "inicio": 21,
-      "fin": 52,
-      "n": 28,
-      "huella": "ebb5161aeec72fca"
-    },
-    {
-      "doc": "README.md",
       "ancla": "dockeeper/bloques.py#bloque_en",
       "fichero": "dockeeper/bloques.py",
       "simbolo": "bloque_en",
@@ -25,39 +14,6 @@
     },
     {
       "doc": "README.md",
-      "ancla": "dockeeper/cli.py#main",
-      "fichero": "dockeeper/cli.py",
-      "simbolo": "main",
-      "tipo": "definicion",
-      "inicio": 72,
-      "fin": 85,
-      "n": 14,
-      "huella": "9cea41b5396bd921"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/config.py#buscar_raiz",
-      "fichero": "dockeeper/config.py",
-      "simbolo": "buscar_raiz",
-      "tipo": "definicion",
-      "inicio": 49,
-      "fin": 55,
-      "n": 7,
-      "huella": "21c166005e168e15"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/config.py#cargar",
-      "fichero": "dockeeper/config.py",
-      "simbolo": "cargar",
-      "tipo": "definicion",
-      "inicio": 58,
-      "fin": 79,
-      "n": 22,
-      "huella": "884632778c84abfc"
-    },
-    {
-      "doc": "README.md",
       "ancla": "dockeeper/huellas.py#huella",
       "fichero": "dockeeper/huellas.py",
       "simbolo": "huella",
@@ -66,28 +22,6 @@
       "fin": 22,
       "n": 2,
       "huella": "6e0b2be31c4aa55d"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/huellas.py#normalizar_linea",
-      "fichero": "dockeeper/huellas.py",
-      "simbolo": "normalizar_linea",
-      "tipo": "definicion",
-      "inicio": 13,
-      "fin": 14,
-      "n": 2,
-      "huella": "6e7095e24c19f1ce"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/markdown.py#analizar",
-      "fichero": "dockeeper/markdown.py",
-      "simbolo": "analizar",
-      "tipo": "definicion",
-      "inicio": 108,
-      "fin": 142,
-      "n": 33,
-      "huella": "445dc9dcf963c5af"
     },
     {
       "doc": "README.md",
@@ -113,17 +47,6 @@
     },
     {
       "doc": "README.md",
-      "ancla": "dockeeper/motor.py#comprobar",
-      "fichero": "dockeeper/motor.py",
-      "simbolo": "comprobar",
-      "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
-      "n": 42,
-      "huella": "05284a158194de1b"
-    },
-    {
-      "doc": "README.md",
       "ancla": "dockeeper/motor.py#verificar_codigo",
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
@@ -135,58 +58,14 @@
     },
     {
       "doc": "README.md",
-      "ancla": "dockeeper/porque.py#entradas_sin_motivo",
-      "fichero": "dockeeper/porque.py",
-      "simbolo": "entradas_sin_motivo",
+      "ancla": "dockeeper/paquetes.py#detectar",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "detectar",
       "tipo": "definicion",
-      "inicio": 165,
-      "fin": 189,
-      "n": 24,
-      "huella": "2442ec4e20ded92c"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/porque.py#historial",
-      "fichero": "dockeeper/porque.py",
-      "simbolo": "historial",
-      "tipo": "definicion",
-      "inicio": 83,
-      "fin": 115,
-      "n": 32,
-      "huella": "c555825dc87e1380"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/publicado.py#IndiceCopias",
-      "fichero": "dockeeper/publicado.py",
-      "simbolo": "IndiceCopias",
-      "tipo": "definicion",
-      "inicio": 31,
-      "fin": 64,
-      "n": 31,
-      "huella": "a56e9f44192d6c12"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/publicado.py#rutas_en_texto",
-      "fichero": "dockeeper/publicado.py",
-      "simbolo": "rutas_en_texto",
-      "tipo": "definicion",
-      "inicio": 98,
-      "fin": 120,
-      "n": 22,
-      "huella": "94a62ef3d6898ea2"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/repo.py#Repo",
-      "fichero": "dockeeper/repo.py",
-      "simbolo": "Repo",
-      "tipo": "definicion",
-      "inicio": 19,
-      "fin": 106,
-      "n": 77,
-      "huella": "9cf1363202e7c2a8"
+      "inicio": 81,
+      "fin": 98,
+      "n": 18,
+      "huella": "249d62d5889846c3"
     },
     {
       "doc": "README.md",
@@ -198,17 +77,6 @@
       "fin": 261,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
-    },
-    {
-      "doc": "README.md",
-      "ancla": "dockeeper/sello.py#Entrada",
-      "fichero": "dockeeper/sello.py",
-      "simbolo": "Entrada",
-      "tipo": "definicion",
-      "inicio": 19,
-      "fin": 46,
-      "n": 25,
-      "huella": "9f3dff024513ed97"
     },
     {
       "doc": "SKILL.md",
@@ -596,6 +464,182 @@
       "huella": "c0c083ef78b89d5d"
     },
     {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/alcance.py#Alcance",
+      "fichero": "dockeeper/alcance.py",
+      "simbolo": "Alcance",
+      "tipo": "definicion",
+      "inicio": 21,
+      "fin": 52,
+      "n": 28,
+      "huella": "ebb5161aeec72fca"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/cli.py#main",
+      "fichero": "dockeeper/cli.py",
+      "simbolo": "main",
+      "tipo": "definicion",
+      "inicio": 72,
+      "fin": 85,
+      "n": 14,
+      "huella": "9cea41b5396bd921"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/config.py#buscar_raiz",
+      "fichero": "dockeeper/config.py",
+      "simbolo": "buscar_raiz",
+      "tipo": "definicion",
+      "inicio": 49,
+      "fin": 55,
+      "n": 7,
+      "huella": "21c166005e168e15"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/config.py#cargar",
+      "fichero": "dockeeper/config.py",
+      "simbolo": "cargar",
+      "tipo": "definicion",
+      "inicio": 58,
+      "fin": 79,
+      "n": 22,
+      "huella": "884632778c84abfc"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/motor.py#FALLOS",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "FALLOS",
+      "tipo": "declaracion",
+      "inicio": 28,
+      "fin": 32,
+      "n": 5,
+      "huella": "0ada6d59a451cdfb"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/motor.py#arreglar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "arreglar",
+      "tipo": "definicion",
+      "inicio": 344,
+      "fin": 378,
+      "n": 34,
+      "huella": "d98730ced313b990"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/motor.py#comprobar",
+      "fichero": "dockeeper/motor.py",
+      "simbolo": "comprobar",
+      "tipo": "definicion",
+      "inicio": 228,
+      "fin": 269,
+      "n": 42,
+      "huella": "05284a158194de1b"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/paquetes.py#detectar",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "detectar",
+      "tipo": "definicion",
+      "inicio": 81,
+      "fin": 98,
+      "n": 18,
+      "huella": "249d62d5889846c3"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/paquetes.py#paquete_de",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "paquete_de",
+      "tipo": "definicion",
+      "inicio": 101,
+      "fin": 104,
+      "n": 4,
+      "huella": "7c73c85c442dea61"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/porque.py#entradas_sin_motivo",
+      "fichero": "dockeeper/porque.py",
+      "simbolo": "entradas_sin_motivo",
+      "tipo": "definicion",
+      "inicio": 165,
+      "fin": 189,
+      "n": 24,
+      "huella": "2442ec4e20ded92c"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/porque.py#historial",
+      "fichero": "dockeeper/porque.py",
+      "simbolo": "historial",
+      "tipo": "definicion",
+      "inicio": 83,
+      "fin": 115,
+      "n": 32,
+      "huella": "c555825dc87e1380"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/publicado.py#IndiceCopias",
+      "fichero": "dockeeper/publicado.py",
+      "simbolo": "IndiceCopias",
+      "tipo": "definicion",
+      "inicio": 31,
+      "fin": 64,
+      "n": 31,
+      "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/publicado.py#rutas_en_texto",
+      "fichero": "dockeeper/publicado.py",
+      "simbolo": "rutas_en_texto",
+      "tipo": "definicion",
+      "inicio": 98,
+      "fin": 120,
+      "n": 22,
+      "huella": "94a62ef3d6898ea2"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/repo.py#Repo",
+      "fichero": "dockeeper/repo.py",
+      "simbolo": "Repo",
+      "tipo": "definicion",
+      "inicio": 19,
+      "fin": 106,
+      "n": 77,
+      "huella": "9cf1363202e7c2a8"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/revision.py#_tocadas",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "_tocadas",
+      "tipo": "definicion",
+      "inicio": 147,
+      "fin": 159,
+      "n": 13,
+      "huella": "f03ce50dac6685a6"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 217,
+      "fin": 261,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
+    },
+    {
       "doc": "site/src/components/Features.astro",
       "ancla": "dockeeper/alcance.py#Alcance",
       "fichero": "dockeeper/alcance.py",
@@ -730,8 +774,8 @@
   ],
   "vinculos": [
     {
-      "doc": "README.md",
-      "linea_doc": 260,
+      "doc": "docs/reference.md",
+      "linea_doc": 118,
       "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",
