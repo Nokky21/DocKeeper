@@ -223,6 +223,17 @@
     },
     {
       "doc": "SKILL.md",
+      "ancla": "dockeeper/auditoria.py#auditar",
+      "fichero": "dockeeper/auditoria.py",
+      "simbolo": "auditar",
+      "tipo": "definicion",
+      "inicio": 48,
+      "fin": 130,
+      "n": 77,
+      "huella": "a37e8999307b8ad2"
+    },
+    {
+      "doc": "SKILL.md",
       "ancla": "dockeeper/bloques.py#bloque_en",
       "fichero": "dockeeper/bloques.py",
       "simbolo": "bloque_en",
@@ -297,6 +308,17 @@
       "fin": 269,
       "n": 42,
       "huella": "05284a158194de1b"
+    },
+    {
+      "doc": "SKILL.md",
+      "ancla": "dockeeper/paquetes.py#detectar",
+      "fichero": "dockeeper/paquetes.py",
+      "simbolo": "detectar",
+      "tipo": "definicion",
+      "inicio": 81,
+      "fin": 98,
+      "n": 18,
+      "huella": "249d62d5889846c3"
     },
     {
       "doc": "SKILL.md",
@@ -473,6 +495,17 @@
       "fin": 63,
       "n": 19,
       "huella": "85b39599e59ab0b0"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_paquetes.py#PruebasPaquetes.test_monorepo",
+      "fichero": "tests/test_paquetes.py",
+      "simbolo": "PruebasPaquetes.test_monorepo",
+      "tipo": "definicion",
+      "inicio": 36,
+      "fin": 61,
+      "n": 25,
+      "huella": "23ce428e468c19d8"
     },
     {
       "doc": "SPEC.md",

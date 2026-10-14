@@ -257,6 +257,13 @@ def _audit(args, raiz: Path) -> int:
         nota = "  ← sin anclas: nada de lo que dice está comprobado" if doc["sin_anclas"] else ""
         print(f"  {doc['doc']:<40} {doc['clase']:<10} {doc['anclas']} anclas ({doc['selladas']} selladas) · "
               f"{doc['vinculos']} vínculos{nota}")
+    if datos["paquetes"]:
+        print(f"Paquetes ({len(datos['paquetes'])}): documenta uno cada vez con --solo RUTA")
+        for p in datos["paquetes"]:
+            readme = p["readme"] or "sin README"
+            nota = "  ← sin documentar" if not p["readme"] and not p["documentado_en"] else ""
+            print(f"  {p['ruta'] + '/':<28} {p['nombre']:<24} {p['ancladas']:>4}/{p['definiciones']:<4} definiciones · "
+                  f"{p['ficheros']} ficheros · {readme}{nota}")
     print("Cobertura (definiciones de primer nivel con alguna afirmación anclada):")
     for c in datos["cobertura"]:
         nota = "  ← sin documentar" if c["definiciones"] and not c["ancladas"] else ""

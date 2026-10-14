@@ -27,6 +27,15 @@ paso:
 2. Se valida en … [[ruta/al/fichero.ext#Simbolo]]
 3. Se guarda / se responde en … [[ruta/al/fichero.ext#Simbolo]]
 
+## Paquetes (solo si hay varios)
+
+Un mapa: una línea por paquete con su carpeta, qué hace y su punto de entrada anclado; enlace a su
+README. Lo detalla `dockeeper audit` (sección «Paquetes»).
+
+| Paquete | Carpeta | Qué hace |
+|---|---|---|
+| nombre | ruta/al/paquete/ | una frase [[ruta/al/paquete/src/index.ext#Simbolo]] |
+
 ## Arrancar
 
 Requisitos (versiones exactas, de dónde salen) y los comandos mínimos para ejecutarlo y para pasar

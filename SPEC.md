@@ -25,6 +25,8 @@ trabajan juntos:
 5. Saca el **porqué** del historial de git; lo que no consta no se inventa.
 6. Revisa cada **cambio** (un commit, una rama): qué afirmaciones toca y qué código nuevo o cambiado
    queda sin documentar, para que el skill proponga qué añadir.
+7. Documenta **repositorios enteros y monorepos**: `audit` detecta los paquetes y el skill los recorre
+   de uno en uno (raíz con el mapa, luego un README por paquete).
 
 ## 3. Qué NO hace (en esta fase)
 
@@ -87,7 +89,7 @@ normalizadas y huella. **No guarda código**, solo huellas.
 
 | Orden | Qué hace | Escribe |
 |---|---|---|
-| `audit` | inventario: páginas base que faltan, documentos sin anclas, cobertura por carpeta | nada |
+| `audit` | inventario: páginas base que faltan, documentos sin anclas, cobertura por carpeta y por paquete | nada |
 | `scan` | sella las anclas nuevas y **enseña en qué bloque queda cada una**; poda las que ya no están | sello |
 | `check` | comprueba anclas, vínculos y documentación publicada | nada |
 | `fix` | recoloca los `MOVED`, quita huérfanas; con `--aceptar`, acepta los `CHANGED` revisados | sello |
@@ -149,6 +151,7 @@ Cada criterio tiene una prueba que lo demuestra (`python3 -m unittest`).
 | CA-17 | El propio repositorio está sellado y su `check` está en verde. | [[tests/test_autocomprobacion.py#PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio]] |
 | CA-18 | `review` señala las afirmaciones que toca un commit y las definiciones nuevas o cambiadas sin ninguna afirmación (las de una clase nueva, como la clase). | [[tests/test_revision.py#PruebasRevision.test_cambio_anclado_y_codigo_nuevo_sin_documentar]] [[tests/test_revision.py#PruebasRevision.test_metodo_nuevo_y_clase_nueva]] |
 | CA-19 | `review --desde RAMA` cuenta desde la bifurcación; sin commit anterior, todo es nuevo. | [[tests/test_revision.py#PruebasRevision.test_desde_una_rama_cuenta_desde_la_bifurcacion]] [[tests/test_revision.py#PruebasRevision.test_primer_commit_todo_es_nuevo]] |
+| CA-20 | `audit` detecta los paquetes de un monorepo (npm, Go, Python, Cargo…) con su nombre, README y cobertura; ignora las dependencias copiadas y la raíz. | [[tests/test_paquetes.py#PruebasPaquetes.test_monorepo]] |
 
 ## 6. Criterios de abandono
 
@@ -187,6 +190,7 @@ en varias líneas) se corrigió y tiene prueba.
 | Ancla huérfana (en el sello, ya no en el doc) | Aviso `HUERFANA` (salida 0); `scan` y `fix` la quitan. | Ya no hay afirmación que comprobar. |
 | «Que revise la documentación en cada commit» | `review` es informativa (salida 0) y el hook `post-commit` lo instala el agente a petición de la persona; la CLI no escribe hooks. | La puerta sigue siendo `check`; §3: la CLI no toca la configuración de otros programas. |
 | Qué es un cambio para `review` | De `merge-base(--desde, HEAD)` al árbol de trabajo, solo ficheros que git conoce. | Sirve igual tras un commit, para una rama entera y antes de commitear; los ficheros sin seguimiento ajenos al cambio no meten ruido en el hook. |
+| Qué es un paquete | Una subcarpeta con un manifiesto conocido (no la raíz, ni dentro de `node_modules`, `vendor`…); el nombre sale del manifiesto si se lee sin dependencias, si no la carpeta. Un fichero pertenece al paquete más profundo. | No interpretar los espacios de trabajo de cada herramienta: el manifiesto basta para npm, pnpm, Nx, Go, Cargo, Maven o una mezcla. |
 | Qué definición señala `review` | La más interior que contiene cada línea cambiada; si un contenedor es nuevo, el nuevo más externo. Cuenta como documentada si solapa con el tramo actual de alguna afirmación, sellada o no. | Una clase nueva es una cosa que documentar, no diez métodos. |
 
 ## 8. Límites conocidos (no se esconden)

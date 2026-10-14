@@ -63,7 +63,7 @@ español a un proyecto en otro idioma. Para no consta, usa la expresión equival
    definiciones grandes sin ninguna afirmación. Lee el código de la zona antes de escribir.
    `dockeeper why --json` da las decisiones del historial.
 2. **Escribir** — parte de `templates/` (README, ARQUITECTURA, DECISIONES, PROCEDIMIENTOS, API,
-   INCORPORACION). Detallado y concreto; un ancla por afirmación. Nada de copiar bloques de código
+   INCORPORACION y PAQUETE para cada paquete de un monorepo). Detallado y concreto; un ancla por afirmación. Nada de copiar bloques de código
    del repositorio en documentos publicados: descríbelo o escribe un ejemplo propio.
 3. **Sellar** — `dockeeper scan`. **Lee la previa de cada ancla**: dice en qué bloque ha quedado
    (tipo, nombre, líneas, primera y última línea). Si el bloque no es aquello de lo que habla la
@@ -76,6 +76,30 @@ español a un proyecto en otro idioma. Para no consta, usa la expresión equival
      `dockeeper fix --aceptar` (acota con `--solo` para no aceptar más de lo revisado).
    - `DESAPARECIDO` → el fichero ya no existe: reescribe la afirmación o quítala; luego `scan`.
    - `SIN_SELLAR` → `scan`. `HUERFANA` → `fix` la quita.
+
+## Documentación completa (un repositorio entero o un monorepo)
+
+Cuando la persona pide documentar todo el repositorio, no se escribe de una sentada: se recorre por
+partes con un plan, y cada parte se sella y se comprueba antes de pasar a la siguiente.
+
+1. **Inventario** — `audit --json` y `why --json`. `audit` lista las páginas base que faltan, la
+   cobertura por carpeta y los **paquetes**: cada subcarpeta con un manifiesto (`package.json`,
+   `go.mod`, `Cargo.toml`, `pyproject.toml`, `pom.xml`…), con su nombre, su README si lo tiene y
+   cuántas de sus definiciones tienen alguna afirmación. Las dependencias copiadas (`node_modules`,
+   `vendor`…) no cuentan. <!-- dockeeper: dockeeper/paquetes.py#detectar dockeeper/auditoria.py#auditar -->
+2. **Plan** — escríbelo a la persona antes de empezar: qué páginas de la raíz y qué paquetes, en qué
+   orden (primero los paquetes de los que dependen los demás y los más grandes).
+3. **Raíz** — README con el mapa de paquetes (sección «Paquetes» de la plantilla), ARQUITECTURA con
+   los paquetes como componentes y sus dependencias (léelas de los manifiestos, no las supongas),
+   DECISIONES desde `why`, PROCEDIMIENTOS con los scripts de la raíz e INCORPORACION.
+4. **Cada paquete, uno cada vez** — `audit --solo <carpeta>` → README del paquete en su carpeta
+   (`templates/PAQUETE.md`; API.md si expone una API) → `scan --solo <carpeta>` (revisa cada
+   previa) → `check --solo <carpeta>`. Lee solo el código de ese paquete: así el trabajo cabe en
+   contexto aunque el monorepo sea enorme.
+5. **Cierre** — `check` sin alcance (en verde) y `audit`: ninguna página base falta, ningún paquete
+   sale «sin documentar» y las mayores definiciones sin ancla son las que se dejaron a propósito.
+
+En un repositorio sin paquetes, las partes son las carpetas de primer nivel de la cobertura.
 
 ## En cada commit
 
@@ -123,6 +147,8 @@ instala nada por su cuenta: solo escribe el sello.
   paso; qué hacer si falla y cómo volver atrás. Sin secretos reales.
 - **API** — por operación: permisos, entrada (ancla a la validación), salida, errores, efectos e
   idempotencia; ejemplos escritos a mano.
+- **PAQUETE** — el README de cada paquete, en su carpeta: punto de entrada, qué ofrece, de qué
+  depende y quién lo usa, configuración, cómo se prueba. Lo común va en la raíz y aquí se enlaza.
 - **INCORPORACION** — ruta de lectura anclada para el primer día, ideas clave, cómo se trabaja,
   trampas conocidas y a quién preguntar.
 

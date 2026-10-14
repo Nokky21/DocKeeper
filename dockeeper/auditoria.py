@@ -10,6 +10,7 @@ import subprocess
 import unicodedata
 from typing import TYPE_CHECKING, Dict, List, Tuple
 
+from . import paquetes as PQ
 from . import porque
 
 if TYPE_CHECKING:
@@ -69,12 +70,32 @@ def auditar(ctx: "Contexto") -> dict:
     for e in sello.todas():
         tramos.setdefault(e.fichero, []).append((e.inicio, e.fin))
 
+    paquetes = PQ.detectar([f for f in repo.ficheros if alcance.codigo_en_alcance(f)], repo.lineas)
+    por_paquete = {p.ruta: {"ruta": p.ruta, "nombre": p.nombre, "manifiesto": p.manifiesto, "ficheros": 0,
+                            "definiciones": 0, "ancladas": 0, "readme": None, "documentos": [],
+                            "documentado_en": set()} for p in paquetes}
+    for doc in documentos:
+        p = PQ.paquete_de(doc, paquetes)
+        if p is None:
+            continue
+        datos_p = por_paquete[p.ruta]
+        datos_p["documentos"].append(doc)
+        if posixpath.dirname(doc) == p.ruta and posixpath.basename(doc).lower().startswith("readme"):
+            datos_p["readme"] = datos_p["readme"] or doc
+    for e in sello.todas():
+        p = PQ.paquete_de(e.fichero, paquetes)
+        if p is not None:
+            por_paquete[p.ruta]["documentado_en"].add(e.doc)
+
     carpetas: Dict[str, Dict[str, int]] = {}
     sin_ancla = []
     for f in codigo:
         carpeta = f.split("/")[0] if "/" in f else "(raíz)"
         c = carpetas.setdefault(carpeta, {"ficheros": 0, "definiciones": 0, "ancladas": 0})
+        paquete = PQ.paquete_de(f, paquetes)
+        cp = por_paquete[paquete.ruta] if paquete else {}
         c["ficheros"] += 1
+        cp["ficheros"] = cp.get("ficheros", 0) + 1
         an = repo.analisis(f)
         if an is None or not an.familia:
             continue
@@ -84,8 +105,10 @@ def auditar(ctx: "Contexto") -> dict:
                                  and (o.inicio, o.fin) != (d.inicio, d.fin) for o in defs)]
         for d in superiores:
             c["definiciones"] += 1
+            cp["definiciones"] = cp.get("definiciones", 0) + 1
             if any(ini <= d.fin and d.inicio <= fin for ini, fin in tramos.get(f, [])):
                 c["ancladas"] += 1
+                cp["ancladas"] = cp.get("ancladas", 0) + 1
             else:
                 sin_ancla.append({"simbolo": f"{f}#{d.nombre}", "lineas": d.fin - d.inicio + 1})
     sin_ancla.sort(key=lambda x: (-x["lineas"], x["simbolo"]))
@@ -101,6 +124,7 @@ def auditar(ctx: "Contexto") -> dict:
                     "anclas_selladas": len(sello.anclas), "vinculos": len(sello.vinculos)},
         "paginas": paginas,
         "documentos": docs,
+        "paquetes": [{**v, "documentado_en": sorted(v["documentado_en"])} for v in por_paquete.values()],
         "cobertura": [{"carpeta": k, **v} for k, v in sorted(carpetas.items())],
         "mayores_sin_ancla": sin_ancla[:15],
     }
