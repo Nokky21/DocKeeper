@@ -29,8 +29,8 @@
       "fichero": "dockeeper/cli.py",
       "simbolo": "main",
       "tipo": "definicion",
-      "inicio": 67,
-      "fin": 80,
+      "inicio": 72,
+      "fin": 85,
       "n": 14,
       "huella": "9cea41b5396bd921"
     },
@@ -139,8 +139,8 @@
       "fichero": "dockeeper/porque.py",
       "simbolo": "entradas_sin_motivo",
       "tipo": "definicion",
-      "inicio": 161,
-      "fin": 185,
+      "inicio": 165,
+      "fin": 189,
       "n": 24,
       "huella": "2442ec4e20ded92c"
     },
@@ -151,9 +151,9 @@
       "simbolo": "historial",
       "tipo": "definicion",
       "inicio": 83,
-      "fin": 111,
-      "n": 29,
-      "huella": "8a9ea5dff24ecc9e"
+      "fin": 115,
+      "n": 32,
+      "huella": "c555825dc87e1380"
     },
     {
       "doc": "README.md",
@@ -187,6 +187,17 @@
       "fin": 106,
       "n": 77,
       "huella": "9cf1363202e7c2a8"
+    },
+    {
+      "doc": "README.md",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 217,
+      "fin": 261,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
     },
     {
       "doc": "README.md",
@@ -227,8 +238,8 @@
       "fichero": "dockeeper/cli.py",
       "simbolo": "main",
       "tipo": "definicion",
-      "inicio": 67,
-      "fin": 80,
+      "inicio": 72,
+      "fin": 85,
       "n": 14,
       "huella": "9cea41b5396bd921"
     },
@@ -297,6 +308,28 @@
       "fin": 64,
       "n": 31,
       "huella": "a56e9f44192d6c12"
+    },
+    {
+      "doc": "SKILL.md",
+      "ancla": "dockeeper/revision.py#_base",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "_base",
+      "tipo": "definicion",
+      "inicio": 72,
+      "fin": 84,
+      "n": 13,
+      "huella": "d728387b089758d4"
+    },
+    {
+      "doc": "SKILL.md",
+      "ancla": "dockeeper/revision.py#revisar",
+      "fichero": "dockeeper/revision.py",
+      "simbolo": "revisar",
+      "tipo": "definicion",
+      "inicio": 217,
+      "fin": 261,
+      "n": 41,
+      "huella": "a36fcdbd6ec2c58c"
     },
     {
       "doc": "SPEC.md",
@@ -425,10 +458,10 @@
       "fichero": "tests/test_cli.py",
       "simbolo": "PruebasCli.test_solo_escribe_el_sello",
       "tipo": "definicion",
-      "inicio": 73,
-      "fin": 85,
+      "inicio": 75,
+      "fin": 87,
       "n": 13,
-      "huella": "c6cf1577c0e7232c"
+      "huella": "ef7cd37596350595"
     },
     {
       "doc": "SPEC.md",
@@ -437,9 +470,9 @@
       "simbolo": "PruebasCli.test_todas_las_ordenes_aceptan_json",
       "tipo": "definicion",
       "inicio": 45,
-      "fin": 61,
-      "n": 17,
-      "huella": "9dd349f7e93f766f"
+      "fin": 63,
+      "n": 19,
+      "huella": "85b39599e59ab0b0"
     },
     {
       "doc": "SPEC.md",
@@ -484,6 +517,50 @@
       "fin": 110,
       "n": 15,
       "huella": "d92dc538bc969b49"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_revision.py#PruebasRevision.test_cambio_anclado_y_codigo_nuevo_sin_documentar",
+      "fichero": "tests/test_revision.py",
+      "simbolo": "PruebasRevision.test_cambio_anclado_y_codigo_nuevo_sin_documentar",
+      "tipo": "definicion",
+      "inicio": 36,
+      "fin": 53,
+      "n": 17,
+      "huella": "44ce4915389f5c07"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_revision.py#PruebasRevision.test_desde_una_rama_cuenta_desde_la_bifurcacion",
+      "fichero": "tests/test_revision.py",
+      "simbolo": "PruebasRevision.test_desde_una_rama_cuenta_desde_la_bifurcacion",
+      "tipo": "definicion",
+      "inicio": 95,
+      "fin": 108,
+      "n": 14,
+      "huella": "03e2dd592c89eb12"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_revision.py#PruebasRevision.test_metodo_nuevo_y_clase_nueva",
+      "fichero": "tests/test_revision.py",
+      "simbolo": "PruebasRevision.test_metodo_nuevo_y_clase_nueva",
+      "tipo": "definicion",
+      "inicio": 55,
+      "fin": 74,
+      "n": 17,
+      "huella": "3de989d31a539225"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_revision.py#PruebasRevision.test_primer_commit_todo_es_nuevo",
+      "fichero": "tests/test_revision.py",
+      "simbolo": "PruebasRevision.test_primer_commit_todo_es_nuevo",
+      "tipo": "definicion",
+      "inicio": 86,
+      "fin": 93,
+      "n": 8,
+      "huella": "c0c083ef78b89d5d"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -536,9 +613,9 @@
       "simbolo": "historial",
       "tipo": "definicion",
       "inicio": 83,
-      "fin": 111,
-      "n": 29,
-      "huella": "8a9ea5dff24ecc9e"
+      "fin": 115,
+      "n": 32,
+      "huella": "c555825dc87e1380"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -621,7 +698,7 @@
   "vinculos": [
     {
       "doc": "README.md",
-      "linea_doc": 259,
+      "linea_doc": 260,
       "huella_doc": "4c2e64411b9c1e82",
       "ancla": "dockeeper/motor.py#vincular",
       "fichero": "dockeeper/motor.py",

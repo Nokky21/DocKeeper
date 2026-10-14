@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
 from dockeeper import __version__
-from dockeeper import auditoria, motor, porque
+from dockeeper import auditoria, motor, porque, revision
 from dockeeper.config import ErrorDeUso, buscar_raiz
 
 _ANCHO = 15
@@ -53,6 +53,11 @@ def _parser() -> argparse.ArgumentParser:
     v.add_argument("--quitar", action="store_true", help="quita los vínculos de esa línea (o solo el indicado)")
     ordenes.add_parser("why", parents=[comun, alcance],
                        help="decisiones del historial (Decision:, Motivo:, Why:, ADR) y entradas sin motivo")
+    r = ordenes.add_parser("review", parents=[comun, alcance],
+                           help="qué documentación toca un cambio y qué código nuevo o cambiado queda sin documentar")
+    r.add_argument("--desde", metavar="REF",
+                   help="revisión desde la que comparar con el árbol de trabajo (por defecto HEAD~1: el último "
+                        "commit y lo que haya sin commitear); con una rama, desde donde se bifurcó")
     return p
 
 
@@ -300,6 +305,54 @@ def _why(args, raiz: Path) -> int:
     return 0
 
 
+_MAX_LISTA = 20
+
+
+def _review(args, raiz: Path) -> int:
+    ctx = motor.Contexto(raiz, args.solo, args.sin)
+    rev = revision.revisar(ctx, args.desde, args.sin)
+    if args.json:
+        _emitir({"orden": "review", "raiz": str(ctx.cfg.raiz), "codigo": 0, "alcance": ctx.alcance.describir(),
+                 "desde": rev.desde, "base": rev.base[:10] if rev.base else None,
+                 "cambios": {"codigo": rev.codigo, "documentos": rev.documentos},
+                 "afirmaciones": [i.a_dict() for i in rev.afirmaciones],
+                 "sin_documentar": [s.a_dict() for s in rev.sin_documentar],
+                 "decisiones": [d.a_dict() for d in rev.decisiones]})
+        return 0
+    base = rev.base[:10] if rev.base else "el principio"
+    nc, nd = len(rev.codigo), len(rev.documentos)
+    print(f"dockeeper review · cambios desde {rev.desde} ({base}) · {nc} fichero{'' if nc == 1 else 's'} de código · "
+          f"{nd} documento{'' if nd == 1 else 's'}")
+    if rev.vacia:
+        print("Nada que revisar: la documentación que toca este cambio sigue en verde y no queda código "
+              "nuevo o cambiado sin documentar.")
+        return 0
+    if rev.afirmaciones:
+        print("Afirmaciones que toca el cambio (revisa el texto):")
+        for item in rev.afirmaciones:
+            _linea(item)
+    if rev.sin_documentar:
+        print("Código nuevo o cambiado sin ninguna afirmación (¿se puede añadir a la documentación?):")
+        for s in rev.sin_documentar[:_MAX_LISTA]:
+            docs = f" · ya hablan de ese fichero: {', '.join(s.documentos)}" if s.documentos else ""
+            print(f"  {s.estado:<9} {s.simbolo} ({s.fin - s.inicio + 1} líneas){docs}")
+        if len(rev.sin_documentar) > _MAX_LISTA:
+            print(f"  … y {len(rev.sin_documentar) - _MAX_LISTA} más (--json las da todas)")
+    if rev.decisiones:
+        print("Decisiones de estos commits sin documentar (dockeeper why):")
+        for d in rev.decisiones:
+            print(f"  {d.commit} {d.fecha}  {d.decision}")
+    estados = {i.estado for i in rev.afirmaciones}
+    for estado, pista in _PISTAS.items():
+        if estado in estados:
+            print(f"  → {pista}")
+    if rev.sin_documentar:
+        print("  → documenta lo que haga falta con un ancla por afirmación y sella con dockeeper scan")
+    if rev.decisiones:
+        print("  → anótalas en el documento de decisiones (motivo solo si consta)")
+    return 0
+
+
 _ORDENES: Dict[str, Callable[[argparse.Namespace, Path], int]] = {
     "audit": _audit,
     "why": _why,
@@ -307,4 +360,5 @@ _ORDENES: Dict[str, Callable[[argparse.Namespace, Path], int]] = {
     "check": _check,
     "fix": _fix,
     "link": _link,
+    "review": _review,
 }

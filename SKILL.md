@@ -1,6 +1,6 @@
 ---
 name: dockeeper
-description: Use when writing, updating or auditing repository documentation that must stay true to the code (README, architecture, decisions, runbooks, API, onboarding) — every claim is anchored to code and checked with the local `dockeeper` CLI (OK / MOVED / CHANGED), including published docs that must not leak internal paths or copied code, and "why" sections drawn only from git history.
+description: Use when writing, updating or auditing repository documentation that must stay true to the code (README, architecture, decisions, runbooks, API, onboarding) — every claim is anchored to code and checked with the local `dockeeper` CLI (OK / MOVED / CHANGED), including published docs that must not leak internal paths or copied code, and "why" sections drawn only from git history. Also use after every commit or before a pull request (`dockeeper review`) to see which claims the change touched and which new or changed code is worth documenting.
 license: MIT
 compatibility: Needs python3 (3.9+, standard library only) and git; runs locally, no network or account.
 ---
@@ -22,7 +22,7 @@ python3 <carpeta-de-este-skill>/bin/dockeeper <orden> [--json] [--solo RUTA]... 
 En Claude Code la carpeta del skill es `${CLAUDE_SKILL_DIR}`. En Windows, si no existe `python3`, usa
 `python` (o `py`).
 
-Órdenes: `audit`, `scan`, `check`, `fix`, `link`, `why`. Todas aceptan `--json` (úsalo para leer
+Órdenes: `audit`, `scan`, `check`, `fix`, `link`, `why`, `review`. Todas aceptan `--json` (úsalo para leer
 resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problemas · 2 error de uso.
 <!-- dockeeper: dockeeper/cli.py#main dockeeper/motor.py#FALLOS -->
 
@@ -76,6 +76,38 @@ español a un proyecto en otro idioma. Para no consta, usa la expresión equival
      `dockeeper fix --aceptar` (acota con `--solo` para no aceptar más de lo revisado).
    - `DESAPARECIDO` → el fichero ya no existe: reescribe la afirmación o quítala; luego `scan`.
    - `SIN_SELLAR` → `scan`. `HUERFANA` → `fix` la quita.
+
+## En cada commit
+
+La documentación se mantiene viva commit a commit, no en una gran revisión al final.
+
+1. **Después de cada commit** que hagas (y antes de dar por buena una rama o un PR):
+   `dockeeper review --json`. Por defecto mira el último commit y lo que haya sin commitear; con
+   `--desde main` (o la rama principal) mira toda la rama desde donde se bifurcó. Solo cuentan los
+   ficheros que git ya conoce. <!-- dockeeper: dockeeper/revision.py#revisar dockeeper/revision.py#_base -->
+2. Actúa sobre cada lista:
+   - `afirmaciones` → como en el paso 5 del flujo (`MOVED` → `fix`; `CHANGED` → corrige el texto y
+     `fix --aceptar`; `DESAPARECIDO`/`SIN_SELLAR` → reescribe y `scan`).
+   - `sin_documentar` → definiciones nuevas o cambiadas sin ninguna afirmación. Decide cuáles
+     merecen documentación: comportamiento visible, API, configuración, errores, flujos, decisiones.
+     Lo trivial o interno se deja. Añade la afirmación con su ancla en la página que ya habla de ese
+     fichero (`documentos`) o en la que corresponda, y sella con `scan`. No rellenes por rellenar.
+   - `decisiones` → entrada en el documento de decisiones; motivo solo si consta.
+3. Commitea la documentación aparte (`docs: …`) y vuelve a ejecutar `check`.
+
+**Revisión automática** (solo si la persona la pide): instala un hook `post-commit` de git en la
+carpeta que diga `git rev-parse --git-path hooks`. Si ya existe uno, añade la línea; no lo
+sobrescribas. Con la ruta absoluta de este skill:
+
+```sh
+#!/bin/sh
+# DocKeeper: qué documentación toca este commit y qué queda sin documentar. Nunca bloquea.
+python3 "/ruta/absoluta/al/skill/bin/dockeeper" review || true
+```
+
+Hazlo ejecutable (`chmod +x`). Su salida aparece al hacer cada commit, también en la terminal de
+un agente: cuando la veas, sigue el paso 2. Para quitarla, borra esa línea o el fichero. La CLI no
+instala nada por su cuenta: solo escribe el sello.
 
 ## Qué escribe cada página
 

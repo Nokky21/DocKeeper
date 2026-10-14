@@ -206,10 +206,11 @@ line anchors (window blocks).
 | `fix` | Relocates `MOVED`, removes orphans. `--aceptar` accepts reviewed `CHANGED` blocks as the new truth | seal file |
 | `link DOC:LINE ANCHOR` | Binds a line of a document to code without touching the document. `--quitar` removes it | seal file |
 | `why` | Decisions from git history (`Decision:`, `Motivo:`/`Why:`, `Alternativas:`, `ADR`) and decision entries with no written reason | nothing |
+| `review` | What a change means for the docs: claims it touched, new or changed code with no claim, decisions not yet written down. `--desde REF` (default `HEAD~1`; a branch counts from where it forked) | nothing |
 
 Every command accepts `--json` (stable, machine-readable) and `--raiz PATH` (repository root;
-defaults to the nearest folder with `.dockeeper.json` or `.git`). `audit`, `scan`, `check`, `fix` and
-`why` accept `--solo` and `--sin` ([partial scope](#partial-scope)).
+defaults to the nearest folder with `.dockeeper.json` or `.git`). Every command except `link` accepts
+`--solo` and `--sin` ([partial scope](#partial-scope)).
 
 ### Verdicts and exit codes
 
@@ -309,7 +310,17 @@ git clone --depth 1 https://github.com/Nokky21/DocKeeper.git /tmp/dockeeper
 python3 /tmp/dockeeper/bin/dockeeper check
 ```
 
-**Git hook.** To catch it before pushing, save this as `.git/hooks/pre-push` and make it executable:
+**Git hooks.** To review every commit (it never blocks), save this as `.git/hooks/post-commit` and
+make it executable. Your agent can install it for you: ask it to "review the docs on every commit".
+
+```sh
+#!/bin/sh
+python3 "$HOME/.claude/skills/dockeeper/bin/dockeeper" review || true
+```
+
+<!-- dockeeper: dockeeper/revision.py#revisar -->
+
+To catch it before pushing, save this as `.git/hooks/pre-push`:
 
 ```sh
 #!/bin/sh

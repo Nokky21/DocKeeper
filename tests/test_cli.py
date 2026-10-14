@@ -53,6 +53,8 @@ class PruebasCli(unittest.TestCase):
                 ("link", "docs/guia.md:1", "src/pagos.py#validar_pago"),
                 ("link", "docs/guia.md:1", "--quitar"), ("why",),
             ]
+            if shutil.which("git"):
+                ordenes.append(("review",))
             for orden in ordenes:
                 codigo, salida = r.dk(*orden, "--json")
                 datos = json.loads(salida)  # falla si no es JSON válido
@@ -76,7 +78,7 @@ class PruebasCli(unittest.TestCase):
                           config={"publico": ["docs/"]}) as r:
             antes = instantanea(r.raiz)
             for orden in [("audit",), ("scan",), ("check",), ("link", "docs/guia.md:1", "src/pagos.py#validar_pago"),
-                          ("fix", "--aceptar"), ("why",), ("check",)]:
+                          ("fix", "--aceptar"), ("why",), ("review",), ("check",)]:
                 r.dk(*orden)
             despues = instantanea(r.raiz)
             self.assertEqual(set(despues) - set(antes), {".dockeeper.sello.json"})

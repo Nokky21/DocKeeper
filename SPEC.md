@@ -1,6 +1,6 @@
 # SPEC — DocKeeper
 
-> Estado: v0.1 · 2026-10-13.
+> Estado: v0.2 en curso · 2026-10-14.
 > Este documento manda sobre el código: si discrepan, uno de los dos está mal.
 
 ## 1. El problema
@@ -23,6 +23,8 @@ trabajan juntos:
 4. Sirve para documentación **publicada**: sin rutas internas ni código copiado, y aun así comprobable
    (vínculos guardados fuera del documento).
 5. Saca el **porqué** del historial de git; lo que no consta no se inventa.
+6. Revisa cada **cambio** (un commit, una rama): qué afirmaciones toca y qué código nuevo o cambiado
+   queda sin documentar, para que el skill proponga qué añadir.
 
 ## 3. Qué NO hace (en esta fase)
 
@@ -91,6 +93,7 @@ normalizadas y huella. **No guarda código**, solo huellas.
 | `fix` | recoloca los `MOVED`, quita huérfanas; con `--aceptar`, acepta los `CHANGED` revisados | sello |
 | `link` | vincula una línea de un documento con código sin tocar el documento (`--quitar` deshace) | sello |
 | `why` | decisiones del historial (`Decision:`, `Motivo:`, `Why:`, `ADR`…) y entradas sin motivo | nada |
+| `review` | un cambio (`--desde REF`, por defecto `HEAD~1`): afirmaciones que toca, código nuevo o cambiado sin afirmaciones y decisiones de esos commits sin documentar | nada |
 
 Todas aceptan `--json` y `--raiz`.
 
@@ -144,6 +147,8 @@ Cada criterio tiene una prueba que lo demuestra (`python3 -m unittest`).
 | CA-15 | Todas las órdenes aceptan `--json` y emiten JSON válido. | [[tests/test_cli.py#PruebasCli.test_todas_las_ordenes_aceptan_json]] |
 | CA-16 | No escribe fuera de la raíz: solo crea `.dockeeper.sello.json`. | [[tests/test_cli.py#PruebasCli.test_solo_escribe_el_sello]] |
 | CA-17 | El propio repositorio está sellado y su `check` está en verde. | [[tests/test_autocomprobacion.py#PruebasAutocomprobacion.test_el_repositorio_se_mantiene_limpio]] |
+| CA-18 | `review` señala las afirmaciones que toca un commit y las definiciones nuevas o cambiadas sin ninguna afirmación (las de una clase nueva, como la clase). | [[tests/test_revision.py#PruebasRevision.test_cambio_anclado_y_codigo_nuevo_sin_documentar]] [[tests/test_revision.py#PruebasRevision.test_metodo_nuevo_y_clase_nueva]] |
+| CA-19 | `review --desde RAMA` cuenta desde la bifurcación; sin commit anterior, todo es nuevo. | [[tests/test_revision.py#PruebasRevision.test_desde_una_rama_cuenta_desde_la_bifurcacion]] [[tests/test_revision.py#PruebasRevision.test_primer_commit_todo_es_nuevo]] |
 
 ## 6. Criterios de abandono
 
@@ -180,6 +185,9 @@ en varias líneas) se corrigió y tiene prueba.
 | `check` sin nada en alcance | Falla con `NADA_COMPROBADO`. | Un verde vacío es exactamente el fallo del prototipo. |
 | Versión de Python | Objetivo 3.10+; el código evita lo que no existe en 3.9 y la suite pasa también en 3.9 (el `python3` del sistema en macOS). | Que funcione sin instalar nada. |
 | Ancla huérfana (en el sello, ya no en el doc) | Aviso `HUERFANA` (salida 0); `scan` y `fix` la quitan. | Ya no hay afirmación que comprobar. |
+| «Que revise la documentación en cada commit» | `review` es informativa (salida 0) y el hook `post-commit` lo instala el agente a petición de la persona; la CLI no escribe hooks. | La puerta sigue siendo `check`; §3: la CLI no toca la configuración de otros programas. |
+| Qué es un cambio para `review` | De `merge-base(--desde, HEAD)` al árbol de trabajo, solo ficheros que git conoce. | Sirve igual tras un commit, para una rama entera y antes de commitear; los ficheros sin seguimiento ajenos al cambio no meten ruido en el hook. |
+| Qué definición señala `review` | La más interior que contiene cada línea cambiada; si un contenedor es nuevo, el nuevo más externo. Cuenta como documentada si solapa con el tramo actual de alguna afirmación, sellada o no. | Una clase nueva es una cosa que documentar, no diez métodos. |
 
 ## 8. Límites conocidos (no se esconden)
 

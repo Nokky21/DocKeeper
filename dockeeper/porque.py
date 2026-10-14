@@ -80,11 +80,15 @@ def _extraer(asunto: str, cuerpo: str) -> Dict[str, str]:
     return campos
 
 
-def historial(ctx: "Contexto") -> Optional[List[Decision]]:
-    """Commits con marcas de decisión, del más reciente al más antiguo. None si no hay historial."""
+def historial(ctx: "Contexto", rango: Optional[str] = None) -> Optional[List[Decision]]:
+    """Commits con marcas de decisión, del más reciente al más antiguo. None si no hay historial.
+
+    ``rango`` (p. ej. ``base..HEAD``) limita el historial a esos commits.
+    """
     formato = "%x1e%H%x1f%ad%x1f%an%x1f%s%x1f%b%x1f"
     try:
-        r = subprocess.run(["git", "log", "--no-color", "--date=short", "--name-only", f"--format={formato}"],
+        r = subprocess.run(["git", "log", "--no-color", "--date=short", "--name-only", f"--format={formato}",
+                            *([rango] if rango else []), "--"],
                            cwd=ctx.cfg.raiz, capture_output=True)
     except OSError:
         return None
