@@ -1,53 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-label="Published docs: the public page shows no paths; the link lives in the seal file and check verifies both the sentence and the private code">
 
 <style>
-  .bg { fill: #ffffff; stroke: #d0d7de; }
-  .card { fill: #f6f8fa; stroke: #d0d7de; }
-  .bar { fill: #eaeef2; }
-  .t { fill: #1f2328; font: 500 13px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-  .tb { fill: #1f2328; font: 650 14px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-  .muted { fill: #59636e; font: 500 12px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-  .step { fill: #59636e; font: 650 11px ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; letter-spacing: .08em; }
-  .m { fill: #1f2328; font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-  .ms { fill: #59636e; font: 11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-  .acc { fill: #0969da; }
-  .hl { fill: #ddf4ff; stroke: #54aeff; }
-  .arrow { stroke: #8c959f; stroke-width: 1.6; fill: none; }
-  .head { fill: #8c959f; }
-  .ok { fill: #1a7f37; } .okbg { fill: #dafbe1; stroke: #4ac26b; }
-  .mv { fill: #9a6700; } .mvbg { fill: #fff8c5; stroke: #d4a72c; }
-  .ch { fill: #cf222e; } .chbg { fill: #ffebe9; stroke: #ff8182; }
+  .bg { fill: #fffdf8; stroke: #dcd7cb; }
+  .card { fill: #f7f5f0; stroke: #dcd7cb; }
+  .bar { fill: #efece4; }
+  .rule { stroke: #dcd7cb; stroke-width: 1; }
+  .t { fill: #47433b; font: 400 13px "Geist", "Geist Variable", ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .tb { fill: #1d1b17; font: 500 18px "Newsreader", "Iowan Old Style", Georgia, serif; }
+  .muted { fill: #7a7468; font: 400 12px "Geist", "Geist Variable", ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .num { fill: #7a7468; font: 400 18px "Newsreader", "Iowan Old Style", Georgia, serif; }
+  .step { fill: #47433b; font: 500 13px "Geist", "Geist Variable", ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .m { fill: #1d1b17; font: 12px "Geist Mono", "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .ms { fill: #7a7468; font: 11px "Geist Mono", "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .vc { font: 600 12.5px "Geist Mono", "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .acc { fill: #1f4e8c; }
+  .hl { fill: #1f4e8c; fill-opacity: .08; }
+  .arrow { stroke: #cbc5b6; stroke-width: 1.4; fill: none; }
+  .head { fill: #cbc5b6; }
+  .ok { fill: #2f7a4b; } .mv { fill: #956510; } .ch { fill: #b23a2e; }
   @media (prefers-color-scheme: dark) {
-    .bg { fill: #0d1117; stroke: #30363d; }
-    .card { fill: #161b22; stroke: #30363d; }
-    .bar { fill: #21262d; }
-    .t, .tb, .m { fill: #e6edf3; }
-    .muted, .step, .ms { fill: #9198a1; }
-    .acc { fill: #4493f8; }
-    .hl { fill: #0c2d6b; stroke: #1f6feb; }
-    .arrow { stroke: #6e7681; } .head { fill: #6e7681; }
-    .ok { fill: #3fb950; } .okbg { fill: #0f2e1a; stroke: #238636; }
-    .mv { fill: #d29922; } .mvbg { fill: #2e2510; stroke: #9e6a03; }
-    .ch { fill: #f85149; } .chbg { fill: #3a1418; stroke: #da3633; }
+    .bg { fill: #1d1c19; stroke: #2f2c27; }
+    .card { fill: #151412; stroke: #2f2c27; }
+    .bar { fill: #1b1a17; }
+    .rule { stroke: #2f2c27; }
+    .tb, .m { fill: #ece8df; }
+    .t, .step { fill: #c4bfb3; }
+    .muted, .ms, .num { fill: #918b7e; }
+    .acc { fill: #8fb3e8; }
+    .hl { fill: #8fb3e8; fill-opacity: .1; }
+    .arrow { stroke: #403c35; } .head { fill: #403c35; }
+    .ok { fill: #6cc08b; } .mv { fill: #d9a64a; } .ch { fill: #e57565; }
   }
 </style>
 
-<rect class="bg" x="0.5" y="0.5" width="959" height="299" rx="16"/>
-<text class="step" x="24" y="36">WHAT READERS SEE</text>
-<text class="step" x="352" y="36">WHAT STAYS IN YOUR REPO</text>
-<text class="step" x="688" y="36">PRIVATE CODE</text>
-<rect class="card" x="24" y="52" width="268" height="196" rx="10"/><path class="bar" d="M25 80 V62 a9 9 0 0 1 9 -9 H282 a9 9 0 0 1 9 9 V80 z"/><text class="ms" x="36" y="71">docs.example.com/guide</text>
+<rect class="bg" x="0.5" y="0.5" width="959" height="299" rx="14"/>
+<text class="step" x="24" y="37">What readers see</text>
+<text class="step" x="352" y="37">What stays in your repo</text>
+<text class="step" x="688" y="37">Private code</text>
+<rect class="card" x="24" y="52" width="268" height="196" rx="10"/><path class="bar" d="M25 80 V62 a9 9 0 0 1 9 -9 H282 a9 9 0 0 1 9 9 V80 z"/><path class="rule" d="M25 80.5 H291"/><text class="ms" x="36" y="71">docs.example.com/guide</text>
 <text class="tb" x="40" y="100" xml:space="preserve"># Payments</text>
-<rect class="hl" x="32" y="118" width="252" height="48" rx="6"/>
+<rect class="hl" x="32" y="118" width="252" height="48" rx="3"/><rect class="acc" x="32" y="118" width="2" height="48"/>
 <text class="t" x="42" y="138" xml:space="preserve">Payments are validated</text><text class="t" x="42" y="158" xml:space="preserve">before they are charged.</text>
 <text class="muted" x="40" y="196" xml:space="preserve">no file paths</text><text class="muted" x="40" y="214" xml:space="preserve">no copied code</text>
-<rect class="card" x="352" y="52" width="276" height="196" rx="10"/><path class="bar" d="M353 80 V62 a9 9 0 0 1 9 -9 H618 a9 9 0 0 1 9 9 V80 z"/><text class="ms" x="364" y="71">.dockeeper.sello.json</text>
+<rect class="card" x="352" y="52" width="276" height="196" rx="10"/><path class="bar" d="M353 80 V62 a9 9 0 0 1 9 -9 H618 a9 9 0 0 1 9 9 V80 z"/><path class="rule" d="M353 80.5 H627"/><text class="ms" x="364" y="71">.dockeeper.sello.json</text>
 <text class="m" x="366" y="96" xml:space="preserve">&quot;doc&quot;: &quot;guide.md&quot;</text><text class="m" x="366" y="116" xml:space="preserve">&quot;linea_doc&quot;: 12</text><text class="m" x="366" y="136" xml:space="preserve">&quot;ancla&quot;: &quot;src/payments.py</text><text class="m" x="366" y="156" xml:space="preserve">          #validate_payment&quot;</text><text class="m" x="366" y="176" xml:space="preserve">&quot;huella&quot;: &quot;06d5eca737fe9faf&quot;</text>
-<rect class="card" x="688" y="52" width="248" height="196" rx="10"/><path class="bar" d="M689 80 V62 a9 9 0 0 1 9 -9 H926 a9 9 0 0 1 9 9 V80 z"/><text class="ms" x="700" y="71">src/payments.py</text>
-<rect class="hl" x="696" y="80" width="232" height="94" rx="6"/>
+<rect class="card" x="688" y="52" width="248" height="196" rx="10"/><path class="bar" d="M689 80 V62 a9 9 0 0 1 9 -9 H926 a9 9 0 0 1 9 9 V80 z"/><path class="rule" d="M689 80.5 H935"/><text class="ms" x="700" y="71">src/payments.py</text>
+<rect class="hl" x="696" y="80" width="232" height="94" rx="3"/><rect class="acc" x="696" y="80" width="2" height="94"/>
 <text class="m" x="706" y="100" xml:space="preserve">def validate_payment(p):</text><text class="m" x="706" y="119" xml:space="preserve">  if p[&quot;amount&quot;] &lt;= 0:</text><text class="m" x="706" y="138" xml:space="preserve">    raise ValueError()</text><text class="m" x="706" y="157" xml:space="preserve">  return True</text>
-<path class="arrow" d="M296 150 H341"/><path class="head" d="M348 150 l-8 -5 v10 z"/>
-<path class="arrow" d="M632 150 H677"/><path class="head" d="M684 150 l-8 -5 v10 z"/>
+<path class="arrow" d="M296 150 H341"/><path class="head" d="M348 150 l-7 -4 v8 z"/>
+<path class="arrow" d="M632 150 H677"/><path class="head" d="M684 150 l-7 -4 v8 z"/>
 <text class="m acc" x="24" y="276" xml:space="preserve">$ dockeeper link guide.md:12 src/payments.py#validate_payment</text>
 <text class="muted" x="560" y="276" xml:space="preserve">check verifies both sides: the sentence and the code</text>
 </svg>

@@ -114,6 +114,19 @@ const url = new URL(base, Astro.site).href;
       });
     }
 
+    // Comandos y terminales que no caben: fundido en el borde mientras quede algo por ver.
+    const anchos = Array.from(document.querySelectorAll<HTMLElement>(".cmd pre, .window-foot .term"));
+    const medir = (el: HTMLElement) => {
+      const marca = el.classList.contains("term") ? el.parentElement : el;
+      marca?.toggleAttribute("data-more", el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+    };
+    const observador = new ResizeObserver((cambios) => cambios.forEach((c) => medir(c.target as HTMLElement)));
+    for (const el of anchos) {
+      el.addEventListener("scroll", () => medir(el), { passive: true });
+      observador.observe(el);
+    }
+    document.fonts?.ready.then(() => anchos.forEach(medir));
+
   </script>
 </body>
 </html>

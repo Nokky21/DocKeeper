@@ -111,7 +111,7 @@ h2 .n { color: var(--muted); font-weight: 400; margin-right: .08em; font-variant
   border-left: 2px solid var(--line-2); padding: 2px 0 2px 12px; margin-top: 6px;
 }
 .mn b { display: block; font-weight: 500; color: var(--ink-2); margin-bottom: 2px; }
-.mn code { font-size: .74rem; background: none; border: 0; padding: 0; color: var(--accent); word-break: break-all; }
+.mn code { font-size: .74rem; background: none; border: 0; padding: 0; color: var(--accent); overflow-wrap: anywhere; }
 .mn-col { display: grid; gap: 22px; align-content: start; }
 @media (max-width: 1080px) { .mn { margin: 18px 0 0; } .mn-col { margin-top: 20px; } }
 
@@ -155,6 +155,10 @@ footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .cmd .p { color: var(--term-dim); user-select: none; }
 .copy { font: 500 .78rem/1 var(--sans); color: var(--term-ink); background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); border-radius: 7px; padding: 9px 11px; cursor: pointer; transition: background .2s var(--ease); }
 .copy:hover { background: rgba(255, 255, 255, .16); }
+/* Si un comando o una terminal no caben, un fundido avisa de que sigue (el script lo quita al llegar al final). */
+.cmd pre[data-more] { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); }
+.window-foot { position: relative; }
+.window-foot[data-more]::after { content: ""; position: absolute; inset: 0 0 0 auto; width: 48px; background: linear-gradient(to right, transparent, var(--term)); pointer-events: none; }
 .copy[data-done] { color: #8fd6a7; }
 
 /* --- Terminal y código ----------------------------------------------------------------- */
@@ -171,7 +175,7 @@ footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .hero-text { max-width: 760px; }
 .hero .lede { font-size: clamp(1.25rem, 2.1vw, 1.5rem); max-width: 40ch; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 34px; }
-.hero-actions .cmd { flex: 1 1 320px; max-width: 560px; }
+.hero-actions .cmd { flex: 1 1 100%; }
 .hero-meta { margin-top: 22px; color: var(--muted); font-size: .9rem; }
 
 /* La ventana de un documento escrito por el skill, como lo enseñaría Obsidian. */
@@ -285,7 +289,7 @@ footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .verdicts b { font: 600 .82rem/1.7 var(--mono); }
 .verdicts span { font: .8rem/1.7 var(--mono); color: var(--muted); }
 .verdicts p { color: var(--ink-2); }
-.figure-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); padding: 10px; }
+.figure-scroll { overflow-x: auto; border-radius: 14px; }
 .figure-scroll img { min-width: 720px; display: block; }
 figure { margin: 0; }
 figcaption.cap { margin-top: 10px; font-size: .86rem; color: var(--muted); }
@@ -313,10 +317,14 @@ figcaption.cap { margin-top: 10px; font-size: .86rem; color: var(--muted); }
 .list li { padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: .96rem; }
 .list b { color: var(--ink); font-weight: 600; }
 @media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 36px; } }
-.faq { margin: 34px 0 0; }
-.faq dt { font: 500 1.14rem/1.35 var(--serif); color: var(--ink); margin-top: 28px; }
-.faq dt:first-child { margin-top: 0; }
-.faq dd { margin: 8px 0 0; color: var(--ink-2); max-width: 64ch; }
+.faq { margin: 34px 0 0; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 17px 0; cursor: pointer; list-style: none; font: 500 1.14rem/1.35 var(--serif); color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 400 1.25rem/1 var(--sans); color: var(--muted); transition: transform .2s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover::after { color: var(--ink); }
+.faq details > div { padding: 0 0 20px; color: var(--ink-2); max-width: 64ch; }
 
 @media (max-width: 560px) {
   body { font-size: 16px; }

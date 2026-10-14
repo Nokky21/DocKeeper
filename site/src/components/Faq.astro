@@ -13,9 +13,9 @@ const preguntas = [
 ---
 <section class="sec" id="faq" aria-labelledby="t-faq">
   <h2 id="t-faq"><span class="n">10</span> Questions</h2>
-  <dl class="faq">
+  <div class="faq">
     {preguntas.map(([pregunta, respuesta]) => (
-      <Fragment><dt>{pregunta}</dt><dd set:html={respuesta} /></Fragment>
+      <details><summary>{pregunta}</summary><div set:html={respuesta} /></details>
     ))}
-  </dl>
+  </div>
 </section>
