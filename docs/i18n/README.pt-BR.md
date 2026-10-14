@@ -125,7 +125,7 @@ flowchart LR
 
 ```yaml
 - uses: actions/checkout@v6
-- uses: Nokky21/DocKeeper@v0.2.0
+- uses: Nokky21/DocKeeper@v0.3.0
 ```
 
 Qualquer outro CI só precisa de Python e git: [clone e rode o `check`](../reference.md#continuous-integration).
