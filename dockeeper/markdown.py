@@ -11,6 +11,7 @@ import re
 from dataclasses import dataclass, field
 from typing import List, Optional, Tuple
 
+from . import textos
 from .rutas import normalizar_ruta
 
 _VALLA = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
@@ -64,21 +65,21 @@ def leer_ancla(token: str) -> Tuple[str, Optional[int], Optional[str], str]:
     """
     m = _TOKEN.match(token.strip())
     if not m:
-        raise ValueError(f"«{token}» no es un ancla (usa ruta:línea o ruta#símbolo)")
+        raise ValueError(textos.t("«{token}» no es un ancla (usa ruta:línea o ruta#símbolo)", token=token))
     return _validar(m.group(1), m.group(2), m.group(3))
 
 
 def _validar(ruta: str, num: Optional[str], simbolo: Optional[str]) -> Tuple[str, Optional[int], Optional[str], str]:
     fichero = normalizar_ruta(ruta)
     if fichero is None:
-        raise ValueError(f"«{ruta}» es absoluta o sale del repositorio")
+        raise ValueError(textos.t("«{ruta}» es absoluta o sale del repositorio", ruta=ruta))
     if num is not None:
         linea = int(num)
         if linea < 1:
-            raise ValueError("las líneas empiezan en 1")
+            raise ValueError(textos.t("las líneas empiezan en 1"))
         return fichero, linea, None, f"{fichero}:{linea}"
     if any(not parte for parte in simbolo.split(".")):
-        raise ValueError(f"«{simbolo}» no es un símbolo válido")
+        raise ValueError(textos.t("«{simbolo}» no es un símbolo válido", simbolo=simbolo))
     return fichero, None, simbolo, f"{fichero}#{simbolo}"
 
 
@@ -162,7 +163,8 @@ def _visible(doc, num, linea, en_comentario, anclas, problemas) -> Tuple[str, bo
         fin = texto.find("-->", k + 4)
         if fin < 0:
             if _APERTURA_DK.match(texto[k:]):
-                problemas.append(Problema(doc, num, texto[k:].strip(), "el comentario dockeeper debe cerrarse en la misma línea"))
+                problemas.append(Problema(doc, num, texto[k:].strip(),
+                                           textos.t("el comentario dockeeper debe cerrarse en la misma línea")))
             trozos.append(" " * (len(texto) - k))
             return "".join(trozos), True
         comentario = texto[k:fin + 3]
@@ -170,11 +172,11 @@ def _visible(doc, num, linea, en_comentario, anclas, problemas) -> Tuple[str, bo
         if m:
             fichas = [f for f in re.split(r"[\s,]+", m.group(1).strip()) if f]
             if not fichas:
-                problemas.append(Problema(doc, num, comentario, "comentario dockeeper sin anclas"))
+                problemas.append(Problema(doc, num, comentario, textos.t("comentario dockeeper sin anclas")))
             for ficha in fichas:
                 t = _TOKEN.match(ficha)
                 if not t:
-                    problemas.append(Problema(doc, num, ficha, "no es un ancla (usa ruta:línea o ruta#símbolo)"))
+                    problemas.append(Problema(doc, num, ficha, textos.t("no es un ancla (usa ruta:línea o ruta#símbolo)")))
                     continue
                 _anadir(doc, num, ficha, t.group(1), t.group(2), t.group(3), True, anclas, problemas)
         trozos.append(" " * len(comentario))

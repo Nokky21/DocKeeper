@@ -7,6 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
+from .textos import t
+
 NOMBRE_CONFIG = ".dockeeper.json"
 NOMBRE_SELLO = ".dockeeper.sello.json"
 
@@ -62,18 +64,20 @@ def cargar(raiz: Path) -> Config:
         try:
             propios = json.loads(ruta.read_text(encoding="utf-8"))
         except (ValueError, OSError) as e:
-            raise ErrorDeUso(f"{NOMBRE_CONFIG} no se puede leer: {e}") from e
+            raise ErrorDeUso(t("{fichero} no se puede leer: {error}", fichero=NOMBRE_CONFIG, error=e)) from e
         if not isinstance(propios, dict):
-            raise ErrorDeUso(f"{NOMBRE_CONFIG} debe ser un objeto JSON")
+            raise ErrorDeUso(t("{fichero} debe ser un objeto JSON", fichero=NOMBRE_CONFIG))
         for clave, valor in propios.items():
             if clave.startswith("_"):
                 continue  # claves de comentario
             if clave not in _POR_DEFECTO:
                 validas = ", ".join(_POR_DEFECTO)
-                raise ErrorDeUso(f"{NOMBRE_CONFIG}: clave desconocida «{clave}» (válidas: {validas})")
+                raise ErrorDeUso(t("{fichero}: clave desconocida «{clave}» (válidas: {validas})", fichero=NOMBRE_CONFIG,
+                                   clave=clave, validas=validas))
             if clave in _LISTAS and not (isinstance(valor, list) and all(isinstance(x, str) for x in valor)):
-                raise ErrorDeUso(f"{NOMBRE_CONFIG}: «{clave}» debe ser una lista de textos")
+                raise ErrorDeUso(t("{fichero}: «{clave}» debe ser una lista de textos", fichero=NOMBRE_CONFIG, clave=clave))
             if clave in _ENTEROS and not (isinstance(valor, int) and not isinstance(valor, bool) and valor >= 1):
-                raise ErrorDeUso(f"{NOMBRE_CONFIG}: «{clave}» debe ser un entero mayor o igual que 1")
+                raise ErrorDeUso(t("{fichero}: «{clave}» debe ser un entero mayor o igual que 1", fichero=NOMBRE_CONFIG,
+                                   clave=clave))
             datos[clave] = valor
     return Config(raiz=raiz, **datos)

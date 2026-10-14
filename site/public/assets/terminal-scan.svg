@@ -7,14 +7,14 @@
 <rect class="win" x="0.5" y="0.5" width="899" height="287" rx="12"/>
 <circle cx="22" cy="20" r="6" fill="#ff5f57"/><circle cx="42" cy="20" r="6" fill="#febc2e"/><circle cx="62" cy="20" r="6" fill="#28c840"/>
 <text class="l cmd" x="20" y="60" xml:space="preserve">$ dockeeper scan</text>
-<text class="l" x="20" y="80" xml:space="preserve">dockeeper scan · 2 anclas en alcance</text>
+<text class="l" x="20" y="80" xml:space="preserve">dockeeper scan · 2 anchors in scope</text>
 <text class="l" x="20" y="100" xml:space="preserve"><tspan class="nw">NUEVA</tspan>            docs/payments.md:3  → src/payments.py#validate_payment</text>
-<text class="l dim" x="20" y="120" xml:space="preserve">                 bloque: definición «validate_payment» src/payments.py:4-7</text>
+<text class="l dim" x="20" y="120" xml:space="preserve">                 block: definition “validate_payment” src/payments.py:4-7</text>
 <text class="l dim" x="20" y="140" xml:space="preserve">                       4 │ def validate_payment(payment):</text>
 <text class="l dim" x="20" y="160" xml:space="preserve">                       7 │     return True</text>
 <text class="l" x="20" y="180" xml:space="preserve"><tspan class="nw">NUEVA</tspan>            docs/payments.md:4  → src/payments.py:12</text>
-<text class="l dim" x="20" y="200" xml:space="preserve">                 bloque: definición «charge» src/payments.py:10-12</text>
+<text class="l dim" x="20" y="200" xml:space="preserve">                 block: definition “charge” src/payments.py:10-12</text>
 <text class="l dim" x="20" y="220" xml:space="preserve">                      10 │ def charge(payment):</text>
 <text class="l dim" x="20" y="240" xml:space="preserve">                      12 │     return {&quot;status&quot;: &quot;charged&quot;}</text>
-<text class="l dim" x="20" y="260" xml:space="preserve">Resumen: 2 NUEVA</text>
+<text class="l dim" x="20" y="260" xml:space="preserve">Summary: 2 NUEVA</text>
 </svg>

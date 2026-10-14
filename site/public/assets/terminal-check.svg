@@ -7,16 +7,16 @@
 <rect class="win" x="0.5" y="0.5" width="899" height="327" rx="12"/>
 <circle cx="22" cy="20" r="6" fill="#ff5f57"/><circle cx="42" cy="20" r="6" fill="#febc2e"/><circle cx="62" cy="20" r="6" fill="#28c840"/>
 <text class="l cmd" x="20" y="60" xml:space="preserve">$ dockeeper check</text>
-<text class="l" x="20" y="80" xml:space="preserve">dockeeper check · 2 afirmaciones comprobadas</text>
+<text class="l" x="20" y="80" xml:space="preserve">dockeeper check · 2 claims checked</text>
 <text class="l" x="20" y="100" xml:space="preserve"><tspan class="ch">CHANGED</tspan>          docs/payments.md:3  → src/payments.py#validate_payment</text>
-<text class="l" x="20" y="120" xml:space="preserve">                 el contenido de «validate_payment» cambió (src/payments.py:6-9)</text>
-<text class="l dim" x="20" y="140" xml:space="preserve">                 bloque: definición «validate_payment» src/payments.py:6-9</text>
+<text class="l" x="20" y="120" xml:space="preserve">                 the content of “validate_payment” changed (src/payments.py:6-9)</text>
+<text class="l dim" x="20" y="140" xml:space="preserve">                 block: definition “validate_payment” src/payments.py:6-9</text>
 <text class="l dim" x="20" y="160" xml:space="preserve">                       6 │ def validate_payment(payment):</text>
 <text class="l dim" x="20" y="180" xml:space="preserve">                       9 │     return True</text>
 <text class="l" x="20" y="200" xml:space="preserve"><tspan class="mv">MOVED</tspan>            docs/payments.md:4  → src/payments.py:12</text>
-<text class="l" x="20" y="220" xml:space="preserve">                 el bloque pasó de 10-12 a 12-14</text>
-<text class="l dim" x="20" y="240" xml:space="preserve">Resumen: 1 CHANGED · 1 MOVED</text>
-<text class="l dim" x="20" y="260" xml:space="preserve">  → dockeeper fix las recoloca (solo toca el sello)</text>
-<text class="l dim" x="20" y="280" xml:space="preserve">  → revisa el código y el texto; luego dockeeper fix --aceptar</text>
-<text class="l" x="20" y="300" xml:space="preserve">Resultado: <tspan class="ch">FALLA</tspan></text>
+<text class="l" x="20" y="220" xml:space="preserve">                 the block moved from 10-12 to 12-14</text>
+<text class="l dim" x="20" y="240" xml:space="preserve">Summary: 1 CHANGED · 1 MOVED</text>
+<text class="l dim" x="20" y="260" xml:space="preserve">  → dockeeper fix relocates them (it only touches the seal)</text>
+<text class="l dim" x="20" y="280" xml:space="preserve">  → review the code and the text, then dockeeper fix --aceptar</text>
+<text class="l" x="20" y="300" xml:space="preserve">Result: <tspan class="ch">FAIL</tspan></text>
 </svg>

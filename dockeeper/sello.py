@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from .config import NOMBRE_SELLO, ErrorDeUso
+from .textos import t
 
 VERSION = 1
 
@@ -42,7 +43,7 @@ class Entrada:
         nombres = {f.name for f in fields(cls)}
         obligatorias = ("doc", "ancla", "fichero", "tipo", "inicio", "fin", "n", "huella")
         if not isinstance(datos, dict) or any(k not in datos for k in obligatorias):
-            raise ErrorDeUso(f"{NOMBRE_SELLO} está dañado: entrada incompleta {datos!r}")
+            raise ErrorDeUso(t("{fichero} está dañado: entrada incompleta {entrada}", fichero=NOMBRE_SELLO, entrada=repr(datos)))
         return cls(**{k: v for k, v in datos.items() if k in nombres})
 
 
@@ -60,9 +61,10 @@ class Sello:
         try:
             datos = json.loads(sello.ruta.read_text(encoding="utf-8"))
         except (ValueError, OSError) as e:
-            raise ErrorDeUso(f"{NOMBRE_SELLO} no se puede leer: {e}") from e
+            raise ErrorDeUso(t("{fichero} no se puede leer: {error}", fichero=NOMBRE_SELLO, error=e)) from e
         if not isinstance(datos, dict) or datos.get("dockeeper") != VERSION:
-            raise ErrorDeUso(f"{NOMBRE_SELLO}: versión desconocida (se espera «dockeeper»: {VERSION})")
+            raise ErrorDeUso(t("{fichero}: versión desconocida (se espera «dockeeper»: {version})", fichero=NOMBRE_SELLO,
+                                version=VERSION))
         for d in datos.get("anclas", []):
             e = Entrada.desde_dict(d)
             sello.anclas[(e.doc, e.ancla)] = e

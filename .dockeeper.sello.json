@@ -29,8 +29,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -40,10 +40,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "README.md",
@@ -51,10 +51,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "README.md",
@@ -73,8 +73,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -84,10 +84,10 @@
       "fichero": "dockeeper/alcance.py",
       "simbolo": "Alcance",
       "tipo": "definicion",
-      "inicio": 21,
-      "fin": 52,
+      "inicio": 22,
+      "fin": 53,
       "n": 28,
-      "huella": "ebb5161aeec72fca"
+      "huella": "e35699a37c344216"
     },
     {
       "doc": "SKILL.md",
@@ -117,10 +117,10 @@
       "fichero": "dockeeper/cli.py",
       "simbolo": "main",
       "tipo": "definicion",
-      "inicio": 72,
-      "fin": 85,
+      "inicio": 73,
+      "fin": 86,
       "n": 14,
-      "huella": "9cea41b5396bd921"
+      "huella": "0da1e34a8e40d333"
     },
     {
       "doc": "SKILL.md",
@@ -128,8 +128,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 108,
-      "fin": 142,
+      "inicio": 109,
+      "fin": 143,
       "n": 33,
       "huella": "445dc9dcf963c5af"
     },
@@ -139,8 +139,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -150,10 +150,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "_verificar_vinculo",
       "tipo": "definicion",
-      "inicio": 277,
-      "fin": 302,
-      "n": 26,
-      "huella": "a5eb8f9a35ed884f"
+      "inicio": 281,
+      "fin": 307,
+      "n": 27,
+      "huella": "746f45024391c55d"
     },
     {
       "doc": "SKILL.md",
@@ -161,10 +161,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "SKILL.md",
@@ -172,10 +172,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "comprobar",
       "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
+      "inicio": 232,
+      "fin": 273,
       "n": 42,
-      "huella": "05284a158194de1b"
+      "huella": "eff1b806a2e5f01c"
     },
     {
       "doc": "SKILL.md",
@@ -194,8 +194,8 @@
       "fichero": "dockeeper/publicado.py",
       "simbolo": "IndiceCopias",
       "tipo": "definicion",
-      "inicio": 31,
-      "fin": 64,
+      "inicio": 32,
+      "fin": 65,
       "n": 31,
       "huella": "a56e9f44192d6c12"
     },
@@ -205,10 +205,10 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "_base",
       "tipo": "definicion",
-      "inicio": 72,
-      "fin": 84,
+      "inicio": 73,
+      "fin": 85,
       "n": 13,
-      "huella": "d728387b089758d4"
+      "huella": "e7b563d7b7034868"
     },
     {
       "doc": "SKILL.md",
@@ -216,10 +216,21 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
+    },
+    {
+      "doc": "SKILL.md",
+      "ancla": "dockeeper/textos.py#espanol",
+      "fichero": "dockeeper/textos.py",
+      "simbolo": "espanol",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 20,
+      "n": 6,
+      "huella": "c56769d023137391"
     },
     {
       "doc": "SPEC.md",
@@ -464,6 +475,28 @@
       "huella": "c0c083ef78b89d5d"
     },
     {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_textos.py#PruebasTextos.test_codigos_y_claves_del_json_no_cambian",
+      "fichero": "tests/test_textos.py",
+      "simbolo": "PruebasTextos.test_codigos_y_claves_del_json_no_cambian",
+      "tipo": "definicion",
+      "inicio": 54,
+      "fin": 63,
+      "n": 10,
+      "huella": "455e0b6f4ecc0e74"
+    },
+    {
+      "doc": "SPEC.md",
+      "ancla": "tests/test_textos.py#PruebasTextos.test_ingles_por_defecto",
+      "fichero": "tests/test_textos.py",
+      "simbolo": "PruebasTextos.test_ingles_por_defecto",
+      "tipo": "definicion",
+      "inicio": 30,
+      "fin": 38,
+      "n": 9,
+      "huella": "8cd50793ee4c050d"
+    },
+    {
       "doc": "docs/i18n/README.ar.md",
       "ancla": "dockeeper/bloques.py#bloque_en",
       "fichero": "dockeeper/bloques.py",
@@ -491,8 +524,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -502,10 +535,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.ar.md",
@@ -513,10 +546,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.ar.md",
@@ -535,8 +568,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -568,8 +601,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -579,10 +612,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.cs.md",
@@ -590,10 +623,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.cs.md",
@@ -612,8 +645,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -645,8 +678,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -656,10 +689,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.de.md",
@@ -667,10 +700,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.de.md",
@@ -689,8 +722,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -722,8 +755,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -733,10 +766,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.es.md",
@@ -744,10 +777,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.es.md",
@@ -766,8 +799,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -799,8 +832,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -810,10 +843,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.fr.md",
@@ -821,10 +854,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.fr.md",
@@ -843,8 +876,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -876,8 +909,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -887,10 +920,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.he.md",
@@ -898,10 +931,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.he.md",
@@ -920,8 +953,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -953,8 +986,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -964,10 +997,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.hi.md",
@@ -975,10 +1008,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.hi.md",
@@ -997,8 +1030,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1030,8 +1063,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1041,10 +1074,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.id.md",
@@ -1052,10 +1085,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.id.md",
@@ -1074,8 +1107,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1107,8 +1140,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1118,10 +1151,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.it.md",
@@ -1129,10 +1162,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.it.md",
@@ -1151,8 +1184,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1184,8 +1217,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1195,10 +1228,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.ja.md",
@@ -1206,10 +1239,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.ja.md",
@@ -1228,8 +1261,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1261,8 +1294,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1272,10 +1305,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.ko.md",
@@ -1283,10 +1316,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.ko.md",
@@ -1305,8 +1338,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1338,8 +1371,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1349,10 +1382,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.nl.md",
@@ -1360,10 +1393,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.nl.md",
@@ -1382,8 +1415,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1415,8 +1448,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1426,10 +1459,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.pl.md",
@@ -1437,10 +1470,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.pl.md",
@@ -1459,8 +1492,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1492,8 +1525,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1503,10 +1536,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.pt-BR.md",
@@ -1514,10 +1547,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.pt-BR.md",
@@ -1536,8 +1569,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1569,8 +1602,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1580,10 +1613,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.ru.md",
@@ -1591,10 +1624,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.ru.md",
@@ -1613,8 +1646,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1646,8 +1679,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1657,10 +1690,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.sv.md",
@@ -1668,10 +1701,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.sv.md",
@@ -1690,8 +1723,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1723,8 +1756,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1734,10 +1767,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.th.md",
@@ -1745,10 +1778,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.th.md",
@@ -1767,8 +1800,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1800,8 +1833,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1811,10 +1844,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.tr.md",
@@ -1822,10 +1855,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.tr.md",
@@ -1844,8 +1877,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1877,8 +1910,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1888,10 +1921,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.uk.md",
@@ -1899,10 +1932,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.uk.md",
@@ -1921,8 +1954,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -1954,8 +1987,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -1965,10 +1998,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.vi.md",
@@ -1976,10 +2009,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.vi.md",
@@ -1998,8 +2031,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -2031,8 +2064,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -2042,10 +2075,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.zh-CN.md",
@@ -2053,10 +2086,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.zh-CN.md",
@@ -2075,8 +2108,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -2108,8 +2141,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -2119,10 +2152,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/i18n/README.zh-TW.md",
@@ -2130,10 +2163,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "docs/i18n/README.zh-TW.md",
@@ -2152,8 +2185,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
     },
@@ -2163,10 +2196,10 @@
       "fichero": "dockeeper/alcance.py",
       "simbolo": "Alcance",
       "tipo": "definicion",
-      "inicio": 21,
-      "fin": 52,
+      "inicio": 22,
+      "fin": 53,
       "n": 28,
-      "huella": "ebb5161aeec72fca"
+      "huella": "e35699a37c344216"
     },
     {
       "doc": "docs/reference.md",
@@ -2174,10 +2207,10 @@
       "fichero": "dockeeper/cli.py",
       "simbolo": "main",
       "tipo": "definicion",
-      "inicio": 72,
-      "fin": 85,
+      "inicio": 73,
+      "fin": 86,
       "n": 14,
-      "huella": "9cea41b5396bd921"
+      "huella": "0da1e34a8e40d333"
     },
     {
       "doc": "docs/reference.md",
@@ -2185,8 +2218,8 @@
       "fichero": "dockeeper/config.py",
       "simbolo": "buscar_raiz",
       "tipo": "definicion",
-      "inicio": 49,
-      "fin": 55,
+      "inicio": 51,
+      "fin": 57,
       "n": 7,
       "huella": "21c166005e168e15"
     },
@@ -2196,10 +2229,10 @@
       "fichero": "dockeeper/config.py",
       "simbolo": "cargar",
       "tipo": "definicion",
-      "inicio": 58,
-      "fin": 79,
-      "n": 22,
-      "huella": "884632778c84abfc"
+      "inicio": 60,
+      "fin": 83,
+      "n": 24,
+      "huella": "da8beeab83926c98"
     },
     {
       "doc": "docs/reference.md",
@@ -2207,8 +2240,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -2218,10 +2251,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "docs/reference.md",
@@ -2229,10 +2262,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "comprobar",
       "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
+      "inicio": 232,
+      "fin": 273,
       "n": 42,
-      "huella": "05284a158194de1b"
+      "huella": "eff1b806a2e5f01c"
     },
     {
       "doc": "docs/reference.md",
@@ -2284,8 +2317,8 @@
       "fichero": "dockeeper/publicado.py",
       "simbolo": "IndiceCopias",
       "tipo": "definicion",
-      "inicio": 31,
-      "fin": 64,
+      "inicio": 32,
+      "fin": 65,
       "n": 31,
       "huella": "a56e9f44192d6c12"
     },
@@ -2295,10 +2328,10 @@
       "fichero": "dockeeper/publicado.py",
       "simbolo": "rutas_en_texto",
       "tipo": "definicion",
-      "inicio": 98,
-      "fin": 120,
+      "inicio": 99,
+      "fin": 121,
       "n": 22,
-      "huella": "94a62ef3d6898ea2"
+      "huella": "f1873efb051ec5ac"
     },
     {
       "doc": "docs/reference.md",
@@ -2317,8 +2350,8 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "_tocadas",
       "tipo": "definicion",
-      "inicio": 147,
-      "fin": 159,
+      "inicio": 148,
+      "fin": 160,
       "n": 13,
       "huella": "f03ce50dac6685a6"
     },
@@ -2328,10 +2361,21 @@
       "fichero": "dockeeper/revision.py",
       "simbolo": "revisar",
       "tipo": "definicion",
-      "inicio": 217,
-      "fin": 261,
+      "inicio": 218,
+      "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
+    },
+    {
+      "doc": "docs/reference.md",
+      "ancla": "dockeeper/textos.py#espanol",
+      "fichero": "dockeeper/textos.py",
+      "simbolo": "espanol",
+      "tipo": "definicion",
+      "inicio": 15,
+      "fin": 20,
+      "n": 6,
+      "huella": "c56769d023137391"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -2339,10 +2383,10 @@
       "fichero": "dockeeper/alcance.py",
       "simbolo": "Alcance",
       "tipo": "definicion",
-      "inicio": 21,
-      "fin": 52,
+      "inicio": 22,
+      "fin": 53,
       "n": 28,
-      "huella": "ebb5161aeec72fca"
+      "huella": "e35699a37c344216"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -2350,8 +2394,8 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "FALLOS",
       "tipo": "declaracion",
-      "inicio": 28,
-      "fin": 32,
+      "inicio": 29,
+      "fin": 33,
       "n": 5,
       "huella": "0ada6d59a451cdfb"
     },
@@ -2361,10 +2405,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "comprobar",
       "tipo": "definicion",
-      "inicio": 228,
-      "fin": 269,
+      "inicio": 232,
+      "fin": 273,
       "n": 42,
-      "huella": "05284a158194de1b"
+      "huella": "eff1b806a2e5f01c"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -2372,10 +2416,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "vincular",
       "tipo": "definicion",
-      "inicio": 391,
-      "fin": 415,
+      "inicio": 400,
+      "fin": 424,
       "n": 25,
-      "huella": "08d357dec9a85ac0"
+      "huella": "ad2291c90ce3cb05"
     },
     {
       "doc": "site/src/components/Features.astro",
@@ -2394,8 +2438,8 @@
       "fichero": "dockeeper/publicado.py",
       "simbolo": "IndiceCopias",
       "tipo": "definicion",
-      "inicio": 31,
-      "fin": 64,
+      "inicio": 32,
+      "fin": 65,
       "n": 31,
       "huella": "a56e9f44192d6c12"
     },
@@ -2427,8 +2471,8 @@
       "fichero": "dockeeper/markdown.py",
       "simbolo": "analizar",
       "tipo": "definicion",
-      "inicio": 108,
-      "fin": 142,
+      "inicio": 109,
+      "fin": 143,
       "n": 33,
       "huella": "445dc9dcf963c5af"
     },
@@ -2438,10 +2482,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "arreglar",
       "tipo": "definicion",
-      "inicio": 344,
-      "fin": 378,
+      "inicio": 353,
+      "fin": 387,
       "n": 34,
-      "huella": "d98730ced313b990"
+      "huella": "156615b04ac5a6e2"
     },
     {
       "doc": "site/src/components/How.astro",
@@ -2449,10 +2493,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "verificar_codigo",
       "tipo": "definicion",
-      "inicio": 305,
-      "fin": 339,
-      "n": 35,
-      "huella": "4a25fda97dac3e6b"
+      "inicio": 310,
+      "fin": 348,
+      "n": 39,
+      "huella": "85c20a49c862cd9b"
     },
     {
       "doc": "site/src/components/How.astro",
@@ -2460,10 +2504,10 @@
       "fichero": "dockeeper/sello.py",
       "simbolo": "Entrada",
       "tipo": "definicion",
-      "inicio": 19,
-      "fin": 46,
+      "inicio": 20,
+      "fin": 47,
       "n": 25,
-      "huella": "9f3dff024513ed97"
+      "huella": "ae8c5a60259dc138"
     }
   ],
   "vinculos": [
@@ -2475,10 +2519,10 @@
       "fichero": "dockeeper/motor.py",
       "simbolo": "vincular",
       "tipo": "definicion",
-      "inicio": 391,
-      "fin": 415,
+      "inicio": 400,
+      "fin": 424,
       "n": 25,
-      "huella": "08d357dec9a85ac0"
+      "huella": "ad2291c90ce3cb05"
     }
   ]
 }

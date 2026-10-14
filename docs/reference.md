@@ -236,8 +236,11 @@ deterministic and runs without any model.
 **I renamed a function. What happens?** Its symbol anchors report `CHANGED` ("symbol not found").
 Update the anchor in the document, then run `scan`.
 
-**Is the CLI in English?** Messages are in Spanish today. Verdict codes and `--json` keys are stable,
-so scripts and agents are not affected.
+**Is the CLI in English?** Yes, by default. If your environment is in Spanish (`LC_ALL`, `LC_MESSAGES`
+or `LANG` starting with `es`), messages are in Spanish. Verdict codes and the `--json` structure (keys
+and codes) are the same in both languages, so scripts and agents are not affected; only the
+human-readable texts, such as `detalle`, follow the language.
+<!-- dockeeper: dockeeper/textos.py#espanol -->
 
 ## Repository layout and development
 

@@ -23,6 +23,7 @@ from .config import ErrorDeUso, cargar
 from .repo import Repo
 from .rutas import normalizar_ruta
 from .sello import Entrada, Sello
+from .textos import t
 
 # Veredictos que hacen fallar la orden (código de salida 1).
 FALLOS = {
@@ -122,31 +123,33 @@ def resolver(ctx: Contexto, fichero: str, linea: Optional[int], simbolo: Optiona
              ) -> Tuple[Optional[B.Bloque], Optional[Tuple[str, str]], List[str]]:
     """Calcula el bloque de un ancla → (bloque, (veredicto, motivo) si falla, avisos)."""
     if not ctx.repo.existe(fichero):
-        return None, ("NO_EXISTE", f"{fichero} no existe"), []
+        return None, ("NO_EXISTE", t("{fichero} no existe", fichero=fichero)), []
     an = ctx.repo.analisis(fichero)
     if an is None:
-        return None, ("NO_EXISTE", f"{fichero} no es un fichero de texto legible"), []
+        return None, ("NO_EXISTE", t("{fichero} no es un fichero de texto legible", fichero=fichero)), []
     avisos: List[str] = []
     if simbolo:
         candidatos = B.bloques_de_simbolo(an, simbolo)
         if not candidatos:
             if an.familia is None:
-                return None, ("SIN_SIMBOLO", f"no se reconocen definiciones en ficheros como {fichero}: "
-                                             "ancla por línea"), []
-            return None, ("SIN_SIMBOLO", f"no se encuentra la definición de «{simbolo}» en {fichero}"), []
+                return None, ("SIN_SIMBOLO", t("no se reconocen definiciones en ficheros como {fichero}: ancla por línea",
+                                               fichero=fichero)), []
+            return None, ("SIN_SIMBOLO", t("no se encuentra la definición de «{simbolo}» en {fichero}", simbolo=simbolo,
+                                           fichero=fichero)), []
         if len(candidatos) > 1:
-            avisos.append(f"«{simbolo}» aparece {len(candidatos)} veces; se usa la de la línea "
-                          f"{candidatos[0].cabecera}. Precisa con Contenedor.{simbolo.split('.')[-1]}")
+            avisos.append(t("«{simbolo}» aparece {n} veces; se usa la de la línea {linea}. Precisa con Contenedor.{nombre}",
+                            simbolo=simbolo, n=len(candidatos), linea=candidatos[0].cabecera,
+                            nombre=simbolo.split(".")[-1]))
         return candidatos[0], None, avisos
     if linea > len(an.lineas):
-        return None, ("FUERA_DE_RANGO", f"{fichero} tiene {len(an.lineas)} líneas"), []
+        return None, ("FUERA_DE_RANGO", t("{fichero} tiene {n} líneas", fichero=fichero, n=len(an.lineas))), []
     b = B.bloque_en(an, linea, ctx.cfg.ventana)
     if b.n == 0:
-        return None, ("SIN_CONTENIDO", f"no hay código alrededor de {fichero}:{linea}"), []
+        return None, ("SIN_CONTENIDO", t("no hay código alrededor de {fichero}:{linea}", fichero=fichero, linea=linea)), []
     if b.tipo == "ventana":
-        avisos.append(f"ninguna definición contiene la línea: se usa una ventana de ±{ctx.cfg.ventana} líneas")
+        avisos.append(t("ninguna definición contiene la línea: se usa una ventana de ±{n} líneas", n=ctx.cfg.ventana))
     if not an.lineas[linea - 1].strip():
-        avisos.append("la línea anclada está vacía")
+        avisos.append(t("la línea anclada está vacía"))
     return b, None, avisos
 
 
@@ -165,9 +168,9 @@ def _problemas(doc: str, documento: M.Documento) -> List[Item]:
 
 
 def _ancla_interna(a: M.Ancla) -> Item:
-    forma = "comentario oculto" if a.oculta else "ancla visible"
+    forma = t("comentario oculto") if a.oculta else t("ancla visible")
     return Item("ANCLA_INTERNA", a.doc, a.linea_doc, a.texto,
-                detalle=f"{forma} en un documento «publico»: usa dockeeper link (se guarda fuera del texto)")
+                detalle=t("{forma} en un documento «publico»: usa dockeeper link (se guarda fuera del texto)", forma=forma))
 
 
 # --- scan --------------------------------------------------------------------------------
@@ -197,12 +200,12 @@ def escanear(ctx: Contexto, resellar: bool = False) -> Resultado:
             if clave[0] == doc and clave[1] not in vistas and alcance.codigo_en_alcance(e.fichero):
                 del sello.anclas[clave]
                 cambios = True
-                res.items.append(Item("PODADA", doc, None, e.ancla, detalle="ya no está en el documento"))
+                res.items.append(Item("PODADA", doc, None, e.ancla, detalle=t("ya no está en el documento")))
     for clave, e in list(sello.anclas.items()):
         if not ctx.repo.existe(e.doc) and alcance.doc_en_alcance(e.doc) and alcance.codigo_en_alcance(e.fichero):
             del sello.anclas[clave]
             cambios = True
-            res.items.append(Item("PODADA", e.doc, None, e.ancla, detalle="el documento ya no existe"))
+            res.items.append(Item("PODADA", e.doc, None, e.ancla, detalle=t("el documento ya no existe")))
     if cambios:
         sello.guardar()
     return res
@@ -212,7 +215,8 @@ def _sellar_ancla(ctx: Contexto, doc: str, a: M.Ancla, resellar: bool) -> Item:
     previa = ctx.sello.anclas.get((doc, a.texto))
     if previa is not None and not resellar:
         return Item("SELLADA", doc, a.linea_doc, a.texto,
-                    detalle=f"sellada en {previa.fichero}:{previa.inicio}-{previa.fin}")
+                    detalle=t("sellada en {fichero}:{inicio}-{fin}", fichero=previa.fichero, inicio=previa.inicio,
+                              fin=previa.fin))
     # Al resellar, la posición real es la del sello (fix pudo recolocarla), no la escrita.
     linea = previa.linea if previa is not None and previa.linea else a.linea
     b, error, avisos = resolver(ctx, a.fichero, linea, a.simbolo)
@@ -248,7 +252,7 @@ def comprobar(ctx: Contexto) -> Resultado:
             e = sello.anclas.get((doc, a.texto))
             if e is None:
                 res.items.append(Item("SIN_SELLAR", doc, a.linea_doc, a.texto,
-                                      detalle="ancla sin sellar: dockeeper scan"))
+                                      detalle=t("ancla sin sellar: dockeeper scan")))
                 continue
             comprobadas.add((doc, a.texto))
             res.items.append(_verificar_ancla(ctx, e, a.linea_doc))
@@ -258,14 +262,14 @@ def comprobar(ctx: Contexto) -> Resultado:
     for clave, e in sello.anclas.items():
         if clave not in comprobadas and alcance.doc_en_alcance(e.doc) and alcance.codigo_en_alcance(e.fichero):
             res.items.append(Item("HUERFANA", e.doc, None, e.ancla, entrada=e,
-                                  detalle="el documento ya no contiene esta ancla: fix la quita del sello"))
+                                  detalle=t("el documento ya no contiene esta ancla: fix la quita del sello")))
     for v in sello.vinculos:
         if alcance.doc_en_alcance(v.doc) and alcance.codigo_en_alcance(v.fichero):
             res.examinados += 1
             res.items.append(_verificar_vinculo(ctx, v))
     if res.examinados == 0:
         res.items.append(Item("NADA_COMPROBADO", tipo="repo",
-                              detalle="no hay ninguna afirmación que comprobar en este alcance"))
+                              detalle=t("no hay ninguna afirmación que comprobar en este alcance")))
     return res
 
 
@@ -279,7 +283,7 @@ def _verificar_vinculo(ctx: Contexto, v: Entrada) -> Item:
     lineas_doc = ctx.repo.lineas(v.doc) if ctx.repo.existe(v.doc) else None
     if lineas_doc is None:
         return Item("HUERFANA", v.doc, v.linea_doc, v.ancla, tipo="vinculo", entrada=v,
-                    detalle="el documento ya no existe: fix quita el vínculo")
+                    detalle=t("el documento ya no existe: fix quita el vínculo"))
     nueva: dict = {}
     detalles = []
     estado_doc = "OK"
@@ -289,10 +293,11 @@ def _verificar_vinculo(ctx: Contexto, v: Entrada) -> Item:
         if candidatas:
             estado_doc = "MOVED"
             nueva["linea_doc"] = min(candidatas, key=lambda n: (abs(n - v.linea_doc), n))
-            detalles.append(f"la frase vinculada pasó de la línea {v.linea_doc} a la {nueva['linea_doc']}")
+            detalles.append(t("la frase vinculada pasó de la línea {antes} a la {ahora}", antes=v.linea_doc,
+                               ahora=nueva["linea_doc"]))
         else:
             estado_doc = "VINCULO_SUELTO"
-            detalles.append(f"la frase de la línea {v.linea_doc} ya no está: revísala y vuelve a vincular")
+            detalles.append(t("la frase de la línea {linea} ya no está: revísala y vuelve a vincular", linea=v.linea_doc))
     estado_codigo, detalle, nueva_codigo, bloque = verificar_codigo(ctx, v)
     if detalle:
         detalles.append(detalle)
@@ -306,19 +311,21 @@ def verificar_codigo(ctx: Contexto, e: Entrada) -> Tuple[str, str, Optional[dict
     """Compara el bloque sellado con el código actual → (veredicto, detalle, posición nueva, vista)."""
     an = ctx.repo.analisis(e.fichero) if ctx.repo.existe(e.fichero) else None
     if an is None:
-        return "DESAPARECIDO", f"{e.fichero} ya no existe", None, None
+        return "DESAPARECIDO", t("{fichero} ya no existe", fichero=e.fichero), None, None
     if e.simbolo:
         candidatos = B.bloques_de_simbolo(an, e.simbolo)
         for b in candidatos:
             if b.huella == e.huella:
                 if (b.inicio, b.fin) == (e.inicio, e.fin):
                     return "OK", "", None, None
-                return ("MOVED", f"«{e.simbolo}» pasó de {e.inicio}-{e.fin} a {b.inicio}-{b.fin}",
+                return ("MOVED", t("«{simbolo}» pasó de {inicio}-{fin} a {nuevo_inicio}-{nuevo_fin}", simbolo=e.simbolo,
+                                   inicio=e.inicio, fin=e.fin, nuevo_inicio=b.inicio, nuevo_fin=b.fin),
                         {"inicio": b.inicio, "fin": b.fin}, None)
         if not candidatos:
-            return "CHANGED", f"ya no se encuentra «{e.simbolo}» en {e.fichero}", None, None
+            return "CHANGED", t("ya no se encuentra «{simbolo}» en {fichero}", simbolo=e.simbolo, fichero=e.fichero), None, None
         b = candidatos[0]
-        return ("CHANGED", f"el contenido de «{e.simbolo}» cambió ({e.fichero}:{b.inicio}-{b.fin})",
+        return ("CHANGED", t("el contenido de «{simbolo}» cambió ({fichero}:{inicio}-{fin})", simbolo=e.simbolo,
+                             fichero=e.fichero, inicio=b.inicio, fin=b.fin),
                 None, vista(ctx.repo, e.fichero, b))
     if e.tipo == "ventana":
         b = B.bloque_tramo(an.lineas, e.inicio, e.fin)
@@ -327,15 +334,17 @@ def verificar_codigo(ctx: Contexto, e: Entrada) -> Tuple[str, str, Optional[dict
     if b.huella == e.huella and b.n == e.n:
         if (b.inicio, b.fin) == (e.inicio, e.fin):
             return "OK", "", None, None
-        return ("MOVED", f"el bloque pasó de {e.inicio}-{e.fin} a {b.inicio}-{b.fin}",
+        return ("MOVED", t("el bloque pasó de {inicio}-{fin} a {nuevo_inicio}-{nuevo_fin}", inicio=e.inicio, fin=e.fin,
+                           nuevo_inicio=b.inicio, nuevo_fin=b.fin),
                 {"inicio": b.inicio, "fin": b.fin, "linea": e.linea + b.inicio - e.inicio}, None)
     tramos = H.buscar(an.lineas, e.huella, e.n)
     if tramos:
         ini, fin = min(tramos, key=lambda t: (abs(t[0] - e.inicio), t[0]))
         linea = min(max(ini + (e.linea - e.inicio), ini), fin)
-        return ("MOVED", f"el bloque pasó de {e.inicio}-{e.fin} a {ini}-{fin}",
+        return ("MOVED", t("el bloque pasó de {inicio}-{fin} a {nuevo_inicio}-{nuevo_fin}", inicio=e.inicio, fin=e.fin,
+                           nuevo_inicio=ini, nuevo_fin=fin),
                 {"inicio": ini, "fin": fin, "linea": linea}, None)
-    return ("CHANGED", f"el bloque {e.fichero}:{e.inicio}-{e.fin} cambió", None,
+    return ("CHANGED", t("el bloque {fichero}:{inicio}-{fin} cambió", fichero=e.fichero, inicio=e.inicio, fin=e.fin), None,
             vista(ctx.repo, e.fichero, b, e.linea) if b.n else None)
 
 
@@ -363,7 +372,7 @@ def arreglar(ctx: Contexto, aceptar: bool = False) -> Tuple[List[Item], Resultad
         elif item.estado == "CHANGED" and aceptar:
             b, error, avisos = resolver(ctx, e.fichero, e.linea, e.simbolo)
             if error:
-                item.detalle += f" (no se puede aceptar: {error[1]})"
+                item.detalle += t(" (no se puede aceptar: {motivo})", motivo=error[1])
                 continue
             for clave, valor in (item.nueva or {}).items():
                 if clave == "linea_doc":
@@ -384,7 +393,7 @@ def _doc_linea(destino: str) -> Tuple[str, int]:
     ruta, _, num = destino.rpartition(":")
     doc = normalizar_ruta(ruta)
     if not ruta or doc is None or not num.isdigit() or int(num) < 1:
-        raise ErrorDeUso(f"«{destino}» no es DOCUMENTO:LÍNEA (rutas relativas a la raíz)")
+        raise ErrorDeUso(t("«{destino}» no es DOCUMENTO:LÍNEA (rutas relativas a la raíz)", destino=destino))
     return doc, int(num)
 
 
@@ -393,11 +402,11 @@ def vincular(ctx: Contexto, destino: str, ancla: str) -> Item:
     doc, linea_doc = _doc_linea(destino)
     lineas = ctx.repo.lineas(doc) if ctx.repo.existe(doc) else None
     if lineas is None:
-        raise ErrorDeUso(f"{doc} no existe o no es texto")
+        raise ErrorDeUso(t("{doc} no existe o no es texto", doc=doc))
     if linea_doc > len(lineas):
-        raise ErrorDeUso(f"{doc} tiene {len(lineas)} líneas")
+        raise ErrorDeUso(t("{fichero} tiene {n} líneas", fichero=doc, n=len(lineas)))
     if not lineas[linea_doc - 1].strip():
-        raise ErrorDeUso(f"la línea {linea_doc} de {doc} está vacía: vincula la frase, no el hueco")
+        raise ErrorDeUso(t("la línea {linea} de {doc} está vacía: vincula la frase, no el hueco", linea=linea_doc, doc=doc))
     try:
         fichero, linea, simbolo, texto = M.leer_ancla(ancla)
     except ValueError as e:
@@ -426,7 +435,9 @@ def desvincular(ctx: Contexto, destino: str, ancla: Optional[str] = None) -> Lis
     quitados = [v for v in ctx.sello.vinculos
                 if v.doc == doc and v.linea_doc == linea_doc and (texto is None or v.ancla == texto)]
     if not quitados:
-        raise ErrorDeUso(f"no hay vínculos en {doc}:{linea_doc}" + (f" hacia {texto}" if texto else ""))
+        if texto:
+            raise ErrorDeUso(t("no hay vínculos en {doc}:{linea} hacia {ancla}", doc=doc, linea=linea_doc, ancla=texto))
+        raise ErrorDeUso(t("no hay vínculos en {doc}:{linea}", doc=doc, linea=linea_doc))
     for v in quitados:
         ctx.sello.quitar(v)
     ctx.sello.guardar()

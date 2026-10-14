@@ -21,6 +21,7 @@ from typing import Dict, List, Optional, Set, Tuple
 from . import bloques as B
 from . import motor, porque
 from .config import ErrorDeUso
+from .textos import t
 
 _ARBOL_VACIO = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"  # el árbol vacío de git: sin commits previos
 _HUNK = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@")
@@ -72,14 +73,14 @@ def _git(raiz: Path, *args: str) -> Optional[str]:
 def _base(raiz: Path, desde: Optional[str]) -> Optional[str]:
     """Commit base del cambio (punto de bifurcación con HEAD) o None si no hay commit anterior."""
     if _git(raiz, "rev-parse", "--git-dir") is None:
-        raise ErrorDeUso("review necesita un repositorio git")
+        raise ErrorDeUso(t("review necesita un repositorio git"))
     if _git(raiz, "rev-parse", "--verify", "-q", "HEAD") is None:
         return None  # sin commits: todo es nuevo
     sha = _git(raiz, "rev-parse", "--verify", "-q", (desde or "HEAD~1") + "^{commit}")
     if sha is None:
         if desde is None:
             return None  # primer commit: no hay padre
-        raise ErrorDeUso(f"--desde {desde}: no es una revisión de este repositorio")
+        raise ErrorDeUso(t("--desde {desde}: no es una revisión de este repositorio", desde=desde))
     comun = _git(raiz, "merge-base", sha.strip(), "HEAD")
     return (comun or sha).strip()
 

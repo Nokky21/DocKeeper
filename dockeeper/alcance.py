@@ -16,6 +16,7 @@ from typing import Callable, Iterable, List
 
 from .config import ErrorDeUso
 from .rutas import casa, normalizar_patron
+from .textos import t
 
 
 class Alcance:
@@ -29,7 +30,7 @@ class Alcance:
         for patron in self.solo:
             casadas = [r for r in conocidas if casa(r, patron)]
             if not casadas:
-                raise ErrorDeUso(f"--solo {patron}: no casa con ningún fichero del repositorio")
+                raise ErrorDeUso(t("--solo {patron}: no casa con ningún fichero del repositorio", patron=patron))
             if all(es_documento(r) for r in casadas):
                 self.solo_docs.append(patron)
             else:

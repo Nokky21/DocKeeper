@@ -23,7 +23,10 @@ En Claude Code la carpeta del skill es `${CLAUDE_SKILL_DIR}`. En Windows, si no 
 `python` (o `py`).
 
 Órdenes: `audit`, `scan`, `check`, `fix`, `link`, `why`, `review`. Todas aceptan `--json` (úsalo para leer
-resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problemas · 2 error de uso.
+resultados) y `--raiz` si no estás en la raíz. Salida: 0 bien · 1 hay problemas · 2 error de uso. Los
+mensajes salen en inglés, o en español si el entorno está en español; los códigos de veredicto y la
+estructura del `--json` (claves y códigos) son iguales en los dos idiomas: decide por ellos, no por el
+texto de `detalle`. <!-- dockeeper: dockeeper/textos.py#espanol -->
 <!-- dockeeper: dockeeper/cli.py#main dockeeper/motor.py#FALLOS -->
 
 ## La regla

@@ -16,6 +16,7 @@ from typing import TYPE_CHECKING, Dict, List, Optional, Sequence, Set, Tuple
 
 from . import huellas as H
 from . import markdown as M
+from .textos import t
 
 if TYPE_CHECKING:  # solo para anotaciones: evita el import circular con motor
     from .motor import Contexto, Item
@@ -76,8 +77,8 @@ def codigo_copiado(ctx: "Contexto", doc: str, documento: M.Documento) -> List["I
             linea, fichero, origen = copia
             items.append(Item("CODIGO_COPIADO", doc, bloque.inicio + linea - 1, tipo="documento",
                               fuente=f"{fichero}:{origen}",
-                              detalle=f"el bloque de código copia {ctx.cfg.bloque_minimo}+ líneas seguidas de "
-                                      f"{fichero}:{origen}: descríbelo o escribe un ejemplo propio"))
+                              detalle=t("el bloque de código copia {n}+ líneas seguidas de {fuente}: descríbelo o "
+                                        "escribe un ejemplo propio", n=ctx.cfg.bloque_minimo, fuente=f"{fichero}:{origen}")))
     return items
 
 
@@ -116,7 +117,7 @@ def rutas_en_texto(ctx: "Contexto", doc: str, lineas: Sequence[str]) -> List["It
                     break
         for ruta in vistas:
             items.append(Item("RUTA_INTERNA", doc, num, tipo="documento",
-                              detalle=f"menciona la ruta interna «{ruta}» en un documento publicado"))
+                              detalle=t("menciona la ruta interna «{ruta}» en un documento publicado", ruta=ruta)))
     return items
 
 
