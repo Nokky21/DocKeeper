@@ -630,6 +630,17 @@
     },
     {
       "doc": "docs/api.md",
+      "ancla": "dockeeper/cli.py#_parser",
+      "fichero": "dockeeper/cli.py",
+      "simbolo": "_parser",
+      "tipo": "definicion",
+      "inicio": 22,
+      "fin": 62,
+      "n": 39,
+      "huella": "2581f16afbed792b"
+    },
+    {
+      "doc": "docs/api.md",
       "ancla": "dockeeper/cli.py#_review",
       "fichero": "dockeeper/cli.py",
       "simbolo": "_review",

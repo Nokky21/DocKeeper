@@ -14,8 +14,11 @@ their options are in the [reference](reference.md); this page is the shape of wh
 - **Every object has `orden`** (the command) **and `codigo`**, the same number as the exit code: `0`
   when everything is true or only moved, `1` when something changed or broke, `2` for a usage or
   configuration error. <!-- dockeeper: dockeeper/motor.py#FALLOS dockeeper/motor.py#Resultado -->
-- **Errors** (exit `2`) come as `{"orden", "error", "codigo": 2}` and nothing else.
-  <!-- dockeeper: dockeeper/cli.py#main -->
+- **Errors** that DocKeeper detects (exit `2`: a bad configuration, a `--solo` that matches
+  nothing…) come as `{"orden", "error", "codigo": 2}` and nothing else. Malformed command-line
+  arguments are rejected earlier by the argument parser: usage text on standard error, nothing on
+  standard output, exit `2`. Check the exit code before parsing.
+  <!-- dockeeper: dockeeper/cli.py#main dockeeper/cli.py#_parser -->
 
 ### An item
 
@@ -28,7 +31,7 @@ code, see the [reference](reference.md#verdicts-and-exit-codes)) and `tipo` (`an
 | `doc`, `linea_doc` | the document and its line |
 | `ancla` | the anchor as written, for example `src/payments.py#validate_payment` |
 | `detalle` | one sentence for a person, in the environment's language |
-| `bloque` | where the anchor landed: `fichero`, `tipo`, `inicio`, `fin`, the `primera` and `ultima` lines, and `nombre` for a definition |
+| `bloque` | where the anchor landed: `fichero`, `tipo`, `inicio`, `fin`, the `primera` and `ultima` lines, `nombre` for a definition, and `linea` with its text `anclada` when the block was found from a line |
 | `avisos` | warnings for a person |
 | `fuente` | for copied code, the repository file it was copied from |
 | `accion` | only in `fix`: `recolocada`, `aceptada` or `quitada del sello` |

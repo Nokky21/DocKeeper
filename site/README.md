@@ -7,8 +7,9 @@ this repository; the root holds the skill and the CLI.
 ## Entry point
 
 `src/pages/index.astro` assembles the sections from `src/components/`, inside
-`src/layouts/Base.astro`, which holds the head, the header, the footer and the only script of the
-page: tabs, copy buttons, the fade on commands that don't fit and the side index. The site is served
+`src/layouts/Base.astro`, which holds the head, the header, the footer and the page-wide script:
+tabs, copy buttons, the fade on commands that don't fit and the side index. The demo has its own
+script in its component. The site is served
 under `/DocKeeper/`, the path GitHub Pages gives this repository.
 <!-- dockeeper: site/astro.config.mjs:6 -->
 
