@@ -3962,6 +3962,105 @@
       "huella": "c56769d023137391"
     },
     {
+      "doc": "site/README.md",
+      "ancla": ".github/workflows/pages.yml:30",
+      "fichero": ".github/workflows/pages.yml",
+      "linea": 30,
+      "tipo": "ventana",
+      "inicio": 27,
+      "fin": 33,
+      "n": 7,
+      "huella": "c90d7665f5b6e20c"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/astro.config.mjs:6",
+      "fichero": "site/astro.config.mjs",
+      "linea": 6,
+      "tipo": "definicion",
+      "inicio": 4,
+      "fin": 7,
+      "n": 4,
+      "huella": "5afd5a5f2f027157"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/package.json:14",
+      "fichero": "site/package.json",
+      "linea": 14,
+      "tipo": "ventana",
+      "inicio": 11,
+      "fin": 17,
+      "n": 7,
+      "huella": "a010f23fe575d175"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/package.json:9",
+      "fichero": "site/package.json",
+      "linea": 9,
+      "tipo": "ventana",
+      "inicio": 6,
+      "fin": 12,
+      "n": 7,
+      "huella": "1b1aa844134c77cc"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/scripts/check-demo.ts#check",
+      "fichero": "site/scripts/check-demo.ts",
+      "simbolo": "check",
+      "tipo": "definicion",
+      "inicio": 11,
+      "fin": 14,
+      "n": 4,
+      "huella": "538ad2eab00da7c8"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/src/demo/engine.ts#blockAt",
+      "fichero": "site/src/demo/engine.ts",
+      "simbolo": "blockAt",
+      "tipo": "definicion",
+      "inicio": 84,
+      "fin": 96,
+      "n": 13,
+      "huella": "478f99c7d186cfca"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/src/demo/engine.ts#seal",
+      "fichero": "site/src/demo/engine.ts",
+      "simbolo": "seal",
+      "tipo": "definicion",
+      "inicio": 122,
+      "fin": 127,
+      "n": 6,
+      "huella": "6250f18884a70de6"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "site/src/demo/engine.ts#verify",
+      "fichero": "site/src/demo/engine.ts",
+      "simbolo": "verify",
+      "tipo": "definicion",
+      "inicio": 130,
+      "fin": 154,
+      "n": 25,
+      "huella": "e40028e992c55afd"
+    },
+    {
+      "doc": "site/README.md",
+      "ancla": "tests/test_demo.py#PruebasDemo.test_la_demo_de_la_web_dice_lo_mismo_que_el_motor",
+      "fichero": "tests/test_demo.py",
+      "simbolo": "PruebasDemo.test_la_demo_de_la_web_dice_lo_mismo_que_el_motor",
+      "tipo": "definicion",
+      "inicio": 31,
+      "fin": 45,
+      "n": 15,
+      "huella": "18a7e685871b69cf"
+    },
+    {
       "doc": "site/src/components/Commit.astro",
       "ancla": "dockeeper/revision.py#revisar",
       "fichero": "dockeeper/revision.py",
@@ -3971,6 +4070,28 @@
       "fin": 262,
       "n": 41,
       "huella": "a36fcdbd6ec2c58c"
+    },
+    {
+      "doc": "site/src/components/Demo.astro",
+      "ancla": "site/scripts/check-demo.ts#check",
+      "fichero": "site/scripts/check-demo.ts",
+      "simbolo": "check",
+      "tipo": "definicion",
+      "inicio": 11,
+      "fin": 14,
+      "n": 4,
+      "huella": "538ad2eab00da7c8"
+    },
+    {
+      "doc": "site/src/components/Demo.astro",
+      "ancla": "tests/test_demo.py#PruebasDemo.test_la_demo_de_la_web_dice_lo_mismo_que_el_motor",
+      "fichero": "tests/test_demo.py",
+      "simbolo": "PruebasDemo.test_la_demo_de_la_web_dice_lo_mismo_que_el_motor",
+      "tipo": "definicion",
+      "inicio": 31,
+      "fin": 45,
+      "n": 15,
+      "huella": "18a7e685871b69cf"
     },
     {
       "doc": "site/src/components/Diagrams.astro",
@@ -4004,6 +4125,17 @@
       "fin": 446,
       "n": 15,
       "huella": "52dc02de4c500aa3"
+    },
+    {
+      "doc": "site/src/components/How.astro",
+      "ancla": "dockeeper/huellas.py#huella",
+      "fichero": "dockeeper/huellas.py",
+      "simbolo": "huella",
+      "tipo": "definicion",
+      "inicio": 21,
+      "fin": 22,
+      "n": 2,
+      "huella": "6e0b2be31c4aa55d"
     },
     {
       "doc": "site/src/components/How.astro",
@@ -4059,6 +4191,28 @@
       "fin": 47,
       "n": 25,
       "huella": "ae8c5a60259dc138"
+    },
+    {
+      "doc": "site/src/components/Install.astro",
+      "ancla": ".github/workflows/ci.yml:20",
+      "fichero": ".github/workflows/ci.yml",
+      "linea": 20,
+      "tipo": "ventana",
+      "inicio": 17,
+      "fin": 23,
+      "n": 7,
+      "huella": "2a51cfbb5a466ab9"
+    },
+    {
+      "doc": "site/src/components/Install.astro",
+      "ancla": "bin/dockeeper:7",
+      "fichero": "bin/dockeeper",
+      "linea": 7,
+      "tipo": "ventana",
+      "inicio": 4,
+      "fin": 9,
+      "n": 4,
+      "huella": "8a732cde0edb651e"
     },
     {
       "doc": "site/src/components/Monorepos.astro",
