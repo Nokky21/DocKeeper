@@ -26,7 +26,8 @@ if TYPE_CHECKING:  # solo para anotaciones: evita el import circular con motor
 # al pie; «(ver src/a.ts)», prosa) no esconden la ruta.
 _TROZO_RUTA = (r"(?:\+?[\w.\-]+|@[\w.\-]+|\([\w.\-]+\)[\w.\-]*"
                r"|(?:\[[\w.\-=]+\]|\[\[[\w.\-=]+\]\])(?:\.[\w.\-]+)?)")
-_TOKEN_RUTA = re.compile(rf"{_TROZO_RUTA}(?:/{_TROZO_RUTA})+/?")
+# Solo empieza al principio de una palabra: si no, una línea larga sin «/» se recorre una vez por carácter.
+_TOKEN_RUTA = re.compile(rf"(?<![\w.\-]){_TROZO_RUTA}(?:/{_TROZO_RUTA})+/?")
 
 
 def lineas_utiles(lineas: Sequence[str]) -> List[Tuple[int, str]]:

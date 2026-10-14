@@ -1,5 +1,6 @@
 """Documentación publicada: sin anclas ni rutas internas, sin código copiado, con vínculos fuera del texto."""
 
+import time
 import unittest
 
 from tests.util import RepoDePrueba, d, estados
@@ -70,6 +71,13 @@ class PruebasPublicado(unittest.TestCase):
             self.assertEqual([n for n, _ in rutas], [1, 2, 3])
             self.assertIn("«src/routes/[slug]/+page.svelte»", rutas[0][1])
             self.assertIn("«app/@modal/(auth)/login/page.tsx»", rutas[1][1])
+
+    def test_lineas_enormes_no_atascan_la_busqueda_de_rutas(self):
+        # Una línea larga sin «/» (un hash, un dato minificado) no puede costar segundos en CI.
+        with repo({"docs/publica/guia.md": GUIA + "a" * 50000 + "\n"}) as r:
+            inicio = time.perf_counter()
+            self.assertEqual(r.dk("check")[0], 0)
+            self.assertLess(time.perf_counter() - inicio, 2)
 
     def test_publico_limpio_pasa(self):
         with repo({"docs/publica/guia.md": GUIA}) as r:
