@@ -19,6 +19,8 @@
   --term: #1b1a17;
   --term-ink: #e9e5dc;
   --term-dim: #9a9488;
+  --band: color-mix(in srgb, var(--accent) 7%, var(--paper));
+  --mark: rgba(238, 186, 72, .42);
   --serif: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
   --sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -46,6 +48,7 @@
     --moved: #d9a64a;
     --changed: #e57565;
     --term: #0f0e0d;
+    --mark: rgba(217, 166, 74, .26);
     color-scheme: dark;
   }
 }
@@ -101,7 +104,7 @@ p { margin: 0; text-wrap: pretty; }
 .sec > .wide + .wide { margin-top: 22px; }
 .sec > p:not(.lede):not(.note):not(.term-label) { color: var(--ink-2); max-width: 64ch; }
 .sec > .term { margin-top: 26px; }
-h2 .n { color: var(--muted); font-weight: 400; margin-right: .08em; font-variant-numeric: oldstyle-nums; }
+h2 .n { color: var(--accent); font-weight: 400; margin-right: .08em; font-variant-numeric: oldstyle-nums; }
 .after { margin-top: 26px; }
 .asks-title { margin-top: 44px; }
 
@@ -116,13 +119,14 @@ h2 .n { color: var(--muted); font-weight: 400; margin-right: .08em; font-variant
 @media (max-width: 1080px) { .mn { margin: 18px 0 0; } .mn-col { margin-top: 20px; } }
 
 /* Las primeras palabras de cada sección en versalitas, como el «newthought» de Tufte CSS. */
-.nt { font-variant-caps: small-caps; letter-spacing: .03em; color: var(--ink); }
+.nt { font-variant-caps: small-caps; letter-spacing: .03em; color: var(--ink); background: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%); }
+.mark { background: linear-gradient(transparent 64%, var(--mark) 64%, var(--mark) 90%, transparent 90%); padding: 0 .04em; }
 .nt code { font-variant-caps: normal; letter-spacing: 0; }
 
 /* Bandas a todo el ancho para las secciones que se usan (demo, instalar): rompen la monotonía del papel. */
 main { overflow-x: clip; }
 .sec.band { position: relative; border-top-color: transparent; }
-.sec.band::before { content: ""; position: absolute; inset: 0 calc(50% - 50vw); background: var(--paper-2); z-index: -1; }
+.sec.band::before { content: ""; position: absolute; inset: 0 calc(50% - 50vw); background: var(--band); z-index: -1; }
 .sec.band + .sec { border-top-color: transparent; }
 .sec.band :not(pre) > code { background: var(--card); }
 
@@ -134,7 +138,8 @@ main { overflow-x: clip; }
   .onpage a { display: grid; grid-template-columns: 24px minmax(0, 1fr); padding: 5px 0 5px 12px; border-left: 1px solid var(--line); color: var(--muted); text-decoration: none; transition: color .2s var(--ease), border-color .2s var(--ease); }
   .onpage a span { font: 400 .88rem/1.2 var(--serif); font-variant-numeric: oldstyle-nums; }
   .onpage a:hover { color: var(--ink); }
-  .onpage a[aria-current] { color: var(--ink); border-left-color: var(--ink); }
+  .onpage a[aria-current] { color: var(--ink); border-left-color: var(--accent); }
+  .onpage a[aria-current] span { color: var(--accent); }
 }
 
 /* --- Cabecera y pie -------------------------------------------------------------------- */
@@ -182,7 +187,7 @@ footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--l
 .cmd { position: relative; display: flex; align-items: center; gap: 10px; background: var(--term); color: var(--term-ink); border-radius: 10px; padding: 4px 4px 4px 16px; max-width: 100%; }
 .cmd, .pair figure, .window, .tabs { min-width: 0; }
 .cmd pre { min-width: 0; margin: 0; overflow-x: auto; font-size: .84rem; line-height: 1.6; padding: 10px 0; flex: 1; scrollbar-width: none; }
-.cmd .p { color: var(--term-dim); user-select: none; }
+.cmd .p { color: #7cc79a; user-select: none; }
 .copy { font: 500 .78rem/1 var(--sans); color: var(--term-ink); background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); border-radius: 7px; padding: 9px 11px; cursor: pointer; transition: background .2s var(--ease); }
 .copy:hover { background: rgba(255, 255, 255, .16); }
 /* Si un comando o una terminal no caben, un fundido avisa de que sigue (el script lo quita al llegar al final). */
@@ -195,7 +200,8 @@ footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--l
 
 .term { background: var(--term); color: var(--term-ink); border-radius: 12px; padding: 18px 20px; font: .8rem/1.75 var(--mono); overflow-x: auto; margin: 0; }
 .term .c { color: var(--term-dim); }
-.term .ok { color: #7cc79a; } .term .mv { color: #e0b25e; } .term .ch { color: #ee8273; } .term .ac { color: #a9c6f0; }
+.term .ok, .term .pr { color: #7cc79a; } .term .mv { color: #e0b25e; } .term .ch { color: #ee8273; } .term .ac { color: #a9c6f0; }
+.term .pr { user-select: none; }
 .term-label { font: 500 .78rem/1 var(--sans); color: var(--muted); margin: 0 0 10px; }
 .termwin { margin: 0; border-radius: 12px; overflow: hidden; background: var(--term); }
 .termbar { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, .07); font: 500 .74rem/1 var(--mono); color: var(--term-dim); }
@@ -211,7 +217,8 @@ footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--l
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 34px; }
 .hero-actions .cmd { flex: 1 1 100%; max-width: 780px; }
 .hero-mn { display: none; }
-.hero-mn .vl { display: grid; grid-template-columns: 68px minmax(0, 1fr); margin-top: 7px; }
+.hero-mn .vl { display: grid; grid-template-columns: 78px minmax(0, 1fr); align-items: baseline; margin-top: 8px; }
+.hero-mn .vl .v { justify-self: start; padding: 2px 7px; border-radius: 999px; background: color-mix(in srgb, currentColor 13%, transparent); }
 @media (min-width: 1081px) {
   .hero-text { max-width: none; display: grid; grid-template-columns: minmax(0, var(--main)) var(--margin); column-gap: var(--gap); }
   .hero-text > * { grid-column: 1; }
@@ -221,6 +228,9 @@ footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--l
 .hero-meta { margin-top: 22px; color: var(--muted); font-size: .9rem; }
 
 /* La ventana de un documento escrito por el skill, como lo enseñaría Obsidian. */
+.hero { position: relative; }
+.hero::after { content: ""; position: absolute; z-index: -1; pointer-events: none; left: 50%; bottom: -40px; width: min(1320px, 130vw); height: 680px; transform: translateX(-50%);
+  background: radial-gradient(closest-side at 30% 55%, color-mix(in srgb, var(--accent) 30%, transparent), transparent), radial-gradient(closest-side at 72% 45%, color-mix(in srgb, var(--moved) 26%, transparent), transparent); filter: blur(24px); }
 .window { margin-top: 64px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--card); box-shadow: 0 1px 0 rgba(29, 27, 23, .04), 0 24px 60px -32px rgba(29, 27, 23, .28); overflow: hidden; }
 @media (prefers-color-scheme: dark) { .window { box-shadow: 0 24px 60px -30px rgba(0, 0, 0, .7); } }
 .window-bar { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--paper-2); font: 500 .78rem/1 var(--sans); color: var(--muted); }
@@ -328,7 +338,7 @@ footer .set { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--l
 .steps p { color: var(--ink-2); }
 .verdicts { margin-top: 34px; display: grid; border-top: 1px solid var(--line); }
 .verdicts div { display: grid; grid-template-columns: 110px 64px minmax(0, 1fr); gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
-.verdicts b { font: 600 .82rem/1.7 var(--mono); }
+.verdicts b { font: 600 .78rem/1.7 var(--mono); justify-self: start; align-self: start; padding: 0 9px; border-radius: 999px; background: color-mix(in srgb, currentColor 13%, transparent); }
 .verdicts span { font: .8rem/1.7 var(--mono); color: var(--muted); }
 .verdicts p { color: var(--ink-2); }
 .figure-scroll { overflow-x: auto; border-radius: 14px; }

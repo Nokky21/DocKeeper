@@ -8,14 +8,14 @@
     <p class="term-label">After a commit that changed one function and added another</p>
 <figure class="termwin">
 <figcaption class="termbar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>post-commit hook — dockeeper review</figcaption>
-<pre class="term"><span class="c">$ git commit -m "feat: refunds"</span>
-dockeeper review · changes since HEAD~1 (85753313b3) · 1 code file · 0 documents
+<pre class="term"><span class="pr">$</span> git commit -m "feat: refunds"
+<span class="c">dockeeper review · changes since HEAD~1 (85753313b3) · 1 code file · 0 documents</span>
 Claims this change touches (review the text):
-<span class="ch">CHANGED</span>          docs/payments.md:3  → src/payments.py#validate_payment
+<span class="ch">CHANGED</span>          <span class="ac">docs/payments.md:3</span>  <span class="c">→</span> <span class="ac">src/payments.py#validate_payment</span>
 New or changed code with no claim (worth adding to the docs?):
-  <span class="ac">new</span>       src/payments.py#refund (3 lines) · already about that file: docs/payments.md
+  <span class="mv">new</span>       <span class="ac">src/payments.py#refund</span> (3 lines) <span class="c">· already about that file: docs/payments.md</span>
 Decisions in these commits not documented yet (dockeeper why):
-  6abae57d27 2026-10-14  refunds reuse the payment validation
+  <span class="c">6abae57d27 2026-10-14</span>  refunds reuse the payment validation
 <span class="c">[main 6abae57] feat: refunds</span></pre>
 </figure>
   </div>
