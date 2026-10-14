@@ -36,42 +36,34 @@ const pestanas = [
 ];
 const peticiones = [
   "“Document this repository with dockeeper.”",
-  "“Check whether our docs are still true and fix what isn't.”",
+  "“Draw the architecture with flow diagrams.”",
   "“Review the docs on every commit.”",
+  "“Check whether our docs are still true and fix what isn't.”",
   "“Document this monorepo, one package at a time.”",
-  "“Document only <code>src/payments</code> with dockeeper.”",
   "“Write the decisions page from the git history. Don't invent reasons.”",
 ];
 ---
-<section class="section" id="install">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <div>
-        <p class="label">Install</p>
-        <h2 class="h2">One folder. Every agent.</h2>
-      </div>
-      <p class="lead">DocKeeper follows the open <a href="https://agentskills.io">Agent Skills</a> standard: the repository is the skill. Clone it into your agent's skills folder and start asking.</p>
-    </div>
-
-    <div class="panel tabs" data-reveal>
-      <div class="tablist" role="tablist" aria-label="Where you work">
-        {pestanas.map((p, i) => (
-          <button role="tab" type="button" aria-selected={i === 0 ? "true" : "false"} aria-controls={`p-${p.id}`} id={`t-${p.id}`}>{p.etiqueta}</button>
-        ))}
-      </div>
-      {pestanas.map((p) => (
-        <div class="tabpanel" role="tabpanel" id={`p-${p.id}`} aria-labelledby={`t-${p.id}`}>
-          <h3>{p.titulo}</h3>
-          <p set:html={p.texto} />
-          {p.cmds.map((c) => <Cmd cmd={c.cmd} prompt={c.prompt} />)}
-        </div>
+<section class="sec" id="install" aria-labelledby="t-install">
+  <h2 id="t-install"><span class="n">8</span> Install it in one folder</h2>
+  <p class="lede">DocKeeper follows the open <a href="https://agentskills.io">Agent Skills</a> standard: the repository is the skill. Clone it into your agent's skills folder and start asking.</p>
+  <aside class="mn"><b>Requirements</b><code>python3</code> 3.10 or newer and <code>git</code>. The folder must be called <code>dockeeper</code>, because the standard requires it to match the skill name.</aside>
+  <div class="wide tabs">
+    <div class="tablist" role="tablist" aria-label="Where you work">
+      {pestanas.map((p, i) => (
+        <button role="tab" type="button" aria-selected={i === 0 ? "true" : "false"} aria-controls={`p-${p.id}`} id={`t-${p.id}`}>{p.etiqueta}</button>
       ))}
     </div>
-    <p class="note">The folder must be called <code>dockeeper</code>: the standard requires it to match the skill name. Requirements: <code>python3</code> and <code>git</code>. Update with <code>git -C ~/.claude/skills/dockeeper pull</code>.</p>
-
-    <h3 style="margin-top:56px;font-weight:600" data-reveal>Then just ask</h3>
-    <div class="asks" data-reveal>
-      {peticiones.map((p) => <div class="ask" set:html={p} />)}
-    </div>
+    {pestanas.map((p) => (
+      <div class="tabpanel" role="tabpanel" id={`p-${p.id}`} aria-labelledby={`t-${p.id}`}>
+        <h3>{p.titulo}</h3>
+        <p set:html={p.texto} />
+        {p.cmds.map((c) => <Cmd cmd={c.cmd} prompt={c.prompt} />)}
+      </div>
+    ))}
   </div>
+  <p class="note">Update with <code>git -C ~/.claude/skills/dockeeper pull</code>. Uninstall by deleting the folder; nothing else is installed anywhere.</p>
+  <h3 class="asks-title">Then ask, in your own words</h3>
+  <ul class="asks">
+    {peticiones.map((p) => <li class="ask" set:html={p} />)}
+  </ul>
 </section>

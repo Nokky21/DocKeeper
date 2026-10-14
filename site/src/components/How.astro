@@ -1,55 +1,40 @@
 ---
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
-<section class="section" id="how">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <div>
-        <p class="label">How it works</p>
-        <h2 class="h2">Anchor. Seal. Check.</h2>
-      </div>
-      <p class="lead">No model in the loop. DocKeeper compares normalized code blocks by fingerprint, so the result is the same every time it runs.</p>
-    </div>
-
-    <div class="panel" data-reveal>
-      <div class="steps">
-        <div class="step">
-          <span class="n">01</span>
-          <h3>Anchor every claim</h3>
-          <p>Next to each sentence, point at the code that proves it: by symbol, by line, hidden in a comment or stored outside the text.</p>
-          <div class="snip">&#91;&#91;src/payments.py#validate_payment&#93;&#93;</div>
-          <!-- dockeeper: dockeeper/markdown.py#analizar -->
-        </div>
-        <div class="step">
-          <span class="n">02</span>
-          <h3>It becomes a block</h3>
-          <p>The whole enclosing function, class or method, not a fragile line range. Outside definitions, a small window around the line.</p>
-          <!-- dockeeper: dockeeper/bloques.py#bloque_en -->
-        </div>
-        <div class="step">
-          <span class="n">03</span>
-          <h3>Seal a fingerprint</h3>
-          <p>Normalized and hashed: reformatting is harmless, logic changes are not. The seal file stores hashes, never code.</p>
-          <!-- dockeeper: dockeeper/huellas.py#normalizar_linea dockeeper/sello.py#Entrada -->
-        </div>
-        <div class="step">
-          <span class="n">04</span>
-          <h3>Check, anytime</h3>
-          <p>Locally, in a git hook or on every pull request. The exit code tells CI whether your docs are still true.</p>
-          <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->
-        </div>
-      </div>
-      <div class="verdicts">
-        <div class="verdict"><b class="v-OK">OK</b><span>exit 0</span><p>Same block, same place.</p></div>
-        <div class="verdict"><b class="v-MOVED">MOVED</b><span>exit 0</span><p>Same block elsewhere. <code>fix</code> relocates it.</p></div>
-        <div class="verdict"><b class="v-CHANGED">CHANGED</b><span>exit 1</span><p>The code changed. A person rewrites the claim.</p></div>
-      </div>
-    </div>
-
-    <figure data-reveal>
-      <div class="scroll"><img src={`${base}assets/how-it-works.svg`} alt="Diagram: a claim in docs/payments.md is anchored to the whole validate_payment function, the block is normalized and hashed into the seal file, and check reports OK, MOVED or CHANGED" width="960" height="330" loading="lazy"></div>
-      <figcaption>The same example end to end. <code>fix</code> only ever touches the seal file; it never rewrites your documents.</figcaption>
-      <!-- dockeeper: dockeeper/motor.py#arreglar -->
-    </figure>
+<section class="sec" id="how" aria-labelledby="t-how">
+  <h2 id="t-how"><span class="n">4</span> How a claim is checked</h2>
+  <p class="lede">No model in the loop. DocKeeper compares fingerprints of normalized code, so it gives the same answer every time it runs, on your machine or in CI.</p>
+  <aside class="mn"><b>The code behind this section</b><code>markdown.py</code> reads the anchors, <code>bloques.py</code> finds the block, <code>huellas.py</code> fingerprints it and <code>motor.py</code> gives the verdict.</aside>
+  <ol class="steps">
+    <li>
+      <h3>Anchor every claim</h3>
+      <p>Next to each sentence, the agent points at the code that proves it: by symbol, by line, hidden in a comment, inside a diagram or stored outside the text.</p>
+      <!-- dockeeper: dockeeper/markdown.py#analizar -->
+    </li>
+    <li>
+      <h3>It becomes a block</h3>
+      <p>The whole function, class or method around the anchor, not a fragile line range. Outside any definition, a small window around the line.</p>
+      <!-- dockeeper: dockeeper/bloques.py#bloque_en -->
+    </li>
+    <li>
+      <h3>Seal a fingerprint</h3>
+      <p>The block is normalized and hashed, so reformatting is harmless and logic changes are not. The seal file keeps hashes and positions, never code.</p>
+      <!-- dockeeper: dockeeper/huellas.py#normalizar_linea dockeeper/sello.py#Entrada -->
+    </li>
+    <li>
+      <h3>Check, any time</h3>
+      <p>Locally, after every commit or on every pull request. The exit code tells CI whether your docs are still true.</p>
+      <!-- dockeeper: dockeeper/motor.py#verificar_codigo -->
+    </li>
+  </ol>
+  <div class="verdicts">
+    <div><b class="v-OK">OK</b><span>exit 0</span><p>Same block, same place.</p></div>
+    <div><b class="v-MOVED">MOVED</b><span>exit 0</span><p>Same block somewhere else. <code>fix</code> follows it without anyone reviewing.</p></div>
+    <div><b class="v-CHANGED">CHANGED</b><span>exit 1</span><p>The code changed. A person reads it and updates the sentence.</p></div>
   </div>
+  <figure class="wide">
+    <div class="figure-scroll"><img src={`${base}assets/how-it-works.svg`} alt="Diagram: a claim in docs/payments.md is anchored to the whole validate_payment function, the block is normalized and hashed into the seal file, and check reports OK, MOVED or CHANGED" width="960" height="330" loading="lazy"></div>
+    <figcaption class="cap">The same example end to end. <code>fix</code> only ever touches the seal file; it never rewrites your documents.</figcaption>
+    <!-- dockeeper: dockeeper/motor.py#arreglar -->
+  </figure>
 </section>

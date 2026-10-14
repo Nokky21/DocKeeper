@@ -1,0 +1,26 @@
+<section class="sec" id="more" aria-labelledby="t-more">
+  <h2 id="t-more"><span class="n">7</span> Also in the box</h2>
+  <h3>Publish docs without leaking your code</h3>
+  <p>Public pages can't carry internal paths or copied source, and they still need checking. Store the link outside the text with <code>dockeeper link</code>: readers see clean prose, and CI checks both the sentence and the private code.</p>
+  <aside class="mn"><b>Copied code</b>Three or more lines in a row identical to a file in the repository fail the check, and the report names the file.
+    <!-- dockeeper: dockeeper/publicado.py#IndiceCopias dockeeper/motor.py#vincular -->
+  </aside>
+  <h3>Check one part at a time</h3>
+  <p>Point <code>--solo</code> at code and every document that talks about it is checked. Point it at a document and it keeps the code that document cites.</p>
+  <aside class="mn"><code>dockeeper check --solo src/payments</code>
+    <!-- dockeeper: dockeeper/alcance.py#Alcance -->
+  </aside>
+  <h3>The why, never invented</h3>
+  <p>Decisions come from the <code>Decision:</code> and <code>Why:</code> lines of your commit messages. If the reason isn't recorded, the documentation says “not documented” instead of guessing.</p>
+  <aside class="mn"><code>dockeeper why</code>
+    <!-- dockeeper: dockeeper/porque.py#historial -->
+  </aside>
+  <h3>In CI, no green when nothing was checked</h3>
+  <p>The repository is also a GitHub Action. Anywhere else it is two lines of shell. A check that finds nothing to check fails, so an empty scope can't pass for a clean one.</p>
+  <aside class="mn"><b>Exit codes</b>0 when everything is true or only moved, 1 when something changed or broke, 2 for usage errors.
+    <!-- dockeeper: dockeeper/motor.py#FALLOS dockeeper/motor.py#comprobar -->
+  </aside>
+<pre class="term"><span class="c"># .github/workflows/docs.yml</span>
+- uses: actions/checkout@v6
+- uses: Nokky21/DocKeeper@v0.2.0</pre>
+</section>

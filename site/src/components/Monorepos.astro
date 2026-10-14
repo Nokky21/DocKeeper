@@ -1,0 +1,15 @@
+<section class="sec" id="monorepos" aria-labelledby="t-mono">
+  <h2 id="t-mono"><span class="n">6</span> Whole repositories, monorepos included</h2>
+  <p class="lede"><code>audit</code> finds every package by its manifest, from <code>package.json</code> to <code>go.mod</code>, <code>Cargo.toml</code> or <code>pyproject.toml</code>, and shows which ones nothing documents. The agent writes the root pages with a map of the packages first, then one package at a time, so even a large monorepo fits.</p>
+  <aside class="mn"><b>Not your dependencies</b>The root is the repository, not a package, and copied dependencies such as <code>node_modules</code> or <code>vendor</code> are skipped.
+    <!-- dockeeper: dockeeper/paquetes.py#detectar -->
+  </aside>
+  <div class="wide">
+<pre class="term"><span class="c">$ dockeeper audit</span>
+Packages (4): document one at a time with --solo PATH
+  apps/web/                    @acme/web                   1/2    definitions · 2 files · apps/web/README.md
+  libs/core/                   acme-core                   0/1    definitions · 2 files · no README  <span class="ch">← undocumented</span>
+  packages/api/                @acme/api                   0/3    definitions · 2 files · no README  <span class="ch">← undocumented</span>
+  services/billing/            github.com/acme/billing     0/2    definitions · 2 files · no README  <span class="ch">← undocumented</span></pre>
+  </div>
+</section>

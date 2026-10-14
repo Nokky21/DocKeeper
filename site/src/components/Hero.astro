@@ -1,45 +1,59 @@
 ---
 import Cmd from "./Cmd.astro";
-
-const repo = "https://github.com/Nokky21/DocKeeper";
+import flujoClaro from "../assets/flujo-light.svg?raw";
+import flujoOscuro from "../assets/flujo-dark.svg?raw";
 ---
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <a class="pill" href={`${repo}/releases/latest`} data-reveal><b>v0.2.0</b> Open source · MIT · Read the release <span aria-hidden="true">→</span></a>
-      <h1 data-reveal style="--d:60ms">Documentation that doesn't rot.</h1>
-      <p class="lead" data-reveal style="--d:120ms">DocKeeper anchors every claim in your docs to the code behind it. When that code changes, <em>your CI knows which sentence just became false.</em></p>
-      <div class="ctas" data-reveal style="--d:180ms">
-        <a class="btn btn-primary" href="#demo">Try it live</a>
-        <a class="textlink" href="#install">Install the skill <span class="arr" aria-hidden="true">→</span></a>
-      </div>
-      <div class="oneliner" data-reveal style="--d:240ms">
-        <Cmd cmd="git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper" />
-      </div>
-      <p class="compat" data-reveal style="--d:300ms">An Agent Skill for <span>Claude Code</span><span>Codex</span><span>Gemini CLI</span><span>Cursor</span><span>GitHub Copilot</span> and a zero-dependency CLI for CI.</p>
+<section class="hero" aria-labelledby="titulo">
+  <div class="hero-text">
+    <h1 id="titulo">Documentation that doesn't rot.</h1>
+    <p class="lede">Your coding agent writes the docs: the README, the architecture and its diagrams, the decisions, the runbooks. DocKeeper ties every sentence and every diagram to the code behind it, and tells you the moment that code changes.</p>
+    <div class="hero-actions">
+      <Cmd cmd="git clone https://github.com/Nokky21/DocKeeper.git ~/.claude/skills/dockeeper" />
+      <a class="textlink" href="#demo">Try it in the browser</a>
     </div>
-
-    <div class="stack" data-reveal style="--d:200ms" role="img" aria-label="A documentation page whose two claims are anchored to code, and the output of dockeeper check: one claim changed, one moved, exit code 1">
-      <div class="card doccard">
-        <div class="file"><i></i>docs/payments.md</div>
-        <div class="doc-title">Payments</div>
-        <div class="claim" data-v="CHANGED">
-          <p>Every payment is validated before it is charged.</p>
-          <span class="anchor"><span>&#91;&#91;src/payments.py#validate_payment&#93;&#93;</span><b class="v v-CHANGED">CHANGED</b></span>
-        </div>
-        <div class="claim" data-v="MOVED">
-          <p>A successful charge returns its status.</p>
-          <span class="anchor"><span>&#91;&#91;src/payments.py:12&#93;&#93;</span><b class="v v-MOVED">MOVED</b></span>
-        </div>
-      </div>
-      <div class="card termcard">
-        <div class="dots"><i></i><i></i><i></i></div>
-<pre><span class="cmdl">$ dockeeper check</span>
-<span class="v-CHANGED">CHANGED</span>  docs/payments.md:3 → src/payments.py#validate_payment
-<span class="v-MOVED">MOVED</span>    docs/payments.md:4 → src/payments.py:12
-<span class="cmdl">$ echo $?</span>
-1</pre>
-      </div>
-    </div>
+    <p class="hero-meta">An Agent Skill for Claude Code, Codex, Gemini CLI, Cursor and GitHub Copilot, and a CLI with no dependencies for your CI. Free, local, MIT.</p>
   </div>
+
+  <figure class="window" aria-label="A documentation page written by the agent, its anchors, and the output of dockeeper check">
+    <div class="window-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="tabs-doc" aria-hidden="true"><span data-current>ARCHITECTURE.md</span><span>DECISIONS.md</span><span>README.md</span></span>
+    </div>
+    <div class="window-body">
+      <div class="tree" aria-hidden="true">
+        <b>docs</b>
+        <span data-current>ARCHITECTURE.md</span>
+        <span>DECISIONS.md</span>
+        <span>PROCEDURES.md</span>
+        <span>API.md</span>
+        <b>packages/api</b>
+        <span>README.md</span>
+        <b>packages/web</b>
+        <span>README.md</span>
+      </div>
+      <article class="docpage">
+        <span class="tag">#architecture · written by your agent</span>
+        <p class="doc-h">Payments</p>
+        <p>Every webhook is checked against its signature <span class="claim-hl">before anything is charged</span>. A bad signature stops at a 401 and touches nothing.</p>
+        <p class="doc-h2">Flow</p>
+        <div class="diagram">
+          <div class="light" set:html={flujoClaro} />
+          <div class="dark" set:html={flujoOscuro} />
+        </div>
+        <div class="callout"><b>Warning</b>A charge is never retried after a timeout: the provider is asked for its status first.</div>
+      </article>
+      <aside class="anchors" aria-label="Anchors on this page">
+        <p>Anchors on this page</p>
+        <div class="pin"><span>src/webhooks.ts#verifySignature</span><span class="v v-OK">OK</span></div>
+        <div class="pin"><span>src/payments.ts#process</span><span class="v v-OK">OK</span></div>
+        <div class="pin"><span>src/payments.ts#retryAfterTimeout</span><span class="v v-CHANGED">CHANGED</span></div>
+      </aside>
+    </div>
+    <div class="window-foot"><pre class="term"><span class="c">$ dockeeper check</span>
+<span class="ch">CHANGED</span>          docs/ARCHITECTURE.md:14  → src/payments.ts#retryAfterTimeout
+                 the content of “retryAfterTimeout” changed (src/payments.ts:40-58)
+Summary: 1 CHANGED · 4 OK
+  → review the code and the text, then dockeeper fix --aceptar
+Result: <span class="ch">FAIL</span></pre></div>
+  </figure>
 </section>

@@ -5,17 +5,12 @@ const titulo = data.title.replace(/^#\s*/, "");
 const abre = "[[";
 const cierra = "]]";
 ---
-<section class="section" id="demo" style="padding-top:48px;border-top:0">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <div>
-        <p class="label">Live demo</p>
-        <h2 class="h2">Break the code. Watch the docs react.</h2>
-      </div>
-      <p class="lead">Two sentences, each anchored to the Python code that proves it, already sealed. Pick a change or edit the code yourself, and see what <code>dockeeper check</code> reports.</p>
-    </div>
-
-    <div class="panel" data-demo data-reveal>
+<section class="sec" id="demo" aria-labelledby="t-demo">
+  <h2 id="t-demo"><span class="n">3</span> Change the code and watch the claims react</h2>
+  <p class="lede">Two sentences, each anchored to the Python code that proves it, already sealed. Pick a change or edit the code yourself, and see what <code>dockeeper check</code> reports.</p>
+  <aside class="mn"><b>Computed in your browser</b>A TypeScript port of the check. In CI, the same scenarios run through the real Python CLI and through this port, and both must agree on every verdict and fingerprint.</aside>
+  <div class="wide">
+    <div class="panel" data-demo>
       <div class="demo-bar">
         <div class="chips" role="group" aria-label="Try a change">
           {data.scenarios.map((s, i) => (
@@ -58,7 +53,6 @@ const cierra = "]]";
         </div>
       </div>
     </div>
-    <p class="foot">Computed in your browser by a TypeScript port of the check for Python files. In CI, the same scenarios run through the real Python CLI and through this port, and both must agree on every verdict and fingerprint.</p>
   </div>
 </section>
 

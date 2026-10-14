@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/newsreader/opsz.css";
 import "../styles/global.css";
 
 interface Props {
@@ -9,9 +10,10 @@ interface Props {
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const { title = "DocKeeper — documentation that doesn't rot" } = Astro.props;
 const description =
-  "DocKeeper anchors every claim in your docs to the code behind it and tells you when that code changes. " +
-  "An Agent Skill for Claude Code, Codex, Gemini CLI, Cursor and Copilot, plus a zero-dependency CLI for CI.";
+  "Your coding agent writes the docs, diagrams included. DocKeeper ties every claim and every diagram to the " +
+  "code behind it and tells you when that code changes. An Agent Skill plus a zero-dependency CLI for CI.";
 const repo = "https://github.com/Nokky21/DocKeeper";
+const idiomas = [["English", "README.md"], ["Español", "docs/i18n/README.es.md"], ["Português", "docs/i18n/README.pt-BR.md"], ["Français", "docs/i18n/README.fr.md"], ["Deutsch", "docs/i18n/README.de.md"], ["Italiano", "docs/i18n/README.it.md"], ["Nederlands", "docs/i18n/README.nl.md"], ["Polski", "docs/i18n/README.pl.md"], ["Čeština", "docs/i18n/README.cs.md"], ["Svenska", "docs/i18n/README.sv.md"], ["Русский", "docs/i18n/README.ru.md"], ["Українська", "docs/i18n/README.uk.md"], ["Türkçe", "docs/i18n/README.tr.md"], ["العربية", "docs/i18n/README.ar.md"], ["עברית", "docs/i18n/README.he.md"], ["हिन्दी", "docs/i18n/README.hi.md"], ["简体中文", "docs/i18n/README.zh-CN.md"], ["繁體中文", "docs/i18n/README.zh-TW.md"], ["日本語", "docs/i18n/README.ja.md"], ["한국어", "docs/i18n/README.ko.md"], ["Tiếng Việt", "docs/i18n/README.vi.md"], ["Bahasa Indonesia", "docs/i18n/README.id.md"], ["ไทย", "docs/i18n/README.th.md"]];
 const url = new URL(base, Astro.site).href;
 ---
 <!doctype html>
@@ -21,33 +23,28 @@ const url = new URL(base, Astro.site).href;
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <meta name="theme-color" content="#08090a">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href={url}>
   <meta property="og:type" content="website">
   <meta property="og:url" content={url}>
   <meta property="og:title" content={title}>
-  <meta property="og:description" content="Anchor every claim to its code. Seal it. Check it on every pull request. Free, local, zero dependencies.">
+  <meta property="og:description" content="Your agent writes the docs and the diagrams; DocKeeper keeps every claim tied to its code and checked on every commit. Free, local, zero dependencies.">
   <meta property="og:image" content={`${url}og.png`}>
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`}>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="nav">
-    <div class="wrap">
-      <a class="brand" href={base} aria-label="DocKeeper home">
-        <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"></rect><path d="M9 16.5l4.5 4.5L23 11.5" stroke="var(--accent-ink)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        DocKeeper
-      </a>
+  <header class="top">
+    <div class="page">
+      <a class="brand" href={base} aria-label="DocKeeper home">DocKeeper <small>v0.2</small></a>
       <nav aria-label="Main">
-        <a class="link" href={`${base}#demo`}>Demo</a>
-        <a class="link" href={`${base}#how`}>How it works</a>
-        <a class="link" href={`${base}#install`}>Install</a>
-        <a class="link" href={`${base}#faq`}>FAQ</a>
-        <a class="btn btn-ghost btn-sm" href={repo}>
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-          GitHub
-        </a>
+        <a class="opt" href={`${base}#writes`}>What it writes</a>
+        <a class="opt" href={`${base}#diagrams`}>Diagrams</a>
+        <a class="opt" href={`${base}#demo`}>Demo</a>
+        <a href={`${base}#install`}>Install</a>
+        <a href={repo}>GitHub</a>
       </nav>
     </div>
   </header>
@@ -57,15 +54,20 @@ const url = new URL(base, Astro.site).href;
   </main>
 
   <footer>
-    <div class="wrap">
-      <span>DocKeeper · MIT license · No account, no network, no tracking.</span>
-      <nav aria-label="Footer">
+    <div class="page">
+      <nav class="langs" aria-label="README in other languages">
+        <span>README in</span>
+        {idiomas.map(([nombre, ruta]) => <a href={`${repo}/blob/main/${ruta}`}>{nombre}</a>)}
+      </nav>
+      <nav class="links" aria-label="Footer">
         <a href={repo}>GitHub</a>
         <a href={`${repo}/releases/latest`}>Releases</a>
-        <a href={`${repo}/tree/main/docs/i18n`}>README in 23 languages</a>
+        <a href={`${repo}/blob/main/docs/architecture.md`}>Architecture</a>
+        <a href={`${repo}/blob/main/docs/reference.md`}>Reference</a>
         <a href={`${repo}/blob/main/SKILL.md`}>SKILL.md</a>
-        <a href={`${repo}/blob/main/SPEC.md`}>Spec (ES)</a>
+        <a href={`${repo}/blob/main/SPEC.md`}>Spec (Spanish)</a>
       </nav>
+      <p>DocKeeper · MIT license · No account, no network, no tracking. This page loads no third-party scripts or fonts.</p>
     </div>
   </footer>
 
@@ -112,20 +114,6 @@ const url = new URL(base, Astro.site).href;
       });
     }
 
-    // Entrada suave al hacer scroll.
-    const observador = new IntersectionObserver((entradas) => {
-      for (const e of entradas) if (e.isIntersecting) { e.target.classList.add("in"); observador.unobserve(e.target); }
-    }, { rootMargin: "0px 0px -8% 0px" });
-    document.querySelectorAll("[data-reveal]").forEach((el) => observador.observe(el));
-
-    // Foco de luz que sigue al cursor en las teselas.
-    for (const tesela of document.querySelectorAll<HTMLElement>(".tile")) {
-      tesela.addEventListener("pointermove", (e) => {
-        const r = tesela.getBoundingClientRect();
-        tesela.style.setProperty("--x", `${e.clientX - r.left}px`);
-        tesela.style.setProperty("--y", `${e.clientY - r.top}px`);
-      });
-    }
   </script>
 </body>
 </html>

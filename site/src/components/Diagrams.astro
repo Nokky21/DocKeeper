@@ -1,0 +1,39 @@
+---
+import flujoClaroSvg from "../assets/flujo-light.svg?raw";
+import flujoOscuroSvg from "../assets/flujo-dark.svg?raw";
+
+// El héroe ya incluye estos SVG: otra copia con los mismos id rompería sus marcadores de flecha.
+const flujoClaro = flujoClaroSvg.replaceAll("dk-light", "dk2-light");
+const flujoOscuro = flujoOscuroSvg.replaceAll("dk-dark", "dk2-dark");
+---
+<section class="sec" id="diagrams" aria-labelledby="t-diagrams">
+  <h2 id="t-diagrams"><span class="n">2</span> Diagrams that stay true</h2>
+  <p class="lede">Flows, sequences, states and data, drawn in Mermaid, the way Obsidian and GitHub render them. Each diagram carries its anchors inside, on <code>%% dockeeper:</code> lines nobody sees, so <code>check</code> flags the diagram when the code it shows changes.</p>
+  <aside class="mn"><b>One rule</b>Every box is something that exists in the code, under the name it has there. No invented boxes.
+    <!-- dockeeper: dockeeper/markdown.py#_fichas -->
+  </aside>
+  <div class="wide pair">
+    <figure>
+      <figcaption>What the agent writes</figcaption>
+<pre class="src"><span class="fence">&#96;&#96;&#96;mermaid</span>
+flowchart LR
+  W["Webhook"] --> F&#123;"Valid signature?"&#125;
+  <span class="pct">&#37;&#37; dockeeper: src/webhooks.ts#verifySignature</span>
+  F -- no --> R["401 Unauthorized"]
+  F -- yes --> P["Process the payment"]
+  <span class="pct">&#37;&#37; dockeeper: src/payments.ts#process</span>
+  P --> L[("ledger")]
+<span class="fence">&#96;&#96;&#96;</span></pre>
+    </figure>
+    <figure>
+      <figcaption>What GitHub and Obsidian show</figcaption>
+      <div class="diagram">
+        <div class="light" set:html={flujoClaro} />
+        <div class="dark" set:html={flujoOscuro} />
+      </div>
+    </figure>
+  </div>
+  <div class="wide kinds">
+    <span>flowchart</span><span>sequenceDiagram</span><span>stateDiagram-v2</span><span>erDiagram</span><span>classDiagram</span><span>pie</span><span>timeline</span><span>&gt; [!WARNING]</span>
+  </div>
+</section>

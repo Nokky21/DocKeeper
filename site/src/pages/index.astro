@@ -1,21 +1,29 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import Writes from "../components/Writes.astro";
+import Diagrams from "../components/Diagrams.astro";
 import Demo from "../components/Demo.astro";
 import How from "../components/How.astro";
-import Features from "../components/Features.astro";
+import Commit from "../components/Commit.astro";
+import Monorepos from "../components/Monorepos.astro";
+import More from "../components/More.astro";
 import Install from "../components/Install.astro";
 import Principles from "../components/Principles.astro";
 import Faq from "../components/Faq.astro";
-import Final from "../components/Final.astro";
 ---
 <Base>
-  <Hero />
-  <Demo />
-  <How />
-  <Features />
-  <Install />
-  <Principles />
-  <Faq />
-  <Final />
+  <div class="page">
+    <Hero />
+    <Writes />
+    <Diagrams />
+    <Demo />
+    <How />
+    <Commit />
+    <Monorepos />
+    <More />
+    <Install />
+    <Principles />
+    <Faq />
+  </div>
 </Base>

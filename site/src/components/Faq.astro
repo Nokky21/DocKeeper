@@ -6,22 +6,16 @@ const preguntas = [
   ["What happens when I rename a function?", "Anchors to it report <code>CHANGED</code> (symbol not found). Update the anchor in the document and run <code>dockeeper scan</code>. Try it in the demo above."],
   ["Can it review every commit by itself?", "Yes. Ask your agent to “review the docs on every commit” and it installs a git <code>post-commit</code> hook that runs <code>dockeeper review</code>. It never blocks a commit; whoever commits sees which claims changed and what new code has no docs yet."],
   ["Does it work with monorepos?", "Yes. <code>audit</code> lists every package it finds by its manifest (npm, pnpm, Go, Cargo, Python, Maven, Gradle and more), and the agent documents them one at a time with <code>--solo</code>."],
+  ["Will the diagrams show in Obsidian?", "Yes. They are plain Mermaid blocks inside Markdown, which Obsidian and GitHub both render, and the <code>%% dockeeper:</code> lines are Mermaid comments that neither shows. Pages link to each other with ordinary Markdown links, so Obsidian's graph view picks them up too."],
   ["What should I commit?", "Your documents, <code>.dockeeper.json</code> if you use one, and <code>.dockeeper.sello.json</code>, the seal that CI checks against."],
   ["Is the CLI in English?", "Yes, by default, and in Spanish when your environment is (<code>LANG=es_…</code>). Verdict codes and the keys of the <code>--json</code> output are the same in both languages, so agents and scripts are not affected."],
 ];
 ---
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <div>
-        <p class="label">FAQ</p>
-        <h2 class="h2">Questions, answered.</h2>
-      </div>
-    </div>
-    <div class="faq">
-      {preguntas.map(([pregunta, respuesta], i) => (
-        <div data-reveal style={`--d:${(i % 2) * 80}ms`}><h3>{pregunta}</h3><p set:html={respuesta} /></div>
-      ))}
-    </div>
-  </div>
+<section class="sec" id="faq" aria-labelledby="t-faq">
+  <h2 id="t-faq"><span class="n">10</span> Questions</h2>
+  <dl class="faq">
+    {preguntas.map(([pregunta, respuesta]) => (
+      <Fragment><dt>{pregunta}</dt><dd set:html={respuesta} /></Fragment>
+    ))}
+  </dl>
 </section>

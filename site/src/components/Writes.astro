@@ -1,0 +1,23 @@
+---
+const repo = "https://github.com/Nokky21/DocKeeper";
+const paginas = [
+  ["README", "What it is, how it works in one pass, how to run it and how to configure it."],
+  ["Architecture", "Components, flows, data and boundaries, with diagrams of each."],
+  ["Decisions", "What was decided and why, taken only from the git history. If the reason isn't there, it says so."],
+  ["Procedures", "Runbooks with exact commands, how to check each step and how to roll back."],
+  ["API", "Every operation: permissions, inputs, errors, effects."],
+  ["Onboarding", "A reading path for the first day, and the traps people already fell into."],
+  ["Packages", "In a monorepo, a README for every package, plus a map of all of them at the root."],
+];
+---
+<section class="sec" id="writes" aria-labelledby="t-writes">
+  <h2 id="t-writes"><span class="n">1</span> It writes the documentation</h2>
+  <p class="lede">Ask once, in plain words: <em>“Document this repository with dockeeper.”</em> Your agent reads the code, shows you a plan and writes the pages one at a time from the skill's templates, anchoring every claim to its code as it goes.</p>
+  <aside class="mn"><b>Where the plan comes from</b><code>dockeeper audit</code> lists the missing pages, the packages and the largest code that nothing documents yet.
+    <!-- dockeeper: dockeeper/auditoria.py#auditar -->
+  </aside>
+  <ol class="toc">
+    {paginas.map(([nombre, texto]) => <li><b>{nombre}</b><span>{texto}</span></li>)}
+  </ol>
+  <p class="after">Read a page it wrote: <a href={`${repo}/blob/main/docs/architecture.md`}>DocKeeper's own architecture</a>, six diagrams and every claim anchored. The agent writes in your repository's language.</p>
+</section>
